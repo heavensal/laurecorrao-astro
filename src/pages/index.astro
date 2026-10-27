@@ -1,11 +1,37 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import BookingCTA from '../components/BookingCTA.astro';
+import texts from '../content.json';
+import { getArticles, getReviews, getFaqs } from '../lib/contentforge';
+const home=texts.find(t=>t.startsWith('Du contenu'))!.split('\n\n').slice(2);
+const [articles,reviews,faqs]=await Promise.all([getArticles(),getReviews(),getFaqs()]);
 ---
-
 <Layout>
-	<Welcome />
+  <section class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Cabinet à Martigues · Consultations en ligne</p>
+      <h1>Psychopraticienne &amp;<br/>Thérapeute de couple</h1>
+      <p class="hero-subtitle">Mettre des mots sur vos maux pour retrouver le chemin vers vous-même.</p>
+      <p class="hero-intro">Je vous accueille dans un espace d’écoute bienveillant, confidentiel et sans jugement pour vous aider à traverser les difficultés, mieux vous comprendre et retrouver équilibre et sérénité.</p>
+      <div class="hero-actions"><a class="button" href="/tarifs-et-rendez-vous/#agenda">Prendre rendez-vous</a><a class="button button-outline" href="/mon-approche/">Découvrir mon approche</a></div>
+    </div>
+    <div class="portrait"><img src="/images/reference-laure.jpeg" alt="Portrait de Laure Corrao dans un intérieur chaleureux" width="1536" height="1024" fetchpriority="high"/></div>
+  </section>
+  <section class="services" aria-label="Les accompagnements">
+    <a href="/accompagnement-individuel/"><span class="service-symbol" aria-hidden="true">♡</span><h2>Accompagnement individuel</h2><p>Anxiété · Phobies · Estime de soi ·<br/>Confiance en soi</p></a>
+    <a href="/therapie-de-couple/"><span class="service-symbol" aria-hidden="true">♧</span><h2>Thérapie de couple</h2><p>Communication · Conflits · Éloignement ·<br/>Crises · Reconstruction du lien</p></a>
+    <a href="/mon-approche/"><span class="service-symbol" aria-hidden="true">✧</span><h2>Une approche sur mesure</h2><p>Hypnose · DNR · Outils<br/>thérapeutiques adaptés</p></a>
+  </section>
+  <section class="about section">
+    <div><p class="eyebrow">À propos</p><h2>Et si vous vous accordiez enfin la place d’aller mieux&nbsp;?</h2><span class="small-rule" aria-hidden="true"></span></div>
+    <div><p>{home[1]}</p><a href="/mon-approche/">Découvrir mon approche</a></div>
+    <blockquote><span aria-hidden="true">“</span>Vous n’avez pas besoin de savoir par où commencer. Vous avez simplement besoin d’oser faire le premier pas.</blockquote>
+  </section>
+  <section class="section tinted"><div class="reading"><h2>Un accompagnement qui vous ressemble.</h2><p>{home[0]}</p><p>{home[2]}</p></div><div class="grid"><article class="card"><h3>Accompagnement individuel</h3><p>Un espace pour comprendre ce que vous traversez et retrouver vos propres ressources.</p><p>1 heure · 60 € · Cabinet ou visio</p><a href="/accompagnement-individuel/">Découvrir l’accompagnement individuel</a></article><article class="card"><h3>Thérapie de couple</h3><p>Retrouver un espace de dialogue lorsque la relation ne parvient plus à avancer seule.</p><p>1 heure · 80 € par couple</p><a href="/therapie-de-couple/">Découvrir la thérapie de couple</a></article></div></section>
+  <section class="section"><h2>Un espace pour vous retrouver.</h2><p class="reading">{home[3]}</p><div class="grid"><div><h3>Au cabinet, à Martigues</h3><p>Un cadre chaleureux, confidentiel et sans jugement. Les informations pratiques d’accès seront précisées avant votre venue.</p></div><div><h3>En visioconférence</h3><p>Installez-vous dans un lieu calme, où vous pouvez parler en toute confidentialité.</p></div></div><p>{home[4]}</p></section>
+  <section class="section tinted" aria-labelledby="reviews-title"><p class="eyebrow">Témoignages</p><h2 id="reviews-title">Leurs mots sur l’accompagnement</h2><div class="testimonial-grid">{reviews.slice(0,3).map(review=><blockquote class="testimonial"><span class="stars" aria-label={`${review.rating} étoiles sur 5`}>{'★'.repeat(review.rating)}</span><p>“{review.text}”</p><cite>{review.author}</cite></blockquote>)}</div></section>
+  <section class="section" aria-labelledby="articles-title"><div class="section-heading"><div><p class="eyebrow">Ressources</p><h2 id="articles-title">Pour mieux comprendre ce que vous traversez</h2></div><a href="/articles/">Tous les articles</a></div><div class="article-grid">{articles.slice(0,3).map(article=><article class="article-card"><p class="eyebrow">Article</p><h3><a href={`/articles/${article.slug}/`}>{article.title}</a></h3><p>{article.excerpt}</p><a href={`/articles/${article.slug}/`}>Lire l’article</a></article>)}</div></section>
+  <section class="section faq-section" aria-labelledby="faq-title"><p class="eyebrow">Questions fréquentes</p><h2 id="faq-title">Avant de commencer</h2><div class="faq-list">{faqs.map(faq=><details><summary>{faq.question}<span aria-hidden="true">+</span></summary><p>{faq.answer}</p></details>)}</div><button class="text-button" type="button" data-contact-open>Vous avez une autre question ? Contactez-moi</button></section>
+  <section class="contact-strip"><div><p class="eyebrow">Une question avant de vous lancer ?</p><h2>Parlons de votre demande.</h2></div><button class="button" type="button" data-contact-open>Me contacter</button></section>
+  <BookingCTA/>
 </Layout>

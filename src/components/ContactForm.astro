@@ -1,0 +1,47 @@
+---
+const config = {
+  apiUrl: import.meta.env.PUBLIC_CONTENTFORGE_FORM_URL || `${import.meta.env.PUBLIC_CONTENTFORGE_API_URL || 'https://contentforge.1344.fr/api/v1'}/send_form`,
+  apiToken: import.meta.env.PUBLIC_CONTENTFORGE_FORM_TOKEN || ''
+};
+---
+<dialog id="contact-dialog" aria-labelledby="contact-title">
+  <div class="dialog-card">
+    <button class="dialog-close" type="button" data-close aria-label="Fermer">×</button>
+    <p class="eyebrow">Premier échange</p><h2 id="contact-title">Me contacter</h2>
+    <p>Décrivez en quelques mots votre demande. Je reviendrai vers vous dans les meilleurs délais.</p>
+    <form id="contact-form">
+      <div class="form-grid"><label>Prénom<input name="firstName" autocomplete="given-name" required/></label><label>Nom<input name="lastName" autocomplete="family-name" required/></label></div>
+      <label>E-mail<input name="email" type="email" autocomplete="email" required/></label>
+      <label>Téléphone<input name="phone" type="tel" autocomplete="tel" required/></label>
+      <label>Votre demande<select name="requestType"><option>Accompagnement individuel</option><option>Thérapie de couple</option><option>Autre demande</option></select></label>
+      <label>Message<textarea name="message" rows="5" required></textarea></label>
+      <label class="consent"><input name="consent" type="checkbox" required/> J’accepte que mes informations soient utilisées pour répondre à ma demande.</label>
+      <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+      <button class="button" type="submit">Envoyer ma demande</button>
+    </form>
+  </div>
+</dialog>
+<script id="contentforge-form-config" type="application/json" set:html={JSON.stringify(config)}></script>
+<script>
+  const dialog = document.querySelector('#contact-dialog');
+  const form = document.querySelector('#contact-form');
+  const status = document.querySelector('#form-status');
+  document.querySelectorAll('[data-contact-open]').forEach((button) => button.addEventListener('click', () => dialog?.showModal()));
+  document.querySelectorAll('[data-close]').forEach((button) => button.addEventListener('click', () => dialog?.close()));
+  dialog?.addEventListener('click', (event) => { if (event.target === dialog) dialog.close(); });
+  form?.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const configNode = document.querySelector('#contentforge-form-config');
+    const config = JSON.parse(configNode?.textContent || '{}');
+    const data = Object.fromEntries(new FormData(form));
+    const button = form.querySelector('button[type="submit"]');
+    if (!config.apiToken) { status.textContent = 'Le formulaire sera disponible dès que la clé ContentForge de Laure Corrao sera renseignée.'; return; }
+    button.disabled = true; status.textContent = 'Envoi en cours…';
+    try {
+      const response = await fetch(config.apiUrl, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${config.apiToken}` }, body: JSON.stringify({ from_email: data.email, from_name: `${data.firstName} ${data.lastName}`, subject: 'Demande de contact — laurecorrao.fr', fields: { prénom: data.firstName, nom: data.lastName, email: data.email, téléphone: data.phone, demande: data.requestType, message: data.message } }) });
+      if (!response.ok) throw new Error();
+      form.reset(); status.textContent = 'Merci, votre demande a bien été transmise.';
+    } catch { status.textContent = 'L’envoi a échoué. Vous pouvez réessayer dans quelques instants.'; }
+    finally { button.disabled = false; }
+  });
+</script>

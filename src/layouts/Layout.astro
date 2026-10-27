@@ -1,23 +1,7 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+---
+import '../styles/global.css';
+import ContactForm from '../components/ContactForm.astro';
+const {title='Psychopraticienne et thérapeute de couple à Martigues',description='Laure Corrao : accompagnement individuel et thérapie de couple à Martigues et en visioconférence.'}=Astro.props;
+const links=[['/','Accueil'],['/accompagnement-individuel/','Individuel'],['/therapie-de-couple/','Couple'],['/mon-approche/','Mon approche'],['/articles/','Articles'],['/tarifs-et-rendez-vous/','Rendez-vous']];
+---
+<!doctype html><html lang="fr"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>{title} | Laure Corrao</title><meta name="description" content={description}/><link rel="canonical" href={new URL(Astro.url.pathname,'https://laurecorrao.fr')}/><meta property="og:title" content={`${title} | Laure Corrao`}/><meta property="og:description" content={description}/><meta property="og:locale" content="fr_FR"/><meta property="og:type" content="website"/><meta property="og:url" content={new URL(Astro.url.pathname,'https://laurecorrao.fr')}/><meta name="twitter:card" content="summary"/><link rel="icon" href="/favicon.svg"/></head><body><a class="skip" href="#contenu">Aller au contenu</a><header><a class="brand" href="/">Laure Corrao<span>Psychopraticienne · Thérapeute de couple</span></a><a class="button" href="/tarifs-et-rendez-vous/#agenda">Prendre rendez-vous</a><nav aria-label="Navigation principale">{links.map(([url,label])=><a href={url} aria-current={Astro.url.pathname===url?'page':undefined}>{label}</a>)}</nav></header><main id="contenu"><slot/></main><footer><div><a class="brand" href="/">Laure Corrao</a><p>Psychopraticienne et thérapeute de couple<br/>À Martigues et en visioconférence</p><button class="text-button" type="button" data-contact-open>Me contacter</button></div><nav aria-label="Informations légales"><a href="/mentions-legales/">Mentions légales</a><a href="/confidentialite/">Confidentialité</a><a href="/conditions/">Conditions de consultation</a></nav><small>© {new Date().getFullYear()} Laure Corrao</small></footer><ContactForm/></body></html>
