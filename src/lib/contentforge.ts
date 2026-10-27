@@ -4,9 +4,14 @@ export type Faq = { question: string; answer: string };
 
 const base = import.meta.env.CONTENTFORGE_API_URL || 'https://contentforge.1344.fr/api/v1';
 const token = import.meta.env.CONTENTFORGE_API_TOKEN || '';
+const resourceUrls: Record<string, string | undefined> = {
+  articles: import.meta.env.CONTENTFORGE_ARTICLES_URL,
+  reviews: import.meta.env.CONTENTFORGE_REVIEWS_URL,
+  faqs: import.meta.env.CONTENTFORGE_FAQS_URL
+};
 
 async function load<T>(kind: string, fallback: T): Promise<T> {
-  const explicit = import.meta.env[`CONTENTFORGE_${kind.toUpperCase()}_URL`];
+  const explicit = resourceUrls[kind];
   const url = explicit || `${base}/${kind}`;
   if (!token) return fallback;
   try {
