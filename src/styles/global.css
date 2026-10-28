@@ -43,10 +43,12 @@ summary::-webkit-details-marker {
 	margin-bottom: 1.4rem;
 }
 
-.cms-content :where(a),
-p a {
-	text-decoration: underline;
-	text-underline-offset: 0.25rem;
+@layer base {
+	.cms-content :where(a),
+	p a {
+		text-decoration: underline;
+		text-underline-offset: 0.25rem;
+	}
 }
 
 @media (prefers-reduced-motion: reduce) {

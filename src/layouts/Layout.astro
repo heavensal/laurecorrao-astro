@@ -42,7 +42,8 @@ const selfUrl = absolutePageUrl(Astro.site, Astro.url.pathname);
 const alternates = alternateLanguages ?? buildAlternateLanguages({ [lang]: selfUrl ?? canonical });
 const ogLocale = lang === 'en' ? 'en_US' : 'fr_FR';
 const ogAlternate = publishedOgLocaleAlternate(lang);
-const imageAlt = ogImageAlt ?? t('HomePage.portraitAlt');
+const usesDefaultImage = !image;
+const imageAlt = ogImageAlt ?? (usesDefaultImage ? t('HomePage.portraitAlt') : undefined);
 
 function absolutePublic(path: string): string | undefined {
 	if (!Astro.site) return undefined;
@@ -50,7 +51,6 @@ function absolutePublic(path: string): string | undefined {
 	return new URL(import.meta.env.BASE_URL + clean, Astro.site).href;
 }
 
-const usesDefaultImage = !image;
 const ogImage = image
 	? image.startsWith('http')
 		? image
@@ -89,7 +89,7 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 		{ogImage && <meta property="og:image" content={ogImage} />}
 		{ogImage && usesDefaultImage && <meta property="og:image:width" content={String(siteConfig.ogImageWidth)} />}
 		{ogImage && usesDefaultImage && <meta property="og:image:height" content={String(siteConfig.ogImageHeight)} />}
-		{ogImage && <meta property="og:image:alt" content={imageAlt} />}
+		{ogImage && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
 		<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
 		<meta name="twitter:title" content={pageTitle} />
 		<meta name="twitter:description" content={pageDescription} />
@@ -99,7 +99,7 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 			)
 		}
 		{ogImage && <meta name="twitter:image" content={ogImage} />}
-		{ogImage && <meta name="twitter:image:alt" content={imageAlt} />}
+		{ogImage && imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
 		<link rel="manifest" href={`${base}site.webmanifest`} />
 		<link rel="icon" type="image/svg+xml" href={pageHref('favicon.svg')} />
 		{jsonLdString && <script type="application/ld+json" set:html={jsonLdString} />}
