@@ -1,0 +1,103 @@
+---
+import BookingCTA from './BookingCTA.astro';
+import { getFixedT, type Locale } from '../i18n/i18n';
+import { fetchFaqs, fetchReviews } from '../lib/forge-blocks';
+import { fetchPublishedSummaries } from '../lib/forge-blog';
+import { localFaqs, localReviews } from '../lib/local-blocks';
+import { localePathPrefix, pageHref } from '../lib/paths';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const prefix = localePathPrefix(locale);
+const posts = (await fetchPublishedSummaries(locale)).slice(0, 3);
+const fromReviews = await fetchReviews(locale);
+const reviews = (
+	fromReviews
+		? fromReviews.map((review) => ({
+				author: review.author,
+				rating: review.rating,
+				text: review.content,
+			}))
+		: localReviews(locale)
+).slice(0, 3);
+const faqs = (await fetchFaqs(locale)) ?? localFaqs(locale);
+const blogHref = pageHref(`${prefix}blog/`);
+---
+
+<section class="section tinted" aria-labelledby="reviews-title">
+	<p class="eyebrow">{t('Resources.reviewsEyebrow')}</p>
+	<h2 id="reviews-title">{t('Resources.reviewsTitle')}</h2>
+	<div class="testimonial-grid">
+		{
+			reviews.map((review) => (
+				<blockquote class="testimonial">
+					<span class="stars" aria-label={t('Resources.stars', { rating: review.rating })}>
+						{'★'.repeat(review.rating)}
+					</span>
+					<p>“{review.text}”</p>
+					<cite>{review.author}</cite>
+				</blockquote>
+			))
+		}
+	</div>
+</section>
+<section class="section" aria-labelledby="articles-title">
+	<div class="section-heading">
+		<div>
+			<p class="eyebrow">{t('Blog.eyebrow')}</p>
+			<h2 id="articles-title">{t('Blog.homeTitle')}</h2>
+		</div>
+		{posts.length > 0 && <a href={blogHref}>{t('Blog.all')}</a>}
+	</div>
+	{
+		posts.length === 0 ? (
+			<p>{t('Blog.empty')}</p>
+		) : (
+			<div class="article-grid">
+				{posts.map((article) => (
+					<article class="article-card">
+						{article.coverImageUrl && (
+							<img class="article-cover" src={article.coverImageUrl} alt="" />
+						)}
+						<p class="eyebrow">{t('Blog.eyebrow')}</p>
+						<h3>
+							<a href={pageHref(`${prefix}blog/${article.slug}/`)}>{article.title}</a>
+						</h3>
+						<p>{article.description}</p>
+						<a href={pageHref(`${prefix}blog/${article.slug}/`)}>{t('Blog.read')}</a>
+					</article>
+				))}
+			</div>
+		)
+	}
+</section>
+<section class="section faq-section" aria-labelledby="faq-title">
+	<p class="eyebrow">{t('Resources.faqEyebrow')}</p>
+	<h2 id="faq-title">{t('Resources.faqTitle')}</h2>
+	<div class="faq-list">
+		{
+			faqs.map((faq) => (
+				<details>
+					<summary>
+						{faq.question}
+						<span aria-hidden="true">+</span>
+					</summary>
+					<p>{faq.answer}</p>
+				</details>
+			))
+		}
+	</div>
+	<button class="text-button" type="button" data-contact-open>{t('Resources.otherQuestion')}</button>
+</section>
+<section class="contact-strip">
+	<div>
+		<p class="eyebrow">{t('Resources.contactEyebrow')}</p>
+		<h2>{t('Resources.contactTitle')}</h2>
+	</div>
+	<button class="button" type="button" data-contact-open>{t('Resources.contactCta')}</button>
+</section>
+<BookingCTA locale={locale} />

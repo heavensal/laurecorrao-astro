@@ -1,0 +1,24 @@
+---
+import LegalNoticeArticle from '../legal/LegalNoticeArticle.astro';
+import PrivacyArticle from '../legal/PrivacyArticle.astro';
+import TermsArticle from '../legal/TermsArticle.astro';
+import type { Locale } from '../../i18n/i18n';
+import type { ContentKind } from '../../lib/pages';
+import FeesPage from './FeesPage.astro';
+import TopicPage from './TopicPage.astro';
+
+interface Props {
+	locale: Locale;
+	kind: ContentKind;
+}
+
+const { locale, kind } = Astro.props;
+---
+
+{kind === 'individual' && <TopicPage locale={locale} namespace="Individual" />}
+{kind === 'couple' && <TopicPage locale={locale} namespace="Couple" />}
+{kind === 'approach' && <TopicPage locale={locale} namespace="Approach" />}
+{kind === 'booking' && <FeesPage locale={locale} />}
+{kind === 'legal-notice' && <LegalNoticeArticle locale={locale} />}
+{kind === 'privacy-policy' && <PrivacyArticle locale={locale} />}
+{kind === 'terms-of-service' && <TermsArticle locale={locale} />}

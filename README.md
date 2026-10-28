@@ -1,46 +1,21 @@
-# Astro Starter Kit: Basics
+# laurecorrao.fr
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+Static Astro site for Laure Corrao, psychopractitioner and couples therapist in Martigues. pnpm. No Rails backend in this repository.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Development
 
-## 🚀 Project Structure
+- `pnpm install --frozen-lockfile`
+- `pnpm dev`
+- `pnpm build` writes `dist/`
 
-Inside of your Astro project, you'll see the following folders and files:
+Visible copy is in `src/i18n/locales/fr.json` and `en.json`. `ENABLE_MULTILANG` defaults to `false`: the site publishes French only, and English copy stays in `en.json` without a `/en/` URL. See `MULTILANG.md` and `.cursor/skills/language/SKILL.md`.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+## Before publication
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Add the practice address, access notes, phone, email, status, and SIRET. Do not invent them. The host is GitHub, Inc. The technical provider is #1344 Solutions (`https://1344.fr`).
+- Set `FORGE_API_TOKEN` in `.env` to the Forge token for `laurecorrao.fr`. Without it, `/blog` is not generated. The same token goes in `PUBLIC_CONTACT_FORM_TOKEN` for the contact form (it is exposed to the browser).
+- The test calendar `adam-1344-vm70qf/30min` in `src/components/CalEmbed.astro` stays until Laure’s calendar replaces it. The public Cal.com embed uses no secret.
+- In Cal.com, configure the individual event (€60, 60 min) and the couples event (€80, 60 min), practice or video, availability, name, email, phone, cancellation policy, confirmations, reminders, and reschedule or cancel links.
+- Configure secure payment and the video link in Cal.com. This site does not collect patient data itself.
+- Check a booking end to end on Laure’s account, including payment, email, and cancellation.
+- Deploy only after the provisional details are replaced. The canonical domain is `https://laurecorrao.fr`.

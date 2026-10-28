@@ -1,0 +1,36 @@
+---
+import BookingCTA from '../BookingCTA.astro';
+import { getFixedT, type Locale } from '../../i18n/i18n';
+
+interface Props {
+	locale: Locale;
+	namespace: 'Individual' | 'Couple' | 'Approach';
+}
+
+const { locale, namespace } = Astro.props;
+const t = getFixedT(locale);
+
+function lines(key: string): string[] {
+	const value = t(key, { returnObjects: true });
+	return Array.isArray(value) ? value.map(String) : [];
+}
+
+const before = lines(`${namespace}.before`);
+const items = lines(`${namespace}.items`);
+const after = lines(`${namespace}.after`);
+---
+
+<div class="page-head">
+	<p class="eyebrow">{t('Pages.eyebrow')}</p>
+	<h1>{t(`${namespace}.h1`)}</h1>
+</div>
+<article class="prose">
+	<p class="lede">{t(`${namespace}.lede`)}</p>
+	{before.map((paragraph) => <p>{paragraph}</p>)}
+	<p>{t(`${namespace}.listIntro`)}</p>
+	<ul>
+		{items.map((item) => <li>{item}</li>)}
+	</ul>
+	{after.map((paragraph) => <p>{paragraph}</p>)}
+</article>
+<BookingCTA locale={locale} />

@@ -1,0 +1,61 @@
+---
+import BookingCTA from '../BookingCTA.astro';
+import CalEmbed from '../CalEmbed.astro';
+import { getFixedT, type Locale } from '../../i18n/i18n';
+
+interface Props {
+	locale: Locale;
+}
+
+interface Section {
+	title: string;
+	lines?: string[];
+	paragraphs?: string[];
+	items?: string[];
+	after?: string[];
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const sectionsValue = t('Booking.sections', { returnObjects: true });
+const sections: Section[] = Array.isArray(sectionsValue) ? sectionsValue : [];
+---
+
+<div class="page-head">
+	<p class="eyebrow">{t('Pages.eyebrow')}</p>
+	<h1>{t('Booking.h1')}</h1>
+</div>
+<article class="prose">
+	<p class="lede">{t('Booking.lede')}</p>
+	<p>{t('Booking.intro')}</p>
+	{
+		sections.map((section) => (
+			<>
+				<h2>{section.title}</h2>
+				{section.lines && (
+					<p>
+						{section.lines[0]}
+						<br />
+						{section.lines[1]}
+					</p>
+				)}
+				{section.paragraphs?.map((paragraph) => <p>{paragraph}</p>)}
+				{section.items && (
+					<ul>
+						{section.items.map((item) => (
+							<li>{item}</li>
+						))}
+					</ul>
+				)}
+				{section.after?.map((paragraph) => <p>{paragraph}</p>)}
+			</>
+		))
+	}
+	<p>{t('Booking.closing')}</p>
+</article>
+<section class="section" id="agenda">
+	<h2>{t('Booking.agendaTitle')}</h2>
+	<p class="notice">{t('Booking.agendaNotice')}</p>
+	<CalEmbed locale={locale} />
+</section>
+<BookingCTA locale={locale} />

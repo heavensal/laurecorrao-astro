@@ -1,23 +1,119 @@
+---
+import '../styles/global.css';
+import ContactForm from '../components/ContactForm.astro';
+import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import { getFixedT, type Locale } from '../i18n/i18n';
+import { publishedBlogPaths } from '../lib/forge-blog';
+import { contentPath, legalPath, pageHref } from '../lib/paths';
+import { absolutePageUrl, buildAlternateLanguages, publishedOgLocaleAlternate } from '../lib/seo';
+import { siteConfig } from '../site.config';
+
+interface Props {
+	title?: string;
+	description?: string;
+	lang?: Locale;
+	robots?: string;
+	alternateLanguages?: { hreflang: string; href: string }[];
+	jsonLd?: Record<string, unknown>;
+}
+
+const {
+	title,
+	description,
+	lang = 'fr',
+	robots = 'index, follow',
+	alternateLanguages,
+	jsonLd,
+} = Astro.props;
+
+const t = getFixedT(lang);
+const pageTitle = `${title ?? t('Home.metaTitle')} | ${siteConfig.name}`;
+const pageDescription = description ?? t('Home.metaDescription');
+const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const selfUrl = absolutePageUrl(Astro.site, Astro.url.pathname);
+const alternates = alternateLanguages ?? buildAlternateLanguages({ [lang]: selfUrl ?? canonical });
+const ogLocale = lang === 'en' ? 'en_US' : 'fr_FR';
+const ogAlternate = publishedOgLocaleAlternate(lang);
+const blogPath = (await publishedBlogPaths(null))[lang];
+const homeHref = pageHref(lang === 'en' ? 'en/' : '');
+const links = [
+	[homeHref, t('Nav.home')],
+	[pageHref(`${contentPath(lang, 'individual')}/`), t('Nav.individual')],
+	[pageHref(`${contentPath(lang, 'couple')}/`), t('Nav.couple')],
+	[pageHref(`${contentPath(lang, 'approach')}/`), t('Nav.approach')],
+	...(blogPath ? [[pageHref(`${blogPath}/`), t('Nav.articles')]] : []),
+	[pageHref(`${contentPath(lang, 'booking')}/`), t('Nav.booking')],
+];
+const bookingHref = pageHref(`${contentPath(lang, 'booking')}/#agenda`);
+const legalHref = (page: 'legalNotice' | 'privacyPolicy' | 'termsOfService') =>
+	pageHref(`${legalPath(lang, page)}/`);
+const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : null;
+
+function isCurrent(href: string) {
+	const path = Astro.url.pathname;
+	const target = href.split('#')[0];
+	return path === target || (target !== '/' && path === `${target}/`);
+}
+---
+
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{pageTitle}</title>
+		<meta name="description" content={pageDescription} />
+		<meta name="robots" content={robots} />
+		{canonical && <link rel="canonical" href={canonical} />}
+		{
+			alternates?.map(({ hreflang, href }) => (
+				<link rel="alternate" hreflang={hreflang} href={href} />
+			))
+		}
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
+		<meta property="og:locale" content={ogLocale} />
+		{ogAlternate && <meta property="og:locale:alternate" content={ogAlternate} />}
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content={siteConfig.name} />
+		{canonical && <meta property="og:url" content={canonical} />}
+		<meta name="twitter:card" content="summary" />
+		<link rel="icon" href="/favicon.svg" />
+		{jsonLdString && <script type="application/ld+json" set:html={jsonLdString} />}
 	</head>
 	<body>
-		<slot />
+		<a class="skip" href="#content">{t('Layout.skipToContent')}</a>
+		<header>
+			<a class="brand" href={homeHref}>
+				{siteConfig.name}
+				<span>{t('Layout.brandSubtitle')}</span>
+			</a>
+			<LanguageSwitcher locale={lang} />
+			<a class="button" href={bookingHref}>{t('Nav.bookingCta')}</a>
+			<nav aria-label={t('Nav.aria')}>
+				{
+					links.map(([url, label]) => (
+						<a href={url} aria-current={isCurrent(url) ? 'page' : undefined}>
+							{label}
+						</a>
+					))
+				}
+			</nav>
+		</header>
+		<main id="content"><slot /></main>
+		<footer>
+			<div>
+				<a class="brand" href={homeHref}>{siteConfig.name}</a>
+				<p set:html={t('Footer.tagline')} />
+				<button class="text-button" type="button" data-contact-open>{t('Footer.contact')}</button>
+			</div>
+			<nav aria-label={t('Footer.legalAria')}>
+				<a href={legalHref('legalNotice')}>{t('Footer.linkLegal')}</a>
+				<a href={legalHref('privacyPolicy')}>{t('Footer.linkPrivacy')}</a>
+				<a href={legalHref('termsOfService')}>{t('Footer.linkTerms')}</a>
+			</nav>
+			<small>{t('Footer.copyright', { year: new Date().getFullYear() })}</small>
+		</footer>
+		<ContactForm locale={lang} />
 	</body>
 </html>
-
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>

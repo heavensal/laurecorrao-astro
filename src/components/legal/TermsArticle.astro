@@ -1,0 +1,54 @@
+---
+import { getFixedT, type Locale } from '../../i18n/i18n';
+import { homePathForLocale, pageHref } from '../../lib/paths';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const homeUrl = pageHref(homePathForLocale(locale) || '/');
+---
+
+<article>
+	<div class="page-head">
+		<p><a href={homeUrl}>{t('Terms.back')}</a></p>
+		<h1>{t('Terms.h1')}</h1>
+		<p>{t('Terms.updated')}</p>
+	</div>
+	<div class="prose">
+		<section>
+			<h2>{t('Terms.s1h')}</h2>
+			<p>{t('Terms.s1p1')}</p>
+		</section>
+		<section>
+			<h2>{t('Terms.s2h')}</h2>
+			<p>{t('Terms.s2p1')}</p>
+			<p>{t('Terms.s2p2')}</p>
+		</section>
+		<section>
+			<h2>{t('Terms.s3h')}</h2>
+			<p>{t('Terms.s3p1')}</p>
+			<p>{t('Terms.s3p2')}</p>
+		</section>
+		<section>
+			<h2>{t('Terms.s4h')}</h2>
+			<p>{t('Terms.s4p1')}</p>
+			<p>{t('Terms.s4p2')}</p>
+		</section>
+		<section>
+			<h2>{t('Terms.s5h')}</h2>
+			<p>{t('Terms.s5p1')}</p>
+			<p>{t('Terms.s5p2')}</p>
+		</section>
+		<section>
+			<h2>{t('Terms.s6h')}</h2>
+			<p>{t('Terms.s6p1')}</p>
+		</section>
+		<section>
+			<h2>{t('Terms.s7h')}</h2>
+			<p>{t('Terms.s7p1')}</p>
+		</section>
+	</div>
+</article>

@@ -1,0 +1,120 @@
+---
+import { getFixedT, type Locale } from '../i18n/i18n';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const config = {
+	apiUrl: import.meta.env.PUBLIC_CONTACT_FORM_URL || 'https://forge.1344.fr/api/v1/send_form',
+	apiToken: import.meta.env.PUBLIC_CONTACT_FORM_TOKEN || '',
+	subject: t('Contact.subject'),
+	fields: {
+		firstName: t('Contact.firstName'),
+		lastName: t('Contact.lastName'),
+		email: t('Contact.email'),
+		phone: t('Contact.phone'),
+		request: t('Contact.request'),
+		message: t('Contact.message'),
+	},
+	status: {
+		missingToken: t('Contact.missingToken'),
+		sending: t('Contact.sending'),
+		success: t('Contact.success'),
+		error: t('Contact.error'),
+	},
+};
+---
+
+<dialog id="contact-dialog" aria-labelledby="contact-title">
+	<div class="dialog-card">
+		<button class="dialog-close" type="button" data-close aria-label={t('Contact.close')}>×</button>
+		<p class="eyebrow">{t('Contact.eyebrow')}</p>
+		<h2 id="contact-title">{t('Contact.title')}</h2>
+		<p>{t('Contact.intro')}</p>
+		<form id="contact-form">
+			<div class="form-grid">
+				<label>{t('Contact.firstName')}<input name="firstName" autocomplete="given-name" required /></label>
+				<label>{t('Contact.lastName')}<input name="lastName" autocomplete="family-name" required /></label>
+			</div>
+			<label>{t('Contact.email')}<input name="email" type="email" autocomplete="email" required /></label>
+			<label>{t('Contact.phone')}<input name="phone" type="tel" autocomplete="tel" required /></label>
+			<label>
+				{t('Contact.request')}
+				<select name="requestType">
+					<option>{t('Contact.optionIndividual')}</option>
+					<option>{t('Contact.optionCouple')}</option>
+					<option>{t('Contact.optionOther')}</option>
+				</select>
+			</label>
+			<label>{t('Contact.message')}<textarea name="message" rows="5" required></textarea></label>
+			<label class="consent">
+				<input name="consent" type="checkbox" required />
+				{t('Contact.consent')}
+			</label>
+			<p id="form-status" class="form-status" role="status" aria-live="polite"></p>
+			<button class="button" type="submit">{t('Contact.submit')}</button>
+		</form>
+	</div>
+</dialog>
+<script id="forge-form-config" type="application/json" set:html={JSON.stringify(config)}></script>
+<script>
+	const dialog = document.querySelector('#contact-dialog');
+	const form = document.querySelector('#contact-form');
+	const status = document.querySelector('#form-status');
+	document.querySelectorAll('[data-contact-open]').forEach((button) => {
+		button.addEventListener('click', () => dialog?.showModal());
+	});
+	document.querySelectorAll('[data-close]').forEach((button) => {
+		button.addEventListener('click', () => dialog?.close());
+	});
+	dialog?.addEventListener('click', (event) => {
+		if (event.target === dialog) dialog.close();
+	});
+	form?.addEventListener('submit', async (event) => {
+		event.preventDefault();
+		if (!(form instanceof HTMLFormElement) || !status) return;
+		const configNode = document.querySelector('#forge-form-config');
+		const config = JSON.parse(configNode?.textContent || '{}');
+		const data = Object.fromEntries(new FormData(form));
+		const button = form.querySelector('button[type="submit"]');
+		if (!(button instanceof HTMLButtonElement)) return;
+		if (!config.apiToken) {
+			status.textContent = config.status.missingToken;
+			return;
+		}
+		button.disabled = true;
+		status.textContent = config.status.sending;
+		try {
+			const response = await fetch(config.apiUrl, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${config.apiToken}`,
+				},
+				body: JSON.stringify({
+					from_email: data.email,
+					from_name: `${data.firstName} ${data.lastName}`,
+					subject: config.subject,
+					fields: {
+						[config.fields.firstName]: data.firstName,
+						[config.fields.lastName]: data.lastName,
+						[config.fields.email]: data.email,
+						[config.fields.phone]: data.phone,
+						[config.fields.request]: data.requestType,
+						[config.fields.message]: data.message,
+					},
+				}),
+			});
+			if (!response.ok) throw new Error();
+			form.reset();
+			status.textContent = config.status.success;
+		} catch {
+			status.textContent = config.status.error;
+		} finally {
+			button.disabled = false;
+		}
+	});
+</script>

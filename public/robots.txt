@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://laurecorrao.fr/sitemap.xml
