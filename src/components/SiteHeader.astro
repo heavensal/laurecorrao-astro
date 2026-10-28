@@ -1,0 +1,57 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getFixedT, type Locale } from '../i18n/i18n';
+import { publishedBlogPaths } from '../lib/forge-blog';
+import { contentPath, pageHref } from '../lib/paths';
+import { siteConfig } from '../site.config';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const blogPath = (await publishedBlogPaths(null))[locale];
+const homeHref = pageHref(locale === 'en' ? 'en/' : '');
+const bookingHref = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
+const links = [
+	[homeHref, t('Nav.home')],
+	[pageHref(`${contentPath(locale, 'individual')}/`), t('Nav.individual')],
+	[pageHref(`${contentPath(locale, 'couple')}/`), t('Nav.couple')],
+	[pageHref(`${contentPath(locale, 'approach')}/`), t('Nav.approach')],
+	...(blogPath ? [[pageHref(`${blogPath}/`), t('Nav.articles')]] : []),
+	[pageHref(`${contentPath(locale, 'booking')}/`), t('Nav.booking')],
+];
+
+function isCurrent(href: string) {
+	const path = Astro.url.pathname;
+	const target = href.split('#')[0];
+	return path === target || (target !== '/' && path === `${target}/`);
+}
+
+const navLink = 'text-sm text-ink no-underline transition-colors duration-200 hover:text-rose-laure';
+const navCurrent = `${navLink} text-rose-laure underline underline-offset-8`;
+const button =
+	'inline-flex min-h-12 w-full items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-4 py-2 text-center text-sm text-white no-underline transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep sm:w-auto sm:px-6';
+---
+
+<header class="flex w-full min-w-0 flex-wrap items-center justify-between gap-x-3 gap-y-3 border-b border-line bg-paper px-4 py-4 sm:gap-x-6 sm:px-6 lg:flex-nowrap lg:gap-8 lg:px-10">
+	<a class="font-serif text-xl tracking-tight text-ink no-underline sm:text-3xl lg:text-4xl" href={homeHref}>
+		{siteConfig.name}
+		<span class="sr-only">{t('Layout.brandSubtitle')}</span>
+	</a>
+	<nav
+		class="order-last grid w-full min-w-0 grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3 lg:order-none lg:flex lg:w-auto lg:flex-1 lg:justify-end lg:gap-x-6"
+		aria-label={t('Nav.aria')}
+	>
+		{
+			links.map(([url, label]) => (
+				<a class={isCurrent(url) ? navCurrent : navLink} href={url} aria-current={isCurrent(url) ? 'page' : undefined}>
+					{label}
+				</a>
+			))
+		}
+	</nav>
+	<LanguageSwitcher locale={locale} />
+	<a class={button} href={bookingHref}>{t('Nav.bookingCta')}</a>
+</header>

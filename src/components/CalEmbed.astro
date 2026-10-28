@@ -12,7 +12,7 @@ const t = getFixedT(locale);
 <p id="cal-status" role="status" data-error={t('Calendar.loadError')} data-frame-title={t('Calendar.frameTitle')}>
 	{t('Calendar.loading')}
 </p>
-<div id="my-cal-inline" class="calendar-frame" aria-label={t('Calendar.aria')}></div>
+<div id="my-cal-inline" class="min-h-screen w-full overflow-auto" aria-label={t('Calendar.aria')}></div>
 <noscript><p>{t('Calendar.noscript')}</p></noscript>
 
 <script is:inline>

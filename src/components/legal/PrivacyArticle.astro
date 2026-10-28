@@ -15,50 +15,50 @@ const controller = t('Privacy.s1p1') + (email ? t('Privacy.s1p1After', { email }
 ---
 
 <article>
-	<div class="page-head">
-		<p><a href={homeUrl}>{t('Privacy.back')}</a></p>
-		<h1>{t('Privacy.h1')}</h1>
-		<p>{t('Privacy.updated')}</p>
+	<div class="mx-auto max-w-6xl px-6 pt-16 pb-6">
+		<p class="mb-6"><a class="underline underline-offset-4" href={homeUrl}>{t('Privacy.back')}</a></p>
+		<h1 class="font-serif text-4xl leading-tight tracking-tight md:text-5xl">{t('Privacy.h1')}</h1>
+		<p class="mt-4 mb-6">{t('Privacy.updated')}</p>
 	</div>
-	<div class="prose">
+	<div class="mx-auto max-w-3xl px-6 pb-16 leading-relaxed">
 		<section>
-			<h2>{t('Privacy.s1h')}</h2>
-			<p set:html={controller} />
-			<p>{t('Privacy.s1p2')}</p>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Privacy.s1h')}</h2>
+			<p class="mt-4 mb-6" set:html={controller} />
+			<p class="mt-4 mb-6">{t('Privacy.s1p2')}</p>
 		</section>
 		<section>
-			<h2>{t('Privacy.s2h')}</h2>
-			<p>{t('Privacy.s2p1')}</p>
-			<p>{t('Privacy.s2p2')}</p>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Privacy.s2h')}</h2>
+			<p class="mt-4 mb-6">{t('Privacy.s2p1')}</p>
+			<p class="mt-4 mb-6">{t('Privacy.s2p2')}</p>
 		</section>
 		<section>
-			<h2>{t('Privacy.s3h')}</h2>
-			<p>{t('Privacy.s3p1')}</p>
-			<p>{t('Privacy.s3p2')}</p>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Privacy.s3h')}</h2>
+			<p class="mt-4 mb-6">{t('Privacy.s3p1')}</p>
+			<p class="mt-4 mb-6">{t('Privacy.s3p2')}</p>
 		</section>
 		<section>
-			<h2>{t('Privacy.s4h')}</h2>
-			<p>{t('Privacy.s4p1')}</p>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Privacy.s4h')}</h2>
+			<p class="mt-4 mb-6">{t('Privacy.s4p1')}</p>
 		</section>
 		<section>
-			<h2>{t('Privacy.s5h')}</h2>
-			<p>{t('Privacy.s5p1')}</p>
-			<p set:html={t('Privacy.s5p2')} />
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Privacy.s5h')}</h2>
+			<p class="mt-4 mb-6">{t('Privacy.s5p1')}</p>
+			<p class="mt-4 mb-6" set:html={t('Privacy.s5p2')} />
 		</section>
 		<section>
-			<h2>{t('Privacy.s6h')}</h2>
-			<p>{t('Privacy.s6p1')}</p>
-			{email && <p set:html={t('Privacy.s6p2', { email })} />}
-			<p set:html={t('Privacy.s6p3')} />
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Privacy.s6h')}</h2>
+			<p class="mt-4 mb-6">{t('Privacy.s6p1')}</p>
+			{email && <p class="mt-4 mb-6" set:html={t('Privacy.s6p2', { email })} />}
+			<p class="mt-4 mb-6" set:html={t('Privacy.s6p3')} />
 		</section>
 		<section>
-			<h2>{t('Privacy.s7h')}</h2>
-			<p>{t('Privacy.s7p1')}</p>
-			<p>{t('Privacy.s7p2')}</p>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Privacy.s7h')}</h2>
+			<p class="mt-4 mb-6">{t('Privacy.s7p1')}</p>
+			<p class="mt-4 mb-6">{t('Privacy.s7p2')}</p>
 		</section>
 		<section>
-			<h2>{t('Privacy.s8h')}</h2>
-			<p>{t('Privacy.s8p1')}</p>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Privacy.s8h')}</h2>
+			<p class="mt-4 mb-6">{t('Privacy.s8p1')}</p>
 		</section>
 	</div>
 </article>

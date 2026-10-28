@@ -2,10 +2,20 @@
 import HomePage from '../components/HomePage.astro';
 import { getFixedT } from '../i18n/i18n';
 import Layout from '../layouts/Layout.astro';
+import { buildHomeJsonLd } from '../lib/jsonld';
+import { alternateUrls } from '../lib/pages';
+import { absolutePageUrl, buildAlternateLanguages } from '../lib/seo';
 
 const t = getFixedT('fr');
+const { fr, en } = alternateUrls(Astro.site, 'home');
+const homeUrl = absolutePageUrl(Astro.site, '');
 ---
 
-<Layout title={t('Home.metaTitle')} description={t('Home.metaDescription')}>
+<Layout
+	title={t('Home.metaTitle')}
+	description={t('Home.metaDescription')}
+	alternateLanguages={buildAlternateLanguages({ fr, en })}
+	jsonLd={homeUrl ? buildHomeJsonLd(homeUrl, 'fr') : undefined}
+>
 	<HomePage locale="fr" />
 </Layout>

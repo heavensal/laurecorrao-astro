@@ -1,7 +1,8 @@
 ---
+import BlogCard from './BlogCard.astro';
 import { getFixedT, type Locale } from '../../i18n/i18n';
-import { formatCmsDate, type CmsArticleSummary } from '../../lib/forge-blog';
-import { homePathForLocale, localePathPrefix, pageHref } from '../../lib/paths';
+import type { CmsArticleSummary } from '../../lib/forge-blog';
+import { homePathForLocale, pageHref } from '../../lib/paths';
 
 interface Props {
 	locale: Locale;
@@ -11,42 +12,20 @@ interface Props {
 const { locale, posts } = Astro.props;
 const t = getFixedT(locale);
 const homeUrl = pageHref(homePathForLocale(locale) || '/');
-const prefix = localePathPrefix(locale);
 ---
 
-<section class="page-head">
-	<p><a href={homeUrl}>{t('Blog.back')}</a></p>
-	<p class="eyebrow">{t('Blog.eyebrow')}</p>
-	<h1>{t('Blog.h1')}</h1>
-	<p class="lede">{t('Blog.intro')}</p>
+<section class="mx-auto max-w-6xl px-6 pt-16 pb-6 md:px-10">
+	<p><a class="underline underline-offset-4" href={homeUrl}>{t('Blog.back')}</a></p>
+	<p class="mt-6 mb-4 text-xs tracking-widest text-rose-laure uppercase">{t('Blog.eyebrow')}</p>
+	<h1 class="font-serif text-4xl leading-tight tracking-tight md:text-5xl">{t('Blog.h1')}</h1>
+	<p class="mt-4 max-w-3xl font-serif text-xl leading-snug">{t('Blog.intro')}</p>
 </section>
-<section class="section article-grid">
+<section class="grid gap-6 px-6 py-10 md:grid-cols-2 md:px-10 lg:grid-cols-3">
 	{
 		posts.length === 0 ? (
 			<p>{t('Blog.empty')}</p>
 		) : (
-			posts.map((post) => {
-				const date = formatCmsDate(post.publishedAt, locale);
-				const href = pageHref(`${prefix}blog/${post.slug}/`);
-				return (
-					<article class="article-card">
-						{post.coverImageUrl && (
-							<img class="article-cover" src={post.coverImageUrl} alt="" />
-						)}
-						<p class="eyebrow">{t('Blog.eyebrow')}</p>
-						<h2>
-							<a href={href}>{post.title}</a>
-						</h2>
-						{date && (
-							<p>
-								<time datetime={post.publishedAt ?? undefined}>{date}</time>
-							</p>
-						)}
-						{post.description && <p>{post.description}</p>}
-						<a href={href}>{t('Blog.read')}</a>
-					</article>
-				);
-			})
+			posts.map((post) => <BlogCard locale={locale} post={post} heading="h2" />)
 		)
 	}
 </section>
