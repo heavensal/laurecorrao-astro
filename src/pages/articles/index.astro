@@ -1,9 +1,0 @@
----
-import Layout from '../../layouts/Layout.astro';
-import { getArticles } from '../../lib/contentforge';
-const articles = await getArticles();
----
-<Layout title="Articles et ressources" description="Conseils et ressources autour de l’accompagnement individuel, des émotions et de la thérapie de couple.">
-  <section class="page-head"><p class="eyebrow">Ressources</p><h1>Des repères pour mieux vous comprendre.</h1><p class="lede">Des articles pour mettre des mots sur ce que vous traversez et avancer à votre rythme.</p></section>
-  <section class="section article-grid">{articles.map(article=><article class="article-card"><p class="eyebrow">Article</p><h2><a href={`/articles/${article.slug}/`}>{article.title}</a></h2><p>{article.excerpt}</p><a href={`/articles/${article.slug}/`}>Lire l’article</a></article>)}</section>
-</Layout>

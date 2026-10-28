@@ -1,0 +1,402 @@
+{
+	"Layout": {
+		"skipToContent": "Skip to content",
+		"brandSubtitle": "Psychopractitioner · Couples therapist"
+	},
+	"Home": {
+		"metaTitle": "Psychopractitioner and couples therapist in Martigues",
+		"metaDescription": "Laure Corrao: individual support and couples therapy in Martigues and by video."
+	},
+	"Nav": {
+		"aria": "Main navigation",
+		"home": "Home",
+		"individual": "Individual",
+		"couple": "Couples",
+		"approach": "My approach",
+		"articles": "Articles",
+		"booking": "Appointments",
+		"bookingCta": "Book an appointment"
+	},
+	"NotFound": {
+		"metaTitle": "Page not found",
+		"metaDescription": "This address does not exist on Laure Corrao’s website.",
+		"title": "This page cannot be found.",
+		"home": "Back to home"
+	},
+	"LanguageSwitcher": {
+		"ariaLabel": "Choose language",
+		"labelFr": "FR",
+		"labelEn": "EN",
+		"titleFr": "View the site in French",
+		"titleEn": "View the site in English"
+	},
+	"Blog": {
+		"metaTitle": "Articles",
+		"metaDescription": "Notes on individual support, emotions, and couples therapy.",
+		"articleMetaTitle": "{{title}}",
+		"eyebrow": "Resources",
+		"h1": "A few landmarks to understand yourself better.",
+		"intro": "Articles to put words on what you are going through, at your own pace.",
+		"homeTitle": "To understand what you are going through",
+		"empty": "No articles published yet.",
+		"read": "Read the article",
+		"all": "All articles",
+		"back": "← Back to home",
+		"backToIndex": "← All articles",
+		"bookingCta": "Book an appointment"
+	},
+	"Footer": {
+		"tagline": "Psychopractitioner and couples therapist<br/>In Martigues and by video",
+		"contact": "Contact me",
+		"legalAria": "Legal information",
+		"linkLegal": "Legal notice",
+		"linkPrivacy": "Privacy policy",
+		"linkTerms": "Terms",
+		"copyright": "© {{year}} Laure Corrao"
+	},
+	"LegalNotice": {
+		"metaTitle": "Legal notice",
+		"metaDescription": "Legal notice for the website of Laure Corrao, psychopractitioner and couples therapist in Martigues.",
+		"back": "← Back to home",
+		"h1": "Legal notice",
+		"updated": "Last updated: 28 October 2026",
+		"s1h": "1. Publisher",
+		"s1p1": "This website is published by:<br /><strong>Laure Corrao</strong>, psychopractitioner and couples therapist<br />Practice in Martigues, France<br />The practice address, SIRET, and phone number will be added here once they are known.",
+		"s1p1After": "<br />Email: <a href=\"mailto:{{email}}\">{{email}}</a>",
+		"s2h": "2. Publication director",
+		"s2p1": "The publication director is Laure Corrao.",
+		"s3h": "3. Hosting",
+		"s3p1": "This site is hosted by:<br /><strong>GitHub, Inc.</strong><br />88 Colin P. Kelly Jr. Street<br />San Francisco, CA 94107, United States<br /><a href=\"https://github.com\" rel=\"noopener noreferrer\">github.com</a>",
+		"s4h": "4. Intellectual property",
+		"s4p1": "All content on this site (text, images, graphics, structure) is protected by copyright. Any reproduction, in whole or in part, without prior permission from Laure Corrao is prohibited.",
+		"s5h": "5. Limitation of liability",
+		"s5p1": "Laure Corrao strives to keep the information on this site accurate, but cannot guarantee that it is complete or updated in real time. Information is provided for guidance only.",
+		"s6h": "6. Hyperlinks",
+		"s6p1": "This site may link to other websites. Laure Corrao does not control those sites and is not responsible for their content."
+	},
+	"Privacy": {
+		"metaTitle": "Privacy policy",
+		"metaDescription": "Privacy policy and personal data protection for Laure Corrao.",
+		"back": "← Back to home",
+		"h1": "Privacy policy",
+		"updated": "Last updated: 28 October 2026",
+		"s1h": "1. Data controller",
+		"s1p1": "The data controller is:<br /><strong>Laure Corrao</strong>, psychopractitioner and couples therapist<br />Practice in Martigues, France",
+		"s1p1After": "<br />Email: <a href=\"mailto:{{email}}\">{{email}}</a>",
+		"s1p2": "Laure Corrao has not appointed a data protection officer. To exercise your rights, use the contact form on this site.",
+		"s2h": "2. Data collected",
+		"s2p1": "The contact form may collect your first name, last name, email, phone number, and the message you write. The booking calendar, provided by Cal.com, collects what is needed to book (identity, email, phone, time slot). Do not describe your health in that form.",
+		"s2p2": "This site does not set analytics or advertising cookies. The host may keep technical connection logs, including IP addresses, for service security. Showing the calendar connects to Cal.com.",
+		"s3h": "3. Purposes and legal bases",
+		"s3p1": "Your data is processed to answer contact requests, arrange appointments, and meet legal obligations, including invoicing.",
+		"s3p2": "The legal bases are pre-contractual steps and performance of a contract, a legal obligation, and legitimate interest (site security).",
+		"s4h": "4. Retention",
+		"s4p1": "Contact requests are kept for one year, then deleted or anonymised. Invoices are kept for ten years. Data entered in the calendar is kept by Cal.com under its own policy.",
+		"s5h": "5. Recipients and transfers",
+		"s5p1": "Contact-form messages are received by #1344 Solutions (https://1344.fr), the technical provider. The site is hosted by GitHub, Inc. Appointments made in the calendar are processed by Cal.com.",
+		"s5p2": "Hosting by GitHub, Inc. may involve processing connection data in the United States. Form messages are sent to #1344 Solutions. Booking data is processed by Cal.com: <a href=\"https://cal.com/privacy\" rel=\"noopener noreferrer\">cal.com/privacy</a>.",
+		"s6h": "6. Your rights (GDPR)",
+		"s6p1": "You have rights of access, rectification, erasure, restriction, portability, and objection. To exercise them, use the contact form on this site.",
+		"s6p2": "You can also write to <a href=\"mailto:{{email}}\">{{email}}</a>.",
+		"s6p3": "You may lodge a complaint with the CNIL: <a href=\"https://www.cnil.fr\" rel=\"noopener noreferrer\">www.cnil.fr</a>.",
+		"s7h": "7. Cookies",
+		"s7p1": "This site does not set analytics or advertising cookies.",
+		"s7p2": "The Cal.com calendar may set the cookies required to book. You can configure your browser to limit cookies.",
+		"s8h": "8. Security",
+		"s8p1": "Technical and organisational measures protect your data against unauthorised access, loss, or alteration."
+	},
+	"Terms": {
+		"metaTitle": "Terms",
+		"metaDescription": "Consultation terms for Laure Corrao, psychopractitioner and couples therapist in Martigues.",
+		"back": "← Back to home",
+		"h1": "Terms",
+		"updated": "Last updated: 28 October 2026",
+		"s1h": "1. Scope",
+		"s1p1": "These terms apply to consultations offered by Laure Corrao, psychopractitioner and couples therapist in Martigues and by video. Booking an appointment means you accept them.",
+		"s2h": "2. Sessions",
+		"s2p1": "Individual session: €60 for one hour, at the practice or by video. Couples session: €80 per couple for one hour, with both partners present.",
+		"s2p2": "No package is offered.",
+		"s3h": "3. Payment",
+		"s3p1": "Payment can be made by cheque, in cash, or online by card through a secure payment link.",
+		"s3p2": "For video consultations, online payment is due before the session starts. The connection link is sent after the appointment is confirmed.",
+		"s4h": "4. Changes and cancellation",
+		"s4p1": "An appointment is reserved for you. To move or cancel it, give at least 24 hours’ notice from the confirmation email or by contacting Laure Corrao.",
+		"s4p2": "A session cancelled less than 24 hours before the appointment, or missed, may be charged, except in exceptional circumstances or force majeure.",
+		"s5h": "5. Reimbursement",
+		"s5p1": "Consultations are not covered by French national health insurance. Some complementary health plans offer a yearly allowance for psychotherapy or complementary care.",
+		"s5p2": "An invoice can be provided on request so you can ask your insurer.",
+		"s6h": "6. What we ask of you",
+		"s6p1": "For a video session, sit somewhere quiet where you can speak privately. Do not describe your health in the booking form.",
+		"s7h": "7. Contact",
+		"s7p1": "Laure Corrao — contact form on laurecorrao.fr."
+	},
+	"Pages": {
+		"eyebrow": "Laure Corrao · Martigues"
+	},
+	"HomePage": {
+		"eyebrow": "Practice in Martigues · Online sessions",
+		"titleHtml": "Psychopractitioner &amp;<br />Couples therapist",
+		"subtitle": "Put words to what hurts, and find your way back to yourself.",
+		"intro": "I welcome you in a kind, confidential, and non-judgmental space, to help you through difficulties, understand yourself better, and find balance and calm.",
+		"approachCta": "Discover my approach",
+		"portraitAlt": "Portrait of Laure Corrao in a warm interior",
+		"servicesAria": "Support offered",
+		"individualSummaryHtml": "Anxiety · Phobias · Self-esteem ·<br />Self-confidence",
+		"coupleSummaryHtml": "Communication · Conflict · Distance ·<br />Crises · Rebuilding the bond",
+		"approachTitle": "An approach shaped around you",
+		"approachSummaryHtml": "Hypnosis · DNR · Therapeutic<br />tools chosen for you",
+		"aboutEyebrow": "About",
+		"aboutTitle": "What if you finally gave yourself room to feel better?",
+		"aboutBody": "I am Laure Corrao, psychopractitioner and couples therapist. I accompany you with kindness, listening, and without judgment, in a confidential space where you can set things down fully, at your own pace.",
+		"quote": "You do not need to know where to start. You only need to dare to take the first step.",
+		"readingTitle": "Support that feels like you.",
+		"readingLead": "Feelings can become overwhelming, fears can take over, or the same patterns can close in. Anxiety, phobias, a lack of confidence, emotional wounds, relationship difficulties, or a crisis in the couple: you do not have to go through this alone.",
+		"readingBody": "My approach is personal and draws on several therapeutic tools, including hypnosis, cognitive and behavioural therapies, the systemic approach, and coaching. Because every person, every story, and every couple is unique, the support is unique too.",
+		"individualMeta": "1 hour · €60 · Practice or video",
+		"individualCta": "Discover individual support",
+		"coupleMeta": "1 hour · €80 per couple",
+		"coupleCta": "Discover couples therapy",
+		"placeTitle": "A place to find yourself again.",
+		"placeBody": "In the warm, calming atmosphere of my practice, you can finally put words to what hurts, understand more of what is happening for you, and move toward a calmer balance.",
+		"practiceTitle": "At the practice, in Martigues",
+		"practiceBody": "A warm, confidential, and non-judgmental setting. Practical directions will be confirmed before you come.",
+		"videoTitle": "By video",
+		"videoBody": "Settle somewhere quiet, where you can speak in confidence.",
+		"placeClose": "Here, you do not need to know where to start. You only need to dare to take the first step."
+	},
+	"Individual": {
+		"metaTitle": "Individual support",
+		"metaDescription": "A place to understand what you are going through and find your own resources.",
+		"h1": "Individual support",
+		"lede": "A place to understand what you are going through and find your own resources.",
+		"before": [
+			"Some periods of life leave us fragile, unsteady, or feeling unable to move forward alone. Individual support offers a confidential, kind, and non-judgmental space where you can set down what you feel."
+		],
+		"listIntro": "I accompany you in particular with:",
+		"items": [
+			"anxiety, panic, and phobias;",
+			"a loss of self-esteem or self-confidence;",
+			"emotional wounds and the consequences of traumatic experiences;",
+			"emotional dependence and relationship difficulties;",
+			"separations, grief, and times of transition;",
+			"blocks, repeating patterns, and difficulty setting limits;",
+			"stress, emotional overload, or the sense of no longer finding your place."
+		],
+		"after": [
+			"The first sessions are there to understand your story, your current difficulties, and what you want to see change. Together we then define support suited to your needs and your pace.",
+			"The aim is not to impose a direction, but to help you understand more of what is happening for you, ease what hurts, and gradually trust your own capacities again.",
+			"You do not need to know where to start. The first appointment is there for that."
+		]
+	},
+	"Couple": {
+		"metaTitle": "Couples therapy",
+		"metaDescription": "A place to talk again when the relationship can no longer move forward on its own.",
+		"h1": "Couples therapy",
+		"lede": "A place to talk again when the relationship can no longer move forward on its own.",
+		"before": [
+			"Over time, a couple can meet misunderstandings, repeated conflict, emotional distance, or a break in trust. Each person tries to be heard, and the exchanges can become painful or impossible.",
+			"Couples therapy offers a neutral, confidential, and safe frame in which each partner can express their experience, expectations, frustrations, and needs."
+		],
+		"listIntro": "I accompany you in particular when you are facing:",
+		"items": [
+			"communication difficulties;",
+			"repeating arguments or conflicts that stay unresolved;",
+			"emotional, affectionate, or intimate distance;",
+			"a loss of trust or an infidelity;",
+			"a crisis, a separation you are considering, or one already underway;",
+			"disagreements about family, children, or life plans;",
+			"difficulty rebuilding the bond after a trial."
+		],
+		"after": [
+			"The sessions help identify the relational patterns that keep the tension going, understand each person’s place and needs, and create new ways of communicating.",
+			"I am neither judge nor referee. My role is to help each partner be heard, while helping the couple find a calmer dialogue. Depending on your situation, the work may aim to rebuild the bond, find a new balance, or separate more consciously and respectfully.",
+			"Every couple has its own story. The sessions and the tools offered are therefore shaped around your situation, your expectations, and your pace.",
+			"Asking for help does not mean your couple has failed. It means you choose not to stay alone with the difficulty."
+		]
+	},
+	"Approach": {
+		"metaTitle": "My approach",
+		"metaDescription": "Therapy shaped around you, because every person and every story is unique.",
+		"h1": "My approach",
+		"lede": "Therapy shaped around you, because every person and every story is unique.",
+		"before": [
+			"I do not believe in the same support for everyone. A method can suit one person and miss what another needs. That is why I build each accompaniment around your story, your personality, your difficulties, and your aims."
+		],
+		"listIntro": "My approach is integrative: it joins listening and speech with the therapeutic tools I am trained in, including:",
+		"items": [
+			"cognitive and behavioural therapies, to identify and shift certain thoughts, emotions, and reactions;",
+			"the systemic approach, particularly suited to understanding relationships, couples, and family patterns;",
+			"the psychoanalytic approach and talk therapy, to explore your story and understand the origin of certain patterns;",
+			"hypnosis, to work on certain blocks, fears, or automatic responses;",
+			"art therapy, so expression can happen other than through words when that is useful;",
+			"neurolinguistic programming (NLP), and coaching tools for accompanying change;",
+			"DNR, or Deep Neural Repatterning, an emotional reprocessing tool that aims to ease the intensity attached to difficult experiences, fears, or blocks. It works on how those experiences remain emotionally inscribed, at each person’s pace and within their limits."
+		],
+		"after": [
+			"These tools are never applied mechanically. I choose the ones that match your needs, and I always explain what I am proposing. You remain free, and fully part of the work.",
+			"The first sessions are given to listening to your request, understanding your situation, and defining your aims. The work then evolves with you, respecting your pace and your limits.",
+			"My practice is meant as a warm, confidential, and non-judgmental place: somewhere you can put words to what hurts, feel listened to, and move forward safely.",
+			"You do not have to wait until things get worse to start taking care of yourself."
+		]
+	},
+	"Booking": {
+		"metaTitle": "Fees and appointments",
+		"metaDescription": "Choosing to start therapy is already a first step toward yourself.",
+		"h1": "Fees and appointments",
+		"lede": "Choosing to start therapy is already a first step toward yourself.",
+		"intro": "I welcome you at the practice in Martigues or remotely, in a confidential, kind, and non-judgmental setting.",
+		"sections": [
+			{
+				"title": "Individual session",
+				"lines": [
+					"Length: 1 hour",
+					"Fee: €60"
+				],
+				"paragraphs": [
+					"Individual support can take place at the practice or by video."
+				]
+			},
+			{
+				"title": "Couples session",
+				"lines": [
+					"Length: 1 hour",
+					"Fee: €80 per couple"
+				],
+				"paragraphs": [
+					"Sessions take place with both partners present, in a neutral space where each person can speak and be heard."
+				]
+			},
+			{
+				"title": "Book an appointment",
+				"paragraphs": [
+					"You can see my availability in the online calendar and choose:"
+				],
+				"items": [
+					"the kind of support you want;",
+					"a session at the practice or by video;",
+					"the date and time that suit you."
+				],
+				"after": [
+					"A confirmation is sent by email after booking, and a reminder before your appointment."
+				]
+			},
+			{
+				"title": "Payment",
+				"paragraphs": [
+					"You can pay:"
+				],
+				"items": [
+					"by cheque;",
+					"in cash;",
+					"online, by card, through a secure payment link."
+				],
+				"after": [
+					"For video sessions, online payment is due before the session starts. The connection link is sent after the appointment is confirmed."
+				]
+			},
+			{
+				"title": "Changes and cancellation",
+				"paragraphs": [
+					"An appointment is reserved for you. To move or cancel it, please give at least 24 hours’ notice, from your confirmation or by contacting me.",
+					"A session cancelled less than 24 hours before the appointment, or missed, may be charged, except in exceptional circumstances or force majeure."
+				]
+			},
+			{
+				"title": "Reimbursement",
+				"paragraphs": [
+					"Consultations are not covered by French national health insurance. Some complementary health plans offer a yearly allowance for psychotherapy or complementary care.",
+					"An invoice can be provided on request so you can ask your insurer."
+				]
+			}
+		],
+		"closing": "You do not have to wait until things get worse to ask for help.",
+		"agendaTitle": "Choose an appointment",
+		"agendaNotice": "Demo calendar: the 30-minute slots below are for testing only. They are not Laure’s sessions, which last one hour."
+	},
+	"BookingCta": {
+		"eyebrow": "At your pace",
+		"title": "A first step toward yourself.",
+		"body": "You do not need to know where to start."
+	},
+	"Contact": {
+		"close": "Close",
+		"eyebrow": "A first conversation",
+		"title": "Contact me",
+		"intro": "Describe your request in a few words. I will get back to you as soon as I can.",
+		"firstName": "First name",
+		"lastName": "Last name",
+		"email": "Email",
+		"phone": "Phone",
+		"request": "Your request",
+		"message": "Message",
+		"optionIndividual": "Individual support",
+		"optionCouple": "Couples therapy",
+		"optionOther": "Other request",
+		"consent": "I agree that my details may be used to reply to my request.",
+		"submit": "Send my request",
+		"subject": "Contact request — laurecorrao.fr",
+		"missingToken": "The form will be available once Laure Corrao’s Forge token is set.",
+		"sending": "Sending…",
+		"success": "Thank you, your request has been sent.",
+		"error": "Sending failed. You can try again in a moment."
+	},
+	"Calendar": {
+		"loading": "Loading the calendar…",
+		"loadError": "The calendar could not be loaded. Please reload this page and try again.",
+		"frameTitle": "Availability and booking on Cal.com",
+		"aria": "Booking calendar",
+		"noscript": "Enable JavaScript to see availability and book on this page."
+	},
+	"Resources": {
+		"reviewsEyebrow": "Testimonials",
+		"reviewsTitle": "Their words about the work",
+		"stars": "{{rating}} stars out of 5",
+		"faqEyebrow": "Frequently asked questions",
+		"faqTitle": "Before you begin",
+		"otherQuestion": "Another question? Contact me",
+		"contactEyebrow": "A question before you start?",
+		"contactTitle": "Let’s talk about your request.",
+		"contactCta": "Contact me"
+	},
+	"Local": {
+		"reviews": [
+			{
+				"author": "A client",
+				"rating": 5,
+				"text": "Deep listening, a great deal of kindness, and concrete tools to move forward at my own pace."
+			},
+			{
+				"author": "A couple",
+				"rating": 5,
+				"text": "We found a calmer dialogue and a better understanding of each other’s needs."
+			},
+			{
+				"author": "A client",
+				"rating": 5,
+				"text": "A space without judgment, where I felt safe from the first session."
+			}
+		],
+		"faqs": [
+			{
+				"question": "What happens in the first session?",
+				"answer": "This first conversation is there to understand your situation, your expectations, and what you want to see change. Together we then define support that fits."
+			},
+			{
+				"question": "Can I consult by video?",
+				"answer": "Yes. Individual support can take place at the practice in Martigues or remotely, somewhere quiet and private."
+			},
+			{
+				"question": "How long is a session?",
+				"answer": "An individual or couples session lasts about one hour."
+			},
+			{
+				"question": "Are consultations reimbursed?",
+				"answer": "They are not covered by French national health insurance. Some complementary plans offer a yearly allowance; an invoice can be provided on request."
+			},
+			{
+				"question": "How do I move or cancel an appointment?",
+				"answer": "Please give at least 24 hours’ notice. The details are in your appointment confirmation."
+			}
+		]
+	}
+}

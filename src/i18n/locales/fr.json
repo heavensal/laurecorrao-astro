@@ -1,0 +1,402 @@
+{
+	"Layout": {
+		"skipToContent": "Aller au contenu",
+		"brandSubtitle": "Psychopraticienne · Thérapeute de couple"
+	},
+	"Home": {
+		"metaTitle": "Psychopraticienne et thérapeute de couple à Martigues",
+		"metaDescription": "Laure Corrao : accompagnement individuel et thérapie de couple à Martigues et en visioconférence."
+	},
+	"Nav": {
+		"aria": "Navigation principale",
+		"home": "Accueil",
+		"individual": "Individuel",
+		"couple": "Couple",
+		"approach": "Mon approche",
+		"articles": "Articles",
+		"booking": "Rendez-vous",
+		"bookingCta": "Prendre rendez-vous"
+	},
+	"NotFound": {
+		"metaTitle": "Page introuvable",
+		"metaDescription": "Cette adresse n’existe pas sur le site de Laure Corrao.",
+		"title": "Cette page est introuvable.",
+		"home": "Revenir à l’accueil"
+	},
+	"LanguageSwitcher": {
+		"ariaLabel": "Choisir la langue",
+		"labelFr": "FR",
+		"labelEn": "EN",
+		"titleFr": "Afficher le site en français",
+		"titleEn": "Afficher le site en anglais"
+	},
+	"Blog": {
+		"metaTitle": "Articles",
+		"metaDescription": "Conseils et ressources autour de l’accompagnement individuel, des émotions et de la thérapie de couple.",
+		"articleMetaTitle": "{{title}}",
+		"eyebrow": "Ressources",
+		"h1": "Des repères pour mieux vous comprendre.",
+		"intro": "Des articles pour mettre des mots sur ce que vous traversez et avancer à votre rythme.",
+		"homeTitle": "Pour mieux comprendre ce que vous traversez",
+		"empty": "Aucun article publié pour le moment.",
+		"read": "Lire l’article",
+		"all": "Tous les articles",
+		"back": "← Retour à l’accueil",
+		"backToIndex": "← Tous les articles",
+		"bookingCta": "Prendre rendez-vous"
+	},
+	"Footer": {
+		"tagline": "Psychopraticienne et thérapeute de couple<br/>À Martigues et en visioconférence",
+		"contact": "Me contacter",
+		"legalAria": "Informations légales",
+		"linkLegal": "Mentions légales",
+		"linkPrivacy": "Politique de confidentialité",
+		"linkTerms": "Conditions générales",
+		"copyright": "© {{year}} Laure Corrao"
+	},
+	"LegalNotice": {
+		"metaTitle": "Mentions légales",
+		"metaDescription": "Mentions légales du site de Laure Corrao, psychopraticienne et thérapeute de couple à Martigues.",
+		"back": "← Retour à l’accueil",
+		"h1": "Mentions légales",
+		"updated": "Dernière mise à jour : 28 octobre 2026",
+		"s1h": "1. Éditeur du site",
+		"s1p1": "Le site est édité par :<br /><strong>Laure Corrao</strong>, psychopraticienne et thérapeute de couple<br />Cabinet à Martigues, France<br />L’adresse du cabinet, le SIRET et le téléphone seront ajoutés ici dès qu’ils sont connus.",
+		"s1p1After": "<br />Email : <a href=\"mailto:{{email}}\">{{email}}</a>",
+		"s2h": "2. Directrice de la publication",
+		"s2p1": "La directrice de la publication est Laure Corrao.",
+		"s3h": "3. Hébergement",
+		"s3p1": "Le site est hébergé par :<br /><strong>GitHub, Inc.</strong><br />88 Colin P. Kelly Jr. Street<br />San Francisco, CA 94107, États-Unis<br /><a href=\"https://github.com\" rel=\"noopener noreferrer\">github.com</a>",
+		"s4h": "4. Propriété intellectuelle",
+		"s4p1": "L’ensemble du contenu de ce site (textes, images, graphismes, structure) est protégé par le droit d’auteur. Toute reproduction ou représentation, totale ou partielle, sans autorisation préalable de Laure Corrao est interdite.",
+		"s5h": "5. Limitation de responsabilité",
+		"s5p1": "Laure Corrao s’efforce d’assurer l’exactitude des informations publiées sur ce site. Toutefois, elle ne peut garantir leur exhaustivité ni leur mise à jour en temps réel. Les informations sont fournies à titre indicatif.",
+		"s6h": "6. Liens hypertextes",
+		"s6p1": "Ce site peut contenir des liens vers d’autres sites. Laure Corrao n’exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu."
+	},
+	"Privacy": {
+		"metaTitle": "Politique de confidentialité",
+		"metaDescription": "Politique de confidentialité et protection des données personnelles, Laure Corrao.",
+		"back": "← Retour à l’accueil",
+		"h1": "Politique de confidentialité",
+		"updated": "Dernière mise à jour : 28 octobre 2026",
+		"s1h": "1. Responsable du traitement",
+		"s1p1": "Le responsable du traitement des données personnelles est :<br /><strong>Laure Corrao</strong>, psychopraticienne et thérapeute de couple<br />Cabinet à Martigues, France",
+		"s1p1After": "<br />Email : <a href=\"mailto:{{email}}\">{{email}}</a>",
+		"s1p2": "Laure Corrao n’a pas désigné de délégué à la protection des données. Pour exercer vos droits, utilisez le formulaire de contact du site.",
+		"s2h": "2. Données collectées",
+		"s2p1": "Le formulaire de contact peut collecter : prénom, nom, adresse e-mail, numéro de téléphone et le message que vous écrivez. L’agenda de réservation, fourni par Cal.com, collecte les informations nécessaires au rendez-vous (identité, e-mail, téléphone, créneau). Ne renseignez pas de détails sur votre santé dans ce formulaire.",
+		"s2p2": "Ce site ne dépose pas de cookie de mesure d’audience ni de cookie publicitaire. L’hébergeur peut conserver des journaux techniques de connexion, notamment l’adresse IP, pour la sécurité du service. L’affichage de l’agenda établit une connexion avec Cal.com.",
+		"s3h": "3. Finalités et bases légales",
+		"s3p1": "Vos données sont traitées pour répondre à vos demandes de contact, organiser les rendez-vous et respecter les obligations légales, notamment la facturation.",
+		"s3p2": "Les bases légales sont l’exécution de mesures précontractuelles et du contrat, l’obligation légale et l’intérêt légitime (sécurité du site).",
+		"s4h": "4. Durée de conservation",
+		"s4p1": "Les demandes de contact sont conservées pendant un an, puis supprimées ou anonymisées. Les factures sont conservées dix ans. Les données saisies dans l’agenda sont conservées par Cal.com selon sa propre politique.",
+		"s5h": "5. Destinataires et transferts",
+		"s5p1": "Les messages du formulaire de contact sont reçus par #1344 Solutions (https://1344.fr), prestataire technique. Le site est hébergé par GitHub, Inc. Les rendez-vous pris dans l’agenda sont traités par Cal.com.",
+		"s5p2": "L’hébergement du site par GitHub, Inc. peut entraîner un traitement de données de connexion aux États-Unis. Les messages du formulaire sont transmis à #1344 Solutions. Les données de réservation sont traitées par Cal.com : <a href=\"https://cal.com/privacy\" rel=\"noopener noreferrer\">cal.com/privacy</a>.",
+		"s6h": "6. Vos droits (RGPD)",
+		"s6p1": "Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation du traitement, de portabilité et d’opposition. Pour les exercer, utilisez le formulaire de contact du site.",
+		"s6p2": "Vous pouvez aussi écrire à <a href=\"mailto:{{email}}\">{{email}}</a>.",
+		"s6p3": "Vous avez le droit d’introduire une réclamation auprès de la CNIL : <a href=\"https://www.cnil.fr\" rel=\"noopener noreferrer\">www.cnil.fr</a>.",
+		"s7h": "7. Cookies",
+		"s7p1": "Ce site ne dépose pas de cookie de mesure d’audience ni de cookie publicitaire.",
+		"s7p2": "L’agenda Cal.com peut déposer les cookies nécessaires à la réservation. Vous pouvez configurer votre navigateur pour limiter les cookies.",
+		"s8h": "8. Sécurité",
+		"s8p1": "Des mesures techniques et organisationnelles protègent vos données contre l’accès non autorisé, la perte ou l’altération."
+	},
+	"Terms": {
+		"metaTitle": "Conditions générales",
+		"metaDescription": "Conditions de consultation de Laure Corrao, psychopraticienne et thérapeute de couple à Martigues.",
+		"back": "← Retour à l’accueil",
+		"h1": "Conditions générales",
+		"updated": "Dernière mise à jour : 28 octobre 2026",
+		"s1h": "1. Objet",
+		"s1p1": "Les présentes conditions s’appliquent aux consultations proposées par Laure Corrao, psychopraticienne et thérapeute de couple à Martigues et en visioconférence. La prise de rendez-vous implique leur acceptation.",
+		"s2h": "2. Séances",
+		"s2p1": "Séance individuelle : 60 € pour une heure, au cabinet ou en visioconférence. Séance de couple : 80 € par couple pour une heure, en présence des deux partenaires.",
+		"s2p2": "Aucun forfait ni pack n’est proposé.",
+		"s3h": "3. Règlement",
+		"s3p1": "Le règlement peut être effectué par chèque, en espèces ou en ligne par carte bancaire via un lien de paiement sécurisé.",
+		"s3p2": "Pour les consultations en visioconférence, le règlement en ligne doit être effectué avant le début de la séance. Le lien de connexion est transmis après confirmation du rendez-vous.",
+		"s4h": "4. Modification ou annulation",
+		"s4p1": "Un rendez-vous est personnellement réservé. Pour le déplacer ou l’annuler, prévenez au moins 24 heures à l’avance, depuis la confirmation de rendez-vous ou en contactant Laure Corrao.",
+		"s4p2": "Toute séance annulée moins de 24 heures avant le rendez-vous, ou non honorée, pourra être facturée, sauf situation exceptionnelle ou cas de force majeure.",
+		"s5h": "5. Remboursement",
+		"s5p1": "Les consultations ne sont pas prises en charge par l’Assurance maladie. Certaines mutuelles proposent un forfait annuel pour les consultations de psychothérapie ou de médecines complémentaires.",
+		"s5p2": "Une facture peut être remise sur demande afin de solliciter la mutuelle.",
+		"s6h": "6. Engagement de la personne accompagnée",
+		"s6p1": "Pour une séance en visioconférence, installez-vous dans un lieu calme où vous pouvez parler en toute confidentialité. Ne décrivez pas votre état de santé dans le formulaire de réservation.",
+		"s7h": "7. Contact",
+		"s7p1": "Laure Corrao — formulaire de contact du site laurecorrao.fr."
+	},
+	"Pages": {
+		"eyebrow": "Laure Corrao · Martigues"
+	},
+	"HomePage": {
+		"eyebrow": "Cabinet à Martigues · Consultations en ligne",
+		"titleHtml": "Psychopraticienne &amp;<br />Thérapeute de couple",
+		"subtitle": "Mettre des mots sur vos maux pour retrouver le chemin vers vous-même.",
+		"intro": "Je vous accueille dans un espace d’écoute bienveillant, confidentiel et sans jugement pour vous aider à traverser les difficultés, mieux vous comprendre et retrouver équilibre et sérénité.",
+		"approachCta": "Découvrir mon approche",
+		"portraitAlt": "Portrait de Laure Corrao dans un intérieur chaleureux",
+		"servicesAria": "Les accompagnements",
+		"individualSummaryHtml": "Anxiété · Phobies · Estime de soi ·<br />Confiance en soi",
+		"coupleSummaryHtml": "Communication · Conflits · Éloignement ·<br />Crises · Reconstruction du lien",
+		"approachTitle": "Une approche sur mesure",
+		"approachSummaryHtml": "Hypnose · DNR · Outils<br />thérapeutiques adaptés",
+		"aboutEyebrow": "À propos",
+		"aboutTitle": "Et si vous vous accordiez enfin la place d’aller mieux ?",
+		"aboutBody": "Je suis Laure Corrao, psychopraticienne et thérapeute de couple. Je vous accompagne avec bienveillance, écoute et sans jugement, dans un espace confidentiel où vous pourrez vous déposer pleinement, à votre rythme.",
+		"quote": "Vous n’avez pas besoin de savoir par où commencer. Vous avez simplement besoin d’oser faire le premier pas.",
+		"readingTitle": "Un accompagnement qui vous ressemble.",
+		"readingLead": "Il arrive que l’on se sente dépassé par ses émotions, prisonnier de ses peurs ou enfermé dans des schémas qui se répètent. Anxiété, phobies, manque de confiance, blessures émotionnelles, difficultés relationnelles ou crise de couple : vous n’avez pas à traverser cela seul.",
+		"readingBody": "Mon approche est personnalisée et s’appuie sur différents outils thérapeutiques, notamment l’hypnose, les thérapies cognitives et comportementales, l’approche systémique et le coaching. Parce que chaque personne, chaque histoire et chaque couple sont uniques, l’accompagnement l’est aussi.",
+		"individualMeta": "1 heure · 60 € · Cabinet ou visio",
+		"individualCta": "Découvrir l’accompagnement individuel",
+		"coupleMeta": "1 heure · 80 € par couple",
+		"coupleCta": "Découvrir la thérapie de couple",
+		"placeTitle": "Un espace pour vous retrouver.",
+		"placeBody": "Dans l’atmosphère chaleureuse et apaisante de mon cabinet, vous pourrez enfin mettre des mots sur vos maux, mieux comprendre ce qui se joue en vous et avancer vers un équilibre plus serein.",
+		"practiceTitle": "Au cabinet, à Martigues",
+		"practiceBody": "Un cadre chaleureux, confidentiel et sans jugement. Les informations pratiques d’accès seront précisées avant votre venue.",
+		"videoTitle": "En visioconférence",
+		"videoBody": "Installez-vous dans un lieu calme, où vous pouvez parler en toute confidentialité.",
+		"placeClose": "Ici, vous n’avez pas besoin de savoir par où commencer. Vous avez simplement besoin d’oser faire le premier pas."
+	},
+	"Individual": {
+		"metaTitle": "Accompagnement individuel",
+		"metaDescription": "Un espace pour comprendre ce que vous traversez et retrouver vos propres ressources.",
+		"h1": "Accompagnement individuel",
+		"lede": "Un espace pour comprendre ce que vous traversez et retrouver vos propres ressources.",
+		"before": [
+			"Certaines périodes de la vie peuvent nous fragiliser, nous déstabiliser ou nous donner le sentiment de ne plus parvenir à avancer seul. L’accompagnement individuel vous offre un espace confidentiel, bienveillant et sans jugement, dans lequel vous pouvez déposer librement ce que vous ressentez."
+		],
+		"listIntro": "Je vous accompagne notamment face à :",
+		"items": [
+			"l’anxiété, les angoisses et les phobies ;",
+			"la perte d’estime de soi ou de confiance en soi ;",
+			"les blessures émotionnelles et les conséquences d’expériences traumatiques ;",
+			"la dépendance affective et les difficultés relationnelles ;",
+			"les séparations, les deuils et les périodes de transition ;",
+			"les blocages, les schémas répétitifs et les difficultés à poser vos limites ;",
+			"le stress, la surcharge émotionnelle ou la sensation de ne plus trouver votre place."
+		],
+		"after": [
+			"Les premières séances permettent de comprendre votre histoire, vos difficultés actuelles et ce que vous souhaitez voir évoluer. Nous définissons ensuite ensemble un accompagnement adapté à vos besoins et à votre rythme.",
+			"L’objectif n’est pas de vous imposer une direction, mais de vous aider à mieux comprendre ce qui se joue en vous, à apaiser vos souffrances et à retrouver progressivement confiance en vos capacités.",
+			"Vous n’avez pas besoin de savoir par où commencer. Le premier rendez-vous est justement là pour cela."
+		]
+	},
+	"Couple": {
+		"metaTitle": "Thérapie de couple",
+		"metaDescription": "Retrouver un espace de dialogue lorsque la relation ne parvient plus à avancer seule.",
+		"h1": "Thérapie de couple",
+		"lede": "Retrouver un espace de dialogue lorsque la relation ne parvient plus à avancer seule.",
+		"before": [
+			"Au fil du temps, un couple peut traverser des incompréhensions, des conflits répétés, un éloignement affectif ou une rupture de confiance. Chacun tente alors de se faire entendre, mais les échanges finissent parfois par devenir douloureux ou impossibles.",
+			"La thérapie de couple offre un cadre neutre, confidentiel et sécurisant dans lequel chaque partenaire peut exprimer son vécu, ses attentes, ses frustrations et ses besoins."
+		],
+		"listIntro": "Je vous accompagne notamment lorsque vous traversez :",
+		"items": [
+			"des difficultés de communication ;",
+			"des disputes répétitives ou des conflits qui restent sans solution ;",
+			"un éloignement émotionnel, affectif ou intime ;",
+			"une perte de confiance ou une infidélité ;",
+			"une période de crise, une séparation envisagée ou déjà engagée ;",
+			"des désaccords concernant la famille, les enfants ou les projets de vie ;",
+			"des difficultés à reconstruire le lien après une épreuve."
+		],
+		"after": [
+			"Les entretiens permettent d’identifier les mécanismes relationnels qui entretiennent les tensions, de mieux comprendre la place et les besoins de chacun et de créer de nouvelles façons de communiquer.",
+			"Je ne suis ni juge ni arbitre. Mon rôle est d’aider chaque partenaire à être entendu, tout en permettant au couple de retrouver un dialogue plus apaisé. Selon votre situation, l’accompagnement pourra viser la reconstruction du lien, la recherche d’un nouvel équilibre ou une séparation plus consciente et respectueuse.",
+			"Chaque couple possède sa propre histoire. Les séances et les outils proposés sont donc personnalisés en fonction de votre situation, de vos attentes et de votre rythme.",
+			"Demander de l’aide ne signifie pas que votre couple a échoué. Cela signifie que vous choisissez de ne plus rester seuls face à vos difficultés."
+		]
+	},
+	"Approach": {
+		"metaTitle": "Mon approche",
+		"metaDescription": "Une thérapie sur mesure, parce que chaque personne et chaque histoire sont uniques.",
+		"h1": "Mon approche",
+		"lede": "Une thérapie sur mesure, parce que chaque personne et chaque histoire sont uniques.",
+		"before": [
+			"Je ne crois pas aux accompagnements identiques pour tout le monde. Une méthode peut convenir à une personne et ne pas répondre aux besoins d’une autre. C’est pourquoi je construis chaque accompagnement de façon personnalisée, en tenant compte de votre histoire, de votre personnalité, de vos difficultés et de vos objectifs."
+		],
+		"listIntro": "Mon approche est intégrative : elle associe l’écoute et la parole à différents outils thérapeutiques auxquels je suis formée, notamment :",
+		"items": [
+			"les thérapies cognitives et comportementales, pour identifier et faire évoluer certaines pensées, émotions et réactions ;",
+			"l’approche systémique, particulièrement adaptée à la compréhension des relations, des couples et des fonctionnements familiaux ;",
+			"l’approche psychanalytique et la thérapie par la parole, pour explorer votre histoire et mieux comprendre l’origine de certains mécanismes ;",
+			"l’hypnose, pour travailler sur certains blocages, peurs ou automatismes ;",
+			"l’art-thérapie, pour permettre l’expression autrement que par les mots lorsque cela est pertinent ;",
+			"la programmation neurolinguistique, ou PNL, ainsi que différents outils de coaching et d’accompagnement au changement ;",
+			"Le DNR, ou Deep Neural Repatterning, est un outil de retraitement émotionnel qui vise à apaiser l’intensité associée à certaines expériences difficiles, peurs ou blocages. Il permet de travailler sur la manière dont ces vécus restent inscrits émotionnellement, dans le respect du rythme et des limites de chaque personne."
+		],
+		"after": [
+			"Ces outils ne sont jamais appliqués mécaniquement. Je sélectionne ceux qui correspondent à vos besoins et je vous explique toujours ce que je vous propose. Vous restez libre et pleinement acteur de votre accompagnement.",
+			"Les premières séances sont consacrées à l’écoute de votre demande, à la compréhension de votre situation et à la définition de vos objectifs. Le travail évolue ensuite avec vous, dans le respect de votre rythme et de vos limites.",
+			"Mon cabinet est pensé comme un espace chaleureux, confidentiel et sans jugement : un lieu dans lequel vous pourrez mettre des mots sur vos maux, vous sentir écouté et avancer en toute sécurité.",
+			"Il n’est pas nécessaire d’attendre d’aller plus mal pour commencer à prendre soin de soi."
+		]
+	},
+	"Booking": {
+		"metaTitle": "Tarifs et rendez-vous",
+		"metaDescription": "Choisir de commencer une thérapie, c’est déjà faire un premier pas vers soi.",
+		"h1": "Tarifs et rendez-vous",
+		"lede": "Choisir de commencer une thérapie, c’est déjà faire un premier pas vers soi.",
+		"intro": "Je vous accueille au cabinet à Martigues ou en consultation à distance, dans un cadre confidentiel, bienveillant et sans jugement.",
+		"sections": [
+			{
+				"title": "Séance individuelle",
+				"lines": [
+					"Durée : 1 heure",
+					"Tarif : 60 €"
+				],
+				"paragraphs": [
+					"L’accompagnement individuel peut être réalisé au cabinet ou en visioconférence."
+				]
+			},
+			{
+				"title": "Séance de couple",
+				"lines": [
+					"Durée : 1 heure",
+					"Tarif : 80 € par couple"
+				],
+				"paragraphs": [
+					"Les séances se déroulent en présence des deux partenaires, dans un espace neutre permettant à chacun de s’exprimer et d’être entendu."
+				]
+			},
+			{
+				"title": "Prendre rendez-vous",
+				"paragraphs": [
+					"Vous pouvez consulter directement mes disponibilités grâce à l’agenda en ligne et sélectionner :"
+				],
+				"items": [
+					"le type d’accompagnement souhaité ;",
+					"une consultation au cabinet ou en visioconférence ;",
+					"la date et l’horaire qui vous conviennent."
+				],
+				"after": [
+					"Une confirmation vous sera adressée par e-mail après la réservation, ainsi qu’un rappel avant votre rendez-vous."
+				]
+			},
+			{
+				"title": "Moyens de paiement",
+				"paragraphs": [
+					"Le règlement peut être effectué :"
+				],
+				"items": [
+					"par chèque ;",
+					"en espèces ;",
+					"en ligne, par carte bancaire, grâce à un lien de paiement sécurisé."
+				],
+				"after": [
+					"Pour les consultations en visioconférence, le règlement en ligne doit être effectué avant le début de la séance. Le lien de connexion vous sera transmis après confirmation du rendez-vous."
+				]
+			},
+			{
+				"title": "Modification ou annulation",
+				"paragraphs": [
+					"Un rendez-vous vous est personnellement réservé. Si vous devez le déplacer ou l’annuler, merci de me prévenir au moins 24 heures à l’avance, directement depuis votre confirmation de rendez-vous ou en me contactant.",
+					"Toute séance annulée moins de 24 heures avant le rendez-vous, ou non honorée, pourra être facturée, sauf situation exceptionnelle ou cas de force majeure."
+				]
+			},
+			{
+				"title": "Remboursement",
+				"paragraphs": [
+					"Les consultations ne sont pas prises en charge par l’Assurance maladie. Toutefois, certaines mutuelles proposent un forfait annuel pour les consultations de psychothérapie ou de médecines complémentaires.",
+					"Une facture pourra vous être remise sur demande afin de vous permettre de solliciter votre mutuelle."
+				]
+			}
+		],
+		"closing": "Vous n’avez pas besoin d’attendre d’aller plus mal pour demander de l’aide.",
+		"agendaTitle": "Choisir un rendez-vous",
+		"agendaNotice": "Calendrier de démonstration : les créneaux de 30 minutes ci-dessous servent uniquement au test. Ils ne correspondent pas aux séances de Laure, qui durent une heure."
+	},
+	"BookingCta": {
+		"eyebrow": "À votre rythme",
+		"title": "Un premier pas vers vous.",
+		"body": "Vous n’avez pas besoin de savoir par où commencer."
+	},
+	"Contact": {
+		"close": "Fermer",
+		"eyebrow": "Premier échange",
+		"title": "Me contacter",
+		"intro": "Décrivez en quelques mots votre demande. Je reviendrai vers vous dans les meilleurs délais.",
+		"firstName": "Prénom",
+		"lastName": "Nom",
+		"email": "E-mail",
+		"phone": "Téléphone",
+		"request": "Votre demande",
+		"message": "Message",
+		"optionIndividual": "Accompagnement individuel",
+		"optionCouple": "Thérapie de couple",
+		"optionOther": "Autre demande",
+		"consent": "J’accepte que mes informations soient utilisées pour répondre à ma demande.",
+		"submit": "Envoyer ma demande",
+		"subject": "Demande de contact — laurecorrao.fr",
+		"missingToken": "Le formulaire sera disponible dès que le jeton Forge de Laure Corrao sera renseigné.",
+		"sending": "Envoi en cours…",
+		"success": "Merci, votre demande a bien été transmise.",
+		"error": "L’envoi a échoué. Vous pouvez réessayer dans quelques instants."
+	},
+	"Calendar": {
+		"loading": "Chargement du calendrier…",
+		"loadError": "Le calendrier n’a pas pu être chargé. Veuillez réessayer en rechargeant cette page.",
+		"frameTitle": "Disponibilités et réservation Cal.com",
+		"aria": "Calendrier de réservation",
+		"noscript": "Activez JavaScript pour consulter les disponibilités et réserver directement sur cette page."
+	},
+	"Resources": {
+		"reviewsEyebrow": "Témoignages",
+		"reviewsTitle": "Leurs mots sur l’accompagnement",
+		"stars": "{{rating}} étoiles sur 5",
+		"faqEyebrow": "Questions fréquentes",
+		"faqTitle": "Avant de commencer",
+		"otherQuestion": "Vous avez une autre question ? Contactez-moi",
+		"contactEyebrow": "Une question avant de vous lancer ?",
+		"contactTitle": "Parlons de votre demande.",
+		"contactCta": "Me contacter"
+	},
+	"Local": {
+		"reviews": [
+			{
+				"author": "Patiente accompagnée",
+				"rating": 5,
+				"text": "Une écoute profonde, beaucoup de bienveillance et des outils concrets pour avancer à mon rythme."
+			},
+			{
+				"author": "Couple accompagné",
+				"rating": 5,
+				"text": "Nous avons retrouvé un dialogue plus calme et une meilleure compréhension de nos besoins respectifs."
+			},
+			{
+				"author": "Patiente accompagnée",
+				"rating": 5,
+				"text": "Un espace sans jugement dans lequel je me suis sentie en confiance dès la première séance."
+			}
+		],
+		"faqs": [
+			{
+				"question": "Comment se déroule la première séance ?",
+				"answer": "Ce premier échange permet de comprendre votre situation, vos attentes et ce que vous souhaitez voir évoluer. Nous définissons ensuite ensemble un accompagnement adapté."
+			},
+			{
+				"question": "Puis-je consulter en visioconférence ?",
+				"answer": "Oui. Les accompagnements individuels peuvent avoir lieu au cabinet à Martigues ou à distance, dans un cadre calme et confidentiel."
+			},
+			{
+				"question": "Combien de temps dure une séance ?",
+				"answer": "Une séance individuelle ou de couple dure environ une heure."
+			},
+			{
+				"question": "Les consultations sont-elles remboursées ?",
+				"answer": "Elles ne sont pas prises en charge par l’Assurance maladie. Certaines mutuelles proposent toutefois un forfait annuel ; une facture peut être remise sur demande."
+			},
+			{
+				"question": "Comment déplacer ou annuler un rendez-vous ?",
+				"answer": "Merci de prévenir au moins 24 heures à l’avance. Les modalités figurent dans votre confirmation de rendez-vous."
+			}
+		]
+	}
+}

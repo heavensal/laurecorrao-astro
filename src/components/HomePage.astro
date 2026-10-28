@@ -1,0 +1,106 @@
+---
+import HomeResources from './HomeResources.astro';
+import { getFixedT, type Locale } from '../i18n/i18n';
+import { contentPath, pageHref } from '../lib/paths';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const bookingHref = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
+const approachHref = pageHref(`${contentPath(locale, 'approach')}/`);
+const individualHref = pageHref(`${contentPath(locale, 'individual')}/`);
+const coupleHref = pageHref(`${contentPath(locale, 'couple')}/`);
+---
+
+<section class="hero">
+	<div class="hero-copy">
+		<p class="eyebrow">{t('HomePage.eyebrow')}</p>
+		<h1 set:html={t('HomePage.titleHtml')} />
+		<p class="hero-subtitle">{t('HomePage.subtitle')}</p>
+		<p class="hero-intro">{t('HomePage.intro')}</p>
+		<div class="hero-actions">
+			<a class="button" href={bookingHref}>{t('Nav.bookingCta')}</a>
+			<a class="button button-outline" href={approachHref}>{t('HomePage.approachCta')}</a>
+		</div>
+	</div>
+	<div class="portrait">
+		<img
+			src="/images/reference-laure.jpeg"
+			alt={t('HomePage.portraitAlt')}
+			width="1536"
+			height="1024"
+			fetchpriority="high"
+		/>
+	</div>
+</section>
+<section class="services" aria-label={t('HomePage.servicesAria')}>
+	<a href={individualHref}>
+		<span class="service-symbol" aria-hidden="true">♡</span>
+		<h2>{t('Individual.h1')}</h2>
+		<p set:html={t('HomePage.individualSummaryHtml')} />
+	</a>
+	<a href={coupleHref}>
+		<span class="service-symbol" aria-hidden="true">♧</span>
+		<h2>{t('Couple.h1')}</h2>
+		<p set:html={t('HomePage.coupleSummaryHtml')} />
+	</a>
+	<a href={approachHref}>
+		<span class="service-symbol" aria-hidden="true">✧</span>
+		<h2>{t('HomePage.approachTitle')}</h2>
+		<p set:html={t('HomePage.approachSummaryHtml')} />
+	</a>
+</section>
+<section class="about section">
+	<div>
+		<p class="eyebrow">{t('HomePage.aboutEyebrow')}</p>
+		<h2>{t('HomePage.aboutTitle')}</h2>
+		<span class="small-rule" aria-hidden="true"></span>
+	</div>
+	<div>
+		<p>{t('HomePage.aboutBody')}</p>
+		<a href={approachHref}>{t('HomePage.approachCta')}</a>
+	</div>
+	<blockquote>
+		<span aria-hidden="true">“</span>{t('HomePage.quote')}
+	</blockquote>
+</section>
+<section class="section tinted">
+	<div class="reading">
+		<h2>{t('HomePage.readingTitle')}</h2>
+		<p>{t('HomePage.readingLead')}</p>
+		<p>{t('HomePage.readingBody')}</p>
+	</div>
+	<div class="grid">
+		<article class="card">
+			<h3>{t('Individual.h1')}</h3>
+			<p>{t('Individual.lede')}</p>
+			<p>{t('HomePage.individualMeta')}</p>
+			<a href={individualHref}>{t('HomePage.individualCta')}</a>
+		</article>
+		<article class="card">
+			<h3>{t('Couple.h1')}</h3>
+			<p>{t('Couple.lede')}</p>
+			<p>{t('HomePage.coupleMeta')}</p>
+			<a href={coupleHref}>{t('HomePage.coupleCta')}</a>
+		</article>
+	</div>
+</section>
+<section class="section">
+	<h2>{t('HomePage.placeTitle')}</h2>
+	<p class="reading">{t('HomePage.placeBody')}</p>
+	<div class="grid">
+		<div>
+			<h3>{t('HomePage.practiceTitle')}</h3>
+			<p>{t('HomePage.practiceBody')}</p>
+		</div>
+		<div>
+			<h3>{t('HomePage.videoTitle')}</h3>
+			<p>{t('HomePage.videoBody')}</p>
+		</div>
+	</div>
+	<p>{t('HomePage.placeClose')}</p>
+</section>
+<HomeResources locale={locale} />

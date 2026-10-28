@@ -1,0 +1,34 @@
+---
+import HomePage from '../../components/HomePage.astro';
+import PageBody from '../../components/pages/PageBody.astro';
+import { getFixedT, isMultilangEnabled, type Locale } from '../../i18n/i18n';
+import Layout from '../../layouts/Layout.astro';
+import { alternateUrls, englishStaticPaths, pageMeta, type RoutedKind } from '../../lib/pages';
+import { absolutePageUrl, buildLegalAlternateLanguages, buildLegalNoticeJsonLd } from '../../lib/seo';
+
+export function getStaticPaths() {
+	if (!isMultilangEnabled()) return [];
+	return englishStaticPaths();
+}
+
+interface Props {
+	kind: RoutedKind;
+}
+
+const { kind } = Astro.props;
+const locale: Locale = 'en';
+const t = getFixedT(locale);
+const meta = pageMeta(t, kind);
+const { fr, en } = alternateUrls(Astro.site, kind);
+const homeUrl = absolutePageUrl(Astro.site, '');
+---
+
+<Layout
+	lang="en"
+	title={meta.title}
+	description={meta.description}
+	alternateLanguages={buildLegalAlternateLanguages(fr, en)}
+	jsonLd={kind === 'legal-notice' && homeUrl ? buildLegalNoticeJsonLd(homeUrl) : undefined}
+>
+	{kind === 'home' ? <HomePage locale={locale} /> : <PageBody locale={locale} kind={kind} />}
+</Layout>

@@ -1,65 +1,75 @@
-<p id="cal-status" role="status">Chargement du calendrier…</p>
-<div id="my-cal-inline" style="width:100%;min-height:700px;overflow:auto" aria-label="Calendrier de réservation"></div>
-<noscript><p>Activez JavaScript pour consulter les disponibilités et réserver directement sur cette page.</p></noscript>
+---
+import { getFixedT, type Locale } from '../i18n/i18n';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+---
+
+<p id="cal-status" role="status" data-error={t('Calendar.loadError')} data-frame-title={t('Calendar.frameTitle')}>
+	{t('Calendar.loading')}
+</p>
+<div id="my-cal-inline" class="calendar-frame" aria-label={t('Calendar.aria')}></div>
+<noscript><p>{t('Calendar.noscript')}</p></noscript>
 
 <script is:inline>
-  (function (C, A, L) {
-    let p = function (a, ar) {
-      a.q.push(ar);
-    };
+	(function (C, A, L) {
+		let p = function (a, ar) {
+			a.q.push(ar);
+		};
+		let d = C.document;
+		C.Cal =
+			C.Cal ||
+			function () {
+				let cal = C.Cal;
+				let ar = arguments;
+				if (!cal.loaded) {
+					cal.ns = {};
+					cal.q = cal.q || [];
+					const script = d.createElement('script');
+					script.src = A;
+					script.onerror = () => {
+						const status = d.getElementById('cal-status');
+						if (status) status.textContent = status.dataset.error || '';
+					};
+					d.head.appendChild(script);
+					cal.loaded = true;
+				}
+				if (ar[0] === L) {
+					const api = function () {
+						p(api, arguments);
+					};
+					const namespace = ar[1];
+					api.q = api.q || [];
+					if (typeof namespace === 'string') {
+						cal.ns[namespace] = cal.ns[namespace] || api;
+						p(cal.ns[namespace], ar);
+						p(cal, ['initNamespace', namespace]);
+					} else {
+						p(cal, ar);
+					}
+					return;
+				}
+				p(cal, ar);
+			};
+	})(window, 'https://app.cal.com/embed/embed.js', 'init');
 
-    let d = C.document;
-
-    C.Cal =
-      C.Cal ||
-      function () {
-        let cal = C.Cal;
-        let ar = arguments;
-
-        if (!cal.loaded) {
-          cal.ns = {};
-          cal.q = cal.q || [];
-          const script = d.createElement("script");
-          script.src = A;
-          script.onerror = () => { document.getElementById("cal-status").textContent = "Le calendrier n’a pas pu être chargé. Veuillez réessayer en rechargeant cette page."; };
-          d.head.appendChild(script);
-          cal.loaded = true;
-        }
-
-        if (ar[0] === L) {
-          const api = function () {
-            p(api, arguments);
-          };
-
-          const namespace = ar[1];
-          api.q = api.q || [];
-
-          if (typeof namespace === "string") {
-            cal.ns[namespace] = cal.ns[namespace] || api;
-            p(cal.ns[namespace], ar);
-            p(cal, ["initNamespace", namespace]);
-          } else {
-            p(cal, ar);
-          }
-
-          return;
-        }
-
-        p(cal, ar);
-      };
-  })(window, "https://app.cal.com/embed/embed.js", "init");
-
-  Cal("init", "booking", {
-    origin: "https://cal.com",
-  });
-
-  Cal.ns.booking("inline", {
-    elementOrSelector: "#my-cal-inline",
-    calLink: "adam-1344-vm70qf/30min",
-    config: {
-      layout: "month_view",
-      theme: "light",
-    },
-  });
-  Cal.ns.booking("on", { action: "__iframeReady", callback: () => { document.getElementById("cal-status").hidden = true; const frame = document.querySelector("#my-cal-inline iframe"); if (frame) frame.title = "Disponibilités et réservation Cal.com"; } });
+	Cal('init', 'booking', { origin: 'https://cal.com' });
+	Cal.ns.booking('inline', {
+		elementOrSelector: '#my-cal-inline',
+		calLink: 'adam-1344-vm70qf/30min',
+		config: { layout: 'month_view', theme: 'light' },
+	});
+	Cal.ns.booking('on', {
+		action: '__iframeReady',
+		callback: () => {
+			const status = document.getElementById('cal-status');
+			if (status) status.hidden = true;
+			const frame = document.querySelector('#my-cal-inline iframe');
+			if (frame) frame.title = status?.dataset.frameTitle || '';
+		},
+	});
 </script>
