@@ -1,4 +1,45 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import { getFixedT, isMultilangEnabled } from '../i18n/i18n';
+import Layout from '../layouts/Layout.astro';
+import { pageHref } from '../lib/paths';
+
+const fr = getFixedT('fr');
+const en = getFixedT('en');
+const showEnglish = isMultilangEnabled();
+const homeFr = pageHref('');
+const homeEn = pageHref('en/');
 ---
-<Layout title="Page introuvable"><section class="section"><h1>Cette page est introuvable.</h1><a class="button" href="/">Revenir à l’accueil</a></section></Layout>
+
+<Layout title={fr('NotFound.metaTitle')} description={fr('NotFound.metaDescription')} robots="noindex, nofollow">
+	<section class="section" data-not-found="fr">
+		<h1>{fr('NotFound.title')}</h1>
+		<a class="button" href={homeFr}>{fr('NotFound.home')}</a>
+	</section>
+	{
+		showEnglish && (
+			<section class="section" data-not-found="en" hidden>
+				<h1>{en('NotFound.title')}</h1>
+				<a class="button" href={homeEn}>
+					{en('NotFound.home')}
+				</a>
+			</section>
+		)
+	}
+	{
+		showEnglish && (
+			<script define:vars={{ enTitle: en('NotFound.metaTitle'), enPrefix: homeEn }}>
+				const path = window.location.pathname.replace(/\/$/, '') || '/';
+				const prefix = enPrefix.replace(/\/$/, '');
+				const english = path === prefix || path.startsWith(`${prefix}/`);
+				if (english) {
+					document.documentElement.lang = 'en';
+					document.title = enTitle;
+					const french = document.querySelector('[data-not-found="fr"]');
+					const englishPanel = document.querySelector('[data-not-found="en"]');
+					if (french instanceof HTMLElement) french.hidden = true;
+					if (englishPanel instanceof HTMLElement) englishPanel.hidden = false;
+				}
+			</script>
+		)
+	}
+</Layout>

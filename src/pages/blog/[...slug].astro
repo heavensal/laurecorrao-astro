@@ -1,0 +1,30 @@
+---
+import BlogArticle from '../../components/blog/BlogArticle.astro';
+import BlogIndex from '../../components/blog/BlogIndex.astro';
+import { getFixedT, type Locale } from '../../i18n/i18n';
+import Layout from '../../layouts/Layout.astro';
+import { blogStaticPaths, publishedBlogPaths } from '../../lib/forge-blog';
+import { absolutePageUrl, buildLegalAlternateLanguages } from '../../lib/seo';
+
+export async function getStaticPaths() {
+	return blogStaticPaths('fr');
+}
+
+const locale: Locale = 'fr';
+const t = getFixedT(locale);
+const { article, posts } = Astro.props;
+const blogPaths = await publishedBlogPaths(article);
+const title = article ? t('Blog.articleMetaTitle', { title: article.title }) : t('Blog.metaTitle');
+const description = article?.description || t('Blog.metaDescription');
+const frUrl = blogPaths.fr ? absolutePageUrl(Astro.site, `${blogPaths.fr}/`) : undefined;
+const enUrl = blogPaths.en ? absolutePageUrl(Astro.site, `${blogPaths.en}/`) : undefined;
+---
+
+<Layout
+	lang="fr"
+	title={title}
+	description={description}
+	alternateLanguages={buildLegalAlternateLanguages(frUrl, enUrl)}
+>
+	{article ? <BlogArticle locale={locale} article={article} /> : <BlogIndex locale={locale} posts={posts} />}
+</Layout>

@@ -1,1 +1,19 @@
-<section class="closing"><p class="eyebrow">À votre rythme</p><h2>Un premier pas vers vous.</h2><p>Vous n’avez pas besoin de savoir par où commencer.</p><a class="button" href="/tarifs-et-rendez-vous/#agenda">Prendre rendez-vous</a></section>
+---
+import { getFixedT, type Locale } from '../i18n/i18n';
+import { contentPath, pageHref } from '../lib/paths';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const href = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
+---
+
+<section class="closing">
+	<p class="eyebrow">{t('BookingCta.eyebrow')}</p>
+	<h2>{t('BookingCta.title')}</h2>
+	<p>{t('BookingCta.body')}</p>
+	<a class="button" href={href}>{t('Nav.bookingCta')}</a>
+</section>

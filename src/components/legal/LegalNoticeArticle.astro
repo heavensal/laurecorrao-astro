@@ -1,0 +1,49 @@
+---
+import { getFixedT, type Locale } from '../../i18n/i18n';
+import { homePathForLocale, pageHref } from '../../lib/paths';
+import { siteConfig } from '../../site.config';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const homeUrl = pageHref(homePathForLocale(locale) || '/');
+const email = siteConfig.contact.email;
+const publisher = t('LegalNotice.s1p1') + (email ? t('LegalNotice.s1p1After', { email }) : '');
+---
+
+<article>
+	<div class="page-head">
+		<p><a href={homeUrl}>{t('LegalNotice.back')}</a></p>
+		<h1>{t('LegalNotice.h1')}</h1>
+		<p>{t('LegalNotice.updated')}</p>
+	</div>
+	<div class="prose">
+		<section>
+			<h2>{t('LegalNotice.s1h')}</h2>
+			<p set:html={publisher} />
+		</section>
+		<section>
+			<h2>{t('LegalNotice.s2h')}</h2>
+			<p>{t('LegalNotice.s2p1')}</p>
+		</section>
+		<section>
+			<h2>{t('LegalNotice.s3h')}</h2>
+			<p set:html={t('LegalNotice.s3p1')} />
+		</section>
+		<section>
+			<h2>{t('LegalNotice.s4h')}</h2>
+			<p>{t('LegalNotice.s4p1')}</p>
+		</section>
+		<section>
+			<h2>{t('LegalNotice.s5h')}</h2>
+			<p>{t('LegalNotice.s5p1')}</p>
+		</section>
+		<section>
+			<h2>{t('LegalNotice.s6h')}</h2>
+			<p>{t('LegalNotice.s6p1')}</p>
+		</section>
+	</div>
+</article>
