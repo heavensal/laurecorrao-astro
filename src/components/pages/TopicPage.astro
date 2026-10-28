@@ -20,17 +20,17 @@ const items = lines(`${namespace}.items`);
 const after = lines(`${namespace}.after`);
 ---
 
-<div class="page-head">
-	<p class="eyebrow">{t('Pages.eyebrow')}</p>
-	<h1>{t(`${namespace}.h1`)}</h1>
+<div class="mx-auto max-w-6xl px-6 pt-16 pb-6 md:px-10">
+	<p class="mb-4 text-xs tracking-widest text-rose-laure uppercase">{t('Pages.eyebrow')}</p>
+	<h1 class="font-serif text-4xl leading-tight tracking-tight md:text-5xl">{t(`${namespace}.h1`)}</h1>
 </div>
-<article class="prose">
-	<p class="lede">{t(`${namespace}.lede`)}</p>
-	{before.map((paragraph) => <p>{paragraph}</p>)}
-	<p>{t(`${namespace}.listIntro`)}</p>
-	<ul>
-		{items.map((item) => <li>{item}</li>)}
+<article class="mx-auto max-w-3xl px-6 pb-16 leading-relaxed">
+	<p class="mb-6 font-serif text-xl leading-snug">{t(`${namespace}.lede`)}</p>
+	{before.map((paragraph) => <p class="mb-6">{paragraph}</p>)}
+	<p class="mb-6">{t(`${namespace}.listIntro`)}</p>
+	<ul class="mb-6 list-disc pl-6">
+		{items.map((item) => <li class="py-1">{item}</li>)}
 	</ul>
-	{after.map((paragraph) => <p>{paragraph}</p>)}
+	{after.map((paragraph) => <p class="mb-6">{paragraph}</p>)}
 </article>
 <BookingCTA locale={locale} />

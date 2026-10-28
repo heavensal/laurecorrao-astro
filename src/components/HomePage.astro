@@ -13,94 +13,104 @@ const bookingHref = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
 const approachHref = pageHref(`${contentPath(locale, 'approach')}/`);
 const individualHref = pageHref(`${contentPath(locale, 'individual')}/`);
 const coupleHref = pageHref(`${contentPath(locale, 'couple')}/`);
+const button =
+	'inline-flex min-h-12 w-full items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-center text-sm text-white no-underline transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep sm:w-auto';
+const outline = `${button} border-blush bg-transparent text-ink hover:bg-sand`;
+const serviceLink =
+	'border-t border-line px-6 py-6 text-center no-underline first:border-t-0 md:border-t-0 md:border-l md:first:border-l-0';
 ---
 
-<section class="hero">
-	<div class="hero-copy">
-		<p class="eyebrow">{t('HomePage.eyebrow')}</p>
-		<h1 set:html={t('HomePage.titleHtml')} />
-		<p class="hero-subtitle">{t('HomePage.subtitle')}</p>
-		<p class="hero-intro">{t('HomePage.intro')}</p>
-		<div class="hero-actions">
-			<a class="button" href={bookingHref}>{t('Nav.bookingCta')}</a>
-			<a class="button button-outline" href={approachHref}>{t('HomePage.approachCta')}</a>
+<section class="grid min-w-0 items-stretch bg-paper lg:grid-cols-2" aria-label={t('HomePage.eyebrow')}>
+	<div class="min-w-0 px-6 py-16 md:px-10 lg:px-16 lg:py-20">
+		<p class="mb-4 text-xs tracking-widest text-rose-laure uppercase">{t('HomePage.eyebrow')}</p>
+		<h1 class="font-serif text-3xl leading-tight tracking-tight text-ink sm:text-4xl md:text-5xl lg:text-6xl" set:html={t('HomePage.titleHtml')} />
+		<p class="mt-5 max-w-full font-serif text-xl leading-snug text-rose-laure sm:text-2xl">{t('HomePage.subtitle')}</p>
+		<p class="mt-6 max-w-xl leading-relaxed">{t('HomePage.intro')}</p>
+		<div class="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
+			<a class={button} href={bookingHref}>{t('Nav.bookingCta')}</a>
+			<a class={outline} href={approachHref}>{t('HomePage.approachCta')}</a>
 		</div>
 	</div>
-	<div class="portrait">
+	<div class="relative min-h-80 min-w-0 overflow-hidden rounded-tl-4xl rounded-bl-4xl bg-sand lg:min-h-full">
 		<img
-			src="/images/reference-laure.jpeg"
+			class="absolute inset-0 h-full w-full object-cover object-center"
+			src={pageHref('images/reference-laure.jpeg')}
 			alt={t('HomePage.portraitAlt')}
-			width="1536"
-			height="1024"
+			width="750"
+			height="585"
 			fetchpriority="high"
 		/>
 	</div>
 </section>
-<section class="services" aria-label={t('HomePage.servicesAria')}>
-	<a href={individualHref}>
-		<span class="service-symbol" aria-hidden="true">♡</span>
-		<h2>{t('Individual.h1')}</h2>
-		<p set:html={t('HomePage.individualSummaryHtml')} />
+<section
+	class="relative z-10 -mt-16 grid min-w-0 grid-cols-1 rounded-2xl border border-line bg-cream px-4 py-2 shadow-md sm:mx-6 md:grid-cols-3"
+	aria-label={t('HomePage.servicesAria')}
+>
+	<a class={serviceLink} href={individualHref}>
+		<span class="block font-serif text-5xl leading-none text-blush" aria-hidden="true">♡</span>
+		<h2 class="mt-3 font-serif text-xl text-ink">{t('Individual.h1')}</h2>
+		<p class="mt-2 text-sm leading-relaxed text-muted" set:html={t('HomePage.individualSummaryHtml')} />
 	</a>
-	<a href={coupleHref}>
-		<span class="service-symbol" aria-hidden="true">♧</span>
-		<h2>{t('Couple.h1')}</h2>
-		<p set:html={t('HomePage.coupleSummaryHtml')} />
+	<a class={serviceLink} href={coupleHref}>
+		<span class="block font-serif text-5xl leading-none text-blush" aria-hidden="true">♧</span>
+		<h2 class="mt-3 font-serif text-xl text-ink">{t('Couple.h1')}</h2>
+		<p class="mt-2 text-sm leading-relaxed text-muted" set:html={t('HomePage.coupleSummaryHtml')} />
 	</a>
-	<a href={approachHref}>
-		<span class="service-symbol" aria-hidden="true">✧</span>
-		<h2>{t('HomePage.approachTitle')}</h2>
-		<p set:html={t('HomePage.approachSummaryHtml')} />
+	<a class={serviceLink} href={approachHref}>
+		<span class="block font-serif text-5xl leading-none text-blush" aria-hidden="true">✧</span>
+		<h2 class="mt-3 font-serif text-xl text-ink">{t('HomePage.approachTitle')}</h2>
+		<p class="mt-2 text-sm leading-relaxed text-muted" set:html={t('HomePage.approachSummaryHtml')} />
 	</a>
 </section>
-<section class="about section">
+<section class="grid items-start gap-10 px-6 py-16 md:px-10 lg:grid-cols-3 lg:px-16">
 	<div>
-		<p class="eyebrow">{t('HomePage.aboutEyebrow')}</p>
-		<h2>{t('HomePage.aboutTitle')}</h2>
-		<span class="small-rule" aria-hidden="true"></span>
+		<p class="mb-4 text-xs tracking-widest text-rose-laure uppercase">{t('HomePage.aboutEyebrow')}</p>
+		<h2 class="font-serif text-3xl leading-tight text-ink md:text-4xl">{t('HomePage.aboutTitle')}</h2>
+		<span class="mt-6 block w-12 border-t-2 border-blush" aria-hidden="true"></span>
 	</div>
 	<div>
 		<p>{t('HomePage.aboutBody')}</p>
-		<a href={approachHref}>{t('HomePage.approachCta')}</a>
+		<a class="mt-4 inline-block text-rose-laure underline underline-offset-4" href={approachHref}>{t('HomePage.approachCta')}</a>
 	</div>
-	<blockquote>
-		<span aria-hidden="true">“</span>{t('HomePage.quote')}
+	<blockquote class="relative rounded-2xl bg-sand px-8 py-8 font-serif text-muted">
+		<span class="absolute top-3 left-4 font-serif text-5xl text-blush" aria-hidden="true">“</span>
+		<p class="pl-6">{t('HomePage.quote')}</p>
 	</blockquote>
 </section>
-<section class="section tinted">
-	<div class="reading">
-		<h2>{t('HomePage.readingTitle')}</h2>
-		<p>{t('HomePage.readingLead')}</p>
-		<p>{t('HomePage.readingBody')}</p>
+<section class="bg-sand px-6 py-16 md:px-10 lg:px-16">
+	<div class="max-w-3xl">
+		<h2 class="font-serif text-3xl leading-tight text-ink md:text-4xl">{t('HomePage.readingTitle')}</h2>
+		<p class="mt-6">{t('HomePage.readingLead')}</p>
+		<p class="mt-6">{t('HomePage.readingBody')}</p>
 	</div>
-	<div class="grid">
-		<article class="card">
-			<h3>{t('Individual.h1')}</h3>
-			<p>{t('Individual.lede')}</p>
-			<p>{t('HomePage.individualMeta')}</p>
-			<a href={individualHref}>{t('HomePage.individualCta')}</a>
+	<div class="mt-10 grid gap-8 md:grid-cols-2">
+		<article class="border-t border-blush pt-8">
+			<h3 class="font-serif text-2xl text-ink">{t('Individual.h1')}</h3>
+			<p class="mt-4">{t('Individual.lede')}</p>
+			<p class="mt-4 text-sm text-muted">{t('HomePage.individualMeta')}</p>
+			<a class="mt-4 inline-block text-rose-laure underline underline-offset-4" href={individualHref}>{t('HomePage.individualCta')}</a>
 		</article>
-		<article class="card">
-			<h3>{t('Couple.h1')}</h3>
-			<p>{t('Couple.lede')}</p>
-			<p>{t('HomePage.coupleMeta')}</p>
-			<a href={coupleHref}>{t('HomePage.coupleCta')}</a>
+		<article class="border-t border-blush pt-8">
+			<h3 class="font-serif text-2xl text-ink">{t('Couple.h1')}</h3>
+			<p class="mt-4">{t('Couple.lede')}</p>
+			<p class="mt-4 text-sm text-muted">{t('HomePage.coupleMeta')}</p>
+			<a class="mt-4 inline-block text-rose-laure underline underline-offset-4" href={coupleHref}>{t('HomePage.coupleCta')}</a>
 		</article>
 	</div>
 </section>
-<section class="section">
-	<h2>{t('HomePage.placeTitle')}</h2>
-	<p class="reading">{t('HomePage.placeBody')}</p>
-	<div class="grid">
+<section class="px-6 py-16 md:px-10 lg:px-16">
+	<h2 class="font-serif text-3xl leading-tight text-ink md:text-4xl">{t('HomePage.placeTitle')}</h2>
+	<p class="mt-6 max-w-3xl">{t('HomePage.placeBody')}</p>
+	<div class="mt-10 grid gap-8 md:grid-cols-2">
 		<div>
-			<h3>{t('HomePage.practiceTitle')}</h3>
-			<p>{t('HomePage.practiceBody')}</p>
+			<h3 class="font-serif text-2xl text-ink">{t('HomePage.practiceTitle')}</h3>
+			<p class="mt-4">{t('HomePage.practiceBody')}</p>
 		</div>
 		<div>
-			<h3>{t('HomePage.videoTitle')}</h3>
-			<p>{t('HomePage.videoBody')}</p>
+			<h3 class="font-serif text-2xl text-ink">{t('HomePage.videoTitle')}</h3>
+			<p class="mt-4">{t('HomePage.videoBody')}</p>
 		</div>
 	</div>
-	<p>{t('HomePage.placeClose')}</p>
+	<p class="mt-8">{t('HomePage.placeClose')}</p>
 </section>
 <HomeResources locale={locale} />

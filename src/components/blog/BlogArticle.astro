@@ -15,30 +15,32 @@ const prefix = localePathPrefix(locale);
 const blogUrl = pageHref(`${prefix}${pageRoutes.blog}/`);
 const date = formatCmsDate(article.publishedAt, locale);
 const bookingUrl = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
+const button =
+	'inline-flex min-h-12 items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-sm text-white no-underline transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep';
 ---
 
 <article>
-	<div class="page-head article-head">
-		<p><a href={blogUrl}>{t('Blog.backToIndex')}</a></p>
-		<p class="eyebrow">{t('Blog.eyebrow')}</p>
-		<h1>{article.title}</h1>
-		{article.description && <p class="lede">{article.description}</p>}
+	<div class="mx-auto max-w-5xl px-6 pt-16 pb-6">
+		<p><a class="underline underline-offset-4" href={blogUrl}>{t('Blog.backToIndex')}</a></p>
+		<p class="mt-6 mb-4 text-xs tracking-widest text-rose-laure uppercase">{t('Blog.eyebrow')}</p>
+		<h1 class="font-serif text-4xl leading-tight tracking-tight md:text-5xl">{article.title}</h1>
+		{article.description && <p class="mt-4 font-serif text-xl leading-snug">{article.description}</p>}
 		{
 			date && (
-				<p>
+				<p class="mt-4">
 					<time datetime={article.publishedAt ?? undefined}>{date}</time>
 				</p>
 			)
 		}
 		{
 			article.coverImageUrl && (
-				<img class="article-cover" src={article.coverImageUrl} alt="" />
+				<img class="mt-6 aspect-video w-full rounded-xl bg-sand object-cover" src={article.coverImageUrl} alt="" />
 			)
 		}
 	</div>
-	{article.contentHtml && <div class="prose article-prose cms-content" set:html={article.contentHtml} />}
+	{article.contentHtml && <div class="cms-content mx-auto max-w-3xl px-6 pb-16 text-lg leading-relaxed" set:html={article.contentHtml} />}
 </article>
-<p class="section">
-	<a class="button" href={bookingUrl}>{t('Blog.bookingCta')}</a>
+<p class="px-6 pb-10">
+	<a class={button} href={bookingUrl}>{t('Blog.bookingCta')}</a>
 </p>
 <BookingCTA locale={locale} />

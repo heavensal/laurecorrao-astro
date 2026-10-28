@@ -1,10 +1,14 @@
 ---
+/**
+ * Layout — SEO (title, description, canonical, Open Graph, Twitter),
+ * hreflang, JSON-LD, favicon, skip link, accessibility.
+ */
 import '../styles/global.css';
 import ContactForm from '../components/ContactForm.astro';
-import LanguageSwitcher from '../components/LanguageSwitcher.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import { getFixedT, type Locale } from '../i18n/i18n';
-import { publishedBlogPaths } from '../lib/forge-blog';
-import { contentPath, legalPath, pageHref } from '../lib/paths';
+import { pageHref } from '../lib/paths';
 import { absolutePageUrl, buildAlternateLanguages, publishedOgLocaleAlternate } from '../lib/seo';
 import { siteConfig } from '../site.config';
 
@@ -13,6 +17,8 @@ interface Props {
 	description?: string;
 	lang?: Locale;
 	robots?: string;
+	image?: string;
+	ogImageAlt?: string;
 	alternateLanguages?: { hreflang: string; href: string }[];
 	jsonLd?: Record<string, unknown>;
 }
@@ -22,6 +28,8 @@ const {
 	description,
 	lang = 'fr',
 	robots = 'index, follow',
+	image,
+	ogImageAlt,
 	alternateLanguages,
 	jsonLd,
 } = Astro.props;
@@ -34,86 +42,75 @@ const selfUrl = absolutePageUrl(Astro.site, Astro.url.pathname);
 const alternates = alternateLanguages ?? buildAlternateLanguages({ [lang]: selfUrl ?? canonical });
 const ogLocale = lang === 'en' ? 'en_US' : 'fr_FR';
 const ogAlternate = publishedOgLocaleAlternate(lang);
-const blogPath = (await publishedBlogPaths(null))[lang];
-const homeHref = pageHref(lang === 'en' ? 'en/' : '');
-const links = [
-	[homeHref, t('Nav.home')],
-	[pageHref(`${contentPath(lang, 'individual')}/`), t('Nav.individual')],
-	[pageHref(`${contentPath(lang, 'couple')}/`), t('Nav.couple')],
-	[pageHref(`${contentPath(lang, 'approach')}/`), t('Nav.approach')],
-	...(blogPath ? [[pageHref(`${blogPath}/`), t('Nav.articles')]] : []),
-	[pageHref(`${contentPath(lang, 'booking')}/`), t('Nav.booking')],
-];
-const bookingHref = pageHref(`${contentPath(lang, 'booking')}/#agenda`);
-const legalHref = (page: 'legalNotice' | 'privacyPolicy' | 'termsOfService') =>
-	pageHref(`${legalPath(lang, page)}/`);
-const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : null;
+const imageAlt = ogImageAlt ?? t('HomePage.portraitAlt');
 
-function isCurrent(href: string) {
-	const path = Astro.url.pathname;
-	const target = href.split('#')[0];
-	return path === target || (target !== '/' && path === `${target}/`);
+function absolutePublic(path: string): string | undefined {
+	if (!Astro.site) return undefined;
+	const clean = path.startsWith('/') ? path.slice(1) : path;
+	return new URL(import.meta.env.BASE_URL + clean, Astro.site).href;
 }
+
+const usesDefaultImage = !image;
+const ogImage = image
+	? image.startsWith('http')
+		? image
+		: absolutePublic(image)
+	: absolutePublic(siteConfig.ogImageUrl);
+const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : null;
+const base = import.meta.env.BASE_URL.endsWith('/')
+	? import.meta.env.BASE_URL
+	: `${import.meta.env.BASE_URL}/`;
 ---
 
 <!doctype html>
-<html lang={lang}>
+<html lang={lang} class="scroll-smooth">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="color-scheme" content="light" />
+		<meta name="robots" content={robots} />
+		<meta name="theme-color" content={siteConfig.themeColor} />
+		<meta name="author" content={siteConfig.name} />
 		<title>{pageTitle}</title>
 		<meta name="description" content={pageDescription} />
-		<meta name="robots" content={robots} />
 		{canonical && <link rel="canonical" href={canonical} />}
 		{
 			alternates?.map(({ hreflang, href }) => (
 				<link rel="alternate" hreflang={hreflang} href={href} />
 			))
 		}
-		<meta property="og:title" content={pageTitle} />
-		<meta property="og:description" content={pageDescription} />
+		<meta property="og:type" content="website" />
 		<meta property="og:locale" content={ogLocale} />
 		{ogAlternate && <meta property="og:locale:alternate" content={ogAlternate} />}
-		<meta property="og:type" content="website" />
 		<meta property="og:site_name" content={siteConfig.name} />
+		<meta property="og:title" content={pageTitle} />
+		<meta property="og:description" content={pageDescription} />
 		{canonical && <meta property="og:url" content={canonical} />}
-		<meta name="twitter:card" content="summary" />
-		<link rel="icon" href="/favicon.svg" />
+		{ogImage && <meta property="og:image" content={ogImage} />}
+		{ogImage && usesDefaultImage && <meta property="og:image:width" content={String(siteConfig.ogImageWidth)} />}
+		{ogImage && usesDefaultImage && <meta property="og:image:height" content={String(siteConfig.ogImageHeight)} />}
+		{ogImage && <meta property="og:image:alt" content={imageAlt} />}
+		<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
+		<meta name="twitter:title" content={pageTitle} />
+		<meta name="twitter:description" content={pageDescription} />
+		{
+			siteConfig.twitterHandle && (
+				<meta name="twitter:site" content={`@${siteConfig.twitterHandle.replace(/^@/, '')}`} />
+			)
+		}
+		{ogImage && <meta name="twitter:image" content={ogImage} />}
+		{ogImage && <meta name="twitter:image:alt" content={imageAlt} />}
+		<link rel="manifest" href={`${base}site.webmanifest`} />
+		<link rel="icon" type="image/svg+xml" href={pageHref('favicon.svg')} />
 		{jsonLdString && <script type="application/ld+json" set:html={jsonLdString} />}
 	</head>
-	<body>
-		<a class="skip" href="#content">{t('Layout.skipToContent')}</a>
-		<header>
-			<a class="brand" href={homeHref}>
-				{siteConfig.name}
-				<span>{t('Layout.brandSubtitle')}</span>
-			</a>
-			<LanguageSwitcher locale={lang} />
-			<a class="button" href={bookingHref}>{t('Nav.bookingCta')}</a>
-			<nav aria-label={t('Nav.aria')}>
-				{
-					links.map(([url, label]) => (
-						<a href={url} aria-current={isCurrent(url) ? 'page' : undefined}>
-							{label}
-						</a>
-					))
-				}
-			</nav>
-		</header>
-		<main id="content"><slot /></main>
-		<footer>
-			<div>
-				<a class="brand" href={homeHref}>{siteConfig.name}</a>
-				<p set:html={t('Footer.tagline')} />
-				<button class="text-button" type="button" data-contact-open>{t('Footer.contact')}</button>
-			</div>
-			<nav aria-label={t('Footer.legalAria')}>
-				<a href={legalHref('legalNotice')}>{t('Footer.linkLegal')}</a>
-				<a href={legalHref('privacyPolicy')}>{t('Footer.linkPrivacy')}</a>
-				<a href={legalHref('termsOfService')}>{t('Footer.linkTerms')}</a>
-			</nav>
-			<small>{t('Footer.copyright', { year: new Date().getFullYear() })}</small>
-		</footer>
+	<body class="min-h-screen overflow-x-clip bg-cream font-sans text-base leading-relaxed text-ink antialiased">
+		<a class="absolute -top-24 left-4 z-50 bg-white px-4 py-2 text-ink focus:top-4" href="#content">
+			{t('Layout.skipToContent')}
+		</a>
+		<SiteHeader locale={lang} />
+		<main id="content" class="min-w-0"><slot /></main>
+		<SiteFooter locale={lang} />
 		<ContactForm locale={lang} />
 	</body>
 </html>

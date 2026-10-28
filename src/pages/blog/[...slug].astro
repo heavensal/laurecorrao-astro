@@ -4,6 +4,7 @@ import BlogIndex from '../../components/blog/BlogIndex.astro';
 import { getFixedT, type Locale } from '../../i18n/i18n';
 import Layout from '../../layouts/Layout.astro';
 import { blogStaticPaths, publishedBlogPaths } from '../../lib/forge-blog';
+import { buildArticleJsonLd } from '../../lib/jsonld';
 import { absolutePageUrl, buildLegalAlternateLanguages } from '../../lib/seo';
 
 export async function getStaticPaths() {
@@ -18,6 +19,19 @@ const title = article ? t('Blog.articleMetaTitle', { title: article.title }) : t
 const description = article?.description || t('Blog.metaDescription');
 const frUrl = blogPaths.fr ? absolutePageUrl(Astro.site, `${blogPaths.fr}/`) : undefined;
 const enUrl = blogPaths.en ? absolutePageUrl(Astro.site, `${blogPaths.en}/`) : undefined;
+const homeUrl = absolutePageUrl(Astro.site, '');
+const jsonLd =
+	article && frUrl && homeUrl
+		? buildArticleJsonLd({
+				pageUrl: frUrl,
+				homeUrl,
+				locale,
+				title: article.title,
+				description,
+				publishedAt: article.publishedAt,
+				image: article.coverImageUrl,
+			})
+		: undefined;
 ---
 
 <Layout
@@ -25,6 +39,8 @@ const enUrl = blogPaths.en ? absolutePageUrl(Astro.site, `${blogPaths.en}/`) : u
 	title={title}
 	description={description}
 	alternateLanguages={buildLegalAlternateLanguages(frUrl, enUrl)}
+	jsonLd={jsonLd}
+	image={article?.coverImageUrl ?? undefined}
 >
 	{article ? <BlogArticle locale={locale} article={article} /> : <BlogIndex locale={locale} posts={posts} />}
 </Layout>

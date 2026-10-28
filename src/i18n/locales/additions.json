@@ -1,0 +1,514 @@
+{
+	"fr": {
+		"Layout": {
+			"brandSubtitle": "Psychopraticienne · Thérapeute de couple"
+		},
+		"Pages": {
+			"eyebrow": "Laure Corrao · Martigues"
+		},
+		"HomePage": {
+			"eyebrow": "Cabinet à Martigues · Consultations en ligne",
+			"titleHtml": "Psychopraticienne &amp;<br />Thérapeute de couple",
+			"subtitle": "Mettre des mots sur vos maux pour retrouver le chemin vers vous-même.",
+			"intro": "Je vous accueille dans un espace d’écoute bienveillant, confidentiel et sans jugement pour vous aider à traverser les difficultés, mieux vous comprendre et retrouver équilibre et sérénité.",
+			"approachCta": "Découvrir mon approche",
+			"portraitAlt": "Portrait de Laure Corrao dans un intérieur chaleureux",
+			"servicesAria": "Les accompagnements",
+			"individualSummaryHtml": "Anxiété · Phobies · Estime de soi ·<br />Confiance en soi",
+			"coupleSummaryHtml": "Communication · Conflits · Éloignement ·<br />Crises · Reconstruction du lien",
+			"approachTitle": "Une approche sur mesure",
+			"approachSummaryHtml": "Hypnose · DNR · Outils<br />thérapeutiques adaptés",
+			"aboutEyebrow": "À propos",
+			"aboutTitle": "Et si vous vous accordiez enfin la place d’aller mieux ?",
+			"aboutBody": "Je suis Laure Corrao, psychopraticienne et thérapeute de couple. Je vous accompagne avec bienveillance, écoute et sans jugement, dans un espace confidentiel où vous pourrez vous déposer pleinement, à votre rythme.",
+			"quote": "Vous n’avez pas besoin de savoir par où commencer. Vous avez simplement besoin d’oser faire le premier pas.",
+			"readingTitle": "Un accompagnement qui vous ressemble.",
+			"readingLead": "Il arrive que l’on se sente dépassé par ses émotions, prisonnier de ses peurs ou enfermé dans des schémas qui se répètent. Anxiété, phobies, manque de confiance, blessures émotionnelles, difficultés relationnelles ou crise de couple : vous n’avez pas à traverser cela seul.",
+			"readingBody": "Mon approche est personnalisée et s’appuie sur différents outils thérapeutiques, notamment l’hypnose, les thérapies cognitives et comportementales, l’approche systémique et le coaching. Parce que chaque personne, chaque histoire et chaque couple sont uniques, l’accompagnement l’est aussi.",
+			"individualMeta": "1 heure · 60 € · Cabinet ou visio",
+			"individualCta": "Découvrir l’accompagnement individuel",
+			"coupleMeta": "1 heure · 80 € par couple",
+			"coupleCta": "Découvrir la thérapie de couple",
+			"placeTitle": "Un espace pour vous retrouver.",
+			"placeBody": "Dans l’atmosphère chaleureuse et apaisante de mon cabinet, vous pourrez enfin mettre des mots sur vos maux, mieux comprendre ce qui se joue en vous et avancer vers un équilibre plus serein.",
+			"practiceTitle": "Au cabinet, à Martigues",
+			"practiceBody": "Un cadre chaleureux, confidentiel et sans jugement. Les informations pratiques d’accès seront précisées avant votre venue.",
+			"videoTitle": "En visioconférence",
+			"videoBody": "Installez-vous dans un lieu calme, où vous pouvez parler en toute confidentialité.",
+			"placeClose": "Ici, vous n’avez pas besoin de savoir par où commencer. Vous avez simplement besoin d’oser faire le premier pas."
+		},
+		"Individual": {
+			"metaTitle": "Accompagnement individuel",
+			"metaDescription": "Un espace pour comprendre ce que vous traversez et retrouver vos propres ressources.",
+			"h1": "Accompagnement individuel",
+			"lede": "Un espace pour comprendre ce que vous traversez et retrouver vos propres ressources.",
+			"before": [
+				"Certaines périodes de la vie peuvent nous fragiliser, nous déstabiliser ou nous donner le sentiment de ne plus parvenir à avancer seul. L’accompagnement individuel vous offre un espace confidentiel, bienveillant et sans jugement, dans lequel vous pouvez déposer librement ce que vous ressentez."
+			],
+			"listIntro": "Je vous accompagne notamment face à :",
+			"items": [
+				"l’anxiété, les angoisses et les phobies ;",
+				"la perte d’estime de soi ou de confiance en soi ;",
+				"les blessures émotionnelles et les conséquences d’expériences traumatiques ;",
+				"la dépendance affective et les difficultés relationnelles ;",
+				"les séparations, les deuils et les périodes de transition ;",
+				"les blocages, les schémas répétitifs et les difficultés à poser vos limites ;",
+				"le stress, la surcharge émotionnelle ou la sensation de ne plus trouver votre place."
+			],
+			"after": [
+				"Les premières séances permettent de comprendre votre histoire, vos difficultés actuelles et ce que vous souhaitez voir évoluer. Nous définissons ensuite ensemble un accompagnement adapté à vos besoins et à votre rythme.",
+				"L’objectif n’est pas de vous imposer une direction, mais de vous aider à mieux comprendre ce qui se joue en vous, à apaiser vos souffrances et à retrouver progressivement confiance en vos capacités.",
+				"Vous n’avez pas besoin de savoir par où commencer. Le premier rendez-vous est justement là pour cela."
+			]
+		},
+		"Couple": {
+			"metaTitle": "Thérapie de couple",
+			"metaDescription": "Retrouver un espace de dialogue lorsque la relation ne parvient plus à avancer seule.",
+			"h1": "Thérapie de couple",
+			"lede": "Retrouver un espace de dialogue lorsque la relation ne parvient plus à avancer seule.",
+			"before": [
+				"Au fil du temps, un couple peut traverser des incompréhensions, des conflits répétés, un éloignement affectif ou une rupture de confiance. Chacun tente alors de se faire entendre, mais les échanges finissent parfois par devenir douloureux ou impossibles.",
+				"La thérapie de couple offre un cadre neutre, confidentiel et sécurisant dans lequel chaque partenaire peut exprimer son vécu, ses attentes, ses frustrations et ses besoins."
+			],
+			"listIntro": "Je vous accompagne notamment lorsque vous traversez :",
+			"items": [
+				"des difficultés de communication ;",
+				"des disputes répétitives ou des conflits qui restent sans solution ;",
+				"un éloignement émotionnel, affectif ou intime ;",
+				"une perte de confiance ou une infidélité ;",
+				"une période de crise, une séparation envisagée ou déjà engagée ;",
+				"des désaccords concernant la famille, les enfants ou les projets de vie ;",
+				"des difficultés à reconstruire le lien après une épreuve."
+			],
+			"after": [
+				"Les entretiens permettent d’identifier les mécanismes relationnels qui entretiennent les tensions, de mieux comprendre la place et les besoins de chacun et de créer de nouvelles façons de communiquer.",
+				"Je ne suis ni juge ni arbitre. Mon rôle est d’aider chaque partenaire à être entendu, tout en permettant au couple de retrouver un dialogue plus apaisé. Selon votre situation, l’accompagnement pourra viser la reconstruction du lien, la recherche d’un nouvel équilibre ou une séparation plus consciente et respectueuse.",
+				"Chaque couple possède sa propre histoire. Les séances et les outils proposés sont donc personnalisés en fonction de votre situation, de vos attentes et de votre rythme.",
+				"Demander de l’aide ne signifie pas que votre couple a échoué. Cela signifie que vous choisissez de ne plus rester seuls face à vos difficultés."
+			]
+		},
+		"Approach": {
+			"metaTitle": "Mon approche",
+			"metaDescription": "Une thérapie sur mesure, parce que chaque personne et chaque histoire sont uniques.",
+			"h1": "Mon approche",
+			"lede": "Une thérapie sur mesure, parce que chaque personne et chaque histoire sont uniques.",
+			"before": [
+				"Je ne crois pas aux accompagnements identiques pour tout le monde. Une méthode peut convenir à une personne et ne pas répondre aux besoins d’une autre. C’est pourquoi je construis chaque accompagnement de façon personnalisée, en tenant compte de votre histoire, de votre personnalité, de vos difficultés et de vos objectifs."
+			],
+			"listIntro": "Mon approche est intégrative : elle associe l’écoute et la parole à différents outils thérapeutiques auxquels je suis formée, notamment :",
+			"items": [
+				"les thérapies cognitives et comportementales, pour identifier et faire évoluer certaines pensées, émotions et réactions ;",
+				"l’approche systémique, particulièrement adaptée à la compréhension des relations, des couples et des fonctionnements familiaux ;",
+				"l’approche psychanalytique et la thérapie par la parole, pour explorer votre histoire et mieux comprendre l’origine de certains mécanismes ;",
+				"l’hypnose, pour travailler sur certains blocages, peurs ou automatismes ;",
+				"l’art-thérapie, pour permettre l’expression autrement que par les mots lorsque cela est pertinent ;",
+				"la programmation neurolinguistique, ou PNL, ainsi que différents outils de coaching et d’accompagnement au changement ;",
+				"Le DNR, ou Deep Neural Repatterning, est un outil de retraitement émotionnel qui vise à apaiser l’intensité associée à certaines expériences difficiles, peurs ou blocages. Il permet de travailler sur la manière dont ces vécus restent inscrits émotionnellement, dans le respect du rythme et des limites de chaque personne."
+			],
+			"after": [
+				"Ces outils ne sont jamais appliqués mécaniquement. Je sélectionne ceux qui correspondent à vos besoins et je vous explique toujours ce que je vous propose. Vous restez libre et pleinement acteur de votre accompagnement.",
+				"Les premières séances sont consacrées à l’écoute de votre demande, à la compréhension de votre situation et à la définition de vos objectifs. Le travail évolue ensuite avec vous, dans le respect de votre rythme et de vos limites.",
+				"Mon cabinet est pensé comme un espace chaleureux, confidentiel et sans jugement : un lieu dans lequel vous pourrez mettre des mots sur vos maux, vous sentir écouté et avancer en toute sécurité.",
+				"Il n’est pas nécessaire d’attendre d’aller plus mal pour commencer à prendre soin de soi."
+			]
+		},
+		"Booking": {
+			"metaTitle": "Tarifs et rendez-vous",
+			"metaDescription": "Choisir de commencer une thérapie, c’est déjà faire un premier pas vers soi.",
+			"h1": "Tarifs et rendez-vous",
+			"lede": "Choisir de commencer une thérapie, c’est déjà faire un premier pas vers soi.",
+			"intro": "Je vous accueille au cabinet à Martigues ou en consultation à distance, dans un cadre confidentiel, bienveillant et sans jugement.",
+			"sections": [
+				{
+					"title": "Séance individuelle",
+					"lines": ["Durée : 1 heure", "Tarif : 60 €"],
+					"paragraphs": ["L’accompagnement individuel peut être réalisé au cabinet ou en visioconférence."]
+				},
+				{
+					"title": "Séance de couple",
+					"lines": ["Durée : 1 heure", "Tarif : 80 € par couple"],
+					"paragraphs": ["Les séances se déroulent en présence des deux partenaires, dans un espace neutre permettant à chacun de s’exprimer et d’être entendu."]
+				},
+				{
+					"title": "Prendre rendez-vous",
+					"paragraphs": ["Vous pouvez consulter directement mes disponibilités grâce à l’agenda en ligne et sélectionner :"],
+					"items": [
+						"le type d’accompagnement souhaité ;",
+						"une consultation au cabinet ou en visioconférence ;",
+						"la date et l’horaire qui vous conviennent."
+					],
+					"after": ["Une confirmation vous sera adressée par e-mail après la réservation, ainsi qu’un rappel avant votre rendez-vous."]
+				},
+				{
+					"title": "Moyens de paiement",
+					"paragraphs": ["Le règlement peut être effectué :"],
+					"items": [
+						"par chèque ;",
+						"en espèces ;",
+						"en ligne, par carte bancaire, grâce à un lien de paiement sécurisé."
+					],
+					"after": ["Pour les consultations en visioconférence, le règlement en ligne doit être effectué avant le début de la séance. Le lien de connexion vous sera transmis après confirmation du rendez-vous."]
+				},
+				{
+					"title": "Modification ou annulation",
+					"paragraphs": [
+						"Un rendez-vous vous est personnellement réservé. Si vous devez le déplacer ou l’annuler, merci de me prévenir au moins 24 heures à l’avance, directement depuis votre confirmation de rendez-vous ou en me contactant.",
+						"Toute séance annulée moins de 24 heures avant le rendez-vous, ou non honorée, pourra être facturée, sauf situation exceptionnelle ou cas de force majeure."
+					]
+				},
+				{
+					"title": "Remboursement",
+					"paragraphs": [
+						"Les consultations ne sont pas prises en charge par l’Assurance maladie. Toutefois, certaines mutuelles proposent un forfait annuel pour les consultations de psychothérapie ou de médecines complémentaires.",
+						"Une facture pourra vous être remise sur demande afin de vous permettre de solliciter votre mutuelle."
+					]
+				}
+			],
+			"closing": "Vous n’avez pas besoin d’attendre d’aller plus mal pour demander de l’aide.",
+			"agendaTitle": "Choisir un rendez-vous",
+			"agendaNotice": "Calendrier de démonstration : les créneaux de 30 minutes ci-dessous servent uniquement au test. Ils ne correspondent pas aux séances de Laure, qui durent une heure."
+		},
+		"BookingCta": {
+			"eyebrow": "À votre rythme",
+			"title": "Un premier pas vers vous.",
+			"body": "Vous n’avez pas besoin de savoir par où commencer."
+		},
+		"Contact": {
+			"close": "Fermer",
+			"eyebrow": "Premier échange",
+			"title": "Me contacter",
+			"intro": "Décrivez en quelques mots votre demande. Je reviendrai vers vous dans les meilleurs délais.",
+			"firstName": "Prénom",
+			"lastName": "Nom",
+			"email": "E-mail",
+			"phone": "Téléphone",
+			"request": "Votre demande",
+			"message": "Message",
+			"optionIndividual": "Accompagnement individuel",
+			"optionCouple": "Thérapie de couple",
+			"optionOther": "Autre demande",
+			"consent": "J’accepte que mes informations soient utilisées pour répondre à ma demande.",
+			"submit": "Envoyer ma demande",
+			"subject": "Demande de contact — laurecorrao.fr",
+			"missingToken": "Le formulaire sera disponible dès que le jeton Forge de Laure Corrao sera renseigné.",
+			"sending": "Envoi en cours…",
+			"success": "Merci, votre demande a bien été transmise.",
+			"error": "L’envoi a échoué. Vous pouvez réessayer dans quelques instants."
+		},
+		"Calendar": {
+			"loading": "Chargement du calendrier…",
+			"loadError": "Le calendrier n’a pas pu être chargé. Veuillez réessayer en rechargeant cette page.",
+			"frameTitle": "Disponibilités et réservation Cal.com",
+			"aria": "Calendrier de réservation",
+			"noscript": "Activez JavaScript pour consulter les disponibilités et réserver directement sur cette page."
+		},
+		"Resources": {
+			"reviewsEyebrow": "Témoignages",
+			"reviewsTitle": "Leurs mots sur l’accompagnement",
+			"stars": "{{rating}} étoiles sur 5",
+			"faqEyebrow": "Questions fréquentes",
+			"faqTitle": "Avant de commencer",
+			"otherQuestion": "Vous avez une autre question ? Contactez-moi",
+			"contactEyebrow": "Une question avant de vous lancer ?",
+			"contactTitle": "Parlons de votre demande.",
+			"contactCta": "Me contacter"
+		},
+		"Local": {
+			"reviews": [
+				{
+					"author": "Patiente accompagnée",
+					"rating": 5,
+					"text": "Une écoute profonde, beaucoup de bienveillance et des outils concrets pour avancer à mon rythme."
+				},
+				{
+					"author": "Couple accompagné",
+					"rating": 5,
+					"text": "Nous avons retrouvé un dialogue plus calme et une meilleure compréhension de nos besoins respectifs."
+				},
+				{
+					"author": "Patiente accompagnée",
+					"rating": 5,
+					"text": "Un espace sans jugement dans lequel je me suis sentie en confiance dès la première séance."
+				}
+			],
+			"faqs": [
+				{
+					"question": "Comment se déroule la première séance ?",
+					"answer": "Ce premier échange permet de comprendre votre situation, vos attentes et ce que vous souhaitez voir évoluer. Nous définissons ensuite ensemble un accompagnement adapté."
+				},
+				{
+					"question": "Puis-je consulter en visioconférence ?",
+					"answer": "Oui. Les accompagnements individuels peuvent avoir lieu au cabinet à Martigues ou à distance, dans un cadre calme et confidentiel."
+				},
+				{
+					"question": "Combien de temps dure une séance ?",
+					"answer": "Une séance individuelle ou de couple dure environ une heure."
+				},
+				{
+					"question": "Les consultations sont-elles remboursées ?",
+					"answer": "Elles ne sont pas prises en charge par l’Assurance maladie. Certaines mutuelles proposent toutefois un forfait annuel ; une facture peut être remise sur demande."
+				},
+				{
+					"question": "Comment déplacer ou annuler un rendez-vous ?",
+					"answer": "Merci de prévenir au moins 24 heures à l’avance. Les modalités figurent dans votre confirmation de rendez-vous."
+				}
+			]
+		}
+	},
+	"en": {
+		"Layout": {
+			"brandSubtitle": "Psychopractitioner · Couples therapist"
+		},
+		"Pages": {
+			"eyebrow": "Laure Corrao · Martigues"
+		},
+		"HomePage": {
+			"eyebrow": "Practice in Martigues · Online sessions",
+			"titleHtml": "Psychopractitioner &amp;<br />Couples therapist",
+			"subtitle": "Put words to what hurts, and find your way back to yourself.",
+			"intro": "I welcome you in a kind, confidential, and non-judgmental space, to help you through difficulties, understand yourself better, and find balance and calm.",
+			"approachCta": "Discover my approach",
+			"portraitAlt": "Portrait of Laure Corrao in a warm interior",
+			"servicesAria": "Support offered",
+			"individualSummaryHtml": "Anxiety · Phobias · Self-esteem ·<br />Self-confidence",
+			"coupleSummaryHtml": "Communication · Conflict · Distance ·<br />Crises · Rebuilding the bond",
+			"approachTitle": "An approach shaped around you",
+			"approachSummaryHtml": "Hypnosis · DNR · Therapeutic<br />tools chosen for you",
+			"aboutEyebrow": "About",
+			"aboutTitle": "What if you finally gave yourself room to feel better?",
+			"aboutBody": "I am Laure Corrao, psychopractitioner and couples therapist. I accompany you with kindness, listening, and without judgment, in a confidential space where you can set things down fully, at your own pace.",
+			"quote": "You do not need to know where to start. You only need to dare to take the first step.",
+			"readingTitle": "Support that feels like you.",
+			"readingLead": "Feelings can become overwhelming, fears can take over, or the same patterns can close in. Anxiety, phobias, a lack of confidence, emotional wounds, relationship difficulties, or a crisis in the couple: you do not have to go through this alone.",
+			"readingBody": "My approach is personal and draws on several therapeutic tools, including hypnosis, cognitive and behavioural therapies, the systemic approach, and coaching. Because every person, every story, and every couple is unique, the support is unique too.",
+			"individualMeta": "1 hour · €60 · Practice or video",
+			"individualCta": "Discover individual support",
+			"coupleMeta": "1 hour · €80 per couple",
+			"coupleCta": "Discover couples therapy",
+			"placeTitle": "A place to find yourself again.",
+			"placeBody": "In the warm, calming atmosphere of my practice, you can finally put words to what hurts, understand more of what is happening for you, and move toward a calmer balance.",
+			"practiceTitle": "At the practice, in Martigues",
+			"practiceBody": "A warm, confidential, and non-judgmental setting. Practical directions will be confirmed before you come.",
+			"videoTitle": "By video",
+			"videoBody": "Settle somewhere quiet, where you can speak in confidence.",
+			"placeClose": "Here, you do not need to know where to start. You only need to dare to take the first step."
+		},
+		"Individual": {
+			"metaTitle": "Individual support",
+			"metaDescription": "A place to understand what you are going through and find your own resources.",
+			"h1": "Individual support",
+			"lede": "A place to understand what you are going through and find your own resources.",
+			"before": [
+				"Some periods of life leave us fragile, unsteady, or feeling unable to move forward alone. Individual support offers a confidential, kind, and non-judgmental space where you can set down what you feel."
+			],
+			"listIntro": "I accompany you in particular with:",
+			"items": [
+				"anxiety, panic, and phobias;",
+				"a loss of self-esteem or self-confidence;",
+				"emotional wounds and the consequences of traumatic experiences;",
+				"emotional dependence and relationship difficulties;",
+				"separations, grief, and times of transition;",
+				"blocks, repeating patterns, and difficulty setting limits;",
+				"stress, emotional overload, or the sense of no longer finding your place."
+			],
+			"after": [
+				"The first sessions are there to understand your story, your current difficulties, and what you want to see change. Together we then define support suited to your needs and your pace.",
+				"The aim is not to impose a direction, but to help you understand more of what is happening for you, ease what hurts, and gradually trust your own capacities again.",
+				"You do not need to know where to start. The first appointment is there for that."
+			]
+		},
+		"Couple": {
+			"metaTitle": "Couples therapy",
+			"metaDescription": "A place to talk again when the relationship can no longer move forward on its own.",
+			"h1": "Couples therapy",
+			"lede": "A place to talk again when the relationship can no longer move forward on its own.",
+			"before": [
+				"Over time, a couple can meet misunderstandings, repeated conflict, emotional distance, or a break in trust. Each person tries to be heard, and the exchanges can become painful or impossible.",
+				"Couples therapy offers a neutral, confidential, and safe frame in which each partner can express their experience, expectations, frustrations, and needs."
+			],
+			"listIntro": "I accompany you in particular when you are facing:",
+			"items": [
+				"communication difficulties;",
+				"repeating arguments or conflicts that stay unresolved;",
+				"emotional, affectionate, or intimate distance;",
+				"a loss of trust or an infidelity;",
+				"a crisis, a separation you are considering, or one already underway;",
+				"disagreements about family, children, or life plans;",
+				"difficulty rebuilding the bond after a trial."
+			],
+			"after": [
+				"The sessions help identify the relational patterns that keep the tension going, understand each person’s place and needs, and create new ways of communicating.",
+				"I am neither judge nor referee. My role is to help each partner be heard, while helping the couple find a calmer dialogue. Depending on your situation, the work may aim to rebuild the bond, find a new balance, or separate more consciously and respectfully.",
+				"Every couple has its own story. The sessions and the tools offered are therefore shaped around your situation, your expectations, and your pace.",
+				"Asking for help does not mean your couple has failed. It means you choose not to stay alone with the difficulty."
+			]
+		},
+		"Approach": {
+			"metaTitle": "My approach",
+			"metaDescription": "Therapy shaped around you, because every person and every story is unique.",
+			"h1": "My approach",
+			"lede": "Therapy shaped around you, because every person and every story is unique.",
+			"before": [
+				"I do not believe in the same support for everyone. A method can suit one person and miss what another needs. That is why I build each accompaniment around your story, your personality, your difficulties, and your aims."
+			],
+			"listIntro": "My approach is integrative: it joins listening and speech with the therapeutic tools I am trained in, including:",
+			"items": [
+				"cognitive and behavioural therapies, to identify and shift certain thoughts, emotions, and reactions;",
+				"the systemic approach, particularly suited to understanding relationships, couples, and family patterns;",
+				"the psychoanalytic approach and talk therapy, to explore your story and understand the origin of certain patterns;",
+				"hypnosis, to work on certain blocks, fears, or automatic responses;",
+				"art therapy, so expression can happen other than through words when that is useful;",
+				"neurolinguistic programming (NLP), and coaching tools for accompanying change;",
+				"DNR, or Deep Neural Repatterning, an emotional reprocessing tool that aims to ease the intensity attached to difficult experiences, fears, or blocks. It works on how those experiences remain emotionally inscribed, at each person’s pace and within their limits."
+			],
+			"after": [
+				"These tools are never applied mechanically. I choose the ones that match your needs, and I always explain what I am proposing. You remain free, and fully part of the work.",
+				"The first sessions are given to listening to your request, understanding your situation, and defining your aims. The work then evolves with you, respecting your pace and your limits.",
+				"My practice is meant as a warm, confidential, and non-judgmental place: somewhere you can put words to what hurts, feel listened to, and move forward safely.",
+				"You do not have to wait until things get worse to start taking care of yourself."
+			]
+		},
+		"Booking": {
+			"metaTitle": "Fees and appointments",
+			"metaDescription": "Choosing to start therapy is already a first step toward yourself.",
+			"h1": "Fees and appointments",
+			"lede": "Choosing to start therapy is already a first step toward yourself.",
+			"intro": "I welcome you at the practice in Martigues or remotely, in a confidential, kind, and non-judgmental setting.",
+			"sections": [
+				{
+					"title": "Individual session",
+					"lines": ["Length: 1 hour", "Fee: €60"],
+					"paragraphs": ["Individual support can take place at the practice or by video."]
+				},
+				{
+					"title": "Couples session",
+					"lines": ["Length: 1 hour", "Fee: €80 per couple"],
+					"paragraphs": ["Sessions take place with both partners present, in a neutral space where each person can speak and be heard."]
+				},
+				{
+					"title": "Book an appointment",
+					"paragraphs": ["You can see my availability in the online calendar and choose:"],
+					"items": [
+						"the kind of support you want;",
+						"a session at the practice or by video;",
+						"the date and time that suit you."
+					],
+					"after": ["A confirmation is sent by email after booking, and a reminder before your appointment."]
+				},
+				{
+					"title": "Payment",
+					"paragraphs": ["You can pay:"],
+					"items": [
+						"by cheque;",
+						"in cash;",
+						"online, by card, through a secure payment link."
+					],
+					"after": ["For video sessions, online payment is due before the session starts. The connection link is sent after the appointment is confirmed."]
+				},
+				{
+					"title": "Changes and cancellation",
+					"paragraphs": [
+						"An appointment is reserved for you. To move or cancel it, please give at least 24 hours’ notice, from your confirmation or by contacting me.",
+						"A session cancelled less than 24 hours before the appointment, or missed, may be charged, except in exceptional circumstances or force majeure."
+					]
+				},
+				{
+					"title": "Reimbursement",
+					"paragraphs": [
+						"Consultations are not covered by French national health insurance. Some complementary health plans offer a yearly allowance for psychotherapy or complementary care.",
+						"An invoice can be provided on request so you can ask your insurer."
+					]
+				}
+			],
+			"closing": "You do not have to wait until things get worse to ask for help.",
+			"agendaTitle": "Choose an appointment",
+			"agendaNotice": "Demo calendar: the 30-minute slots below are for testing only. They are not Laure’s sessions, which last one hour."
+		},
+		"BookingCta": {
+			"eyebrow": "At your pace",
+			"title": "A first step toward yourself.",
+			"body": "You do not need to know where to start."
+		},
+		"Contact": {
+			"close": "Close",
+			"eyebrow": "A first conversation",
+			"title": "Contact me",
+			"intro": "Describe your request in a few words. I will get back to you as soon as I can.",
+			"firstName": "First name",
+			"lastName": "Last name",
+			"email": "Email",
+			"phone": "Phone",
+			"request": "Your request",
+			"message": "Message",
+			"optionIndividual": "Individual support",
+			"optionCouple": "Couples therapy",
+			"optionOther": "Other request",
+			"consent": "I agree that my details may be used to reply to my request.",
+			"submit": "Send my request",
+			"subject": "Contact request — laurecorrao.fr",
+			"missingToken": "The form will be available once Laure Corrao’s Forge token is set.",
+			"sending": "Sending…",
+			"success": "Thank you, your request has been sent.",
+			"error": "Sending failed. You can try again in a moment."
+		},
+		"Calendar": {
+			"loading": "Loading the calendar…",
+			"loadError": "The calendar could not be loaded. Please reload this page and try again.",
+			"frameTitle": "Availability and booking on Cal.com",
+			"aria": "Booking calendar",
+			"noscript": "Enable JavaScript to see availability and book on this page."
+		},
+		"Resources": {
+			"reviewsEyebrow": "Testimonials",
+			"reviewsTitle": "Their words about the work",
+			"stars": "{{rating}} stars out of 5",
+			"faqEyebrow": "Frequently asked questions",
+			"faqTitle": "Before you begin",
+			"otherQuestion": "Another question? Contact me",
+			"contactEyebrow": "A question before you start?",
+			"contactTitle": "Let’s talk about your request.",
+			"contactCta": "Contact me"
+		},
+		"Local": {
+			"reviews": [
+				{
+					"author": "A client",
+					"rating": 5,
+					"text": "Deep listening, a great deal of kindness, and concrete tools to move forward at my own pace."
+				},
+				{
+					"author": "A couple",
+					"rating": 5,
+					"text": "We found a calmer dialogue and a better understanding of each other’s needs."
+				},
+				{
+					"author": "A client",
+					"rating": 5,
+					"text": "A space without judgment, where I felt safe from the first session."
+				}
+			],
+			"faqs": [
+				{
+					"question": "What happens in the first session?",
+					"answer": "This first conversation is there to understand your situation, your expectations, and what you want to see change. Together we then define support that fits."
+				},
+				{
+					"question": "Can I consult by video?",
+					"answer": "Yes. Individual support can take place at the practice in Martigues or remotely, somewhere quiet and private."
+				},
+				{
+					"question": "How long is a session?",
+					"answer": "An individual or couples session lasts about one hour."
+				},
+				{
+					"question": "Are consultations reimbursed?",
+					"answer": "They are not covered by French national health insurance. Some complementary plans offer a yearly allowance; an invoice can be provided on request."
+				},
+				{
+					"question": "How do I move or cancel an appointment?",
+					"answer": "Please give at least 24 hours’ notice. The details are in your appointment confirmation."
+				}
+			]
+		}
+	}
+}

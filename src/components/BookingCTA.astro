@@ -11,9 +11,14 @@ const t = getFixedT(locale);
 const href = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
 ---
 
-<section class="closing">
-	<p class="eyebrow">{t('BookingCta.eyebrow')}</p>
-	<h2>{t('BookingCta.title')}</h2>
-	<p>{t('BookingCta.body')}</p>
-	<a class="button" href={href}>{t('Nav.bookingCta')}</a>
+<section class="bg-sand px-6 py-14 text-center">
+	<p class="mb-4 text-xs tracking-widest text-rose-laure uppercase">{t('BookingCta.eyebrow')}</p>
+	<h2 class="font-serif text-3xl leading-tight text-ink md:text-4xl">{t('BookingCta.title')}</h2>
+	<p class="mx-auto mt-4 max-w-2xl">{t('BookingCta.body')}</p>
+	<a
+		class="mt-6 inline-flex min-h-12 items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-sm text-white no-underline transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep"
+		href={href}
+	>
+		{t('Nav.bookingCta')}
+	</a>
 </section>
