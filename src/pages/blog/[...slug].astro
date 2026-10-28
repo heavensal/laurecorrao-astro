@@ -41,6 +41,7 @@ const jsonLd =
 	alternateLanguages={buildLegalAlternateLanguages(frUrl, enUrl)}
 	jsonLd={jsonLd}
 	image={article?.coverImageUrl ?? undefined}
+	ogImageAlt={article?.coverImageUrl ? article.title : undefined}
 >
 	{article ? <BlogArticle locale={locale} article={article} /> : <BlogIndex locale={locale} posts={posts} />}
 </Layout>

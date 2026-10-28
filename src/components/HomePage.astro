@@ -13,9 +13,10 @@ const bookingHref = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
 const approachHref = pageHref(`${contentPath(locale, 'approach')}/`);
 const individualHref = pageHref(`${contentPath(locale, 'individual')}/`);
 const coupleHref = pageHref(`${contentPath(locale, 'couple')}/`);
-const button =
-	'inline-flex min-h-12 w-full items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-center text-sm text-white no-underline transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep sm:w-auto';
-const outline = `${button} border-blush bg-transparent text-ink hover:bg-sand`;
+const buttonBase =
+	'inline-flex min-h-12 w-full items-center justify-center rounded-md border px-6 py-3 text-center text-sm no-underline transition-colors duration-200 sm:w-auto';
+const button = `${buttonBase} border-rose-soft bg-rose-soft text-white hover:border-rose-deep hover:bg-rose-deep`;
+const outline = `${buttonBase} border-blush bg-transparent text-ink hover:bg-sand`;
 const serviceLink =
 	'border-t border-line px-6 py-6 text-center no-underline first:border-t-0 md:border-t-0 md:border-l md:first:border-l-0';
 ---
