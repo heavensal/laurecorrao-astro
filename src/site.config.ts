@@ -1,7 +1,5 @@
 /**
  * Site metadata shared by SEO, legal pages, and the blog.
- * Street address, SIRET, phone, and email are still unknown: do not invent them.
- * `geo` is the commune of Martigues, not the practice door.
  */
 export const siteConfig = {
 	name: 'Laure Corrao',
@@ -21,24 +19,22 @@ export const siteConfig = {
 	twitterHandle: '' as string,
 	contact: {
 		email: '',
-		phone: '',
-		phoneE164: '',
+		phone: '06 69 31 64 50',
+		phoneE164: '+33669316450',
 	},
 	legal: {
 		name: 'Laure Corrao',
-		city: 'Martigues',
+		building: 'Les Jardins de Louis',
+		street: '9 impasse Le Maroni — Saint-Jean',
+		postalCode: '13110',
+		city: 'Port-de-Bouc',
 	},
-	/**
-	 * Public geography of the commune (Wikipedia: 43°24′19″N 5°02′51″E).
-	 * Postal code 13500 belongs to the commune. It is not a street address.
-	 */
+	/** Practice service area. */
 	geo: {
-		latitude: 43.4053,
-		longitude: 5.0475,
-		locality: 'Martigues',
+		locality: 'Port-de-Bouc',
 		region: 'Bouches-du-Rhône',
-		postalCode: '13500',
+		postalCode: '13110',
 		country: 'FR',
-		areaServed: ['Martigues'],
+		areaServed: ['Port-de-Bouc'],
 	},
 } as const;

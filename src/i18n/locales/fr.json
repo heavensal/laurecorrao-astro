@@ -4,8 +4,8 @@
 		"brandSubtitle": "Psychopraticienne · Thérapeute de couple"
 	},
 	"Home": {
-		"metaTitle": "Psychopraticienne et thérapeute de couple à Martigues",
-		"metaDescription": "Laure Corrao : accompagnement individuel et thérapie de couple à Martigues et en visioconférence."
+		"metaTitle": "Psychopraticienne et thérapeute de couple à Port-de-Bouc",
+		"metaDescription": "Laure Corrao : accompagnement individuel et thérapie de couple à Port-de-Bouc et en visioconférence."
 	},
 	"Nav": {
 		"aria": "Navigation principale",
@@ -15,7 +15,9 @@
 		"approach": "Mon approche",
 		"articles": "Articles",
 		"booking": "Rendez-vous",
-		"bookingCta": "Prendre rendez-vous"
+		"bookingCta": "Réserver un échange gratuit de 10 minutes",
+		"adhd": "TDAH",
+		"parenting": "Parentalité"
 	},
 	"NotFound": {
 		"metaTitle": "Page introuvable",
@@ -43,10 +45,10 @@
 		"all": "Tous les articles",
 		"back": "← Retour à l’accueil",
 		"backToIndex": "← Tous les articles",
-		"bookingCta": "Prendre rendez-vous"
+		"bookingCta": "Réserver un échange gratuit de 10 minutes"
 	},
 	"Footer": {
-		"tagline": "Psychopraticienne et thérapeute de couple<br/>À Martigues et en visioconférence",
+		"tagline": "Psychopraticienne et thérapeute de couple<br/>À Port-de-Bouc et en visioconférence",
 		"contact": "Me contacter",
 		"legalAria": "Informations légales",
 		"linkLegal": "Mentions légales",
@@ -56,85 +58,260 @@
 	},
 	"LegalNotice": {
 		"metaTitle": "Mentions légales",
-		"metaDescription": "Mentions légales du site de Laure Corrao, psychopraticienne et thérapeute de couple à Martigues.",
+		"metaDescription": "Mentions légales du site de Laure Corrao, psychopraticienne et thérapeute de couple à Port-de-Bouc.",
 		"back": "← Retour à l’accueil",
 		"h1": "Mentions légales",
-		"updated": "Dernière mise à jour : 28 octobre 2026",
-		"s1h": "1. Éditeur du site",
-		"s1p1": "Le site est édité par :<br /><strong>Laure Corrao</strong>, psychopraticienne et thérapeute de couple<br />Cabinet à Martigues, France<br />L’adresse du cabinet, le SIRET et le téléphone seront ajoutés ici dès qu’ils sont connus.",
-		"s1p1After": "<br />Email : <a href=\"mailto:{{email}}\">{{email}}</a>",
-		"s2h": "2. Directrice de la publication",
+		"updated": "Dernière mise à jour : 2 novembre 2026",
+		"s1h": "Éditeur du site",
+		"s1p1": "Le site laurecorrao.fr est édité par Laure Corrao.",
+		"s2h": "Directrice de la publication",
 		"s2p1": "La directrice de la publication est Laure Corrao.",
-		"s3h": "3. Hébergement",
-		"s3p1": "Le site est hébergé par :<br /><strong>GitHub, Inc.</strong><br />88 Colin P. Kelly Jr. Street<br />San Francisco, CA 94107, États-Unis<br /><a href=\"https://github.com\" rel=\"noopener noreferrer\">github.com</a>",
-		"s4h": "4. Propriété intellectuelle",
-		"s4p1": "L’ensemble du contenu de ce site (textes, images, graphismes, structure) est protégé par le droit d’auteur. Toute reproduction ou représentation, totale ou partielle, sans autorisation préalable de Laure Corrao est interdite.",
-		"s5h": "5. Limitation de responsabilité",
+		"s3h": "Hébergement",
+		"s3p1": "Le site est hébergé par Hostinger.",
+		"s4h": "Propriété intellectuelle",
+		"s4p1": "Les textes, photographies, illustrations, logos et autres éléments du site sont protégés lorsqu’ils remplissent les conditions légales de protection. Leur réutilisation doit respecter les droits de leurs titulaires et les exceptions prévues par la loi.",
+		"s5h": "Limitation de responsabilité",
 		"s5p1": "Laure Corrao s’efforce d’assurer l’exactitude des informations publiées sur ce site. Toutefois, elle ne peut garantir leur exhaustivité ni leur mise à jour en temps réel. Les informations sont fournies à titre indicatif.",
-		"s6h": "6. Liens hypertextes",
-		"s6p1": "Ce site peut contenir des liens vers d’autres sites. Laure Corrao n’exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu."
+		"s6h": "Liens hypertextes",
+		"s6p1": "Ce site peut contenir des liens vers d’autres sites. Laure Corrao n’exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.",
+		"addressLabel": "Adresse de l’entreprise et lieu des consultations",
+		"phoneLabel": "Téléphone",
+		"technical": "Le prestataire technique du site est #1344 Solutions.",
+		"activity": "Activité",
+		"activityBody": "Laure Corrao présente son activité de psychopraticienne et de thérapeute de couple. Elle propose des accompagnements individuels, de couple et familiaux.",
+		"scope": "Les accompagnements proposés ne constituent pas une consultation médicale et ne remplacent pas un diagnostic, un traitement ou un suivi médical ou psychiatrique. Ils n’impliquent ni prescription ni modification d’un traitement.",
+		"info": "Les contenus du site ont une vocation informative et ne constituent pas un conseil personnalisé. Le site et ses formulaires ne sont pas un service d’urgence.",
+		"privacy": "Données personnelles et cookies",
+		"privacyLink": "Consulter la politique de confidentialité",
+		"terms": "Conditions des prestations",
+		"termsLink": "Consulter les conditions générales de vente"
 	},
 	"Privacy": {
 		"metaTitle": "Politique de confidentialité",
 		"metaDescription": "Politique de confidentialité et protection des données personnelles, Laure Corrao.",
 		"back": "← Retour à l’accueil",
 		"h1": "Politique de confidentialité",
-		"updated": "Dernière mise à jour : 28 octobre 2026",
-		"s1h": "1. Responsable du traitement",
-		"s1p1": "Le responsable du traitement des données personnelles est :<br /><strong>Laure Corrao</strong>, psychopraticienne et thérapeute de couple<br />Cabinet à Martigues, France",
-		"s1p1After": "<br />Email : <a href=\"mailto:{{email}}\">{{email}}</a>",
-		"s1p2": "Laure Corrao n’a pas désigné de délégué à la protection des données. Pour exercer vos droits, utilisez le formulaire de contact du site.",
-		"s2h": "2. Données collectées",
-		"s2p1": "Le formulaire de contact peut collecter : prénom, nom, adresse e-mail, numéro de téléphone et le message que vous écrivez. L’agenda de réservation, fourni par Cal.com, collecte les informations nécessaires au rendez-vous (identité, e-mail, téléphone, créneau). Ne renseignez pas de détails sur votre santé dans ce formulaire.",
-		"s2p2": "Ce site ne dépose pas de cookie de mesure d’audience ni de cookie publicitaire. L’hébergeur peut conserver des journaux techniques de connexion, notamment l’adresse IP, pour la sécurité du service. L’affichage de l’agenda établit une connexion avec Cal.com.",
-		"s3h": "3. Finalités et bases légales",
-		"s3p1": "Vos données sont traitées pour répondre à vos demandes de contact, organiser les rendez-vous et respecter les obligations légales, notamment la facturation.",
-		"s3p2": "Les bases légales sont l’exécution de mesures précontractuelles et du contrat, l’obligation légale et l’intérêt légitime (sécurité du site).",
-		"s4h": "4. Durée de conservation",
-		"s4p1": "Les demandes de contact sont conservées pendant un an, puis supprimées ou anonymisées. Les factures sont conservées dix ans. Les données saisies dans l’agenda sont conservées par Cal.com selon sa propre politique.",
-		"s5h": "5. Destinataires et transferts",
-		"s5p1": "Les messages du formulaire de contact sont reçus par #1344 Solutions (https://1344.fr), prestataire technique. Le site est hébergé par GitHub, Inc. Les rendez-vous pris dans l’agenda sont traités par Cal.com.",
-		"s5p2": "L’hébergement du site par GitHub, Inc. peut entraîner un traitement de données de connexion aux États-Unis. Les messages du formulaire sont transmis à #1344 Solutions. Les données de réservation sont traitées par Cal.com : <a href=\"https://cal.com/privacy\" rel=\"noopener noreferrer\">cal.com/privacy</a>.",
-		"s6h": "6. Vos droits (RGPD)",
-		"s6p1": "Vous disposez d’un droit d’accès, de rectification, d’effacement, de limitation du traitement, de portabilité et d’opposition. Pour les exercer, utilisez le formulaire de contact du site.",
-		"s6p2": "Vous pouvez aussi écrire à <a href=\"mailto:{{email}}\">{{email}}</a>.",
-		"s6p3": "Vous avez le droit d’introduire une réclamation auprès de la CNIL : <a href=\"https://www.cnil.fr\" rel=\"noopener noreferrer\">www.cnil.fr</a>.",
-		"s7h": "7. Cookies",
-		"s7p1": "Ce site ne dépose pas de cookie de mesure d’audience ni de cookie publicitaire.",
-		"s7p2": "L’agenda Cal.com peut déposer les cookies nécessaires à la réservation. Vous pouvez configurer votre navigateur pour limiter les cookies.",
-		"s8h": "8. Sécurité",
-		"s8p1": "Des mesures techniques et organisationnelles protègent vos données contre l’accès non autorisé, la perte ou l’altération."
+		"updated": "Dernière mise à jour : 2 novembre 2026",
+		"sections": [
+			{
+				"title": "Responsable du traitement",
+				"paragraphs": [
+					"Laure Corrao, psychopraticienne et thérapeute de couple, est responsable des traitements décrits ici. Elle n’a pas désigné de délégué à la protection des données."
+				],
+				"contact": true
+			},
+			{
+				"title": "Données collectées et utilisation",
+				"paragraphs": [
+					"Contact et échange gratuit. Le formulaire demande votre prénom, votre nom, votre téléphone, votre adresse électronique et un message. Le motif de la demande et les informations de réservation, notamment le créneau choisi, permettent de vous répondre et d’organiser l’échange gratuit de 10 minutes. Ces démarches précontractuelles sont effectuées à votre demande. Sans les champs requis, le formulaire ne peut pas être envoyé.",
+					"Accompagnement. Si vous décidez de poursuivre, les données d’identité, de contact et de gestion administrative nécessaires à vos séances sont traitées pour exécuter le contrat.",
+					"Devis et paiement. Les devis, les coordonnées de facturation, les montants et les statuts de règlement servent à gérer le contrat et à respecter les obligations comptables. Le devis et le lien de paiement sont envoyés par mail.",
+					"Sécurité du site. L’hébergeur peut conserver des journaux de connexion, notamment l’adresse IP, pour protéger le site et prévenir les abus. Ce traitement repose sur l’intérêt légitime à assurer la sécurité du service."
+				]
+			},
+			{
+				"title": "Informations sensibles",
+				"paragraphs": [
+					"Une présentation générale de votre demande suffit. Merci de ne pas indiquer de diagnostic, de récit détaillé de traumatisme ou d’autres informations sensibles dans le formulaire public, le calendrier ou la référence de paiement.",
+					"Le traitement de données de santé requiert une base juridique et une condition spécifique au titre de l’article 9 du RGPD. L’acceptation des CGV ne constitue pas un consentement explicite à un tel traitement."
+				]
+			},
+			{
+				"title": "Destinataires et prestataires",
+				"paragraphs": [
+					"Les personnes habilitées accèdent aux seules données nécessaires à leur mission. Hostinger héberge le site. Le formulaire transmet les demandes à #1344 Solutions via son service Forge. Cal.com traite les données saisies pour réserver l’échange gratuit.",
+					"Des données peuvent être communiquées aux autorités lorsqu’une obligation légale l’impose. Les données ne sont pas vendues à des tiers."
+				],
+				"links": [
+					{
+						"label": "Politique de confidentialité de Hostinger",
+						"href": "https://www.hostinger.com/legal/privacy-policy"
+					},
+					{
+						"label": "Politique de confidentialité de Cal.com",
+						"href": "https://cal.com/privacy"
+					}
+				]
+			},
+			{
+				"title": "Durées de conservation",
+				"paragraphs": [
+					"Les demandes de contact sans prestation sont conservées pendant un an, puis supprimées ou anonymisées. Pour les données saisies dans l’agenda, consultez également la politique de Cal.com.",
+					"Les factures et pièces comptables soumises à l’obligation de conservation sont conservées dix ans à compter de la clôture de l’exercice concerné. Les autres données sont conservées le temps nécessaire à leur finalité. L’accès aux archives est limité aux besoins qui justifient leur conservation."
+				]
+			},
+			{
+				"title": "Sécurité",
+				"paragraphs": [
+					"Des mesures techniques et organisationnelles protègent les données contre les accès non autorisés, les pertes, les altérations et les divulgations. Le formulaire de contact et l’agenda public sont destinés aux échanges pratiques."
+				]
+			},
+			{
+				"title": "Vos droits",
+				"paragraphs": [
+					"Selon le traitement et les conditions applicables, vous pouvez demander l’accès à vos données, leur rectification, leur effacement, la limitation du traitement ou leur portabilité, ou vous opposer à certains traitements. Si le traitement repose sur votre consentement, vous pouvez le retirer à tout moment, sans remettre en cause la licéité des opérations antérieures.",
+					"Vous pouvez utiliser le formulaire de contact du site ou écrire à l’adresse professionnelle indiquée ci-dessus. Un justificatif d’identité n’est demandé qu’en cas de doute raisonnable sur votre identité. Une réponse est apportée en principe sous un mois. Toute prolongation justifiée vous est expliquée. Vous pouvez également adresser une réclamation à la CNIL."
+				],
+				"links": [
+					{
+						"label": "Adresser une réclamation à la CNIL",
+						"href": "https://www.cnil.fr/fr/plaintes"
+					}
+				]
+			},
+			{
+				"title": "Cookies et services externes",
+				"paragraphs": [
+					"Le site n’installe pas directement de traceurs publicitaires ou de mesure d’audience. L’affichage du calendrier établit une connexion avec Cal.com, qui peut utiliser des cookies nécessaires à la réservation.",
+					"Les traceurs strictement nécessaires peuvent être utilisés sans consentement lorsque les conditions légales sont réunies. Les traceurs facultatifs soumis au consentement nécessitent votre accord préalable. Les refuser doit être aussi simple que les accepter. Vous pouvez également limiter les cookies dans votre navigateur."
+				]
+			},
+			{
+				"title": "Mise à jour",
+				"paragraphs": [
+					"Cette politique est actualisée lorsque les pratiques ou les services changent. Toute évolution nécessitant une information spécifique ou un nouveau consentement fait l’objet des démarches correspondantes."
+				]
+			}
+		]
 	},
 	"Terms": {
-		"metaTitle": "Conditions générales",
-		"metaDescription": "Conditions de consultation de Laure Corrao, psychopraticienne et thérapeute de couple à Martigues.",
+		"h1": "Conditions générales de vente",
+		"metaTitle": "Conditions générales de vente",
+		"metaDescription": "Consultations et accompagnements individuels, de couple et familiaux",
+		"subtitle": "Consultations et accompagnements individuels, de couple et familiaux",
 		"back": "← Retour à l’accueil",
-		"h1": "Conditions générales",
-		"updated": "Dernière mise à jour : 28 octobre 2026",
-		"s1h": "1. Objet",
-		"s1p1": "Les présentes conditions s’appliquent aux consultations proposées par Laure Corrao, psychopraticienne et thérapeute de couple à Martigues et en visioconférence. La prise de rendez-vous implique leur acceptation.",
-		"s2h": "2. Séances",
-		"s2p1": "Séance individuelle : 60 € pour une heure, au cabinet ou en visioconférence. Séance de couple : 80 € par couple pour une heure, en présence des deux partenaires.",
-		"s2p2": "Aucun forfait ni pack n’est proposé.",
-		"s3h": "3. Règlement",
-		"s3p1": "Le règlement peut être effectué par chèque, en espèces ou en ligne par carte bancaire via un lien de paiement sécurisé.",
-		"s3p2": "Pour les consultations en visioconférence, le règlement en ligne doit être effectué avant le début de la séance. Le lien de connexion est transmis après confirmation du rendez-vous.",
-		"s4h": "4. Modification ou annulation",
-		"s4p1": "Un rendez-vous est personnellement réservé. Pour le déplacer ou l’annuler, prévenez au moins 24 heures à l’avance, depuis la confirmation de rendez-vous ou en contactant Laure Corrao.",
-		"s4p2": "Toute séance annulée moins de 24 heures avant le rendez-vous, ou non honorée, pourra être facturée, sauf situation exceptionnelle ou cas de force majeure.",
-		"s5h": "5. Remboursement",
-		"s5p1": "Les consultations ne sont pas prises en charge par l’Assurance maladie. Certaines mutuelles proposent un forfait annuel pour les consultations de psychothérapie ou de médecines complémentaires.",
-		"s5p2": "Une facture peut être remise sur demande afin de solliciter la mutuelle.",
-		"s6h": "6. Engagement de la personne accompagnée",
-		"s6p1": "Pour une séance en visioconférence, installez-vous dans un lieu calme où vous pouvez parler en toute confidentialité. Ne décrivez pas votre état de santé dans le formulaire de réservation.",
-		"s7h": "7. Contact",
-		"s7p1": "Laure Corrao — formulaire de contact du site laurecorrao.fr."
+		"updated": "Version du 2 novembre 2026.",
+		"sections": [
+			{
+				"title": "Identification et champ d’application",
+				"paragraphs": [
+					"Les présentes conditions régissent les prestations d’accompagnement proposées aux particuliers par Laure Corrao.",
+					"Les Jardins de Louis, 9 impasse Le Maroni — Saint-Jean, 13110 Port-de-Bouc, France.",
+					"Téléphone : 06 69 31 64 50.",
+					"Elles concernent exclusivement les prestations d’accompagnement présentées sur laurecorrao.fr.",
+					"Les CGV sont communiquées avec le devis avant l’engagement du client. La version acceptée reste applicable au contrat concerné."
+				]
+			},
+			{
+				"title": "Nature de l’accompagnement",
+				"paragraphs": [
+					"Laure Corrao propose des accompagnements individuels, de couple et familiaux. Selon les besoins, elle associe notamment la parole, l’approche systémique et des outils de gestion des émotions.",
+					"La prestation adaptée à la demande est précisée dans le devis.",
+					"La prestataire s’engage à mettre en œuvre les moyens professionnels convenus, sans garantir un résultat déterminé.",
+					"L’accompagnement ne remplace pas un suivi médical ou psychiatrique et ne comprend ni diagnostic médical ni prescription. Une orientation vers un autre professionnel peut être proposée lorsque la demande dépasse le cadre de l’intervention."
+				]
+			},
+			{
+				"title": "Échange préalable gratuit",
+				"paragraphs": [
+					"Un premier échange de 10 minutes, gratuit et sans engagement, permet de comprendre brièvement la demande et de vérifier si l’accompagnement proposé peut convenir.",
+					"Cet échange ne constitue pas une séance de thérapie et n’oblige pas à réserver une consultation payante."
+				],
+				"link": "booking"
+			},
+			{
+				"title": "Devis et réservation",
+				"paragraphs": [
+					"Si les parties souhaitent poursuivre, elles conviennent d’un créneau.",
+					"La prestataire adresse par mail un devis personnalisé précisant la prestation, sa durée, son prix final, la date, le lieu ou la modalité à distance, les conditions de paiement et la durée de validité du devis.",
+					"Les CGV et le formulaire de rétractation, lorsque applicable, accompagnent le devis.",
+					"Le contrat est conclu après acceptation expresse du devis et des CGV par le client.",
+					"Une confirmation et les documents contractuels sont transmis par mail.",
+					"Lorsqu’un paiement sur place est convenu, le paiement préalable en ligne n’est pas exigé pour confirmer le rendez-vous."
+				]
+			},
+			{
+				"title": "Tarifs",
+				"paragraphs": [
+					"Séance individuelle : 60 € pour 1 heure.",
+					"Séance de couple : 90 € pour 1 h 30, pour la séance.",
+					"Séance familiale : 90 € pour 1 h 30, pour la séance.",
+					"Aucun frais supplémentaire ne peut être facturé sans information et accord préalables.",
+					"Les modifications tarifaires ne s’appliquent pas aux devis déjà acceptés."
+				]
+			},
+			{
+				"title": "Paiement",
+				"paragraphs": [
+					"Le mode de règlement est convenu lors de la réservation :",
+					"— paiement en ligne avant la séance, via un lien sécurisé envoyé par mail ; — ou, pour les consultations au cabinet, paiement sur place à l’arrivée, notamment en espèces dans les limites légales.",
+					"Une note ou facture est remise conformément aux obligations applicables, quel que soit le moyen de règlement."
+				]
+			},
+			{
+				"title": "Annulation, report et remboursement",
+				"paragraphs": [
+					"Toute demande d’annulation ou de report doit être adressée au moins 48 heures avant le rendez-vous :",
+					"Par téléphone ou SMS au 06 69 31 64 50.",
+					"Si ce délai est respecté, les sommes éventuellement versées pour la séance annulée sont remboursées dans les 14 jours, ou affectées à un report avec l’accord du client.",
+					"Si la prestataire annule, elle propose un report que le client peut refuser. Les sommes versées pour la séance non réalisée sont alors remboursées dans les 14 jours suivant l’annulation.",
+					"Les règles légales relatives à la force majeure restent applicables.",
+					"Ces dispositions ne limitent pas le droit légal de rétractation lorsqu’il existe."
+				]
+			},
+			{
+				"title": "Droit de rétractation",
+				"paragraphs": [
+					"Pour les contrats de services conclus à distance relevant du Code de la consommation, le client dispose de 14 jours à compter de la conclusion du contrat pour se rétracter sans motif.",
+					"Il peut adresser le formulaire ci-dessous ou toute déclaration non ambiguë à l’adresse professionnelle indiquée dans ces conditions.",
+					"Les sommes concernées sont remboursées dans les 14 jours suivant l’information de la rétractation, avec le même moyen de paiement, sauf accord exprès pour un autre moyen sans frais.",
+					"Si le client souhaite une séance avant la fin des 14 jours, sa demande expresse d’exécution anticipée est recueillie sur un support durable.",
+					"En cas de rétractation après le début d’exécution demandé expressément, un montant proportionné au service effectivement fourni peut rester dû dans les conditions légales, si l’information requise a été donnée.",
+					"Le droit de rétractation est perdu pour une prestation pleinement exécutée avant la fin du délai uniquement lorsque son exécution a commencé avec l’accord préalable exprès du client et sa reconnaissance de la perte de ce droit après exécution complète.",
+					"Le paiement ou la réservation ne suffit pas à recueillir ces accords.",
+					"Mentions à recueillir séparément si nécessaires, sans case précochée :",
+					"« Je demande expressément que la prestation commence avant la fin du délai de rétractation de 14 jours. »",
+					"« Je reconnais que je perdrai mon droit de rétractation lorsque la prestation aura été pleinement exécutée. »"
+				]
+			},
+			{
+				"title": "Formulaire de rétractation",
+				"paragraphs": [
+					"À l’attention de Laure Corrao, Les Jardins de Louis, 9 impasse Le Maroni — Saint-Jean, 13110 Port-de-Bouc, France.",
+					"Je vous notifie ma rétractation du contrat portant sur la prestation suivante : ____________________",
+					"Date de conclusion du contrat : ____________________\nRéférence du devis : ____________________\nNom du client : ____________________\nAdresse du client : ____________________\nDate : ____________________\nSignature, uniquement pour un envoi papier : ____________________"
+				]
+			},
+			{
+				"title": "Déroulement et confidentialité",
+				"paragraphs": [
+					"Les séances se déroulent dans un cadre respectueux des personnes.",
+					"La prestataire préserve la confidentialité des informations confiées, sous réserve des obligations et exceptions prévues par la loi.",
+					"Les règles propres aux séances de couple et de famille sont expliquées avant l’accompagnement, notamment pour les éventuels échanges individuels.",
+					"Aucun enregistrement n’est réalisé sans information et accord préalables des personnes concernées."
+				]
+			},
+			{
+				"title": "Responsabilité",
+				"paragraphs": [
+					"La responsabilité de la prestataire s’apprécie dans les conditions du droit commun. Les présentes CGV ne suppriment pas les droits impératifs du consommateur."
+				]
+			},
+			{
+				"title": "Réclamations et médiation",
+				"paragraphs": [
+					"Toute réclamation peut être adressée par courrier à l’adresse professionnelle indiquée dans ces conditions.",
+					"Après une réclamation écrite préalable restée sans solution, le consommateur peut saisir gratuitement un médiateur de la consommation, dans les conditions légales de recevabilité, notamment dans l’année suivant sa réclamation écrite.",
+					"La médiation ne prive pas le consommateur de son droit d’agir en justice."
+				]
+			},
+			{
+				"title": "Données personnelles et droit applicable",
+				"paragraphs": [
+					"Les CGV sont soumises au droit français, sous réserve des dispositions impératives protectrices applicables au consommateur.",
+					"À défaut de solution amiable, le litige relève des juridictions compétentes selon les règles légales."
+				],
+				"link": "privacy"
+			}
+		],
+		"booking": "Réserver l’échange gratuit sur Cal.com",
+		"privacy": "Consulter la politique de confidentialité"
 	},
 	"Pages": {
-		"eyebrow": "Laure Corrao · Martigues"
+		"eyebrow": "Laure Corrao · Port-de-Bouc"
 	},
 	"HomePage": {
-		"eyebrow": "Cabinet à Martigues · Consultations en ligne",
+		"eyebrow": "Cabinet à Port-de-Bouc · Consultations en ligne",
 		"titleHtml": "Psychopraticienne &amp;<br />Thérapeute de couple",
 		"subtitle": "Mettre des mots sur vos maux pour retrouver le chemin vers vous-même.",
 		"intro": "Je vous accueille dans un espace d’écoute bienveillant, confidentiel et sans jugement pour vous aider à traverser les difficultés, mieux vous comprendre et retrouver équilibre et sérénité.",
@@ -144,7 +321,7 @@
 		"individualSummaryHtml": "Anxiété · Phobies · Estime de soi ·<br />Confiance en soi",
 		"coupleSummaryHtml": "Communication · Conflits · Éloignement ·<br />Crises · Reconstruction du lien",
 		"approachTitle": "Une approche sur mesure",
-		"approachSummaryHtml": "Hypnose · DNR · Outils<br />thérapeutiques adaptés",
+		"approachSummaryHtml": "Hypnose · DTMA · Outils<br />thérapeutiques adaptés",
 		"aboutEyebrow": "À propos",
 		"aboutTitle": "Et si vous vous accordiez enfin la place d’aller mieux ?",
 		"aboutBody": "Je suis Laure Corrao, psychopraticienne et thérapeute de couple. Je vous accompagne avec bienveillance, écoute et sans jugement, dans un espace confidentiel où vous pourrez vous déposer pleinement, à votre rythme.",
@@ -154,17 +331,19 @@
 		"readingBody": "Mon approche est personnalisée et s’appuie sur différents outils thérapeutiques, notamment l’hypnose, les thérapies cognitives et comportementales, l’approche systémique et le coaching. Parce que chaque personne, chaque histoire et chaque couple sont uniques, l’accompagnement l’est aussi.",
 		"individualMeta": "1 heure · 60 € · Cabinet ou visio",
 		"individualCta": "Découvrir l’accompagnement individuel",
-		"coupleMeta": "1 heure · 80 € par couple",
+		"coupleMeta": "1 h 30 · 90 € par couple",
 		"coupleCta": "Découvrir la thérapie de couple",
 		"placeTitle": "Un espace pour vous retrouver.",
 		"placeBody": "Dans l’atmosphère chaleureuse et apaisante de mon cabinet, vous pourrez enfin mettre des mots sur vos maux, mieux comprendre ce qui se joue en vous et avancer vers un équilibre plus serein.",
-		"practiceTitle": "Au cabinet, à Martigues",
+		"practiceTitle": "Au cabinet, à Port-de-Bouc",
 		"practiceBody": "Un cadre chaleureux, confidentiel et sans jugement. Les informations pratiques d’accès seront précisées avant votre venue.",
 		"videoTitle": "En visioconférence",
 		"videoBody": "Installez-vous dans un lieu calme, où vous pouvez parler en toute confidentialité.",
 		"placeClose": "Ici, vous n’avez pas besoin de savoir par où commencer. Vous avez simplement besoin d’oser faire le premier pas."
 	},
 	"Individual": {
+		"journeyAlt": "Un sentier aquarellé illustre un parcours personnel : dire ce qui vous pèse, en parler lors du premier rendez-vous, mieux vous comprendre et avancer à votre rythme vers davantage d’apaisement et d’autonomie.",
+		"viewJourney": "Voir l’illustration en grand",
 		"metaTitle": "Accompagnement individuel",
 		"metaDescription": "Un espace pour comprendre ce que vous traversez et retrouver vos propres ressources.",
 		"h1": "Accompagnement individuel",
@@ -189,6 +368,7 @@
 		]
 	},
 	"Couple": {
+		"imageAlt": "Un couple assis sur un canapé échange avec une thérapeute qui tient un carnet.",
 		"metaTitle": "Thérapie de couple",
 		"metaDescription": "Retrouver un espace de dialogue lorsque la relation ne parvient plus à avancer seule.",
 		"h1": "Thérapie de couple",
@@ -229,22 +409,27 @@
 			"l’approche psychanalytique et la thérapie par la parole, pour explorer votre histoire et mieux comprendre l’origine de certains mécanismes ;",
 			"l’hypnose, pour travailler sur certains blocages, peurs ou automatismes ;",
 			"l’art-thérapie, pour permettre l’expression autrement que par les mots lorsque cela est pertinent ;",
-			"la programmation neurolinguistique, ou PNL, ainsi que différents outils de coaching et d’accompagnement au changement ;",
-			"Le DNR, ou Deep Neural Repatterning, est un outil de retraitement émotionnel qui vise à apaiser l’intensité associée à certaines expériences difficiles, peurs ou blocages. Il permet de travailler sur la manière dont ces vécus restent inscrits émotionnellement, dans le respect du rythme et des limites de chaque personne."
+			"la programmation neurolinguistique, ou PNL, ainsi que différents outils de coaching et d’accompagnement au changement."
 		],
 		"after": [
 			"Ces outils ne sont jamais appliqués mécaniquement. Je sélectionne ceux qui correspondent à vos besoins et je vous explique toujours ce que je vous propose. Vous restez libre et pleinement acteur de votre accompagnement.",
 			"Les premières séances sont consacrées à l’écoute de votre demande, à la compréhension de votre situation et à la définition de vos objectifs. Le travail évolue ensuite avec vous, dans le respect de votre rythme et de vos limites.",
 			"Mon cabinet est pensé comme un espace chaleureux, confidentiel et sans jugement : un lieu dans lequel vous pourrez mettre des mots sur vos maux, vous sentir écouté et avancer en toute sécurité.",
 			"Il n’est pas nécessaire d’attendre d’aller plus mal pour commencer à prendre soin de soi."
-		]
+		],
+		"dtma": {
+			"title": "DTMA — Accompagner les vécus traumatiques et les épreuves de vie",
+			"subtitle": "Des mouvements oculaires guidés et des tapotements alternés",
+			"body": "Violences sexuelles, accident de voiture, deuil ou séparation brutale : certaines expériences laissent une souffrance qui persiste. Dans mon accompagnement, la DTMA utilise des mouvements des yeux guidés et des tapotements alternés, avec l’objectif de travailler sur les émotions associées aux souvenirs douloureux. Chaque démarche commence par un échange pour évaluer vos besoins et adapter l’accompagnement à votre rythme. Les traumatismes sévères peuvent nécessiter une prise en charge spécialisée, en complément ou en priorité.",
+			"alt": "Une femme suit du regard les doigts levés de la praticienne assise en face d’elle."
+		}
 	},
 	"Booking": {
 		"metaTitle": "Tarifs et rendez-vous",
 		"metaDescription": "Choisir de commencer une thérapie, c’est déjà faire un premier pas vers soi.",
 		"h1": "Tarifs et rendez-vous",
 		"lede": "Choisir de commencer une thérapie, c’est déjà faire un premier pas vers soi.",
-		"intro": "Je vous accueille au cabinet à Martigues ou en consultation à distance, dans un cadre confidentiel, bienveillant et sans jugement.",
+		"intro": "Je vous accueille au cabinet à Port-de-Bouc ou en consultation à distance, dans un cadre confidentiel, bienveillant et sans jugement.",
 		"sections": [
 			{
 				"title": "Séance individuelle",
@@ -259,46 +444,25 @@
 			{
 				"title": "Séance de couple",
 				"lines": [
-					"Durée : 1 heure",
-					"Tarif : 80 € par couple"
+					"Durée : 1 h 30",
+					"Tarif : 90 € par couple"
 				],
 				"paragraphs": [
 					"Les séances se déroulent en présence des deux partenaires, dans un espace neutre permettant à chacun de s’exprimer et d’être entendu."
 				]
 			},
 			{
-				"title": "Prendre rendez-vous",
-				"paragraphs": [
-					"Vous pouvez consulter directement mes disponibilités grâce à l’agenda en ligne et sélectionner :"
-				],
-				"items": [
-					"le type d’accompagnement souhaité ;",
-					"une consultation au cabinet ou en visioconférence ;",
-					"la date et l’horaire qui vous conviennent."
-				],
-				"after": [
-					"Une confirmation vous sera adressée par e-mail après la réservation, ainsi qu’un rappel avant votre rendez-vous."
-				]
-			},
-			{
-				"title": "Moyens de paiement",
-				"paragraphs": [
-					"Le règlement peut être effectué :"
-				],
-				"items": [
-					"par chèque ;",
-					"en espèces ;",
-					"en ligne, par carte bancaire, grâce à un lien de paiement sécurisé."
-				],
-				"after": [
-					"Pour les consultations en visioconférence, le règlement en ligne doit être effectué avant le début de la séance. Le lien de connexion vous sera transmis après confirmation du rendez-vous."
+				"title": "Séance familiale",
+				"lines": [
+					"Durée : 1 h 30",
+					"Tarif : 90 € par séance"
 				]
 			},
 			{
 				"title": "Modification ou annulation",
 				"paragraphs": [
-					"Un rendez-vous vous est personnellement réservé. Si vous devez le déplacer ou l’annuler, merci de me prévenir au moins 24 heures à l’avance, directement depuis votre confirmation de rendez-vous ou en me contactant.",
-					"Toute séance annulée moins de 24 heures avant le rendez-vous, ou non honorée, pourra être facturée, sauf situation exceptionnelle ou cas de force majeure."
+					"Pour annuler ou reporter une séance, merci de prévenir Laure Corrao au moins 48 heures à l’avance par téléphone ou SMS au 06 69 31 64 50.",
+					"Si ce délai est respecté, les sommes éventuellement versées pour la séance annulée sont remboursées dans les 14 jours, ou affectées à un report avec l’accord du client."
 				]
 			},
 			{
@@ -310,13 +474,16 @@
 			}
 		],
 		"closing": "Vous n’avez pas besoin d’attendre d’aller plus mal pour demander de l’aide.",
-		"agendaTitle": "Choisir un rendez-vous",
-		"agendaNotice": "Calendrier de démonstration : les créneaux de 30 minutes ci-dessous servent uniquement au test. Ils ne correspondent pas aux séances de Laure, qui durent une heure."
+		"agendaTitle": "Votre premier échange gratuit"
 	},
 	"BookingCta": {
 		"eyebrow": "À votre rythme",
 		"title": "Un premier pas vers vous.",
-		"body": "Vous n’avez pas besoin de savoir par où commencer."
+		"paragraphs": [
+			"Vous souhaitez savoir si mon accompagnement correspond à vos besoins ? Je vous propose un premier échange gratuit de 10 minutes, sans engagement, pour comprendre votre demande et vérifier ensemble si mes approches peuvent vous convenir. Cet échange ne constitue pas une séance de thérapie.",
+			"Si nous décidons de poursuivre, nous convenons ensemble d’un rendez-vous. Vous recevez ensuite par mail un devis personnalisé accompagné des conditions générales de vente et d’un lien de paiement.",
+			"Le règlement peut être effectué en ligne avant la séance ou, pour les rendez-vous au cabinet, sur place à votre arrivée, notamment en espèces. Le mode de règlement est convenu ensemble lors de la réservation."
+		]
 	},
 	"Contact": {
 		"close": "Fermer",
@@ -383,11 +550,11 @@
 			},
 			{
 				"question": "Puis-je consulter en visioconférence ?",
-				"answer": "Oui. Les accompagnements individuels peuvent avoir lieu au cabinet à Martigues ou à distance, dans un cadre calme et confidentiel."
+				"answer": "Oui. Les accompagnements individuels peuvent avoir lieu au cabinet à Port-de-Bouc ou à distance, dans un cadre calme et confidentiel."
 			},
 			{
 				"question": "Combien de temps dure une séance ?",
-				"answer": "Une séance individuelle ou de couple dure environ une heure."
+				"answer": "Une séance individuelle dure une heure. Une séance de couple ou familiale dure une heure et demie."
 			},
 			{
 				"question": "Les consultations sont-elles remboursées ?",
@@ -395,8 +562,59 @@
 			},
 			{
 				"question": "Comment déplacer ou annuler un rendez-vous ?",
-				"answer": "Merci de prévenir au moins 24 heures à l’avance. Les modalités figurent dans votre confirmation de rendez-vous."
+				"answer": "Pour annuler ou reporter une séance, merci de prévenir Laure Corrao au moins 48 heures à l’avance par téléphone ou SMS au 06 69 31 64 50."
 			}
 		]
+	},
+	"Adhd": {
+		"overview": {
+			"title": "TDAH : mieux se comprendre, trouver ses repères",
+			"intro": "Le trouble du déficit de l’attention avec ou sans hyperactivité peut rendre certaines situations du quotidien particulièrement exigeantes. Se concentrer, s’organiser, attendre ou terminer une tâche demande parfois beaucoup d’efforts.",
+			"body": "Je vous propose un accompagnement adapté à votre âge et à vos besoins, pour mieux comprendre ces difficultés, reconnaître vos ressources et construire des solutions concrètes.",
+			"alt": "Illustration du TDAH autour de quatre thèmes : attention, organisation, gestion du temps et impulsivité."
+		},
+		"child": {
+			"title": "Enfant : grandir avec des repères et de la confiance",
+			"intro": "Votre enfant oublie les consignes, se disperse ou agit avant de réfléchir ? Les devoirs et les routines deviennent source de tensions ?",
+			"body": "À travers des échanges et des supports ludiques adaptés à son âge, je l’accompagne pour mieux comprendre son fonctionnement, exprimer ce qu’il ressent et avancer par petites étapes. Vous êtes associés à la démarche pour trouver des repères utiles à la maison et valoriser ses progrès.",
+			"goal": "L’objectif : soutenir votre enfant tout en vous aidant à retrouver un quotidien plus apaisé.",
+			"alt": "Un enfant assemble des blocs de bois pour construire une tour."
+		},
+		"teen": {
+			"title": "Adolescent : se comprendre et gagner en autonomie",
+			"intro": "Les devoirs s’accumulent, l’organisation devient compliquée et les remarques répétées finissent par peser sur la confiance en soi.",
+			"body": "Je propose à votre adolescent un espace où il peut être écouté sans jugement et participer aux décisions qui le concernent. Ensemble, nous cherchons des stratégies adaptées à sa réalité : démarrer une tâche, organiser son temps, faire des pauses utiles et mieux communiquer ses besoins.",
+			"goal": "L’objectif : l’aider à construire son autonomie en s’appuyant aussi sur ses forces.",
+			"alt": "Un adolescent écrit dans son cahier, assis devant des livres ouverts."
+		},
+		"adult": {
+			"title": "Adulte : alléger le quotidien et retrouver confiance",
+			"intro": "Vous avez le sentiment de courir après le temps, de commencer beaucoup de choses sans parvenir à les terminer ou de vous épuiser à tout gérer ?",
+			"body": "Je vous accompagne pour identifier les situations qui vous mettent en difficulté et expérimenter des outils adaptés : clarifier vos priorités, fractionner les tâches, installer des repères et mieux tenir compte de vos limites.",
+			"goal": "L’objectif : construire une organisation qui vous ressemble et porter un regard moins culpabilisant sur vous-même.",
+			"alt": "Une femme à son bureau se demande par quelle tâche commencer."
+		},
+		"first": {
+			"title": "Un premier échange pour faire le point",
+			"body": "La première séance permet de comprendre votre demande, vos difficultés et ce que vous souhaitez voir évoluer. Nous définissons ensuite des objectifs réalistes, à votre rythme.",
+			"scope": "Mon accompagnement ne pose pas de diagnostic et vient en complément des soins nécessaires. Si vous vous interrogez sur un possible TDAH, je vous invite à consulter un médecin formé à son diagnostic."
+		},
+		"metaTitle": "TDAH : mieux se comprendre, trouver ses repères",
+		"metaDescription": "Accompagnement du TDAH à Port-de-Bouc avec Laure Corrao. Enfant, adolescent ou adulte, trouvez des repères concrets pour votre quotidien.",
+		"sources": "Les repères sur le TDAH et l’accompagnement s’appuient sur l’Assurance maladie et la HAS."
+	},
+	"Parenting": {
+		"h1": "Moins de tensions, plus de dialogue en famille",
+		"metaDescription": "Coaching en parentalité à Port-de-Bouc avec Laure Corrao pour mieux communiquer, poser des limites claires et apaiser les tensions en famille.",
+		"intro": "Vous répétez les mêmes consignes et les échanges finissent en conflit ? Écrans, devoirs, limites, désaccords éducatifs… Vous vous sentez parfois dépassé et ne savez plus comment réagir ?",
+		"support": "Je vous accompagne pour comprendre ce qui se joue et trouver des solutions adaptées à votre famille.",
+		"space": "Un espace pour prendre du recul, sans jugement sur votre manière d’être parent.",
+		"practice": "Ensemble, nous travaillons sur des situations concrètes : poser des limites claires, mieux communiquer, accompagner les émotions et construire des routines qui facilitent le quotidien.",
+		"sessions": "Les séances peuvent se faire seul ou avec l’autre parent. La participation des enfants se décide ensemble, selon les besoins.",
+		"goal": "L’objectif : vous aider à retrouver confiance dans votre rôle et à construire des relations familiales plus apaisées, étape par étape.",
+		"reassurance": "Vous n’avez pas besoin d’attendre d’être à bout pour vous faire accompagner.",
+		"alt": "Une jeune fille prend la parole pendant un jeu de cartes en famille.",
+		"topic": "Coaching en parentalité",
+		"metaTitle": "Coaching en parentalité | Laure Corrao"
 	}
 }

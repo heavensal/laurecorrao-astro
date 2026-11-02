@@ -4,8 +4,8 @@
 		"brandSubtitle": "Psychopractitioner · Couples therapist"
 	},
 	"Home": {
-		"metaTitle": "Psychopractitioner and couples therapist in Martigues",
-		"metaDescription": "Laure Corrao: individual support and couples therapy in Martigues and by video."
+		"metaTitle": "Psychopractitioner and couples therapist in Port-de-Bouc",
+		"metaDescription": "Laure Corrao: individual support and couples therapy in Port-de-Bouc and by video."
 	},
 	"Nav": {
 		"aria": "Main navigation",
@@ -15,7 +15,9 @@
 		"approach": "My approach",
 		"articles": "Articles",
 		"booking": "Appointments",
-		"bookingCta": "Book an appointment"
+		"bookingCta": "Book a free 10-minute conversation",
+		"adhd": "ADHD",
+		"parenting": "Parenting"
 	},
 	"NotFound": {
 		"metaTitle": "Page not found",
@@ -43,10 +45,10 @@
 		"all": "All articles",
 		"back": "← Back to home",
 		"backToIndex": "← All articles",
-		"bookingCta": "Book an appointment"
+		"bookingCta": "Book a free 10-minute conversation"
 	},
 	"Footer": {
-		"tagline": "Psychopractitioner and couples therapist<br/>In Martigues and by video",
+		"tagline": "Psychopractitioner and couples therapist<br/>In Port-de-Bouc and by video",
 		"contact": "Contact me",
 		"legalAria": "Legal information",
 		"linkLegal": "Legal notice",
@@ -56,85 +58,236 @@
 	},
 	"LegalNotice": {
 		"metaTitle": "Legal notice",
-		"metaDescription": "Legal notice for the website of Laure Corrao, psychopractitioner and couples therapist in Martigues.",
+		"metaDescription": "Legal notice for the website of Laure Corrao, psychopractitioner and couples therapist in Port-de-Bouc.",
 		"back": "← Back to home",
 		"h1": "Legal notice",
-		"updated": "Last updated: 28 October 2026",
-		"s1h": "1. Publisher",
-		"s1p1": "This website is published by:<br /><strong>Laure Corrao</strong>, psychopractitioner and couples therapist<br />Practice in Martigues, France<br />The practice address, SIRET, and phone number will be added here once they are known.",
-		"s1p1After": "<br />Email: <a href=\"mailto:{{email}}\">{{email}}</a>",
-		"s2h": "2. Publication director",
+		"updated": "Last updated: 2 November 2026",
+		"s1h": "Publisher",
+		"s1p1": "Laure Corrao publishes laurecorrao.fr.",
+		"s2h": "Publication director",
 		"s2p1": "The publication director is Laure Corrao.",
-		"s3h": "3. Hosting",
-		"s3p1": "This site is hosted by:<br /><strong>GitHub, Inc.</strong><br />88 Colin P. Kelly Jr. Street<br />San Francisco, CA 94107, United States<br /><a href=\"https://github.com\" rel=\"noopener noreferrer\">github.com</a>",
-		"s4h": "4. Intellectual property",
-		"s4p1": "All content on this site (text, images, graphics, structure) is protected by copyright. Any reproduction, in whole or in part, without prior permission from Laure Corrao is prohibited.",
-		"s5h": "5. Limitation of liability",
+		"s3h": "Hosting",
+		"s3p1": "Hostinger hosts this website.",
+		"s4h": "Intellectual property",
+		"s4p1": "Texts, photographs, illustrations, logos and other elements of the website are protected where they meet the legal conditions for protection. Reuse must respect the rights of their owners and the exceptions provided by law.",
+		"s5h": "Limitation of liability",
 		"s5p1": "Laure Corrao strives to keep the information on this site accurate, but cannot guarantee that it is complete or updated in real time. Information is provided for guidance only.",
-		"s6h": "6. Hyperlinks",
-		"s6p1": "This site may link to other websites. Laure Corrao does not control those sites and is not responsible for their content."
+		"s6h": "Hyperlinks",
+		"s6p1": "This site may link to other websites. Laure Corrao does not control those sites and is not responsible for their content.",
+		"addressLabel": "Business and practice address",
+		"phoneLabel": "Telephone",
+		"technical": "The technical service provider is #1344 Solutions.",
+		"activity": "Professional activity",
+		"activityBody": "Laure Corrao presents her work as a psychopractitioner and couples therapist. She offers support for individuals, couples and families.",
+		"scope": "These services do not constitute a medical consultation or replace diagnosis, treatment, or medical or psychiatric care. They do not involve prescribing or changing treatment.",
+		"info": "Site content is for information and does not provide personalised advice. This site and its forms are not an emergency service.",
+		"privacy": "Personal data and cookies",
+		"privacyLink": "Read the privacy policy",
+		"terms": "Terms of service",
+		"termsLink": "Read the terms and conditions of sale"
 	},
 	"Privacy": {
 		"metaTitle": "Privacy policy",
 		"metaDescription": "Privacy policy and personal data protection for Laure Corrao.",
 		"back": "← Back to home",
 		"h1": "Privacy policy",
-		"updated": "Last updated: 28 October 2026",
-		"s1h": "1. Data controller",
-		"s1p1": "The data controller is:<br /><strong>Laure Corrao</strong>, psychopractitioner and couples therapist<br />Practice in Martigues, France",
-		"s1p1After": "<br />Email: <a href=\"mailto:{{email}}\">{{email}}</a>",
-		"s1p2": "Laure Corrao has not appointed a data protection officer. To exercise your rights, use the contact form on this site.",
-		"s2h": "2. Data collected",
-		"s2p1": "The contact form may collect your first name, last name, email, phone number, and the message you write. The booking calendar, provided by Cal.com, collects what is needed to book (identity, email, phone, time slot). Do not describe your health in that form.",
-		"s2p2": "This site does not set analytics or advertising cookies. The host may keep technical connection logs, including IP addresses, for service security. Showing the calendar connects to Cal.com.",
-		"s3h": "3. Purposes and legal bases",
-		"s3p1": "Your data is processed to answer contact requests, arrange appointments, and meet legal obligations, including invoicing.",
-		"s3p2": "The legal bases are pre-contractual steps and performance of a contract, a legal obligation, and legitimate interest (site security).",
-		"s4h": "4. Retention",
-		"s4p1": "Contact requests are kept for one year, then deleted or anonymised. Invoices are kept for ten years. Data entered in the calendar is kept by Cal.com under its own policy.",
-		"s5h": "5. Recipients and transfers",
-		"s5p1": "Contact-form messages are received by #1344 Solutions (https://1344.fr), the technical provider. The site is hosted by GitHub, Inc. Appointments made in the calendar are processed by Cal.com.",
-		"s5p2": "Hosting by GitHub, Inc. may involve processing connection data in the United States. Form messages are sent to #1344 Solutions. Booking data is processed by Cal.com: <a href=\"https://cal.com/privacy\" rel=\"noopener noreferrer\">cal.com/privacy</a>.",
-		"s6h": "6. Your rights (GDPR)",
-		"s6p1": "You have rights of access, rectification, erasure, restriction, portability, and objection. To exercise them, use the contact form on this site.",
-		"s6p2": "You can also write to <a href=\"mailto:{{email}}\">{{email}}</a>.",
-		"s6p3": "You may lodge a complaint with the CNIL: <a href=\"https://www.cnil.fr\" rel=\"noopener noreferrer\">www.cnil.fr</a>.",
-		"s7h": "7. Cookies",
-		"s7p1": "This site does not set analytics or advertising cookies.",
-		"s7p2": "The Cal.com calendar may set the cookies required to book. You can configure your browser to limit cookies.",
-		"s8h": "8. Security",
-		"s8p1": "Technical and organisational measures protect your data against unauthorised access, loss, or alteration."
+		"updated": "Last updated: 2 November 2026",
+		"sections": [
+			{
+				"title": "Data controller",
+				"paragraphs": [
+					"Laure Corrao, a psychopractitioner and couples therapist, is responsible for the processing described here. She has not appointed a data protection officer."
+				],
+				"contact": true
+			},
+			{
+				"title": "Data collected and how it is used",
+				"paragraphs": [
+					"Contact and free introductory conversation. The form asks for your first and last names, telephone number, email address and message. The subject of your request and booking details, including the time you choose, help Laure respond and arrange the free 10-minute conversation. These steps are taken at your request before a contract is made. The form cannot be submitted without the required fields.",
+					"Support. If you decide to continue, the identity, contact and administrative details needed to organise your sessions are processed to perform the contract.",
+					"Quotes and payments. Quotes, billing details, amounts and payment status are used to administer the contract and meet accounting obligations. The quote and payment link are sent by email.",
+					"Site security. The host may retain connection logs, including IP addresses, to protect the site and prevent abuse. The legal basis is the legitimate interest in keeping the service secure."
+				]
+			},
+			{
+				"title": "Sensitive information",
+				"paragraphs": [
+					"A general description of your request is sufficient. Please do not include diagnoses, detailed accounts of trauma or other sensitive information in the public form, calendar or payment reference.",
+					"Processing health data requires a legal basis and a specific condition under Article 9 of the GDPR. Accepting the terms of sale does not constitute explicit consent to such processing."
+				]
+			},
+			{
+				"title": "Recipients and service providers",
+				"paragraphs": [
+					"Authorised individuals access only the data necessary for their tasks. Hostinger hosts the website. The contact form sends requests to #1344 Solutions through its Forge service. Cal.com processes booking details for the free introductory conversation.",
+					"Data may be shared with authorities where legally required. Data is not sold to third parties."
+				],
+				"links": [
+					{
+						"label": "Hostinger privacy policy",
+						"href": "https://www.hostinger.com/legal/privacy-policy"
+					},
+					{
+						"label": "Cal.com privacy policy",
+						"href": "https://cal.com/privacy"
+					}
+				]
+			},
+			{
+				"title": "Retention periods",
+				"paragraphs": [
+					"Contact requests that do not lead to a service are kept for one year, then deleted or anonymised. For data entered in the calendar, see also Cal.com’s privacy policy.",
+					"Invoices and supporting accounting documents subject to the retention requirement are kept for ten years from the close of the relevant financial year. Other data is kept for as long as necessary for its purpose. Archived records may only be accessed for the purposes that justify keeping them."
+				]
+			},
+			{
+				"title": "Security",
+				"paragraphs": [
+					"Technical and organisational measures protect data against unauthorised access, loss, alteration and disclosure. The contact form and public calendar are intended for practical arrangements."
+				]
+			},
+			{
+				"title": "Your rights",
+				"paragraphs": [
+					"Depending on the processing and applicable conditions, you can request access, correction, deletion, restriction or portability, or object to certain processing. Where consent is the legal basis, you can withdraw it at any time without affecting the lawfulness of earlier processing.",
+					"Use the site’s contact form or write to the practice address above. Proof of identity is requested only where there is reasonable doubt about your identity. Requests are normally answered within one month. Any justified extension will be explained. You can also lodge a complaint with the French data protection authority (CNIL)."
+				],
+				"links": [
+					{
+						"label": "Lodge a complaint with the CNIL",
+						"href": "https://www.cnil.fr/fr/plaintes"
+					}
+				]
+			},
+			{
+				"title": "Cookies and external services",
+				"paragraphs": [
+					"The site does not directly install advertising or audience measurement trackers. Displaying the calendar connects to Cal.com, which may use cookies necessary for booking.",
+					"Strictly necessary trackers can be used without consent where the legal conditions are met. Optional trackers requiring consent need your prior agreement. Refusing must be as easy as accepting. You can also restrict cookies in your browser."
+				]
+			},
+			{
+				"title": "Updates",
+				"paragraphs": [
+					"This policy is updated when practices or services change. If changes require specific notice or fresh consent, the corresponding steps will be taken."
+				]
+			}
+		]
 	},
 	"Terms": {
-		"metaTitle": "Terms",
-		"metaDescription": "Consultation terms for Laure Corrao, psychopractitioner and couples therapist in Martigues.",
+		"h1": "Terms and conditions of sale",
+		"metaTitle": "Terms and conditions of sale",
+		"metaDescription": "Individual, couples and family consultations and support",
+		"subtitle": "Individual, couples and family consultations and support",
 		"back": "← Back to home",
-		"h1": "Terms",
-		"updated": "Last updated: 28 October 2026",
-		"s1h": "1. Scope",
-		"s1p1": "These terms apply to consultations offered by Laure Corrao, psychopractitioner and couples therapist in Martigues and by video. Booking an appointment means you accept them.",
-		"s2h": "2. Sessions",
-		"s2p1": "Individual session: €60 for one hour, at the practice or by video. Couples session: €80 per couple for one hour, with both partners present.",
-		"s2p2": "No package is offered.",
-		"s3h": "3. Payment",
-		"s3p1": "Payment can be made by cheque, in cash, or online by card through a secure payment link.",
-		"s3p2": "For video consultations, online payment is due before the session starts. The connection link is sent after the appointment is confirmed.",
-		"s4h": "4. Changes and cancellation",
-		"s4p1": "An appointment is reserved for you. To move or cancel it, give at least 24 hours’ notice from the confirmation email or by contacting Laure Corrao.",
-		"s4p2": "A session cancelled less than 24 hours before the appointment, or missed, may be charged, except in exceptional circumstances or force majeure.",
-		"s5h": "5. Reimbursement",
-		"s5p1": "Consultations are not covered by French national health insurance. Some complementary health plans offer a yearly allowance for psychotherapy or complementary care.",
-		"s5p2": "An invoice can be provided on request so you can ask your insurer.",
-		"s6h": "6. What we ask of you",
-		"s6p1": "For a video session, sit somewhere quiet where you can speak privately. Do not describe your health in the booking form.",
-		"s7h": "7. Contact",
-		"s7p1": "Laure Corrao — contact form on laurecorrao.fr."
+		"updated": "Version dated 2 November 2026.",
+		"sections": [
+			{
+				"title": "Identification and scope",
+				"paragraphs": [
+					"These terms govern the individual, couples and family support services Laure Corrao offers to consumers on laurecorrao.fr. Her practice address is Les Jardins de Louis, 9 impasse Le Maroni — Saint-Jean, 13110 Port-de-Bouc, France. Telephone: +33 6 69 31 64 50.",
+					"The terms are sent with the quote before the client commits. The accepted version applies to that contract."
+				]
+			},
+			{
+				"title": "Nature of the support",
+				"paragraphs": [
+					"Laure Corrao offers individual, couples and family support, drawing on conversation, a systemic approach and tools for managing emotions. The quote specifies the service appropriate to the request.",
+					"She undertakes to use the agreed professional means without guaranteeing a particular outcome. This support does not replace medical or psychiatric care and does not include medical diagnosis or prescriptions. She may suggest another professional where appropriate."
+				]
+			},
+			{
+				"title": "Free introductory conversation",
+				"paragraphs": [
+					"The free, 10-minute conversation gives both parties an opportunity to discuss the request and assess whether the proposed support is suitable. It is not a therapy session and carries no obligation to book a paid consultation."
+				],
+				"link": "booking"
+			},
+			{
+				"title": "Quote and booking",
+				"paragraphs": [
+					"If both parties wish to continue, they agree on a time. Laure emails a personalised quote specifying the service, duration, final price, date, location or remote format, payment terms and validity period.",
+					"The terms and, where applicable, a withdrawal form accompany the quote. The contract is formed upon express acceptance of the quote and terms. Confirmation and contractual documents are sent by email.",
+					"Where payment on arrival is agreed, advance online payment is not required to confirm the appointment."
+				]
+			},
+			{
+				"title": "Fees",
+				"paragraphs": [
+					"Individual session: €60 for one hour. Couples session: €90 for 90 minutes for the whole session. Family session: €90 for 90 minutes for the whole session.",
+					"No additional fees may be charged without prior information and agreement. Price changes do not affect accepted quotes."
+				]
+			},
+			{
+				"title": "Payment",
+				"paragraphs": [
+					"The payment method is agreed when arranging the appointment. Payment can be made online before the session using a secure link sent by email, or on arrival at the practice, including in cash within legal limits.",
+					"A receipt or invoice is issued as required, regardless of the payment method."
+				]
+			},
+			{
+				"title": "Cancellation, rescheduling and refunds",
+				"paragraphs": [
+					"Please request cancellations or changes at least 48 hours before the appointment by telephone or text on +33 6 69 31 64 50.",
+					"When this notice is given, any sums paid for the cancelled session are refunded within 14 days or transferred to a rescheduled session with the client’s agreement.",
+					"If Laure cancels, she offers an alternative that the client may decline. Payments for a session that does not take place are then refunded within 14 days of cancellation. The statutory rules on force majeure apply. These provisions do not limit any statutory right of withdrawal."
+				]
+			},
+			{
+				"title": "Right of withdrawal",
+				"paragraphs": [
+					"For distance service contracts covered by the French Consumer Code, the client has 14 days from conclusion of the contract to withdraw without giving a reason. The client may send the form below or an unambiguous statement to the practice address.",
+					"Sums concerned are refunded within 14 days of notification using the same payment method, unless the client expressly agrees to another method at no cost.",
+					"If a session is requested before the 14 days expire, the express request to start early is recorded on a durable medium. If the client withdraws after work has begun at their express request, a proportionate amount may be due for services actually provided if the required information was given.",
+					"The right is lost after full performance before the deadline only if performance began with the client’s prior express consent and acknowledgement that full performance would end this right. Payment or booking alone does not constitute consent.",
+					"Where necessary, the following statements are obtained separately, without preselected boxes:",
+					"“I expressly request that the service begin before the 14-day withdrawal period ends.”",
+					"“I acknowledge that I will lose my right to withdraw once the service has been fully performed.”"
+				]
+			},
+			{
+				"title": "Withdrawal form",
+				"paragraphs": [
+					"To Laure Corrao, Les Jardins de Louis, 9 impasse Le Maroni — Saint-Jean, 13110 Port-de-Bouc, France.",
+					"I hereby withdraw from the contract for the following service: ____________________",
+					"Contract date: ____________________\nQuote reference: ____________________\nClient name: ____________________\nClient address: ____________________\nDate: ____________________\nSignature (paper submissions only): ____________________"
+				]
+			},
+			{
+				"title": "Sessions and confidentiality",
+				"paragraphs": [
+					"Sessions take place in an atmosphere of mutual respect. Information shared is kept confidential, subject to legal obligations and exceptions. The arrangements for couples and family sessions, including any individual conversations, are explained before support begins.",
+					"No recording takes place without prior information and agreement from those concerned."
+				]
+			},
+			{
+				"title": "Liability",
+				"paragraphs": [
+					"The practitioner’s liability is assessed under the ordinary rules of law. These terms do not remove mandatory consumer rights."
+				]
+			},
+			{
+				"title": "Complaints and mediation",
+				"paragraphs": [
+					"Complaints may be sent in writing to the practice address above. After an unresolved written complaint, consumers may seek free mediation subject to the statutory admissibility conditions, including the one-year period following the written complaint. Mediation does not remove the right to take legal action."
+				]
+			},
+			{
+				"title": "Personal data and applicable law",
+				"paragraphs": [
+					"French law applies, subject to mandatory consumer protections. If the dispute cannot be settled amicably, the competent courts are determined under the applicable legal rules."
+				],
+				"link": "privacy"
+			}
+		],
+		"booking": "Book the free conversation through Cal.com",
+		"privacy": "Read the privacy policy"
 	},
 	"Pages": {
-		"eyebrow": "Laure Corrao · Martigues"
+		"eyebrow": "Laure Corrao · Port-de-Bouc"
 	},
 	"HomePage": {
-		"eyebrow": "Practice in Martigues · Online sessions",
+		"eyebrow": "Practice in Port-de-Bouc · Online sessions",
 		"titleHtml": "Psychopractitioner &amp;<br />Couples therapist",
 		"subtitle": "Put words to what hurts, and find your way back to yourself.",
 		"intro": "I welcome you in a kind, confidential, and non-judgmental space, to help you through difficulties, understand yourself better, and find balance and calm.",
@@ -144,7 +297,7 @@
 		"individualSummaryHtml": "Anxiety · Phobias · Self-esteem ·<br />Self-confidence",
 		"coupleSummaryHtml": "Communication · Conflict · Distance ·<br />Crises · Rebuilding the bond",
 		"approachTitle": "An approach shaped around you",
-		"approachSummaryHtml": "Hypnosis · DNR · Therapeutic<br />tools chosen for you",
+		"approachSummaryHtml": "Hypnosis · DTMA · Therapeutic<br />tools chosen for you",
 		"aboutEyebrow": "About",
 		"aboutTitle": "What if you finally gave yourself room to feel better?",
 		"aboutBody": "I am Laure Corrao, psychopractitioner and couples therapist. I accompany you with kindness, listening, and without judgment, in a confidential space where you can set things down fully, at your own pace.",
@@ -154,17 +307,19 @@
 		"readingBody": "My approach is personal and draws on several therapeutic tools, including hypnosis, cognitive and behavioural therapies, the systemic approach, and coaching. Because every person, every story, and every couple is unique, the support is unique too.",
 		"individualMeta": "1 hour · €60 · Practice or video",
 		"individualCta": "Discover individual support",
-		"coupleMeta": "1 hour · €80 per couple",
+		"coupleMeta": "90 minutes · €90 per couple",
 		"coupleCta": "Discover couples therapy",
 		"placeTitle": "A place to find yourself again.",
 		"placeBody": "In the warm, calming atmosphere of my practice, you can finally put words to what hurts, understand more of what is happening for you, and move toward a calmer balance.",
-		"practiceTitle": "At the practice, in Martigues",
+		"practiceTitle": "At the practice, in Port-de-Bouc",
 		"practiceBody": "A warm, confidential, and non-judgmental setting. Practical directions will be confirmed before you come.",
 		"videoTitle": "By video",
 		"videoBody": "Settle somewhere quiet, where you can speak in confidence.",
 		"placeClose": "Here, you do not need to know where to start. You only need to dare to take the first step."
 	},
 	"Individual": {
+		"journeyAlt": "A watercolour path illustrates a personal journey: name what weighs on you, discuss it at a first appointment, understand yourself better and move at your own pace towards greater calm and independence.",
+		"viewJourney": "View the full-size illustration (in French)",
 		"metaTitle": "Individual support",
 		"metaDescription": "A place to understand what you are going through and find your own resources.",
 		"h1": "Individual support",
@@ -189,6 +344,7 @@
 		]
 	},
 	"Couple": {
+		"imageAlt": "A couple sitting on a sofa talks with a therapist holding a notebook.",
 		"metaTitle": "Couples therapy",
 		"metaDescription": "A place to talk again when the relationship can no longer move forward on its own.",
 		"h1": "Couples therapy",
@@ -229,22 +385,27 @@
 			"the psychoanalytic approach and talk therapy, to explore your story and understand the origin of certain patterns;",
 			"hypnosis, to work on certain blocks, fears, or automatic responses;",
 			"art therapy, so expression can happen other than through words when that is useful;",
-			"neurolinguistic programming (NLP), and coaching tools for accompanying change;",
-			"DNR, or Deep Neural Repatterning, an emotional reprocessing tool that aims to ease the intensity attached to difficult experiences, fears, or blocks. It works on how those experiences remain emotionally inscribed, at each person’s pace and within their limits."
+			"neurolinguistic programming (NLP), and coaching tools for accompanying change."
 		],
 		"after": [
 			"These tools are never applied mechanically. I choose the ones that match your needs, and I always explain what I am proposing. You remain free, and fully part of the work.",
 			"The first sessions are given to listening to your request, understanding your situation, and defining your aims. The work then evolves with you, respecting your pace and your limits.",
 			"My practice is meant as a warm, confidential, and non-judgmental place: somewhere you can put words to what hurts, feel listened to, and move forward safely.",
 			"You do not have to wait until things get worse to start taking care of yourself."
-		]
+		],
+		"dtma": {
+			"title": "DTMA — Support after trauma and difficult life events",
+			"subtitle": "Guided eye movements and alternating taps",
+			"body": "Sexual violence, a car accident, bereavement or a sudden separation can leave lasting distress. In my practice, DTMA uses guided eye movements and alternating taps to explore emotions associated with painful memories. We begin by discussing your needs so that we can work at your pace. Severe trauma may require specialist care alongside this support or as a first priority.",
+			"alt": "A woman follows the raised fingers of the practitioner seated opposite her with her eyes."
+		}
 	},
 	"Booking": {
 		"metaTitle": "Fees and appointments",
 		"metaDescription": "Choosing to start therapy is already a first step toward yourself.",
 		"h1": "Fees and appointments",
 		"lede": "Choosing to start therapy is already a first step toward yourself.",
-		"intro": "I welcome you at the practice in Martigues or remotely, in a confidential, kind, and non-judgmental setting.",
+		"intro": "I welcome you at the practice in Port-de-Bouc or remotely, in a confidential, kind, and non-judgmental setting.",
 		"sections": [
 			{
 				"title": "Individual session",
@@ -259,46 +420,25 @@
 			{
 				"title": "Couples session",
 				"lines": [
-					"Length: 1 hour",
-					"Fee: €80 per couple"
+					"Duration: 90 minutes",
+					"Fee: €90 per couple"
 				],
 				"paragraphs": [
 					"Sessions take place with both partners present, in a neutral space where each person can speak and be heard."
 				]
 			},
 			{
-				"title": "Book an appointment",
-				"paragraphs": [
-					"You can see my availability in the online calendar and choose:"
-				],
-				"items": [
-					"the kind of support you want;",
-					"a session at the practice or by video;",
-					"the date and time that suit you."
-				],
-				"after": [
-					"A confirmation is sent by email after booking, and a reminder before your appointment."
-				]
-			},
-			{
-				"title": "Payment",
-				"paragraphs": [
-					"You can pay:"
-				],
-				"items": [
-					"by cheque;",
-					"in cash;",
-					"online, by card, through a secure payment link."
-				],
-				"after": [
-					"For video sessions, online payment is due before the session starts. The connection link is sent after the appointment is confirmed."
+				"title": "Family session",
+				"lines": [
+					"Duration: 90 minutes",
+					"Fee: €90 per session"
 				]
 			},
 			{
 				"title": "Changes and cancellation",
 				"paragraphs": [
-					"An appointment is reserved for you. To move or cancel it, please give at least 24 hours’ notice, from your confirmation or by contacting me.",
-					"A session cancelled less than 24 hours before the appointment, or missed, may be charged, except in exceptional circumstances or force majeure."
+					"To cancel or reschedule a session, please contact Laure Corrao by telephone or text at least 48 hours in advance on +33 6 69 31 64 50.",
+					"When this notice is given, any sums paid for the cancelled session are refunded within 14 days or transferred to a rescheduled session with the client’s agreement."
 				]
 			},
 			{
@@ -310,13 +450,16 @@
 			}
 		],
 		"closing": "You do not have to wait until things get worse to ask for help.",
-		"agendaTitle": "Choose an appointment",
-		"agendaNotice": "Demo calendar: the 30-minute slots below are for testing only. They are not Laure’s sessions, which last one hour."
+		"agendaTitle": "Your free introductory conversation"
 	},
 	"BookingCta": {
 		"eyebrow": "At your pace",
 		"title": "A first step toward yourself.",
-		"body": "You do not need to know where to start."
+		"paragraphs": [
+			"Would you like to find out whether my support suits your needs? I offer a free, 10-minute introductory conversation, with no obligation, to understand what brings you here and explore together whether my approaches might suit you. This conversation is not a therapy session.",
+			"If we decide to continue, we agree on an appointment together. I then email you a personalised quote, the terms and conditions of sale and a payment link.",
+			"You can pay online before your session or, for appointments at the practice, on arrival, including in cash. We agree on the payment method together when arranging the appointment."
+		]
 	},
 	"Contact": {
 		"close": "Close",
@@ -383,11 +526,11 @@
 			},
 			{
 				"question": "Can I consult by video?",
-				"answer": "Yes. Individual support can take place at the practice in Martigues or remotely, somewhere quiet and private."
+				"answer": "Yes. Individual support can take place at the practice in Port-de-Bouc or remotely, somewhere quiet and private."
 			},
 			{
 				"question": "How long is a session?",
-				"answer": "An individual or couples session lasts about one hour."
+				"answer": "Individual sessions last one hour. Couples and family sessions last 90 minutes."
 			},
 			{
 				"question": "Are consultations reimbursed?",
@@ -395,8 +538,59 @@
 			},
 			{
 				"question": "How do I move or cancel an appointment?",
-				"answer": "Please give at least 24 hours’ notice. The details are in your appointment confirmation."
+				"answer": "To cancel or reschedule a session, please contact Laure Corrao by telephone or text at least 48 hours in advance on +33 6 69 31 64 50."
 			}
 		]
+	},
+	"Adhd": {
+		"overview": {
+			"title": "ADHD: understanding yourself and finding your bearings",
+			"intro": "Attention deficit hyperactivity disorder can make everyday situations particularly demanding. Concentrating, getting organised, waiting or finishing a task can take a great deal of effort.",
+			"body": "I offer support tailored to your age and needs so you can understand these difficulties, recognise your strengths and find practical solutions.",
+			"alt": "Illustration showing four aspects of ADHD: attention, organisation, time management and impulsivity."
+		},
+		"child": {
+			"title": "Children: growing up with guidance and confidence",
+			"intro": "Does your child forget instructions, get distracted or act before thinking? Are homework and daily routines becoming a source of tension?",
+			"body": "Through conversation and age-appropriate play, I help your child understand how they work, express their feelings and take things one step at a time. We work together to find routines that help at home and recognise your child’s progress.",
+			"goal": "The aim is to support your child and help your family find a calmer daily rhythm.",
+			"alt": "A child stacks wooden blocks to build a tower."
+		},
+		"teen": {
+			"title": "Teenagers: understanding yourself and becoming more independent",
+			"intro": "Homework piles up, getting organised becomes harder, and repeated criticism can wear away at a teenager’s confidence.",
+			"body": "I offer your teenager a space to be heard without judgement and to take part in decisions that affect them. Together we look for strategies that fit their life, from starting a task and managing time to taking helpful breaks and explaining what they need.",
+			"goal": "The aim is to help your teenager build independence by drawing on their strengths.",
+			"alt": "A teenager writes in a notebook beside open books."
+		},
+		"adult": {
+			"title": "Adults: easing everyday pressures and rebuilding confidence",
+			"intro": "Do you feel you are always racing against the clock, starting things you struggle to finish or wearing yourself out trying to manage everything?",
+			"body": "I help you identify difficult situations and try practical tools, such as clarifying priorities, breaking tasks into steps, setting reminders and recognising your limits.",
+			"goal": "The aim is to find ways of organising your life that suit you and help you feel less self-critical.",
+			"alt": "A woman at her desk wonders which task to start with."
+		},
+		"first": {
+			"title": "A first conversation to take stock",
+			"body": "In our first session we explore what brings you here, what feels difficult and what you would like to change. We then agree on realistic goals at your pace.",
+			"scope": "My support complements any care you need and does not provide a diagnosis. If you think you may have ADHD, I encourage you to speak to a doctor trained in diagnosing it."
+		},
+		"metaTitle": "ADHD: understanding yourself and finding your bearings",
+		"metaDescription": "ADHD support in Port-de-Bouc with Laure Corrao. Practical strategies for children, teenagers and adults to manage everyday challenges.",
+		"sources": "The information on ADHD and support draws on guidance from the French national health insurance service (Assurance Maladie) and the French National Authority for Health (HAS)."
+	},
+	"Parenting": {
+		"h1": "Less tension, more conversation at home",
+		"metaDescription": "Parenting coaching in Port-de-Bouc with Laure Corrao to help you communicate, set clear boundaries and ease family tensions.",
+		"intro": "Do you find yourself repeating the same instructions, only for the conversation to end in an argument? Screen time, homework, boundaries, disagreements about parenting… Do you sometimes feel overwhelmed and unsure how to respond?",
+		"support": "I help you understand what is happening and find solutions that work for your family.",
+		"space": "There’s room to step back and reflect without feeling judged for the way you parent.",
+		"practice": "Together we work on everyday situations, from setting clear limits and communicating better to supporting your children through difficult emotions and building routines that make daily life easier.",
+		"sessions": "You can attend on your own or with your child’s other parent. Together we decide whether it would help to involve your children.",
+		"goal": "The aim is to help you regain confidence as a parent and build calmer family relationships, one step at a time.",
+		"reassurance": "You can reach out for support before you feel at the end of your tether.",
+		"alt": "A girl speaks during a family card game.",
+		"topic": "Parenting coaching",
+		"metaTitle": "Parenting coaching | Laure Corrao"
 	}
 }

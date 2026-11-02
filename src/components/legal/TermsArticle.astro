@@ -1,6 +1,6 @@
 ---
 import { getFixedT, type Locale } from '../../i18n/i18n';
-import { homePathForLocale, pageHref } from '../../lib/paths';
+import { contentPath, homePathForLocale, legalPath, pageHref } from '../../lib/paths';
 
 interface Props {
 	locale: Locale;
@@ -9,46 +9,34 @@ interface Props {
 const { locale } = Astro.props;
 const t = getFixedT(locale);
 const homeUrl = pageHref(homePathForLocale(locale) || '/');
+const sections = t('Terms.sections', { returnObjects: true }) as {
+	title: string;
+	paragraphs: string[];
+	link?: 'booking' | 'privacy';
+}[];
+const links = {
+	booking: pageHref(contentPath(locale, 'booking') + '/#agenda'),
+	privacy: pageHref(legalPath(locale, 'privacyPolicy') + '/'),
+};
 ---
 
 <article>
 	<div class="mx-auto max-w-6xl px-6 pt-16 pb-6">
-		<p class="mb-6"><a class="underline underline-offset-4" href={homeUrl}>{t('Terms.back')}</a></p>
-		<h1 class="font-serif text-4xl leading-tight tracking-tight md:text-5xl">{t('Terms.h1')}</h1>
-		<p class="mt-4 mb-6">{t('Terms.updated')}</p>
+		<p class="my-4"><a href={homeUrl}>{t('Terms.back')}</a></p>
+		<h1 class="font-serif text-4xl leading-tight md:text-5xl">{t('Terms.h1')}</h1>
+		<p class="my-4">{t('Terms.subtitle')}</p>
+		<p class="my-4">{t('Terms.updated')}</p>
 	</div>
-	<div class="mx-auto max-w-3xl px-6 pb-16 leading-relaxed">
-		<section>
-			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Terms.s1h')}</h2>
-			<p class="mt-4 mb-6">{t('Terms.s1p1')}</p>
-		</section>
-		<section>
-			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Terms.s2h')}</h2>
-			<p class="mt-4 mb-6">{t('Terms.s2p1')}</p>
-			<p class="mt-4 mb-6">{t('Terms.s2p2')}</p>
-		</section>
-		<section>
-			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Terms.s3h')}</h2>
-			<p class="mt-4 mb-6">{t('Terms.s3p1')}</p>
-			<p class="mt-4 mb-6">{t('Terms.s3p2')}</p>
-		</section>
-		<section>
-			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Terms.s4h')}</h2>
-			<p class="mt-4 mb-6">{t('Terms.s4p1')}</p>
-			<p class="mt-4 mb-6">{t('Terms.s4p2')}</p>
-		</section>
-		<section>
-			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Terms.s5h')}</h2>
-			<p class="mt-4 mb-6">{t('Terms.s5p1')}</p>
-			<p class="mt-4 mb-6">{t('Terms.s5p2')}</p>
-		</section>
-		<section>
-			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Terms.s6h')}</h2>
-			<p class="mt-4 mb-6">{t('Terms.s6p1')}</p>
-		</section>
-		<section>
-			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('Terms.s7h')}</h2>
-			<p class="mt-4 mb-6">{t('Terms.s7p1')}</p>
-		</section>
+	<div class="prose mx-auto max-w-3xl px-6 pb-16 leading-relaxed">
+		{sections.map(({ title, paragraphs, link }) => (
+			<section>
+				<h2 class="mt-10 font-serif text-3xl leading-tight">{title}</h2>
+				{paragraphs.map((paragraph) => <p class="my-4">{paragraph}</p>)}
+				{link && <a href={links[link]}>{t(`Terms.${link}`)}</a>}
+			</section>
+		))}
 	</div>
 </article>
+<style>
+	.prose p { white-space: pre-line; }
+</style>

@@ -17,6 +17,8 @@ const bookingHref = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
 const links = [
 	[homeHref, t('Nav.home')],
 	[pageHref(`${contentPath(locale, 'individual')}/`), t('Nav.individual')],
+	[pageHref(`${contentPath(locale, 'adhd')}/`), t('Nav.adhd')],
+	[pageHref(`${contentPath(locale, 'parenting')}/`), t('Nav.parenting')],
 	[pageHref(`${contentPath(locale, 'couple')}/`), t('Nav.couple')],
 	[pageHref(`${contentPath(locale, 'approach')}/`), t('Nav.approach')],
 	...(blogPath ? [[pageHref(`${blogPath}/`), t('Nav.articles')]] : []),

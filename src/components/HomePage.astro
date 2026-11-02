@@ -1,4 +1,5 @@
 ---
+import SupportJourney from './SupportJourney.astro';
 import HomeResources from './HomeResources.astro';
 import { getFixedT, type Locale } from '../i18n/i18n';
 import { contentPath, pageHref } from '../lib/paths';
@@ -79,10 +80,13 @@ const serviceLink =
 	</blockquote>
 </section>
 <section class="bg-sand px-6 py-16 md:px-10 lg:px-16">
+	<div class="grid items-center gap-8 lg:grid-cols-2">
 	<div class="max-w-3xl">
 		<h2 class="font-serif text-3xl leading-tight text-ink md:text-4xl">{t('HomePage.readingTitle')}</h2>
 		<p class="mt-6">{t('HomePage.readingLead')}</p>
 		<p class="mt-6">{t('HomePage.readingBody')}</p>
+	</div>
+	<SupportJourney locale={locale} />
 	</div>
 	<div class="mt-10 grid gap-8 md:grid-cols-2">
 		<article class="border-t border-blush pt-8">

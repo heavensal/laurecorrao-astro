@@ -1,6 +1,6 @@
 # Laure Corrao — Brochure site
 
-Brochure site for Laure Corrao, psychopractitioner and couples therapist in Martigues. Built with Astro 7 and Tailwind 4, with full SEO (sitemap, Open Graph, local JSON-LD) and GitHub Pages deployment.
+Brochure site for Laure Corrao, psychopractitioner and couples therapist in Port-de-Bouc. Built with Astro 7 and Tailwind 4, with full SEO (sitemap, Open Graph, local JSON-LD) and GitHub Pages deployment.
 
 **Requirements:** Node.js ≥ 22 (see `package.json` → `engines`).
 
@@ -30,7 +30,7 @@ Visible copy is in `src/i18n/locales/fr.json` and `en.json`. `ENABLE_MULTILANG` 
 ## Features
 
 - **SEO**: Open Graph, Twitter Cards, canonical URLs, hreflang (`fr` and `x-default` only), JSON-LD, sitemap, generated `robots.txt`
-- **Local SEO**: city-level `ProfessionalService` for Martigues (`areaServed`, `PostalAddress` without a street, `GeoCoordinates`). See [Geographic SEO](#geographic-seo)
+- **Local SEO**: `ProfessionalService` for Port-de-Bouc with the practice address and service area. See [Geographic SEO](#geographic-seo)
 - **i18n**: French is published. `ENABLE_MULTILANG=false` generates no `/en/` URL. English copy still lives in `en.json`. See [Languages and hreflang](#languages-and-hreflang)
 - **FAQ, reviews, blog**: each has its own Forge flag (`true` / `false`). On this site, articles are on. FAQ and reviews stay in i18n. Details in [Forge content](#forge-content)
 - **Contact form**: dialog in the footer, `POST` to Forge (`PUBLIC_CONTACT_FORM_URL` + **`PUBLIC_CONTACT_FORM_TOKEN`**, `Authorization: Bearer` header)
@@ -64,11 +64,10 @@ After cloning, copy **`.env.example`** to **`.env`**, then adjust if needed (`EN
 
 ## Before publication
 
-- Add the practice address, access notes, phone, email, status, and SIRET. Do not invent them. The host is GitHub, Inc. The technical provider is #1344 Solutions (`https://1344.fr`).
+- Complete the outstanding legal details in [todo.md](todo.md).
 - Set `FORGE_API_TOKEN` in `.env` to the Forge token for `laurecorrao.fr`. Without it, `/blog` is not generated. The same token goes in `PUBLIC_CONTACT_FORM_TOKEN` for the contact form (it is exposed to the browser).
-- The test calendar `adam-1344-vm70qf/30min` in `src/components/CalEmbed.astro` stays until Laure’s calendar replaces it. The public Cal.com embed uses no secret.
-- In Cal.com, configure the individual event (€60, 60 min) and the couples event (€80, 60 min), practice or video, availability, name, email, phone, cancellation policy, confirmations, reminders, and reschedule or cancel links.
-- Configure secure payment and the video link in Cal.com. This site does not collect patient data itself.
+- Configure the Cal.com event referenced in `src/components/CalEmbed.astro` as a free 10-minute introductory conversation without payment. Update the embed path if the event URL changes.
+- Laure schedules consultations herself after the introductory conversation and emails the quote, terms and payment link. Clients can pay online before the session or on arrival at the practice.
 - Check a booking end to end on Laure’s account, including payment, email, and cancellation.
 - Deploy only after the provisional details are replaced. The canonical domain is `https://laurecorrao.fr`.
 
@@ -283,28 +282,7 @@ The layout sets these automatically:
 
 ## Geographic SEO
 
-The practice is in Martigues. The street address, phone, email, and SIRET are not known yet. Do not invent them.
-
-`src/site.config.ts` → `geo` holds public facts about the **commune**, not the practice door:
-
-- Locality: Martigues
-- Region: Bouches-du-Rhône
-- Postal code: `13500` (the commune, not a street)
-- Coordinates: 43.4053° N, 5.0475° E (Wikipedia, the commune of Martigues)
-
-`src/lib/jsonld.ts` publishes that place on the home page and on the legal notice:
-
-- `@type`: `ProfessionalService` and `LocalBusiness`
-- `address`: `PostalAddress` with locality, region, postal code, and country. No `streetAddress`
-- `geo`: `GeoCoordinates` for the commune
-- `areaServed`: Martigues, the city named in the copy
-- `email` and `telephone` are omitted while `siteConfig.contact` is empty
-
-When the real street address, phone, or email is known, add it to `siteConfig` and the same JSON-LD will include it. Do not put the city-hall address in its place.
-
-JSON-LD `inLanguage` follows `publishedLocales`. A French-only build says `fr-FR` only.
-
----
+The practice address and phone number are in `src/site.config.ts`. The local structured data uses the supplied postal address in Port-de-Bouc.
 
 ## Style conventions
 

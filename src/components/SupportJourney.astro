@@ -1,0 +1,16 @@
+---
+import journey from '../assets/images/individual/at-your-own-pace.webp';
+import { getFixedT, type Locale } from '../i18n/i18n';
+
+interface Props { locale: Locale }
+const t = getFixedT(Astro.props.locale);
+---
+<figure>
+	<img src={journey.src} width={journey.width} height={journey.height} loading="lazy" decoding="async" alt={t('Individual.journeyAlt')} />
+	<figcaption><a href={journey.src}>{t('Individual.viewJourney')}</a></figcaption>
+</figure>
+<style>
+	figure { margin: 1.5rem 0 2rem; }
+	img { display: block; width: 100%; height: auto; border-radius: 1rem; }
+	figcaption { margin-top: .45rem; font-size: .85rem; text-align: end; }
+</style>

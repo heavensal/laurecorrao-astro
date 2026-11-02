@@ -1,5 +1,5 @@
 ---
-import BookingCTA from '../BookingCTA.astro';
+import BookingDetails from '../BookingDetails.astro';
 import CalEmbed from '../CalEmbed.astro';
 import { getFixedT, type Locale } from '../../i18n/i18n';
 
@@ -55,7 +55,6 @@ const sections: Section[] = Array.isArray(sectionsValue) ? sectionsValue : [];
 </article>
 <section class="scroll-mt-8 px-6 py-16 md:px-10" id="agenda">
 	<h2 class="font-serif text-3xl leading-tight">{t('Booking.agendaTitle')}</h2>
-	<p class="mt-6 border-l-4 border-rose-laure bg-sand px-5 py-4">{t('Booking.agendaNotice')}</p>
+	<BookingDetails locale={locale} />
 	<CalEmbed locale={locale} />
 </section>
-<BookingCTA locale={locale} />

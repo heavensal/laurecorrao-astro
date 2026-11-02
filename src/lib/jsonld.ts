@@ -19,15 +19,11 @@ function place() {
 	return {
 		address: {
 			'@type': 'PostalAddress',
+			streetAddress: siteConfig.legal.street,
 			addressLocality: geo.locality,
 			addressRegion: geo.region,
 			postalCode: geo.postalCode,
 			addressCountry: geo.country,
-		},
-		geo: {
-			'@type': 'GeoCoordinates',
-			latitude: geo.latitude,
-			longitude: geo.longitude,
 		},
 		areaServed: geo.areaServed.map((name) => ({ '@type': 'City', name })),
 	};

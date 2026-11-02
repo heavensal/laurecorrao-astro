@@ -1,0 +1,13 @@
+---
+import { getFixedT, type Locale } from '../i18n/i18n';
+
+interface Props { locale: Locale }
+const t = getFixedT(Astro.props.locale);
+const paragraphs = t('BookingCta.paragraphs', { returnObjects: true }) as string[];
+---
+<div class="booking-details">
+	{paragraphs.map((paragraph) => <p class="my-4">{paragraph}</p>)}
+</div>
+<style>
+	.booking-details { max-width: 68ch; margin-inline: auto; text-align: start; }
+</style>

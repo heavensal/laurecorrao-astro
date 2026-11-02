@@ -12,6 +12,8 @@ import {
 
 export const routedKinds = [
 	'home',
+	'adhd',
+	'parenting',
 	'individual',
 	'couple',
 	'approach',
@@ -25,6 +27,8 @@ export type RoutedKind = (typeof routedKinds)[number];
 export type ContentKind = Exclude<RoutedKind, 'home'>;
 
 const contentByKind: Partial<Record<ContentKind, ContentPageId>> = {
+	adhd: 'adhd',
+	parenting: 'parenting',
 	individual: 'individual',
 	couple: 'couple',
 	approach: 'approach',
@@ -39,6 +43,8 @@ const legalByKind: Partial<Record<ContentKind, LegalPageId>> = {
 
 const metaNamespace: Record<RoutedKind, string> = {
 	home: 'Home',
+	adhd: 'Adhd',
+	parenting: 'Parenting',
 	individual: 'Individual',
 	couple: 'Couple',
 	approach: 'Approach',
