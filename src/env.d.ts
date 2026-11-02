@@ -11,4 +11,6 @@ interface ImportMetaEnv {
 	readonly PUBLIC_CONTACT_FORM_URL?: string;
 	/** Forge bearer token for `Authorization: Bearer …` (exposed to the client). */
 	readonly PUBLIC_CONTACT_FORM_TOKEN?: string;
+	/** Cal.com event path for the free introductory conversation, such as `laure-corrao/introduction`. */
+	readonly PUBLIC_CAL_LINK?: string;
 }

@@ -40,6 +40,7 @@ jobs:
           FORGE_API_TOKEN: ${{ secrets.FORGE_API_TOKEN }}
           PUBLIC_CONTACT_FORM_URL: ${{ secrets.PUBLIC_CONTACT_FORM_URL }}
           PUBLIC_CONTACT_FORM_TOKEN: ${{ secrets.PUBLIC_CONTACT_FORM_TOKEN }}
+          PUBLIC_CAL_LINK: ${{ secrets.PUBLIC_CAL_LINK }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist

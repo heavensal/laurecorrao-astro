@@ -512,7 +512,8 @@
 		"loadError": "Le calendrier n’a pas pu être chargé. Veuillez réessayer en rechargeant cette page.",
 		"frameTitle": "Disponibilités et réservation Cal.com",
 		"aria": "Calendrier de réservation",
-		"noscript": "Activez JavaScript pour consulter les disponibilités et réserver directement sur cette page."
+		"noscript": "Activez JavaScript pour consulter les disponibilités et réserver directement sur cette page.",
+		"unavailable": "L’agenda en ligne sera ajouté avec le calendrier de Laure Corrao. En attendant, réservez l’échange gratuit par téléphone ou par le formulaire de contact."
 	},
 	"Resources": {
 		"reviewsEyebrow": "Témoignages",
@@ -615,6 +616,6 @@
 		"reassurance": "Vous n’avez pas besoin d’attendre d’être à bout pour vous faire accompagner.",
 		"alt": "Une jeune fille prend la parole pendant un jeu de cartes en famille.",
 		"topic": "Coaching en parentalité",
-		"metaTitle": "Coaching en parentalité | Laure Corrao"
+		"metaTitle": "Coaching en parentalité"
 	}
 }

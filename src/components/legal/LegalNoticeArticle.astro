@@ -54,11 +54,15 @@ const homeUrl = pageHref(homePathForLocale(locale) || '/');
 		</section>
 		<section>
 			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.privacy')}</h2>
-			<a href={pageHref(legalPath(locale, 'privacyPolicy') + '/')}>{t('LegalNotice.privacyLink')}</a>
+			<p class="my-4">
+				<a class="text-rose-laure underline underline-offset-4" href={pageHref(legalPath(locale, 'privacyPolicy') + '/')}>{t('LegalNotice.privacyLink')}</a>
+			</p>
 		</section>
 		<section>
 			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.terms')}</h2>
-			<a href={pageHref(legalPath(locale, 'termsOfService') + '/')}>{t('LegalNotice.termsLink')}</a>
+			<p class="my-4">
+				<a class="text-rose-laure underline underline-offset-4" href={pageHref(legalPath(locale, 'termsOfService') + '/')}>{t('LegalNotice.termsLink')}</a>
+			</p>
 		</section>
 	</div>
 </article>

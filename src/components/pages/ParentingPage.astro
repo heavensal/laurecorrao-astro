@@ -4,36 +4,40 @@ import family from '../../assets/images/parenting/family-conversation.webp';
 import { getFixedT, type Locale } from '../../i18n/i18n';
 import { contentPath, pageHref } from '../../lib/paths';
 
-interface Props { locale: Locale }
+interface Props {
+	locale: Locale;
+}
+
 const { locale } = Astro.props;
 const t = getFixedT(locale);
+const button =
+	'mt-6 inline-flex min-h-12 items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-sm text-white no-underline transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep';
 ---
+
 <article>
-	<div class="opening">
+	<div class="mx-auto grid max-w-7xl items-center gap-4 px-6 py-8 md:grid-cols-2 md:gap-10 md:px-10 md:py-14 lg:px-16 lg:py-16">
 		<div>
 			<p class="mb-4 text-xs tracking-widest text-rose-laure uppercase">{t('Parenting.topic')}</p>
-			<h1 class="my-6 font-serif leading-tight">{t('Parenting.h1')}</h1>
+			<h1 class="my-6 font-serif text-4xl leading-tight md:text-5xl lg:text-6xl">{t('Parenting.h1')}</h1>
 			<p class="mb-5">{t('Parenting.intro')}</p>
 		</div>
-		<img src={family.src} width={family.width} height={family.height} alt={t('Parenting.alt')} />
+		<img class="block h-auto w-full rounded-3xl" src={family.src} width={family.width} height={family.height} alt={t('Parenting.alt')} />
 	</div>
 	<div class="mx-auto max-w-3xl px-6 pb-12">
-		<p class="mb-5"><strong>{t('Parenting.support')}</strong> {t('Parenting.space')}</p>
+		<p class="mb-5">
+			<strong>{t('Parenting.support')}</strong> {t('Parenting.space')}
+		</p>
 		<p class="mb-5">{t('Parenting.practice')}</p>
 		<p class="mb-5">{t('Parenting.sessions')}</p>
 		<p class="mb-5">{t('Parenting.goal')}</p>
 	</div>
-	<div class="closing bg-sand px-6 py-14 text-center">
-		<p class="lede"><strong>{t('Parenting.reassurance')}</strong></p>
+	<div class="bg-sand px-6 py-14 text-center">
+		<p class="mx-auto max-w-prose font-serif text-xl leading-snug">
+			<strong>{t('Parenting.reassurance')}</strong>
+		</p>
 		<BookingDetails locale={locale} />
-		<a class="inline-flex items-center justify-center rounded-md bg-rose-deep px-6 py-3 text-white" href={pageHref(`${contentPath(locale, 'booking')}/#agenda`)}>{t('Nav.bookingCta')}</a>
+		<a class={button} href={pageHref(`${contentPath(locale, 'booking')}/#agenda`)}>
+			{t('Nav.bookingCta')}
+		</a>
 	</div>
 </article>
-<style>
-	.opening { max-width: 1280px; margin: auto; padding: clamp(2rem, 5vw, 4.5rem) 6%; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 5%; }
-	h1 { font-size: clamp(2.5rem, 4.8vw, 4.2rem); }
-	img { display: block; width: 100%; height: auto; border-radius: 1.5rem; }
-	@media (max-width: 760px) {
-		.opening { grid-template-columns: 1fr; gap: 1rem; }
-	}
-</style>
