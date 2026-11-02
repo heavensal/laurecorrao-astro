@@ -66,7 +66,7 @@ After cloning, copy **`.env.example`** to **`.env`**, then adjust if needed (`EN
 
 - Complete the outstanding legal details in [todo.md](todo.md).
 - Set `FORGE_API_TOKEN` in `.env` to the Forge token for `laurecorrao.fr`. Without it, `/blog` is not generated. The same token goes in `PUBLIC_CONTACT_FORM_TOKEN` for the contact form (it is exposed to the browser).
-- Configure the Cal.com event referenced in `src/components/CalEmbed.astro` as a free 10-minute introductory conversation without payment. Update the embed path if the event URL changes.
+- Set `PUBLIC_CAL_LINK` to Laure’s Cal.com event for the free 10-minute introductory conversation, without payment. Leave it empty until that event exists. The fees page then shows the phone number and the contact form instead of an embed.
 - Laure schedules consultations herself after the introductory conversation and emails the quote, terms and payment link. Clients can pay online before the session or on arrival at the practice.
 - Check a booking end to end on Laure’s account, including payment, email, and cancellation.
 - Deploy only after the provisional details are replaced. The canonical domain is `https://laurecorrao.fr`.
@@ -308,11 +308,16 @@ This project uses **Tailwind CSS 4** with strict conventions.
 <div class="w-[347px] mt-[23px] text-[#1a2b3c]">
 ```
 
-#### Do not: use inline styles
+#### Do not: use inline styles or a component style block
 
 ```astro
 <!-- FORBIDDEN: inline styles -->
 <div style="margin-top: 23px; color: #1a2b3c;">
+
+<!-- FORBIDDEN: a <style> block in a component -->
+<style>
+  .panel { margin-top: 23px; }
+</style>
 ```
 
 Brand colors live in `global.css` via `@theme`, then as normal utilities (`bg-rose-laure`, `text-ink`, `bg-sand`). That is the palette. It is not a second token system in the markup.

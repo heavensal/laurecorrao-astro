@@ -31,12 +31,13 @@ const links = {
 		{sections.map(({ title, paragraphs, link }) => (
 			<section>
 				<h2 class="mt-10 font-serif text-3xl leading-tight">{title}</h2>
-				{paragraphs.map((paragraph) => <p class="my-4">{paragraph}</p>)}
-				{link && <a href={links[link]}>{t(`Terms.${link}`)}</a>}
+				{paragraphs.map((paragraph) => <p class="my-4 whitespace-pre-line">{paragraph}</p>)}
+				{link && (
+					<p class="my-4">
+						<a class="text-rose-laure underline underline-offset-4" href={links[link]}>{t(`Terms.${link}`)}</a>
+					</p>
+				)}
 			</section>
 		))}
 	</div>
 </article>
-<style>
-	.prose p { white-space: pre-line; }
-</style>

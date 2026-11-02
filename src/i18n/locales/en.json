@@ -488,7 +488,8 @@
 		"loadError": "The calendar could not be loaded. Please reload this page and try again.",
 		"frameTitle": "Availability and booking on Cal.com",
 		"aria": "Booking calendar",
-		"noscript": "Enable JavaScript to see availability and book on this page."
+		"noscript": "Enable JavaScript to see availability and book on this page.",
+		"unavailable": "The online calendar will be added with Laure Corrao’s own calendar. Until then, book the free conversation by phone or with the contact form."
 	},
 	"Resources": {
 		"reviewsEyebrow": "Testimonials",
@@ -591,6 +592,6 @@
 		"reassurance": "You can reach out for support before you feel at the end of your tether.",
 		"alt": "A girl speaks during a family card game.",
 		"topic": "Parenting coaching",
-		"metaTitle": "Parenting coaching | Laure Corrao"
+		"metaTitle": "Parenting coaching"
 	}
 }

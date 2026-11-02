@@ -34,8 +34,13 @@ const { legal, contact } = siteConfig;
 					<address>
 						{legal.name}<br />{legal.building}<br />{legal.street}<br />
 						{legal.postalCode} {legal.city}, France<br />
-						<a href={`tel:${contact.phoneE164}`}>{contact.phone}</a>
-						{contact.email && <><br /><a href={`mailto:${contact.email}`}>{contact.email}</a></>}
+						<a class="text-rose-laure underline underline-offset-4" href={`tel:${contact.phoneE164}`}>{contact.phone}</a>
+						{contact.email && (
+							<>
+								<br />
+								<a class="text-rose-laure underline underline-offset-4" href={`mailto:${contact.email}`}>{contact.email}</a>
+							</>
+						)}
 					</address>
 				)}
 				{section.links?.map((link) => <p class="my-4"><a href={link.href}>{link.label}</a></p>)}

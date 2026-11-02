@@ -30,7 +30,7 @@ const after = lines(`${namespace}.after`);
 <article class="mx-auto max-w-3xl px-6 pb-16 leading-relaxed">
 	<p class="mb-6 font-serif text-xl leading-snug">{t(`${namespace}.lede`)}</p>
 	{namespace === 'Couple' && (
-		<img class="session-photo" src={coupleSession.src} width={coupleSession.width} height={coupleSession.height} alt={t('Couple.imageAlt')} decoding="async" />
+		<img class="mb-8 block h-auto w-full rounded-3xl" src={coupleSession.src} width={coupleSession.width} height={coupleSession.height} alt={t('Couple.imageAlt')} decoding="async" />
 	)}
 	{before.map((paragraph) => <p class="mb-6">{paragraph}</p>)}
 	<p class="mb-6">{t(`${namespace}.listIntro`)}</p>
@@ -41,7 +41,7 @@ const after = lines(`${namespace}.after`);
 		<section>
 			<h2 class="my-6 font-serif text-3xl">{t('Approach.dtma.title')}</h2>
 			<p class="mb-6"><strong>{t('Approach.dtma.subtitle')}</strong></p>
-			<img class="session-photo" src={dtmaSession.src} width={dtmaSession.width} height={dtmaSession.height} alt={t('Approach.dtma.alt')} loading="lazy" decoding="async" />
+			<img class="mb-8 block h-auto w-full rounded-3xl" src={dtmaSession.src} width={dtmaSession.width} height={dtmaSession.height} alt={t('Approach.dtma.alt')} loading="lazy" decoding="async" />
 			<p class="mb-6">{t('Approach.dtma.body')}</p>
 		</section>
 	)}
@@ -53,7 +53,3 @@ const after = lines(`${namespace}.after`);
 	))}
 </article>
 <BookingCTA locale={locale} />
-
-<style>
-	.session-photo { display: block; width: 100%; height: auto; margin-bottom: 2rem; border-radius: 1.5rem; }
-</style>

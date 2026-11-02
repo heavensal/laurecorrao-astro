@@ -2,15 +2,15 @@
 
 Checklist to finish SEO and local presence, then hand Laure Corrao a site she can run. Do not invent the street address, phone, email, SIRET, or legal status. Leave a field empty until she provides it.
 
-The repository already has the French pages, canonical URLs, Open Graph, Twitter cards, `sitemap-index.xml`, `robots.txt`, hreflang `fr` and `x-default`, and city-level JSON-LD for Martigues. The items below are what is still open.
+The repository already has the French pages, canonical URLs, Open Graph, Twitter cards, `sitemap-index.xml`, `robots.txt`, hreflang `fr` and `x-default`, and JSON-LD for the practice in Port-de-Bouc. The street and phone are filled in. Email and SIRET stay empty. The items below are what is still open.
 
 ## SEO
 
 - [ ] Merge and deploy the current site so production matches this repository. Canonical host: `https://laurecorrao.fr`.
 - [x] Point the domain at GitHub Pages (A/AAAA or CNAME) and confirm HTTPS. `site` in `astro.config.mjs` stays `https://laurecorrao.fr` with `base` `/`.
 - [ ] Make the logo and the favicon, then the photographs listed under [Logo, favicon, and photos](#logo-favicon-and-photos). The file in `public/images/` is a crop of a layout reference, 750×585. `public/favicon.svg` is a green “Lc” that does not match the rose palette.
-- [ ] When the practice address is known, put the same street, postal code, city, and country in `site.config.ts` → `geo`, the legal notice, and `streetAddress` in `src/lib/jsonld.ts`. Until then the JSON-LD stays at commune level (Martigues, 13500, 43.4053° N, 5.0475° E) and must not use the town hall’s street.
-- [ ] Add phone (`phone`, `phoneE164`) and email on `siteConfig.contact` once they exist. JSON-LD already prints `telephone` and `email` when those strings are non-empty.
+- [x] The practice street, postal code, city, and phone are in `site.config.ts`, the legal notice, and the JSON-LD address. Email stays empty until it is known. JSON-LD prints `telephone` and `email` only when those strings are non-empty.
+- [ ] Add the professional email on `siteConfig.contact` once it exists.
 - [ ] Add SIRET, legal status, and the publisher’s role on the legal notice only. Do not put a registry number in the footer or the homepage entity.
 - [ ] Add `Offer` prices to the homepage JSON-LD only for the fees already published in the copy (individual 60 €, couple 80 €, 60 minutes). Do not add hours or a third price.
 - [ ] Add `FAQPage` JSON-LD from the questions actually rendered on the home page.
@@ -19,18 +19,18 @@ The repository already has the French pages, canonical URLs, Open Graph, Twitter
 - [ ] Submit `https://laurecorrao.fr/sitemap-index.xml` in Google Search Console and Bing Webmaster after the domain is live. Request indexing of the home page and the booking page.
 - [ ] Read Core Web Vitals on the live home page, the booking page, and one article. Fix what fails. The booking page embeds Cal.com.
 - [ ] Keep `ENABLE_MULTILANG=false` and `publishedLocales: ['fr']` until English is a real decision. Do not announce `hreflang="en"` before that day.
-- [ ] Remove the provisional Cal.com link (`adam-1344-vm70qf/30min` in `src/components/CalEmbed.astro`) before asking Google to index the booking page.
+- [x] The provisional Cal.com event is not embedded. Set `PUBLIC_CAL_LINK` to Laure’s event before asking Google to index the booking page.
 
 ## Local SEO and Google Business
 
-The public place is “cabinet à Martigues” plus video sessions. The category on Google must match the status she declares (psychopractitioner and couples therapist). Do not list a protected title she does not hold.
+The public place is the practice in Port-de-Bouc plus video sessions. The category on Google must match the status she declares (psychopractitioner and couples therapist). Do not list a protected title she does not hold.
 
 - [ ] Create or claim the Google Business Profile for the practice.
 - [ ] Verify it (postcard, phone, or email, whichever Google offers).
 - [ ] Use one name, one address, one phone, one website URL, identical to the site and the legal notice.
-- [ ] Set the primary category from her real status. Add the services that are on the site: individual support, couples therapy, in-person in Martigues, video.
+- [ ] Set the primary category from her real status. Add the services that are on the site: individual support, couples therapy, in-person in Port-de-Bouc, video.
 - [ ] Set hours only if she has published them. Do not copy the town hall’s hours.
-- [ ] Add the booking URL `https://laurecorrao.fr/tarifs-et-rendez-vous/#agenda` once her calendar replaces the test one.
+- [ ] Add the booking URL `https://laurecorrao.fr/tarifs-et-rendez-vous/#agenda` once `PUBLIC_CAL_LINK` is her calendar.
 - [ ] Add the logo and the practice photos from [Logo, favicon, and photos](#logo-favicon-and-photos). The exterior shot waits until the street address is the real door.
 - [ ] After verification, put the Google Business URL in `sameAs` and rebuild.
 - [ ] When the street is known, move `geo` from the commune centroid to the practice door and add a map link. Until then, do not embed a pin on the wrong building.
@@ -66,7 +66,7 @@ Cut the mark, not a tiny copy of the wordmark.
 | Accompagnement individuel | Page `/accompagnement-individuel/` and the individual card on the home page. | One empty chair in a quiet corner of the cabinet. No person. |
 | Thérapie de couple | Page `/therapie-de-couple/` and the couple card on the home page. | Two empty seats facing each other, or one shared seat with two places. No couple, no hands. |
 | Mon approche | Page `/mon-approche/`. | One detail of the room: light, a closed notebook, a plant. Do not stage hypnosis, DNR, or art materials as a medical setup. |
-| Cabinet à Martigues | “Au cabinet” block on the home page, and Google Business. | Wide view of the practice room, then one closer detail (chair, window, table). |
+| Cabinet à Port-de-Bouc | “Au cabinet” block on the home page, and Google Business. | Wide view of the practice room, then one closer detail (chair, window, table). |
 | Cabinet, outside | Google Business only, after the street is known. | The real entrance in daylight. Do not photograph the town hall or another building. |
 | Visioconférence | “En visioconférence” block, only if that block gets an image. | Laure at her desk, camera visible, quiet background. No screen showing another person. |
 | À propos | About column on the home page, if a second picture is added. | A second portrait, different framing from the hero. |
