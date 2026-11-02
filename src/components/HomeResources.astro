@@ -1,4 +1,5 @@
 ---
+import BlogCard from './blog/BlogCard.astro';
 import BookingCTA from './BookingCTA.astro';
 import { getFixedT, type Locale } from '../i18n/i18n';
 import { fetchFaqs, fetchReviews } from '../lib/forge-blocks';
@@ -26,78 +27,80 @@ const reviews = (
 ).slice(0, 3);
 const faqs = (await fetchFaqs(locale)) ?? localFaqs(locale);
 const blogHref = pageHref(`${prefix}blog/`);
+const eyebrow = 'mb-4 text-xs tracking-widest text-rose-laure uppercase';
+const heading = 'font-serif text-3xl leading-tight text-ink md:text-4xl';
 ---
 
-<section class="section tinted" aria-labelledby="reviews-title">
-	<p class="eyebrow">{t('Resources.reviewsEyebrow')}</p>
-	<h2 id="reviews-title">{t('Resources.reviewsTitle')}</h2>
-	<div class="testimonial-grid">
+<section class="bg-sand px-6 py-16 md:px-10 lg:px-16" aria-labelledby="reviews-title">
+	<p class={eyebrow}>{t('Resources.reviewsEyebrow')}</p>
+	<h2 id="reviews-title" class={heading}>{t('Resources.reviewsTitle')}</h2>
+	<div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 		{
 			reviews.map((review) => (
-				<blockquote class="testimonial">
-					<span class="stars" aria-label={t('Resources.stars', { rating: review.rating })}>
+				<blockquote class="rounded-2xl border border-line bg-white p-7">
+					<span class="tracking-widest text-rose-laure" aria-label={t('Resources.stars', { rating: review.rating })}>
 						{'★'.repeat(review.rating)}
 					</span>
-					<p>“{review.text}”</p>
-					<cite>{review.author}</cite>
+					<p class="mt-3 font-serif text-lg leading-relaxed">“{review.text}”</p>
+					<cite class="mt-4 block text-sm text-muted not-italic">{review.author}</cite>
 				</blockquote>
 			))
 		}
 	</div>
 </section>
-<section class="section" aria-labelledby="articles-title">
-	<div class="section-heading">
+<section class="px-6 py-16 md:px-10 lg:px-16" aria-labelledby="articles-title">
+	<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
 		<div>
-			<p class="eyebrow">{t('Blog.eyebrow')}</p>
-			<h2 id="articles-title">{t('Blog.homeTitle')}</h2>
+			<p class={eyebrow}>{t('Blog.eyebrow')}</p>
+			<h2 id="articles-title" class={heading}>{t('Blog.homeTitle')}</h2>
 		</div>
-		{posts.length > 0 && <a href={blogHref}>{t('Blog.all')}</a>}
+		{posts.length > 0 && <a class="text-rose-laure underline underline-offset-4" href={blogHref}>{t('Blog.all')}</a>}
 	</div>
 	{
 		posts.length === 0 ? (
-			<p>{t('Blog.empty')}</p>
+			<p class="mt-8">{t('Blog.empty')}</p>
 		) : (
-			<div class="article-grid">
+			<div class="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
 				{posts.map((article) => (
-					<article class="article-card">
-						{article.coverImageUrl && (
-							<img class="article-cover" src={article.coverImageUrl} alt="" />
-						)}
-						<p class="eyebrow">{t('Blog.eyebrow')}</p>
-						<h3>
-							<a href={pageHref(`${prefix}blog/${article.slug}/`)}>{article.title}</a>
-						</h3>
-						<p>{article.description}</p>
-						<a href={pageHref(`${prefix}blog/${article.slug}/`)}>{t('Blog.read')}</a>
-					</article>
+					<BlogCard locale={locale} post={article} heading="h3" />
 				))}
 			</div>
 		)
 	}
 </section>
-<section class="section faq-section" aria-labelledby="faq-title">
-	<p class="eyebrow">{t('Resources.faqEyebrow')}</p>
-	<h2 id="faq-title">{t('Resources.faqTitle')}</h2>
-	<div class="faq-list">
+<section class="bg-paper px-6 py-16 md:px-10 lg:px-16" aria-labelledby="faq-title">
+	<p class={eyebrow}>{t('Resources.faqEyebrow')}</p>
+	<h2 id="faq-title" class={heading}>{t('Resources.faqTitle')}</h2>
+	<div class="mt-6 max-w-4xl">
 		{
 			faqs.map((faq) => (
-				<details>
-					<summary>
+				<details class="group border-t border-line last:border-b">
+					<summary class="flex cursor-pointer items-center justify-between gap-5 py-5 font-serif text-lg">
 						{faq.question}
-						<span aria-hidden="true">+</span>
+						<span class="text-2xl text-rose-laure transition-transform duration-200 group-open:rotate-45 motion-reduce:transition-none" aria-hidden="true">
+							+
+						</span>
 					</summary>
-					<p>{faq.answer}</p>
+					<p class="max-w-3xl pb-4 text-muted">{faq.answer}</p>
 				</details>
 			))
 		}
 	</div>
-	<button class="text-button" type="button" data-contact-open>{t('Resources.otherQuestion')}</button>
+	<button class="mt-6 cursor-pointer text-rose-laure underline underline-offset-4" type="button" data-contact-open>
+		{t('Resources.otherQuestion')}
+	</button>
 </section>
-<section class="contact-strip">
+<section class="flex flex-col items-start justify-between gap-6 bg-rose-laure px-6 py-12 text-white md:flex-row md:items-center md:px-16">
 	<div>
-		<p class="eyebrow">{t('Resources.contactEyebrow')}</p>
-		<h2>{t('Resources.contactTitle')}</h2>
+		<p class="mb-4 text-xs tracking-widest text-sand uppercase">{t('Resources.contactEyebrow')}</p>
+		<h2 class="font-serif text-3xl leading-tight">{t('Resources.contactTitle')}</h2>
 	</div>
-	<button class="button" type="button" data-contact-open>{t('Resources.contactCta')}</button>
+	<button
+		class="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-white bg-white px-6 py-3 text-sm text-rose-deep transition-colors duration-200 hover:bg-sand"
+		type="button"
+		data-contact-open
+	>
+		{t('Resources.contactCta')}
+	</button>
 </section>
 <BookingCTA locale={locale} />

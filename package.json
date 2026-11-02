@@ -12,8 +12,11 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.2.9",
-    "i18next": "^26.5.11"
+    "i18next": "^26.5.11",
+    "tailwindcss": "^4.3.3"
   },
   "allowScripts": {
     "esbuild": true

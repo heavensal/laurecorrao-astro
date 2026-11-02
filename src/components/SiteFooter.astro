@@ -1,0 +1,34 @@
+---
+import { getFixedT, type Locale } from '../i18n/i18n';
+import { legalPath, pageHref } from '../lib/paths';
+import { siteConfig } from '../site.config';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const homeHref = pageHref(locale === 'en' ? 'en/' : '');
+const legalHref = (page: 'legalNotice' | 'privacyPolicy' | 'termsOfService') =>
+	pageHref(`${legalPath(locale, page)}/`);
+const link = 'text-ink underline underline-offset-4 transition-colors duration-200 hover:text-rose-laure';
+---
+
+<footer class="grid items-end gap-6 border-t border-line px-6 py-10 md:grid-cols-2 md:px-10">
+	<div>
+		<a class="font-serif text-2xl text-ink no-underline" href={homeHref}>{siteConfig.name}</a>
+		<p class="mt-3 max-w-xl text-sm leading-relaxed text-muted" set:html={t('Footer.tagline')} />
+		<button class="mt-4 cursor-pointer text-rose-laure underline underline-offset-4" type="button" data-contact-open>
+			{t('Footer.contact')}
+		</button>
+	</div>
+	<nav class="flex flex-wrap gap-6" aria-label={t('Footer.legalAria')}>
+		<a class={link} href={legalHref('legalNotice')}>{t('Footer.linkLegal')}</a>
+		<a class={link} href={legalHref('privacyPolicy')}>{t('Footer.linkPrivacy')}</a>
+		<a class={link} href={legalHref('termsOfService')}>{t('Footer.linkTerms')}</a>
+	</nav>
+	<small class="border-t border-line pt-4 text-xs text-muted md:col-span-2">
+		{t('Footer.copyright', { year: new Date().getFullYear() })}
+	</small>
+</footer>

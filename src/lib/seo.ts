@@ -1,4 +1,4 @@
-import { getFixedT, isMultilangEnabled } from '../i18n/i18n';
+import { isMultilangEnabled } from '../i18n/i18n';
 import { siteConfig } from '../site.config';
 
 export type SiteLocale = 'fr' | 'en';
@@ -29,18 +29,6 @@ export function absolutePageUrl(site: URL | undefined, pathFromBase: string): st
 	const base = import.meta.env.BASE_URL;
 	const clean = pathFromBase.startsWith('/') ? pathFromBase.slice(1) : pathFromBase;
 	return new URL(base + clean, site).href;
-}
-
-/** JSON-LD for the legal notice: the public site, without an unpublished street address. */
-export function buildLegalNoticeJsonLd(homeUrl: string): Record<string, unknown> {
-	return {
-		'@context': 'https://schema.org',
-		'@type': 'WebSite',
-		name: siteConfig.name,
-		url: homeUrl,
-		description: String(getFixedT('fr')('Home.metaDescription')),
-		inLanguage: 'fr-FR',
-	};
 }
 
 /**

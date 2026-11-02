@@ -1,4 +1,7 @@
 ---
+import dtmaSession from '../../assets/images/approach/dtma-guided-eye-movements.webp';
+import coupleSession from '../../assets/images/couples/couple-therapy-session.webp';
+import SupportJourney from '../SupportJourney.astro';
 import BookingCTA from '../BookingCTA.astro';
 import { getFixedT, type Locale } from '../../i18n/i18n';
 
@@ -20,17 +23,37 @@ const items = lines(`${namespace}.items`);
 const after = lines(`${namespace}.after`);
 ---
 
-<div class="page-head">
-	<p class="eyebrow">{t('Pages.eyebrow')}</p>
-	<h1>{t(`${namespace}.h1`)}</h1>
+<div class="mx-auto max-w-6xl px-6 pt-16 pb-6 md:px-10">
+	<p class="mb-4 text-xs tracking-widest text-rose-laure uppercase">{t('Pages.eyebrow')}</p>
+	<h1 class="font-serif text-4xl leading-tight tracking-tight md:text-5xl">{t(`${namespace}.h1`)}</h1>
 </div>
-<article class="prose">
-	<p class="lede">{t(`${namespace}.lede`)}</p>
-	{before.map((paragraph) => <p>{paragraph}</p>)}
-	<p>{t(`${namespace}.listIntro`)}</p>
-	<ul>
-		{items.map((item) => <li>{item}</li>)}
+<article class="mx-auto max-w-3xl px-6 pb-16 leading-relaxed">
+	<p class="mb-6 font-serif text-xl leading-snug">{t(`${namespace}.lede`)}</p>
+	{namespace === 'Couple' && (
+		<img class="session-photo" src={coupleSession.src} width={coupleSession.width} height={coupleSession.height} alt={t('Couple.imageAlt')} decoding="async" />
+	)}
+	{before.map((paragraph) => <p class="mb-6">{paragraph}</p>)}
+	<p class="mb-6">{t(`${namespace}.listIntro`)}</p>
+	<ul class="mb-6 list-disc pl-6">
+		{items.map((item) => <li class="py-1">{item}</li>)}
 	</ul>
-	{after.map((paragraph) => <p>{paragraph}</p>)}
+	{namespace === 'Approach' && (
+		<section>
+			<h2 class="my-6 font-serif text-3xl">{t('Approach.dtma.title')}</h2>
+			<p class="mb-6"><strong>{t('Approach.dtma.subtitle')}</strong></p>
+			<img class="session-photo" src={dtmaSession.src} width={dtmaSession.width} height={dtmaSession.height} alt={t('Approach.dtma.alt')} loading="lazy" decoding="async" />
+			<p class="mb-6">{t('Approach.dtma.body')}</p>
+		</section>
+	)}
+	{after.map((paragraph, index) => (
+		<>
+			<p class="mb-6">{paragraph}</p>
+			{namespace === 'Individual' && index === 0 && <SupportJourney locale={locale} />}
+		</>
+	))}
 </article>
 <BookingCTA locale={locale} />
+
+<style>
+	.session-photo { display: block; width: 100%; height: auto; margin-bottom: 2rem; border-radius: 1.5rem; }
+</style>

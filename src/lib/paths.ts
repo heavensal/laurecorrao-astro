@@ -36,12 +36,16 @@ export type LegalPageId = keyof typeof legalSlugs.fr;
 /** Public content slugs. The keys are code. The values are addresses. */
 export const contentSlugs = {
 	fr: {
+		adhd: 'tdah',
+		parenting: 'coaching-parentalite',
 		individual: 'accompagnement-individuel',
 		couple: 'therapie-de-couple',
 		approach: 'mon-approche',
 		booking: 'tarifs-et-rendez-vous',
 	},
 	en: {
+		adhd: 'adhd',
+		parenting: 'parenting-coaching',
 		individual: 'individual-support',
 		couple: 'couples-therapy',
 		approach: 'my-approach',

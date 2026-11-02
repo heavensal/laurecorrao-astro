@@ -1,0 +1,51 @@
+---
+import BookingDetails from '../BookingDetails.astro';
+import overview from '../../assets/images/adhd/attention-and-organization.webp';
+import child from '../../assets/images/adhd/child-building.webp';
+import teen from '../../assets/images/adhd/teen-studying.webp';
+import adult from '../../assets/images/adhd/adult-planning.webp';
+import { getFixedT, type Locale } from '../../i18n/i18n';
+import { contentPath, pageHref } from '../../lib/paths';
+
+interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const images = { overview, child, teen, adult };
+---
+<article>
+	{Object.entries(images).map(([key, src]) => (
+		<section class="spread">
+			<div>
+				{key === 'overview' ? <h1 class="my-6 font-serif leading-tight">{t('Adhd.overview.title')}</h1> : <h2 class="mb-5 font-serif text-3xl leading-tight">{t(`Adhd.${key}.title`)}</h2>}
+				<p class="mb-5">{t(`Adhd.${key}.intro`)}</p>
+				<p class="mb-5">{t(`Adhd.${key}.body`)}</p>
+				{key !== 'overview' && <p class="objective"><strong>{t(`Adhd.${key}.goal`)}</strong></p>}
+			</div>
+			<img src={src.src} width={src.width} height={src.height} alt={t(`Adhd.${key}.alt`)} decoding="async" loading={key === 'overview' ? 'eager' : 'lazy'} />
+		</section>
+	))}
+	<section class="closing bg-sand px-6 py-14 text-center">
+		<h2 class="mb-5 font-serif text-3xl leading-tight">{t('Adhd.first.title')}</h2>
+		<p class="mb-5">{t('Adhd.first.body')}</p>
+		<p class="mb-5">{t('Adhd.first.scope')}</p>
+		<BookingDetails locale={locale} />
+		<a class="inline-flex items-center justify-center rounded-md bg-rose-deep px-6 py-3 text-white" href={pageHref(`${contentPath(locale, 'booking')}/#agenda`)}>{t('Nav.bookingCta')}</a>
+		<p class="sources"><small>{t('Adhd.sources')}</small></p>
+	</section>
+</article>
+<style>
+	.spread { max-width: 1200px; margin: auto; padding: clamp(2rem, 5vw, 4rem) 6%; display: grid; grid-template-columns: 1.25fr 1fr; gap: 5%; align-items: center; }
+	.spread + .spread { border-top: 1px solid #e9ddd3; }
+	.spread:nth-child(even) { grid-template-columns: 1fr 1.25fr; }
+	.spread:nth-child(even) img { order: -1; }
+	img { width: 100%; height: auto; border-radius: 1rem; }
+	h1 { font-size: clamp(2.4rem, 4.5vw, 4rem); }
+	h2 { margin-top: 0; }
+	.objective { border-left: 3px solid var(--color-rose-laure); padding-left: 1rem; }
+	.closing p { max-width: 68ch; margin-inline: auto; }
+	.sources { margin: 2rem auto 0; }
+	@media (max-width: 760px) {
+		.spread, .spread:nth-child(even) { grid-template-columns: 1fr; gap: 1rem; }
+		.spread:nth-child(even) img { order: 0; }
+	}
+</style>

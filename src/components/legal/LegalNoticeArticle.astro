@@ -1,6 +1,6 @@
 ---
 import { getFixedT, type Locale } from '../../i18n/i18n';
-import { homePathForLocale, pageHref } from '../../lib/paths';
+import { homePathForLocale, legalPath, pageHref } from '../../lib/paths';
 import { siteConfig } from '../../site.config';
 
 interface Props {
@@ -10,40 +10,55 @@ interface Props {
 const { locale } = Astro.props;
 const t = getFixedT(locale);
 const homeUrl = pageHref(homePathForLocale(locale) || '/');
-const email = siteConfig.contact.email;
-const publisher = t('LegalNotice.s1p1') + (email ? t('LegalNotice.s1p1After', { email }) : '');
 ---
 
 <article>
-	<div class="page-head">
-		<p><a href={homeUrl}>{t('LegalNotice.back')}</a></p>
-		<h1>{t('LegalNotice.h1')}</h1>
-		<p>{t('LegalNotice.updated')}</p>
+	<div class="mx-auto max-w-6xl px-6 pt-16 pb-6">
+		<p class="my-4"><a href={homeUrl}>{t('LegalNotice.back')}</a></p>
+		<h1 class="font-serif text-4xl leading-tight md:text-5xl">{t('LegalNotice.h1')}</h1>
+		<p class="my-4">{t('LegalNotice.updated')}</p>
 	</div>
-	<div class="prose">
+	<div class="prose mx-auto max-w-3xl px-6 pb-16 leading-relaxed">
 		<section>
-			<h2>{t('LegalNotice.s1h')}</h2>
-			<p set:html={publisher} />
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.s1h')}</h2>
+			<p class="my-4">{t('LegalNotice.s1p1')}</p>
+			<p class="my-4">{t('LegalNotice.addressLabel')}<br />{siteConfig.legal.building}<br />{siteConfig.legal.street}<br />{siteConfig.legal.postalCode} {siteConfig.legal.city}, France</p>
+			<p class="my-4">{t('LegalNotice.phoneLabel')} <a href={`tel:${siteConfig.contact.phoneE164}`}>{siteConfig.contact.phone}</a></p>
 		</section>
 		<section>
-			<h2>{t('LegalNotice.s2h')}</h2>
-			<p>{t('LegalNotice.s2p1')}</p>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.s2h')}</h2>
+			<p class="my-4">{t('LegalNotice.s2p1')}</p>
 		</section>
 		<section>
-			<h2>{t('LegalNotice.s3h')}</h2>
-			<p set:html={t('LegalNotice.s3p1')} />
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.s3h')}</h2>
+			<p class="my-4">{t('LegalNotice.s3p1')} <a href="https://www.hostinger.com/">Hostinger</a></p>
+			<p class="my-4">{t('LegalNotice.technical')} <a href="https://1344.fr">1344.fr</a></p>
 		</section>
 		<section>
-			<h2>{t('LegalNotice.s4h')}</h2>
-			<p>{t('LegalNotice.s4p1')}</p>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.activity')}</h2>
+			<p class="my-4">{t('LegalNotice.activityBody')}</p>
+			<p class="my-4">{t('LegalNotice.scope')}</p>
+			<p class="my-4">{t('LegalNotice.info')}</p>
 		</section>
 		<section>
-			<h2>{t('LegalNotice.s5h')}</h2>
-			<p>{t('LegalNotice.s5p1')}</p>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.s4h')}</h2>
+			<p class="my-4">{t('LegalNotice.s4p1')}</p>
 		</section>
 		<section>
-			<h2>{t('LegalNotice.s6h')}</h2>
-			<p>{t('LegalNotice.s6p1')}</p>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.s5h')}</h2>
+			<p class="my-4">{t('LegalNotice.s5p1')}</p>
+		</section>
+		<section>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.s6h')}</h2>
+			<p class="my-4">{t('LegalNotice.s6p1')}</p>
+		</section>
+		<section>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.privacy')}</h2>
+			<a href={pageHref(legalPath(locale, 'privacyPolicy') + '/')}>{t('LegalNotice.privacyLink')}</a>
+		</section>
+		<section>
+			<h2 class="mt-10 font-serif text-3xl leading-tight">{t('LegalNotice.terms')}</h2>
+			<a href={pageHref(legalPath(locale, 'termsOfService') + '/')}>{t('LegalNotice.termsLink')}</a>
 		</section>
 	</div>
 </article>

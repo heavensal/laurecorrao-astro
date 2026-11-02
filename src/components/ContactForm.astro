@@ -7,6 +7,9 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getFixedT(locale);
+const field =
+	'w-full rounded-lg border border-line bg-white px-3 py-3 text-base font-normal text-ink';
+const label = 'grid gap-1 text-sm font-semibold';
 const config = {
 	apiUrl: import.meta.env.PUBLIC_CONTACT_FORM_URL || 'https://forge.1344.fr/api/v1/send_form',
 	apiToken: import.meta.env.PUBLIC_CONTACT_FORM_TOKEN || '',
@@ -28,34 +31,41 @@ const config = {
 };
 ---
 
-<dialog id="contact-dialog" aria-labelledby="contact-title">
-	<div class="dialog-card">
-		<button class="dialog-close" type="button" data-close aria-label={t('Contact.close')}>×</button>
-		<p class="eyebrow">{t('Contact.eyebrow')}</p>
-		<h2 id="contact-title">{t('Contact.title')}</h2>
-		<p>{t('Contact.intro')}</p>
-		<form id="contact-form">
-			<div class="form-grid">
-				<label>{t('Contact.firstName')}<input name="firstName" autocomplete="given-name" required /></label>
-				<label>{t('Contact.lastName')}<input name="lastName" autocomplete="family-name" required /></label>
+<dialog id="contact-dialog" class="m-auto w-full max-w-2xl rounded-2xl border-0 p-0 shadow-2xl" aria-labelledby="contact-title">
+	<div class="relative p-8">
+		<button class="absolute top-3 right-4 cursor-pointer text-3xl text-muted" type="button" data-close aria-label={t('Contact.close')}>
+			×
+		</button>
+		<p class="mb-4 text-xs tracking-widest text-rose-laure uppercase">{t('Contact.eyebrow')}</p>
+		<h2 id="contact-title" class="font-serif text-3xl leading-tight">{t('Contact.title')}</h2>
+		<p class="mt-3">{t('Contact.intro')}</p>
+		<form id="contact-form" class="mt-6 grid gap-4">
+			<div class="grid gap-4 sm:grid-cols-2">
+				<label class={label}>{t('Contact.firstName')}<input class={field} name="firstName" autocomplete="given-name" required /></label>
+				<label class={label}>{t('Contact.lastName')}<input class={field} name="lastName" autocomplete="family-name" required /></label>
 			</div>
-			<label>{t('Contact.email')}<input name="email" type="email" autocomplete="email" required /></label>
-			<label>{t('Contact.phone')}<input name="phone" type="tel" autocomplete="tel" required /></label>
-			<label>
+			<label class={label}>{t('Contact.email')}<input class={field} name="email" type="email" autocomplete="email" required /></label>
+			<label class={label}>{t('Contact.phone')}<input class={field} name="phone" type="tel" autocomplete="tel" required /></label>
+			<label class={label}>
 				{t('Contact.request')}
-				<select name="requestType">
+				<select class={field} name="requestType">
 					<option>{t('Contact.optionIndividual')}</option>
 					<option>{t('Contact.optionCouple')}</option>
 					<option>{t('Contact.optionOther')}</option>
 				</select>
 			</label>
-			<label>{t('Contact.message')}<textarea name="message" rows="5" required></textarea></label>
-			<label class="consent">
-				<input name="consent" type="checkbox" required />
+			<label class={label}>{t('Contact.message')}<textarea class={field} name="message" rows="5" required></textarea></label>
+			<label class="flex items-start gap-3 text-sm font-normal">
+				<input class="mt-1" name="consent" type="checkbox" required />
 				{t('Contact.consent')}
 			</label>
-			<p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-			<button class="button" type="submit">{t('Contact.submit')}</button>
+			<p id="form-status" class="min-h-6 text-rose-laure" role="status" aria-live="polite"></p>
+			<button
+				class="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-sm text-white transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep"
+				type="submit"
+			>
+				{t('Contact.submit')}
+			</button>
 		</form>
 	</div>
 </dialog>

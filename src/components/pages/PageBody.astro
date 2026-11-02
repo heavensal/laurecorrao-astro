@@ -4,6 +4,8 @@ import PrivacyArticle from '../legal/PrivacyArticle.astro';
 import TermsArticle from '../legal/TermsArticle.astro';
 import type { Locale } from '../../i18n/i18n';
 import type { ContentKind } from '../../lib/pages';
+import AdhdPage from './AdhdPage.astro';
+import ParentingPage from './ParentingPage.astro';
 import FeesPage from './FeesPage.astro';
 import TopicPage from './TopicPage.astro';
 
@@ -15,6 +17,8 @@ interface Props {
 const { locale, kind } = Astro.props;
 ---
 
+{kind === 'adhd' && <AdhdPage locale={locale} />}
+{kind === 'parenting' && <ParentingPage locale={locale} />}
 {kind === 'individual' && <TopicPage locale={locale} namespace="Individual" />}
 {kind === 'couple' && <TopicPage locale={locale} namespace="Couple" />}
 {kind === 'approach' && <TopicPage locale={locale} namespace="Approach" />}

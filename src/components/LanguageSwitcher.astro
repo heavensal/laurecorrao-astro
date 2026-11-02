@@ -9,17 +9,18 @@ interface Props {
 const { locale } = Astro.props;
 const t = getFixedT(locale);
 const multilangEnabled = isMultilangEnabled();
+const link = 'text-sm text-ink no-underline hover:text-rose-laure';
 ---
 
 {
 	multilangEnabled && (
-		<nav class="lang-switch" aria-label={t('LanguageSwitcher.ariaLabel')}>
+		<nav class="flex items-center gap-2 text-sm" aria-label={t('LanguageSwitcher.ariaLabel')}>
 			{locale === 'fr' ? (
 				<span aria-current="true" lang="fr">
 					{t('LanguageSwitcher.labelFr')}
 				</span>
 			) : (
-				<a href={pageHref(pageRoutes.home)} hreflang="fr" lang="fr" title={t('LanguageSwitcher.titleFr')}>
+				<a class={link} href={pageHref(pageRoutes.home)} hreflang="fr" lang="fr" title={t('LanguageSwitcher.titleFr')}>
 					{t('LanguageSwitcher.labelFr')}
 				</a>
 			)}
@@ -29,7 +30,7 @@ const multilangEnabled = isMultilangEnabled();
 					{t('LanguageSwitcher.labelEn')}
 				</span>
 			) : (
-				<a href={pageHref(pageRoutes.englishHome)} hreflang="en" lang="en" title={t('LanguageSwitcher.titleEn')}>
+				<a class={link} href={pageHref(pageRoutes.englishHome)} hreflang="en" lang="en" title={t('LanguageSwitcher.titleEn')}>
 					{t('LanguageSwitcher.labelEn')}
 				</a>
 			)}

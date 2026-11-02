@@ -11,15 +11,23 @@ const homeEn = pageHref('en/');
 ---
 
 <Layout title={fr('NotFound.metaTitle')} description={fr('NotFound.metaDescription')} robots="noindex, nofollow">
-	<section class="section" data-not-found="fr">
-		<h1>{fr('NotFound.title')}</h1>
-		<a class="button" href={homeFr}>{fr('NotFound.home')}</a>
+	<section class="px-6 py-16" data-not-found="fr">
+		<h1 class="font-serif text-4xl leading-tight">{fr('NotFound.title')}</h1>
+		<a
+			class="mt-6 inline-flex min-h-12 items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-sm text-white no-underline"
+			href={homeFr}
+		>
+			{fr('NotFound.home')}
+		</a>
 	</section>
 	{
 		showEnglish && (
-			<section class="section" data-not-found="en" hidden>
-				<h1>{en('NotFound.title')}</h1>
-				<a class="button" href={homeEn}>
+			<section class="px-6 py-16" data-not-found="en" hidden>
+				<h1 class="font-serif text-4xl leading-tight">{en('NotFound.title')}</h1>
+				<a
+					class="mt-6 inline-flex min-h-12 items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-sm text-white no-underline"
+					href={homeEn}
+				>
 					{en('NotFound.home')}
 				</a>
 			</section>
