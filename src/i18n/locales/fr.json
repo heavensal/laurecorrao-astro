@@ -1,10 +1,11 @@
 {
 	"Layout": {
 		"skipToContent": "Aller au contenu",
-		"brandSubtitle": "Psychopraticienne · Thérapeute de couple"
+		"brandSubtitle": "Psychothérapeute · Thérapeute de couple",
+		"logoAlt": "Laure Corrao — psychothérapeute et thérapeute de couple à Port-de-Bouc"
 	},
 	"Home": {
-		"metaTitle": "Psychopraticienne et thérapeute de couple à Port-de-Bouc",
+		"metaTitle": "Psychothérapeute et thérapeute de couple à Port-de-Bouc",
 		"metaDescription": "Laure Corrao : accompagnement individuel et thérapie de couple à Port-de-Bouc et en visioconférence."
 	},
 	"Nav": {
@@ -17,7 +18,10 @@
 		"booking": "Rendez-vous",
 		"bookingCta": "Réserver un échange gratuit de 10 minutes",
 		"adhd": "TDAH",
-		"parenting": "Parentalité"
+		"parenting": "Parentalité",
+		"menuOpen": "Ouvrir le menu",
+		"menuClose": "Fermer le menu",
+		"sidebarAria": "Menu de navigation"
 	},
 	"NotFound": {
 		"metaTitle": "Page introuvable",
@@ -48,13 +52,27 @@
 		"bookingCta": "Réserver un échange gratuit de 10 minutes"
 	},
 	"Footer": {
-		"tagline": "Psychopraticienne et thérapeute de couple<br/>À Port-de-Bouc et en visioconférence",
+		"tagline": "Psychothérapeute et thérapeute de couple<br/>Cabinet et visioconférence",
+		"callLabel": "Téléphone",
+		"hoursTitle": "Horaires du cabinet",
+		"hoursSchedule": [
+			{ "day": "Lundi", "hours": "9h – 18h" },
+			{ "day": "Mardi", "hours": "9h – 18h" },
+			{ "day": "Mercredi", "hours": "9h – 18h" },
+			{ "day": "Jeudi", "hours": "9h – 18h" },
+			{ "day": "Vendredi", "hours": "9h – 18h" },
+			{ "day": "Samedi", "hours": "Fermé" },
+			{ "day": "Dimanche", "hours": "Fermé" }
+		],
+		"navServicesTitle": "Accompagnements",
+		"navSiteTitle": "Le site",
+		"logoAlt": "Laure Corrao — psychothérapeute",
 		"contact": "Me contacter",
 		"legalAria": "Informations légales",
 		"linkLegal": "Mentions légales",
 		"linkPrivacy": "Politique de confidentialité",
 		"linkTerms": "Conditions générales",
-		"copyright": "© {{year}} Laure Corrao"
+		"copyright": "© {{year}} Laure Corrao. Tous droits réservés."
 	},
 	"LegalNotice": {
 		"metaTitle": "Mentions légales",
@@ -234,7 +252,7 @@
 				"title": "Paiement",
 				"paragraphs": [
 					"Le mode de règlement est convenu lors de la réservation :",
-					"— paiement en ligne avant la séance, via un lien sécurisé envoyé par mail ; — ou, pour les consultations au cabinet, paiement sur place à l’arrivée, notamment en espèces dans les limites légales.",
+					"— paiement en ligne avant la séance, via un lien sécurisé envoyé par mail — ou, pour les consultations au cabinet, paiement sur place à l’arrivée, notamment en espèces dans les limites légales.",
 					"Une note ou facture est remise conformément aux obligations applicables, quel que soit le moyen de règlement."
 				]
 			},
@@ -308,11 +326,12 @@
 		"privacy": "Consulter la politique de confidentialité"
 	},
 	"Pages": {
-		"eyebrow": "Laure Corrao · Port-de-Bouc"
+		"eyebrow": "Laure Corrao",
+		"breadcrumbAria": "Fil d'Ariane"
 	},
 	"HomePage": {
-		"eyebrow": "Cabinet à Port-de-Bouc · Consultations en ligne",
-		"titleHtml": "Psychopraticienne &amp;<br />Thérapeute de couple",
+		"eyebrow": "Cabinet et consultations en ligne",
+		"titleHtml": "Psychothérapeute &amp;<br />Thérapeute de couple",
 		"subtitle": "Mettre des mots sur vos maux pour retrouver le chemin vers vous-même.",
 		"intro": "Je vous accueille dans un espace d’écoute bienveillant, confidentiel et sans jugement pour vous aider à traverser les difficultés, mieux vous comprendre et retrouver équilibre et sérénité.",
 		"approachCta": "Découvrir mon approche",
@@ -324,7 +343,7 @@
 		"approachSummaryHtml": "Hypnose · DTMA · Outils<br />thérapeutiques adaptés",
 		"aboutEyebrow": "À propos",
 		"aboutTitle": "Et si vous vous accordiez enfin la place d’aller mieux ?",
-		"aboutBody": "Je suis Laure Corrao, psychopraticienne et thérapeute de couple. Je vous accompagne avec bienveillance, écoute et sans jugement, dans un espace confidentiel où vous pourrez vous déposer pleinement, à votre rythme.",
+		"aboutBody": "Je suis Laure Corrao, psychothérapeute et thérapeute de couple. Je vous accompagne avec bienveillance, écoute et sans jugement, dans un espace confidentiel où vous pourrez vous déposer pleinement, à votre rythme.",
 		"quote": "Vous n’avez pas besoin de savoir par où commencer. Vous avez simplement besoin d’oser faire le premier pas.",
 		"readingTitle": "Un accompagnement qui vous ressemble.",
 		"readingLead": "Il arrive que l’on se sente dépassé par ses émotions, prisonnier de ses peurs ou enfermé dans des schémas qui se répètent. Anxiété, phobies, manque de confiance, blessures émotionnelles, difficultés relationnelles ou crise de couple : vous n’avez pas à traverser cela seul.",
@@ -335,17 +354,29 @@
 		"coupleCta": "Découvrir la thérapie de couple",
 		"placeTitle": "Un espace pour vous retrouver.",
 		"placeBody": "Dans l’atmosphère chaleureuse et apaisante de mon cabinet, vous pourrez enfin mettre des mots sur vos maux, mieux comprendre ce qui se joue en vous et avancer vers un équilibre plus serein.",
-		"practiceTitle": "Au cabinet, à Port-de-Bouc",
-		"practiceBody": "Un cadre chaleureux, confidentiel et sans jugement. Les informations pratiques d’accès seront précisées avant votre venue.",
+		"practiceTitle": "Au cabinet",
+		"practiceBody": "Un cadre chaleureux, confidentiel et sans jugement, au 9 imp. Le Maroni à Port-de-Bouc.",
+		"practiceAddress": "9 Imp. Le Maroni, 13110 Port-de-Bouc",
+		"practiceMapsLabel": "Voir l’itinéraire sur Google Maps",
+		"practicePhotoAlt": "Espace de consultation chaleureux et apaisant",
 		"videoTitle": "En visioconférence",
 		"videoBody": "Installez-vous dans un lieu calme, où vous pouvez parler en toute confidentialité.",
+		"videoPhotoAlt": "Consultation en visioconférence depuis un lieu calme",
+		"placeBookingCta": "Prendre rendez-vous",
 		"placeClose": "Ici, vous n’avez pas besoin de savoir par où commencer. Vous avez simplement besoin d’oser faire le premier pas."
 	},
 	"Individual": {
+		"heroAlt": "Un fauteuil accueillant dans un coin calme du cabinet, pour un accompagnement individuel.",
 		"journeyAlt": "Un sentier aquarellé illustre un parcours personnel : dire ce qui vous pèse, en parler lors du premier rendez-vous, mieux vous comprendre et avancer à votre rythme vers davantage d’apaisement et d’autonomie.",
 		"viewJourney": "Voir l’illustration en grand",
-		"metaTitle": "Accompagnement individuel",
-		"metaDescription": "Un espace pour comprendre ce que vous traversez et retrouver vos propres ressources.",
+		"metaTitle": "Accompagnement individuel à Port-de-Bouc",
+		"metaDescription": "Accompagnement individuel à Port-de-Bouc et en visioconférence avec Laure Corrao. Un espace confidentiel pour comprendre ce que vous traversez et retrouver vos ressources.",
+		"processHeading": "Comment se déroule l’accompagnement",
+		"journeyHeading": "Avancer à votre rythme",
+		"placeHeading": "Cabinet à Port-de-Bouc et visioconférence",
+		"placeBody": "Les séances se déroulent au cabinet, dans un cadre chaleureux et confidentiel, ou en visioconférence depuis un lieu calme où vous pouvez parler librement.",
+		"closingAria": "Pour commencer",
+		"mapsOpensNewTab": "(ouvre dans un nouvel onglet)",
 		"h1": "Accompagnement individuel",
 		"lede": "Un espace pour comprendre ce que vous traversez et retrouver vos propres ressources.",
 		"before": [
@@ -353,12 +384,12 @@
 		],
 		"listIntro": "Je vous accompagne notamment face à :",
 		"items": [
-			"l’anxiété, les angoisses et les phobies ;",
-			"la perte d’estime de soi ou de confiance en soi ;",
-			"les blessures émotionnelles et les conséquences d’expériences traumatiques ;",
-			"la dépendance affective et les difficultés relationnelles ;",
-			"les séparations, les deuils et les périodes de transition ;",
-			"les blocages, les schémas répétitifs et les difficultés à poser vos limites ;",
+			"l’anxiété, les angoisses et les phobies",
+			"la perte d’estime de soi ou de confiance en soi",
+			"les blessures émotionnelles et les conséquences d’expériences traumatiques",
+			"la dépendance affective et les difficultés relationnelles",
+			"les séparations, les deuils et les périodes de transition",
+			"les blocages, les schémas répétitifs et les difficultés à poser vos limites",
 			"le stress, la surcharge émotionnelle ou la sensation de ne plus trouver votre place."
 		],
 		"after": [
@@ -369,8 +400,8 @@
 	},
 	"Couple": {
 		"imageAlt": "Un couple assis sur un canapé échange avec une thérapeute qui tient un carnet.",
-		"metaTitle": "Thérapie de couple",
-		"metaDescription": "Retrouver un espace de dialogue lorsque la relation ne parvient plus à avancer seule.",
+		"metaTitle": "Thérapie de couple à Port-de-Bouc | Laure Corrao",
+		"metaDescription": "Thérapie de couple à Port-de-Bouc et en visioconférence. Retrouver un dialogue apaisé lorsque la relation ne parvient plus à avancer seule.",
 		"h1": "Thérapie de couple",
 		"lede": "Retrouver un espace de dialogue lorsque la relation ne parvient plus à avancer seule.",
 		"before": [
@@ -379,24 +410,38 @@
 		],
 		"listIntro": "Je vous accompagne notamment lorsque vous traversez :",
 		"items": [
-			"des difficultés de communication ;",
-			"des disputes répétitives ou des conflits qui restent sans solution ;",
-			"un éloignement émotionnel, affectif ou intime ;",
-			"une perte de confiance ou une infidélité ;",
-			"une période de crise, une séparation envisagée ou déjà engagée ;",
-			"des désaccords concernant la famille, les enfants ou les projets de vie ;",
+			"des difficultés de communication",
+			"des disputes répétitives ou des conflits qui restent sans solution",
+			"un éloignement émotionnel, affectif ou intime",
+			"une perte de confiance ou une infidélité",
+			"une période de crise, une séparation envisagée ou déjà engagée",
+			"des désaccords concernant la famille, les enfants ou les projets de vie",
 			"des difficultés à reconstruire le lien après une épreuve."
 		],
 		"after": [
 			"Les entretiens permettent d’identifier les mécanismes relationnels qui entretiennent les tensions, de mieux comprendre la place et les besoins de chacun et de créer de nouvelles façons de communiquer.",
-			"Je ne suis ni juge ni arbitre. Mon rôle est d’aider chaque partenaire à être entendu, tout en permettant au couple de retrouver un dialogue plus apaisé. Selon votre situation, l’accompagnement pourra viser la reconstruction du lien, la recherche d’un nouvel équilibre ou une séparation plus consciente et respectueuse.",
+			"Je ne suis ni juge ni arbitre. Mon rôle est d’aider chaque partenaire à être entendu, tout en permettant au couple de retrouver un dialogue plus apaisé.",
 			"Chaque couple possède sa propre histoire. Les séances et les outils proposés sont donc personnalisés en fonction de votre situation, de vos attentes et de votre rythme.",
 			"Demander de l’aide ne signifie pas que votre couple a échoué. Cela signifie que vous choisissez de ne plus rester seuls face à vos difficultés."
-		]
+		],
+		"topic": "Thérapie de couple · Port-de-Bouc",
+		"approachHeading": "Un cadre neutre pour parler à deux",
+		"sessionsHeading": "Au fil des séances",
+		"goal": "Selon votre situation, l’accompagnement pourra viser la reconstruction du lien, la recherche d’un nouvel équilibre ou une séparation plus consciente et respectueuse.",
+		"placeHeading": "Cabinet à Port-de-Bouc et visioconférence",
+		"placeBody": "Les séances se déroulent au cabinet, dans un cadre chaleureux et confidentiel, ou en visioconférence depuis un lieu calme où vous pouvez parler librement.",
+		"mapsOpensNewTab": "(ouvre dans un nouvel onglet)",
+		"closingAria": "Pour avancer ensemble",
+		"reassurance": "Demander de l’aide ne signifie pas que votre couple a échoué. Cela signifie que vous choisissez de ne plus rester seuls face à vos difficultés.",
+		"first": {
+			"title": "Un premier échange pour faire le point",
+			"body": "La première séance permet de comprendre ce qui vous amène, d’entendre le vécu de chacun et de définir ensemble la direction de l’accompagnement.",
+			"scope": "Les séances de couple durent 1 h 30. Tarif : 90 € par couple, au cabinet ou en visioconférence."
+		}
 	},
 	"Approach": {
-		"metaTitle": "Mon approche",
-		"metaDescription": "Une thérapie sur mesure, parce que chaque personne et chaque histoire sont uniques.",
+		"metaTitle": "Mon approche thérapeutique à Port-de-Bouc | Laure Corrao",
+		"metaDescription": "Thérapie intégrative et personnalisée à Port-de-Bouc et en visioconférence : TCC, systémique, hypnose, DTMA et accompagnement sur mesure.",
 		"h1": "Mon approche",
 		"lede": "Une thérapie sur mesure, parce que chaque personne et chaque histoire sont uniques.",
 		"before": [
@@ -404,11 +449,11 @@
 		],
 		"listIntro": "Mon approche est intégrative : elle associe l’écoute et la parole à différents outils thérapeutiques auxquels je suis formée, notamment :",
 		"items": [
-			"les thérapies cognitives et comportementales, pour identifier et faire évoluer certaines pensées, émotions et réactions ;",
-			"l’approche systémique, particulièrement adaptée à la compréhension des relations, des couples et des fonctionnements familiaux ;",
-			"l’approche psychanalytique et la thérapie par la parole, pour explorer votre histoire et mieux comprendre l’origine de certains mécanismes ;",
-			"l’hypnose, pour travailler sur certains blocages, peurs ou automatismes ;",
-			"l’art-thérapie, pour permettre l’expression autrement que par les mots lorsque cela est pertinent ;",
+			"les thérapies cognitives et comportementales, pour identifier et faire évoluer certaines pensées, émotions et réactions",
+			"l’approche systémique, particulièrement adaptée à la compréhension des relations, des couples et des fonctionnements familiaux",
+			"l’approche psychanalytique et la thérapie par la parole, pour explorer votre histoire et mieux comprendre l’origine de certains mécanismes",
+			"l’hypnose, pour travailler sur certains blocages, peurs ou automatismes",
+			"l’art-thérapie, pour permettre l’expression autrement que par les mots lorsque cela est pertinent",
 			"la programmation neurolinguistique, ou PNL, ainsi que différents outils de coaching et d’accompagnement au changement."
 		],
 		"after": [
@@ -422,6 +467,20 @@
 			"subtitle": "Des mouvements oculaires guidés et des tapotements alternés",
 			"body": "Violences sexuelles, accident de voiture, deuil ou séparation brutale : certaines expériences laissent une souffrance qui persiste. Dans mon accompagnement, la DTMA utilise des mouvements des yeux guidés et des tapotements alternés, avec l’objectif de travailler sur les émotions associées aux souvenirs douloureux. Chaque démarche commence par un échange pour évaluer vos besoins et adapter l’accompagnement à votre rythme. Les traumatismes sévères peuvent nécessiter une prise en charge spécialisée, en complément ou en priorité.",
 			"alt": "Une femme suit du regard les doigts levés de la praticienne assise en face d’elle."
+		},
+		"topic": "Approche thérapeutique · Port-de-Bouc",
+		"heroAlt": "Un sentier aquarellé illustre un parcours personnel : dire ce qui vous pèse, en parler lors du premier rendez-vous, mieux vous comprendre et avancer à votre rythme vers davantage d’apaisement et d’autonomie.",
+		"toolsHeading": "Une approche intégrative et personnalisée",
+		"processHeading": "Un accompagnement qui évolue avec vous",
+		"goal": "Vous restez libre et pleinement acteur de votre accompagnement.",
+		"placeHeading": "Cabinet à Port-de-Bouc et visioconférence",
+		"mapsOpensNewTab": "(ouvre dans un nouvel onglet)",
+		"closingAria": "Pour commencer",
+		"reassurance": "Il n’est pas nécessaire d’attendre d’aller plus mal pour commencer à prendre soin de soi.",
+		"first": {
+			"title": "Un premier échange pour faire le point",
+			"body": "Les premières séances permettent de comprendre votre demande, votre situation et vos objectifs. Nous définissons ensuite un accompagnement adapté, à votre rythme.",
+			"scope": "Mon accompagnement ne remplace pas un suivi médical ou psychiatrique lorsqu’il est nécessaire. En cas d’urgence, contactez les services adaptés."
 		}
 	},
 	"Booking": {
@@ -558,7 +617,7 @@
 			},
 			{
 				"question": "Les consultations sont-elles remboursées ?",
-				"answer": "Elles ne sont pas prises en charge par l’Assurance maladie. Certaines mutuelles proposent toutefois un forfait annuel ; une facture peut être remise sur demande."
+				"answer": "Elles ne sont pas prises en charge par l’Assurance maladie. Certaines mutuelles proposent toutefois un forfait annuel une facture peut être remise sur demande."
 			},
 			{
 				"question": "Comment déplacer ou annuler un rendez-vous ?",
@@ -567,6 +626,7 @@
 		]
 	},
 	"Adhd": {
+		"topic": "Accompagnement TDAH · Port-de-Bouc",
 		"overview": {
 			"title": "TDAH : mieux se comprendre, trouver ses repères",
 			"intro": "Le trouble du déficit de l’attention avec ou sans hyperactivité peut rendre certaines situations du quotidien particulièrement exigeantes. Se concentrer, s’organiser, attendre ou terminer une tâche demande parfois beaucoup d’efforts.",
@@ -609,12 +669,29 @@
 		"intro": "Vous répétez les mêmes consignes et les échanges finissent en conflit ? Écrans, devoirs, limites, désaccords éducatifs… Vous vous sentez parfois dépassé et ne savez plus comment réagir ?",
 		"support": "Je vous accompagne pour comprendre ce qui se joue et trouver des solutions adaptées à votre famille.",
 		"space": "Un espace pour prendre du recul, sans jugement sur votre manière d’être parent.",
-		"practice": "Ensemble, nous travaillons sur des situations concrètes : poser des limites claires, mieux communiquer, accompagner les émotions et construire des routines qui facilitent le quotidien.",
+		"approachHeading": "Un accompagnement adapté à votre famille",
+		"listIntro": "Ensemble, nous travaillons sur des situations concrètes :",
+		"focusItems": [
+			"poser des limites claires",
+			"mieux communiquer au quotidien",
+			"accompagner les émotions",
+			"construire des routines qui facilitent le quotidien."
+		],
+		"sessionsHeading": "Des séances à votre rythme",
 		"sessions": "Les séances peuvent se faire seul ou avec l’autre parent. La participation des enfants se décide ensemble, selon les besoins.",
 		"goal": "L’objectif : vous aider à retrouver confiance dans votre rôle et à construire des relations familiales plus apaisées, étape par étape.",
+		"placeHeading": "Cabinet à Port-de-Bouc et visioconférence",
+		"placeBody": "Les séances se déroulent au cabinet, dans un cadre chaleureux et confidentiel, ou en visioconférence depuis un lieu calme où vous pouvez parler librement.",
+		"mapsOpensNewTab": "(ouvre dans un nouvel onglet)",
+		"closingAria": "Pour commencer",
 		"reassurance": "Vous n’avez pas besoin d’attendre d’être à bout pour vous faire accompagner.",
+		"first": {
+			"title": "Un premier échange pour faire le point",
+			"body": "La première séance permet de comprendre votre demande, ce qui se joue dans la famille et ce que vous souhaitez voir évoluer. Nous définissons ensuite des objectifs réalistes, à votre rythme.",
+			"scope": "Mon accompagnement ne remplace pas un suivi médical ou psychiatrique lorsqu’il est nécessaire. En cas d’urgence, contactez les services adaptés."
+		},
 		"alt": "Une jeune fille prend la parole pendant un jeu de cartes en famille.",
-		"topic": "Coaching en parentalité",
+		"topic": "Coaching en parentalité · Port-de-Bouc",
 		"metaTitle": "Coaching en parentalité | Laure Corrao"
 	}
 }

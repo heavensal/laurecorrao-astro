@@ -1,34 +1,135 @@
 ---
 import { getFixedT, type Locale } from '../i18n/i18n';
-import { legalPath, pageHref } from '../lib/paths';
+import { publishedBlogPaths } from '../lib/forge-blog';
+import { contentPath, legalPath, pageHref } from '../lib/paths';
 import { siteConfig } from '../site.config';
 
 interface Props {
 	locale: Locale;
 }
 
+type HoursRow = { day: string; hours: string };
+
 const { locale } = Astro.props;
 const t = getFixedT(locale);
 const homeHref = pageHref(locale === 'en' ? 'en/' : '');
+const blogPath = (await publishedBlogPaths(null))[locale];
+const hoursScheduleValue = t('Footer.hoursSchedule', { returnObjects: true });
+const hoursSchedule: HoursRow[] = Array.isArray(hoursScheduleValue) ? hoursScheduleValue : [];
+const serviceLinks = [
+	[pageHref(`${contentPath(locale, 'individual')}/`), t('Nav.individual')],
+	[pageHref(`${contentPath(locale, 'adhd')}/`), t('Nav.adhd')],
+	[pageHref(`${contentPath(locale, 'parenting')}/`), t('Nav.parenting')],
+	[pageHref(`${contentPath(locale, 'couple')}/`), t('Nav.couple')],
+] as const;
+const siteLinks = [
+	[homeHref, t('Nav.home')],
+	[pageHref(`${contentPath(locale, 'approach')}/`), t('Nav.approach')],
+	...(blogPath ? [[pageHref(`${blogPath}/`), t('Nav.articles')]] as const : []),
+	[pageHref(`${contentPath(locale, 'booking')}/`), t('Nav.booking')],
+] as const;
 const legalHref = (page: 'legalNotice' | 'privacyPolicy' | 'termsOfService') =>
 	pageHref(`${legalPath(locale, page)}/`);
-const link = 'text-ink underline underline-offset-4 transition-colors duration-200 hover:text-rose-laure';
+const logoSrc = pageHref('images/laure_corrao_icon.png');
+const footerLink =
+	'text-muted transition-colors duration-200 hover:text-rose-laure hover:opacity-90 no-underline';
+const footerLinkSm = `${footerLink} text-sm`;
+const legalLink = `${footerLink} text-xs text-muted`;
 ---
 
-<footer class="grid items-end gap-6 border-t border-line px-6 py-10 md:grid-cols-2 md:px-10">
-	<div>
-		<a class="font-serif text-2xl text-ink no-underline" href={homeHref}>{siteConfig.name}</a>
-		<p class="mt-3 max-w-xl text-sm leading-relaxed text-muted" set:html={t('Footer.tagline')} />
-		<button class="mt-4 cursor-pointer text-rose-laure underline underline-offset-4" type="button" data-contact-open>
-			{t('Footer.contact')}
-		</button>
+<footer class="border-t border-line bg-paper lg:grid lg:grid-cols-5 lg:items-stretch">
+	<div class="relative h-48 w-full sm:h-56 lg:col-span-2 lg:h-full lg:min-h-0">
+		<a
+			class="absolute inset-0 flex items-center justify-center p-6 sm:p-8 no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-laure"
+			href={homeHref}
+		>
+			<img
+				src={logoSrc}
+				width={512}
+				height={512}
+				alt={t('Layout.logoAlt')}
+				class="h-full w-full object-contain"
+				decoding="async"
+				loading="lazy"
+			/>
+		</a>
 	</div>
-	<nav class="flex flex-wrap gap-6" aria-label={t('Footer.legalAria')}>
-		<a class={link} href={legalHref('legalNotice')}>{t('Footer.linkLegal')}</a>
-		<a class={link} href={legalHref('privacyPolicy')}>{t('Footer.linkPrivacy')}</a>
-		<a class={link} href={legalHref('termsOfService')}>{t('Footer.linkTerms')}</a>
-	</nav>
-	<small class="border-t border-line pt-4 text-xs text-muted md:col-span-2">
-		{t('Footer.copyright', { year: new Date().getFullYear() })}
-	</small>
+
+	<div class="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
+		<div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
+			<div>
+				<p class="font-medium text-ink">{t('Footer.hoursTitle')}</p>
+				<ul class="mt-6 space-y-1 text-sm text-ink">
+					{hoursSchedule.map((row) => (
+						<li class="flex justify-between gap-4">
+							<span class="text-muted">{row.day}</span>
+							<span>{row.hours}</span>
+						</li>
+					))}
+				</ul>
+
+				<button
+					class="mt-6 cursor-pointer border-0 bg-transparent p-0 text-sm text-rose-laure underline underline-offset-4"
+					type="button"
+					data-contact-open
+				>
+					{t('Footer.contact')}
+				</button>
+			</div>
+
+			<div>
+				<p class="font-medium text-ink">{t('Footer.navServicesTitle')}</p>
+				<ul class="mt-6 space-y-4 text-sm">
+					{serviceLinks.map(([url, label]) => (
+						<li>
+							<a class={footerLinkSm} href={url}>
+								{label}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+
+			<div>
+				<p class="font-medium text-ink">{t('Footer.navSiteTitle')}</p>
+				<ul class="mt-6 space-y-4 text-sm">
+					{siteLinks.map(([url, label]) => (
+						<li>
+							<a class={footerLinkSm} href={url}>
+								{label}
+							</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+
+		<div class="mt-12 border-t border-line pt-12">
+			<div class="sm:flex sm:items-center sm:justify-between">
+				<nav aria-label={t('Footer.legalAria')}>
+					<ul class="flex flex-wrap gap-4 text-xs">
+						<li>
+							<a class={legalLink} href={legalHref('legalNotice')}>
+								{t('Footer.linkLegal')}
+							</a>
+						</li>
+						<li>
+							<a class={legalLink} href={legalHref('privacyPolicy')}>
+								{t('Footer.linkPrivacy')}
+							</a>
+						</li>
+						<li>
+							<a class={legalLink} href={legalHref('termsOfService')}>
+								{t('Footer.linkTerms')}
+							</a>
+						</li>
+					</ul>
+				</nav>
+
+				<p class="mt-8 text-xs text-muted sm:mt-0">
+					{t('Footer.copyright', { year: new Date().getFullYear() })}
+				</p>
+			</div>
+		</div>
+	</div>
 </footer>

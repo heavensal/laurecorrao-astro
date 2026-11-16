@@ -1,0 +1,171 @@
+---
+import PageBreadcrumb from '../PageBreadcrumb.astro';
+import BookingDetails from '../BookingDetails.astro';
+import heroPhoto from '../../assets/images/individual/at-your-own-pace.webp';
+import dtmaSession from '../../assets/images/approach/dtma-guided-eye-movements.webp';
+import { getFixedT, type Locale } from '../../i18n/i18n';
+import { contentPath, pageHref } from '../../lib/paths';
+import { siteConfig } from '../../site.config';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const titleId = 'approach-title';
+const toolsHeadingId = 'approach-tools-heading';
+const dtmaHeadingId = 'approach-dtma-heading';
+const processHeadingId = 'approach-process-heading';
+const placeHeadingId = 'approach-place-heading';
+const bookingHeadingId = 'approach-booking-heading';
+const closingAria = String(t('Approach.closingAria'));
+
+function lines(key: string): string[] {
+	const value = t(key, { returnObjects: true });
+	return Array.isArray(value) ? value.map(String) : [];
+}
+
+const before = lines('Approach.before');
+const items = lines('Approach.items');
+const [toolsBody, processBody, placeBody] = lines('Approach.after');
+
+const heroSection =
+	'mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 border-line px-6 pb-16 md:px-10 lg:grid-cols-2';
+const photo = 'block h-auto w-full rounded-2xl shadow-sm ring-1 ring-line';
+const dtmaSection =
+	'mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 px-6 py-14 md:px-10 lg:grid-cols-2';
+---
+
+<article aria-labelledby={titleId}>
+	<PageBreadcrumb locale={locale} current={String(t('Approach.h1'))} />
+
+	<section class={heroSection} aria-labelledby={titleId}>
+		<div>
+			<h1
+				id={titleId}
+				class="mb-6 font-serif text-4xl leading-tight tracking-tight text-ink md:text-5xl lg:text-6xl"
+			>
+				{t('Approach.h1')}
+			</h1>
+			<p class="mb-5 text-lg leading-relaxed">{t('Approach.lede')}</p>
+		</div>
+		<img
+			class={photo}
+			src={heroPhoto.src}
+			width={heroPhoto.width}
+			height={heroPhoto.height}
+			alt={t('Approach.heroAlt')}
+			decoding="async"
+			loading="eager"
+			fetchpriority="high"
+		/>
+	</section>
+
+	<section class="bg-sand px-6 py-14 md:px-10" aria-labelledby={toolsHeadingId}>
+		<div class="mx-auto max-w-3xl">
+			<h2 id={toolsHeadingId} class="font-serif text-2xl leading-tight text-ink md:text-3xl">
+				{t('Approach.toolsHeading')}
+			</h2>
+			{before.map((paragraph) => (
+				<p class="mt-6 leading-relaxed">{paragraph}</p>
+			))}
+			<p class="mt-8 font-medium text-ink">{t('Approach.listIntro')}</p>
+			<ul class="mt-6 grid gap-3 sm:grid-cols-2" role="list">
+				{
+					items.map((item) => (
+						<li class="rounded-xl border border-line/60 bg-paper px-4 py-3 text-sm leading-relaxed text-ink shadow-sm">
+							{item}
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section class="border-y border-line bg-cream px-6 py-14 md:px-10" aria-labelledby={dtmaHeadingId}>
+		<div class={dtmaSection}>
+			<div>
+				<h2 id={dtmaHeadingId} class="font-serif text-2xl leading-tight text-ink md:text-3xl">
+					{t('Approach.dtma.title')}
+				</h2>
+				<p class="mt-6 font-medium text-ink">{t('Approach.dtma.subtitle')}</p>
+				<p class="mt-6 leading-relaxed">{t('Approach.dtma.body')}</p>
+			</div>
+			<img
+				class={photo}
+				src={dtmaSession.src}
+				width={dtmaSession.width}
+				height={dtmaSession.height}
+				alt={t('Approach.dtma.alt')}
+				loading="lazy"
+				decoding="async"
+			/>
+		</div>
+	</section>
+
+	<section
+		class="mx-auto max-w-3xl px-6 py-14 leading-relaxed md:px-10"
+		aria-labelledby={processHeadingId}
+	>
+		<h2 id={processHeadingId} class="font-serif text-2xl leading-tight text-ink md:text-3xl">
+			{t('Approach.processHeading')}
+		</h2>
+		<p class="mt-6">{toolsBody}</p>
+		<p class="mt-8 border-l-4 border-rose-laure pl-4">
+			<strong>{t('Approach.goal')}</strong>
+		</p>
+		<p class="mt-6">{processBody}</p>
+	</section>
+
+	<section class="mx-auto max-w-3xl px-6 pb-6 md:px-10" aria-labelledby={placeHeadingId}>
+		<h2 id={placeHeadingId} class="font-serif text-2xl leading-tight text-ink md:text-3xl">
+			{t('Approach.placeHeading')}
+		</h2>
+		<p class="mt-4 leading-relaxed">{placeBody}</p>
+		<p class="mt-3 text-muted">{t('HomePage.practiceAddress')}</p>
+		<p class="mt-4">
+			<a
+				class="text-rose-laure underline underline-offset-4"
+				href={siteConfig.mapsUrl}
+				rel="noopener noreferrer"
+				target="_blank"
+			>
+				{t('HomePage.practiceMapsLabel')}
+				<span class="absolute -m-px h-px w-px overflow-hidden border-0 p-0 whitespace-nowrap">
+					{t('Approach.mapsOpensNewTab')}
+				</span>
+			</a>
+		</p>
+	</section>
+
+	<section class="border-y border-line bg-sand px-6 py-14 md:px-10" aria-label={closingAria}>
+		<blockquote class="relative mx-auto max-w-2xl px-4 text-center">
+			<span class="absolute top-0 left-1/2 -translate-x-1/2 font-serif text-5xl text-blush" aria-hidden="true">
+				“
+			</span>
+			<p class="pt-8 font-serif text-xl leading-snug text-ink md:text-2xl">{t('Approach.reassurance')}</p>
+		</blockquote>
+	</section>
+
+	<section
+		class="bg-rose-laure px-6 py-14 text-center text-white md:px-16"
+		aria-labelledby={bookingHeadingId}
+	>
+		<h2 id={bookingHeadingId} class="font-serif text-3xl leading-tight md:text-4xl">
+			{t('Approach.first.title')}
+		</h2>
+		<div class="mx-auto max-w-prose text-start text-sand">
+			<p class="my-4">{t('Approach.first.body')}</p>
+			<p class="my-4" role="note">{t('Approach.first.scope')}</p>
+		</div>
+		<BookingDetails locale={locale} variant="onRose" />
+		<button
+			class="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-white bg-white px-6 py-3 text-sm text-rose-deep transition-colors duration-200 hover:bg-sand"
+			type="button"
+			data-booking-open
+		>
+			{t('Nav.bookingCta')}
+		</button>
+	</section>
+</article>

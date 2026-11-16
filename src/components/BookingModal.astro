@@ -1,0 +1,83 @@
+---
+import CalEmbed from './CalEmbed.astro';
+import { getFixedT, type Locale } from '../i18n/i18n';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+const dialogId = 'booking-dialog';
+const statusId = 'cal-booking-modal-status';
+const elementId = 'my-cal-booking-modal';
+const namespace = 'bookingModal';
+---
+
+<dialog
+	id={dialogId}
+	class="m-auto w-[min(100%,56rem)] max-h-[min(100%,48rem)] overflow-hidden rounded-2xl border-0 p-0 shadow-2xl"
+	aria-labelledby="booking-dialog-title"
+>
+	<div class="relative flex max-h-[min(100vh-2rem,48rem)] flex-col bg-cream">
+		<div class="flex items-center justify-between border-b border-line px-6 py-4">
+			<h2 id="booking-dialog-title" class="font-serif text-2xl leading-tight">{t('Nav.bookingCta')}</h2>
+			<button
+				class="cursor-pointer text-3xl text-muted"
+				type="button"
+				data-booking-close
+				aria-label={t('Contact.close')}
+			>
+				×
+			</button>
+		</div>
+		<div class="min-h-0 flex-1 overflow-auto px-4 py-4 sm:px-6">
+			<CalEmbed
+				locale={locale}
+				elementId={elementId}
+				statusId={statusId}
+				namespace={namespace}
+				containerClass="min-h-[28rem] w-full overflow-auto"
+				closeDialogOnBooking={true}
+				dialogId={dialogId}
+			/>
+		</div>
+	</div>
+</dialog>
+
+<script>
+	const dialog = document.querySelector('#booking-dialog');
+
+	function openBookingDialog() {
+		if (!(dialog instanceof HTMLDialogElement)) return;
+		dialog.showModal();
+		const sidebar = document.getElementById('nav-sidebar');
+		const overlay = document.getElementById('nav-overlay');
+		const openBtn = document.getElementById('nav-menu-open');
+		if (sidebar?.getAttribute('aria-hidden') === 'false') {
+			sidebar.classList.add('translate-x-full');
+			sidebar.setAttribute('aria-hidden', 'true');
+			sidebar.setAttribute('inert', '');
+			overlay?.classList.add('pointer-events-none', 'opacity-0');
+			overlay?.setAttribute('aria-hidden', 'true');
+			openBtn?.setAttribute('aria-expanded', 'false');
+		}
+	}
+
+	document.querySelectorAll('[data-booking-open]').forEach((button) => {
+		button.addEventListener('click', (event) => {
+			event.preventDefault();
+			openBookingDialog();
+		});
+	});
+
+	document.querySelectorAll('[data-booking-close]').forEach((button) => {
+		button.addEventListener('click', () => {
+			if (dialog instanceof HTMLDialogElement) dialog.close();
+		});
+	});
+
+	dialog?.addEventListener('click', (event) => {
+		if (event.target === dialog && dialog instanceof HTMLDialogElement) dialog.close();
+	});
+</script>

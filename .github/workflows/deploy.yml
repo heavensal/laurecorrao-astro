@@ -33,7 +33,7 @@ jobs:
       - run: pnpm run build
         env:
           ENABLE_MULTILANG: 'false'
-          FORGE_FAQ_ENABLED: 'false'
+          FORGE_FAQ_ENABLED: 'true'
           FORGE_REVIEWS_ENABLED: 'false'
           FORGE_ARTICLES_ENABLED: 'true'
           FORGE_URL: ${{ secrets.FORGE_URL }}

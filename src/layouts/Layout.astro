@@ -4,6 +4,7 @@
  * hreflang, JSON-LD, favicon, skip link, accessibility.
  */
 import '../styles/global.css';
+import BookingModal from '../components/BookingModal.astro';
 import ContactForm from '../components/ContactForm.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
@@ -57,9 +58,6 @@ const ogImage = image
 		: absolutePublic(image)
 	: absolutePublic(siteConfig.ogImageUrl);
 const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : null;
-const base = import.meta.env.BASE_URL.endsWith('/')
-	? import.meta.env.BASE_URL
-	: `${import.meta.env.BASE_URL}/`;
 ---
 
 <!doctype html>
@@ -100,8 +98,11 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 		}
 		{ogImage && <meta name="twitter:image" content={ogImage} />}
 		{ogImage && imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
-		<link rel="manifest" href={`${base}site.webmanifest`} />
-		<link rel="icon" type="image/svg+xml" href={pageHref('favicon.svg')} />
+		<link rel="manifest" href={pageHref('site.webmanifest')} />
+		<link rel="icon" href={pageHref('favicons/favicon.ico')} sizes="any" />
+		<link rel="icon" type="image/png" sizes="32x32" href={pageHref('favicons/favicon-32x32.png')} />
+		<link rel="icon" type="image/png" sizes="16x16" href={pageHref('favicons/favicon-16x16.png')} />
+		<link rel="apple-touch-icon" sizes="180x180" href={pageHref('favicons/apple-touch-icon.png')} />
 		{jsonLdString && <script type="application/ld+json" set:html={jsonLdString} />}
 	</head>
 	<body class="min-h-screen overflow-x-clip bg-cream font-sans text-base leading-relaxed text-ink antialiased">
@@ -112,5 +113,6 @@ const base = import.meta.env.BASE_URL.endsWith('/')
 		<main id="content" class="min-w-0"><slot /></main>
 		<SiteFooter locale={lang} />
 		<ContactForm locale={lang} />
+		<BookingModal locale={lang} />
 	</body>
 </html>

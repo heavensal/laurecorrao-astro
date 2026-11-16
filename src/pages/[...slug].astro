@@ -4,7 +4,15 @@ import { getFixedT, type Locale } from '../i18n/i18n';
 import Layout from '../layouts/Layout.astro';
 import { buildLegalNoticeJsonLd } from '../lib/jsonld';
 import { absolutePageUrl, buildLegalAlternateLanguages } from '../lib/seo';
-import { alternateUrls, frenchStaticPaths, pageMeta, type ContentKind } from '../lib/pages';
+import {
+	alternateUrls,
+	frenchStaticPaths,
+	pageJsonLd,
+	pageMeta,
+	socialImageAltForKind,
+	socialImageForKind,
+	type ContentKind,
+} from '../lib/pages';
 
 export function getStaticPaths() {
 	return frenchStaticPaths();
@@ -20,13 +28,22 @@ const t = getFixedT(locale);
 const meta = pageMeta(t, kind);
 const { fr, en } = alternateUrls(Astro.site, kind);
 const homeUrl = absolutePageUrl(Astro.site, '');
+const socialImage = socialImageForKind(kind);
+const socialImageUrl =
+	socialImage && Astro.site ? new URL(socialImage.src, Astro.site).href : undefined;
+const jsonLd =
+	kind === 'legal-notice' && homeUrl
+		? buildLegalNoticeJsonLd(homeUrl, locale)
+		: pageJsonLd({ site: Astro.site, locale, kind, t, imageUrl: socialImageUrl });
 ---
 
 <Layout
 	title={meta.title}
 	description={meta.description}
 	alternateLanguages={buildLegalAlternateLanguages(fr, en)}
-	jsonLd={kind === 'legal-notice' && homeUrl ? buildLegalNoticeJsonLd(homeUrl, locale) : undefined}
+	jsonLd={jsonLd}
+	image={socialImageUrl}
+	ogImageAlt={socialImageAltForKind(t, kind)}
 >
 	<PageBody locale={locale} kind={kind} />
 </Layout>

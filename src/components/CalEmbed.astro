@@ -1,21 +1,39 @@
 ---
 import { getFixedT, type Locale } from '../i18n/i18n';
+import { calBrandDark, calBrandLight, calLink } from '../lib/cal';
 
 interface Props {
 	locale: Locale;
+	elementId?: string;
+	statusId?: string;
+	namespace?: string;
+	containerClass?: string;
+	closeDialogOnBooking?: boolean;
+	dialogId?: string;
 }
 
-const { locale } = Astro.props;
+const {
+	locale,
+	elementId = 'my-cal-inline-15min',
+	statusId = 'cal-status',
+	namespace = '15min',
+	containerClass = 'min-h-screen w-full overflow-auto',
+	closeDialogOnBooking = false,
+	dialogId = '',
+} = Astro.props;
 const t = getFixedT(locale);
 ---
 
-<p id="cal-status" role="status" data-error={t('Calendar.loadError')} data-frame-title={t('Calendar.frameTitle')}>
+<p id={statusId} role="status" data-error={t('Calendar.loadError')} data-frame-title={t('Calendar.frameTitle')}>
 	{t('Calendar.loading')}
 </p>
-<div id="my-cal-inline" class="min-h-screen w-full overflow-auto" aria-label={t('Calendar.aria')}></div>
+<div id={elementId} class={containerClass} aria-label={t('Calendar.aria')}></div>
 <noscript><p>{t('Calendar.noscript')}</p></noscript>
 
-<script is:inline>
+<script
+	is:inline
+	define:vars={{ calLink, calBrandLight, calBrandDark, elementId, statusId, namespace, closeDialogOnBooking, dialogId }}
+>
 	(function (C, A, L) {
 		let p = function (a, ar) {
 			a.q.push(ar);
@@ -32,8 +50,11 @@ const t = getFixedT(locale);
 					const script = d.createElement('script');
 					script.src = A;
 					script.onerror = () => {
-						const status = d.getElementById('cal-status');
-						if (status) status.textContent = status.dataset.error || '';
+						document.querySelectorAll('[id^="cal-"][role="status"], [data-cal-status]').forEach((status) => {
+							if (status instanceof HTMLElement && status.dataset.error) {
+								status.textContent = status.dataset.error;
+							}
+						});
 					};
 					d.head.appendChild(script);
 					cal.loaded = true;
@@ -57,19 +78,48 @@ const t = getFixedT(locale);
 			};
 	})(window, 'https://app.cal.com/embed/embed.js', 'init');
 
-	Cal('init', 'booking', { origin: 'https://cal.com' });
-	Cal.ns.booking('inline', {
-		elementOrSelector: '#my-cal-inline',
-		calLink: 'adam-1344-vm70qf/30min',
-		config: { layout: 'month_view', theme: 'light' },
-	});
-	Cal.ns.booking('on', {
-		action: '__iframeReady',
-		callback: () => {
-			const status = document.getElementById('cal-status');
-			if (status) status.hidden = true;
-			const frame = document.querySelector('#my-cal-inline iframe');
-			if (frame) frame.title = status?.dataset.frameTitle || '';
+	Cal('init', namespace, { origin: 'https://app.cal.com' });
+	Cal.config = Cal.config || {};
+	Cal.config.forwardQueryParams = true;
+
+	Cal.ns[namespace]('inline', {
+		elementOrSelector: `#${elementId}`,
+		calLink,
+		config: {
+			layout: 'month_view',
+			useSlotsViewOnSmallScreen: true,
+			theme: 'light',
 		},
 	});
+
+	Cal.ns[namespace]('ui', {
+		theme: 'light',
+		cssVarsPerTheme: {
+			light: { 'cal-brand': calBrandLight },
+			dark: { 'cal-brand': calBrandDark },
+		},
+		hideEventTypeDetails: true,
+		layout: 'month_view',
+	});
+
+	const hideStatus = () => {
+		const status = document.getElementById(statusId);
+		if (status) status.hidden = true;
+		const frame = document.querySelector(`#${elementId} iframe`);
+		if (frame) frame.title = status?.dataset.frameTitle || '';
+	};
+
+	Cal.ns[namespace]('on', {
+		action: '__iframeReady',
+		callback: hideStatus,
+	});
+
+	if (closeDialogOnBooking && dialogId) {
+		const closeDialog = () => {
+			const dialog = document.getElementById(dialogId);
+			if (dialog instanceof HTMLDialogElement) dialog.close();
+		};
+		Cal.ns[namespace]('on', { action: 'bookingSuccessfulV2', callback: closeDialog });
+		Cal.ns[namespace]('on', { action: 'bookingSuccessful', callback: closeDialog });
+	}
 </script>

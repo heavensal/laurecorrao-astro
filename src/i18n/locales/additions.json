@@ -47,12 +47,12 @@
 			],
 			"listIntro": "Je vous accompagne notamment face à :",
 			"items": [
-				"l’anxiété, les angoisses et les phobies ;",
-				"la perte d’estime de soi ou de confiance en soi ;",
-				"les blessures émotionnelles et les conséquences d’expériences traumatiques ;",
-				"la dépendance affective et les difficultés relationnelles ;",
-				"les séparations, les deuils et les périodes de transition ;",
-				"les blocages, les schémas répétitifs et les difficultés à poser vos limites ;",
+				"l’anxiété, les angoisses et les phobies",
+				"la perte d’estime de soi ou de confiance en soi",
+				"les blessures émotionnelles et les conséquences d’expériences traumatiques",
+				"la dépendance affective et les difficultés relationnelles",
+				"les séparations, les deuils et les périodes de transition",
+				"les blocages, les schémas répétitifs et les difficultés à poser vos limites",
 				"le stress, la surcharge émotionnelle ou la sensation de ne plus trouver votre place."
 			],
 			"after": [
@@ -72,12 +72,12 @@
 			],
 			"listIntro": "Je vous accompagne notamment lorsque vous traversez :",
 			"items": [
-				"des difficultés de communication ;",
-				"des disputes répétitives ou des conflits qui restent sans solution ;",
-				"un éloignement émotionnel, affectif ou intime ;",
-				"une perte de confiance ou une infidélité ;",
-				"une période de crise, une séparation envisagée ou déjà engagée ;",
-				"des désaccords concernant la famille, les enfants ou les projets de vie ;",
+				"des difficultés de communication",
+				"des disputes répétitives ou des conflits qui restent sans solution",
+				"un éloignement émotionnel, affectif ou intime",
+				"une perte de confiance ou une infidélité",
+				"une période de crise, une séparation envisagée ou déjà engagée",
+				"des désaccords concernant la famille, les enfants ou les projets de vie",
 				"des difficultés à reconstruire le lien après une épreuve."
 			],
 			"after": [
@@ -97,12 +97,12 @@
 			],
 			"listIntro": "Mon approche est intégrative : elle associe l’écoute et la parole à différents outils thérapeutiques auxquels je suis formée, notamment :",
 			"items": [
-				"les thérapies cognitives et comportementales, pour identifier et faire évoluer certaines pensées, émotions et réactions ;",
-				"l’approche systémique, particulièrement adaptée à la compréhension des relations, des couples et des fonctionnements familiaux ;",
-				"l’approche psychanalytique et la thérapie par la parole, pour explorer votre histoire et mieux comprendre l’origine de certains mécanismes ;",
-				"l’hypnose, pour travailler sur certains blocages, peurs ou automatismes ;",
-				"l’art-thérapie, pour permettre l’expression autrement que par les mots lorsque cela est pertinent ;",
-				"la programmation neurolinguistique, ou PNL, ainsi que différents outils de coaching et d’accompagnement au changement ;",
+				"les thérapies cognitives et comportementales, pour identifier et faire évoluer certaines pensées, émotions et réactions",
+				"l’approche systémique, particulièrement adaptée à la compréhension des relations, des couples et des fonctionnements familiaux",
+				"l’approche psychanalytique et la thérapie par la parole, pour explorer votre histoire et mieux comprendre l’origine de certains mécanismes",
+				"l’hypnose, pour travailler sur certains blocages, peurs ou automatismes",
+				"l’art-thérapie, pour permettre l’expression autrement que par les mots lorsque cela est pertinent",
+				"la programmation neurolinguistique, ou PNL, ainsi que différents outils de coaching et d’accompagnement au changement",
 				"Le DNR, ou Deep Neural Repatterning, est un outil de retraitement émotionnel qui vise à apaiser l’intensité associée à certaines expériences difficiles, peurs ou blocages. Il permet de travailler sur la manière dont ces vécus restent inscrits émotionnellement, dans le respect du rythme et des limites de chaque personne."
 			],
 			"after": [
@@ -133,8 +133,8 @@
 					"title": "Prendre rendez-vous",
 					"paragraphs": ["Vous pouvez consulter directement mes disponibilités grâce à l’agenda en ligne et sélectionner :"],
 					"items": [
-						"le type d’accompagnement souhaité ;",
-						"une consultation au cabinet ou en visioconférence ;",
+						"le type d’accompagnement souhaité",
+						"une consultation au cabinet ou en visioconférence",
 						"la date et l’horaire qui vous conviennent."
 					],
 					"after": ["Une confirmation vous sera adressée par e-mail après la réservation, ainsi qu’un rappel avant votre rendez-vous."]
@@ -143,8 +143,8 @@
 					"title": "Moyens de paiement",
 					"paragraphs": ["Le règlement peut être effectué :"],
 					"items": [
-						"par chèque ;",
-						"en espèces ;",
+						"par chèque",
+						"en espèces",
 						"en ligne, par carte bancaire, grâce à un lien de paiement sécurisé."
 					],
 					"after": ["Pour les consultations en visioconférence, le règlement en ligne doit être effectué avant le début de la séance. Le lien de connexion vous sera transmis après confirmation du rendez-vous."]
@@ -246,7 +246,7 @@
 				},
 				{
 					"question": "Les consultations sont-elles remboursées ?",
-					"answer": "Elles ne sont pas prises en charge par l’Assurance maladie. Certaines mutuelles proposent toutefois un forfait annuel ; une facture peut être remise sur demande."
+					"answer": "Elles ne sont pas prises en charge par l’Assurance maladie. Certaines mutuelles proposent toutefois un forfait annuel une facture peut être remise sur demande."
 				},
 				{
 					"question": "Comment déplacer ou annuler un rendez-vous ?",

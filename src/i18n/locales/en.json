@@ -1,10 +1,11 @@
 {
 	"Layout": {
 		"skipToContent": "Skip to content",
-		"brandSubtitle": "Psychopractitioner · Couples therapist"
+		"brandSubtitle": "Psychotherapist · Couples therapist",
+		"logoAlt": "Laure Corrao — psychotherapist and couples therapist in Port-de-Bouc"
 	},
 	"Home": {
-		"metaTitle": "Psychopractitioner and couples therapist in Port-de-Bouc",
+		"metaTitle": "Psychotherapist and couples therapist in Port-de-Bouc",
 		"metaDescription": "Laure Corrao: individual support and couples therapy in Port-de-Bouc and by video."
 	},
 	"Nav": {
@@ -17,7 +18,10 @@
 		"booking": "Appointments",
 		"bookingCta": "Book a free 10-minute conversation",
 		"adhd": "ADHD",
-		"parenting": "Parenting"
+		"parenting": "Parenting",
+		"menuOpen": "Open menu",
+		"menuClose": "Close menu",
+		"sidebarAria": "Navigation menu"
 	},
 	"NotFound": {
 		"metaTitle": "Page not found",
@@ -48,13 +52,27 @@
 		"bookingCta": "Book a free 10-minute conversation"
 	},
 	"Footer": {
-		"tagline": "Psychopractitioner and couples therapist<br/>In Port-de-Bouc and by video",
+		"tagline": "Psychotherapist and couples therapist<br/>In-person and online sessions",
+		"callLabel": "Call",
+		"hoursTitle": "Office opening hours",
+		"hoursSchedule": [
+			{ "day": "Monday", "hours": "9 a.m. – 6 p.m." },
+			{ "day": "Tuesday", "hours": "9 a.m. – 6 p.m." },
+			{ "day": "Wednesday", "hours": "9 a.m. – 6 p.m." },
+			{ "day": "Thursday", "hours": "9 a.m. – 6 p.m." },
+			{ "day": "Friday", "hours": "9 a.m. – 6 p.m." },
+			{ "day": "Saturday", "hours": "Closed" },
+			{ "day": "Sunday", "hours": "Closed" }
+		],
+		"navServicesTitle": "Services",
+		"navSiteTitle": "Site",
+		"logoAlt": "Laure Corrao — psychotherapist",
 		"contact": "Contact me",
 		"legalAria": "Legal information",
 		"linkLegal": "Legal notice",
 		"linkPrivacy": "Privacy policy",
 		"linkTerms": "Terms",
-		"copyright": "© {{year}} Laure Corrao"
+		"copyright": "© {{year}} Laure Corrao. All rights reserved."
 	},
 	"LegalNotice": {
 		"metaTitle": "Legal notice",
@@ -284,11 +302,12 @@
 		"privacy": "Read the privacy policy"
 	},
 	"Pages": {
-		"eyebrow": "Laure Corrao · Port-de-Bouc"
+		"eyebrow": "Laure Corrao",
+		"breadcrumbAria": "Breadcrumb"
 	},
 	"HomePage": {
-		"eyebrow": "Practice in Port-de-Bouc · Online sessions",
-		"titleHtml": "Psychopractitioner &amp;<br />Couples therapist",
+		"eyebrow": "Practice and online sessions",
+		"titleHtml": "Psychotherapist &amp;<br />Couples therapist",
 		"subtitle": "Put words to what hurts, and find your way back to yourself.",
 		"intro": "I welcome you in a kind, confidential, and non-judgmental space, to help you through difficulties, understand yourself better, and find balance and calm.",
 		"approachCta": "Discover my approach",
@@ -300,7 +319,7 @@
 		"approachSummaryHtml": "Hypnosis · DTMA · Therapeutic<br />tools chosen for you",
 		"aboutEyebrow": "About",
 		"aboutTitle": "What if you finally gave yourself room to feel better?",
-		"aboutBody": "I am Laure Corrao, psychopractitioner and couples therapist. I accompany you with kindness, listening, and without judgment, in a confidential space where you can set things down fully, at your own pace.",
+		"aboutBody": "I am Laure Corrao, psychotherapist and couples therapist. I accompany you with kindness, listening, and without judgment, in a confidential space where you can set things down fully, at your own pace.",
 		"quote": "You do not need to know where to start. You only need to dare to take the first step.",
 		"readingTitle": "Support that feels like you.",
 		"readingLead": "Feelings can become overwhelming, fears can take over, or the same patterns can close in. Anxiety, phobias, a lack of confidence, emotional wounds, relationship difficulties, or a crisis in the couple: you do not have to go through this alone.",
@@ -311,17 +330,29 @@
 		"coupleCta": "Discover couples therapy",
 		"placeTitle": "A place to find yourself again.",
 		"placeBody": "In the warm, calming atmosphere of my practice, you can finally put words to what hurts, understand more of what is happening for you, and move toward a calmer balance.",
-		"practiceTitle": "At the practice, in Port-de-Bouc",
-		"practiceBody": "A warm, confidential, and non-judgmental setting. Practical directions will be confirmed before you come.",
+		"practiceTitle": "At the practice",
+		"practiceBody": "A warm, confidential, and non-judgmental setting at 9 Imp. Le Maroni in Port-de-Bouc.",
+		"practiceAddress": "9 Imp. Le Maroni, 13110 Port-de-Bouc, France",
+		"practiceMapsLabel": "Get directions on Google Maps",
+		"practicePhotoAlt": "Warm, calming consulting room",
 		"videoTitle": "By video",
 		"videoBody": "Settle somewhere quiet, where you can speak in confidence.",
+		"videoPhotoAlt": "Video session from a quiet, private space",
+		"placeBookingCta": "Book an appointment",
 		"placeClose": "Here, you do not need to know where to start. You only need to dare to take the first step."
 	},
 	"Individual": {
+		"heroAlt": "An inviting armchair in a quiet corner of the practice, for individual support.",
 		"journeyAlt": "A watercolour path illustrates a personal journey: name what weighs on you, discuss it at a first appointment, understand yourself better and move at your own pace towards greater calm and independence.",
 		"viewJourney": "View the full-size illustration (in French)",
-		"metaTitle": "Individual support",
-		"metaDescription": "A place to understand what you are going through and find your own resources.",
+		"metaTitle": "Individual support in Port-de-Bouc",
+		"metaDescription": "Individual support in Port-de-Bouc and by video with Laure Corrao. A confidential place to understand what you are going through and find your own resources.",
+		"processHeading": "How support unfolds",
+		"journeyHeading": "At your own pace",
+		"placeHeading": "Practice in Port-de-Bouc and online",
+		"placeBody": "Sessions take place at the practice in a warm, confidential setting, or by video from somewhere quiet where you can speak freely.",
+		"closingAria": "Getting started",
+		"mapsOpensNewTab": "(opens in a new tab)",
 		"h1": "Individual support",
 		"lede": "A place to understand what you are going through and find your own resources.",
 		"before": [
@@ -345,8 +376,8 @@
 	},
 	"Couple": {
 		"imageAlt": "A couple sitting on a sofa talks with a therapist holding a notebook.",
-		"metaTitle": "Couples therapy",
-		"metaDescription": "A place to talk again when the relationship can no longer move forward on its own.",
+		"metaTitle": "Couples therapy in Port-de-Bouc | Laure Corrao",
+		"metaDescription": "Couples therapy in Port-de-Bouc and online. Find a calmer dialogue when the relationship can no longer move forward on its own.",
 		"h1": "Couples therapy",
 		"lede": "A place to talk again when the relationship can no longer move forward on its own.",
 		"before": [
@@ -365,14 +396,28 @@
 		],
 		"after": [
 			"The sessions help identify the relational patterns that keep the tension going, understand each person’s place and needs, and create new ways of communicating.",
-			"I am neither judge nor referee. My role is to help each partner be heard, while helping the couple find a calmer dialogue. Depending on your situation, the work may aim to rebuild the bond, find a new balance, or separate more consciously and respectfully.",
+			"I am neither judge nor referee. My role is to help each partner be heard, while helping the couple find a calmer dialogue.",
 			"Every couple has its own story. The sessions and the tools offered are therefore shaped around your situation, your expectations, and your pace.",
 			"Asking for help does not mean your couple has failed. It means you choose not to stay alone with the difficulty."
-		]
+		],
+		"topic": "Couples therapy · Port-de-Bouc",
+		"approachHeading": "A neutral space to talk together",
+		"sessionsHeading": "How the sessions unfold",
+		"goal": "Depending on your situation, the work may aim to rebuild the bond, find a new balance, or separate more consciously and respectfully.",
+		"placeHeading": "Practice in Port-de-Bouc and online",
+		"placeBody": "Sessions take place at the practice in a warm, confidential setting, or online from a quiet place where you can speak freely.",
+		"mapsOpensNewTab": "(opens in a new tab)",
+		"closingAria": "To move forward together",
+		"reassurance": "Asking for help does not mean your couple has failed. It means you choose not to stay alone with the difficulty.",
+		"first": {
+			"title": "A first conversation to take stock",
+			"body": "The first session helps clarify what brings you in, hear each partner’s experience, and agree on the direction of the work together.",
+			"scope": "Couples sessions last 90 minutes. Fee: €90 per couple, in person or online."
+		}
 	},
 	"Approach": {
-		"metaTitle": "My approach",
-		"metaDescription": "Therapy shaped around you, because every person and every story is unique.",
+		"metaTitle": "Therapeutic approach in Port-de-Bouc | Laure Corrao",
+		"metaDescription": "Personal, integrative therapy in Port-de-Bouc and online: CBT, systemic work, hypnosis, DTMA, and support tailored to you.",
 		"h1": "My approach",
 		"lede": "Therapy shaped around you, because every person and every story is unique.",
 		"before": [
@@ -398,6 +443,20 @@
 			"subtitle": "Guided eye movements and alternating taps",
 			"body": "Sexual violence, a car accident, bereavement or a sudden separation can leave lasting distress. In my practice, DTMA uses guided eye movements and alternating taps to explore emotions associated with painful memories. We begin by discussing your needs so that we can work at your pace. Severe trauma may require specialist care alongside this support or as a first priority.",
 			"alt": "A woman follows the raised fingers of the practitioner seated opposite her with her eyes."
+		},
+		"topic": "Therapeutic approach · Port-de-Bouc",
+		"heroAlt": "A watercolour path illustrates a personal journey: name what weighs on you, discuss it at a first appointment, understand yourself better and move at your own pace towards greater calm and independence.",
+		"toolsHeading": "An integrative, personalised approach",
+		"processHeading": "Support that evolves with you",
+		"goal": "You remain free, and fully part of the work.",
+		"placeHeading": "Practice in Port-de-Bouc and online",
+		"mapsOpensNewTab": "(opens in a new tab)",
+		"closingAria": "To get started",
+		"reassurance": "You do not have to wait until things get worse to start taking care of yourself.",
+		"first": {
+			"title": "A first conversation to take stock",
+			"body": "The first sessions help clarify your request, your situation, and your aims. We then shape the support around you, at your own pace.",
+			"scope": "This support does not replace medical or psychiatric care when it is needed. In an emergency, contact the appropriate services."
 		}
 	},
 	"Booking": {
@@ -543,6 +602,7 @@
 		]
 	},
 	"Adhd": {
+		"topic": "ADHD support · Port-de-Bouc",
 		"overview": {
 			"title": "ADHD: understanding yourself and finding your bearings",
 			"intro": "Attention deficit hyperactivity disorder can make everyday situations particularly demanding. Concentrating, getting organised, waiting or finishing a task can take a great deal of effort.",
@@ -585,12 +645,29 @@
 		"intro": "Do you find yourself repeating the same instructions, only for the conversation to end in an argument? Screen time, homework, boundaries, disagreements about parenting… Do you sometimes feel overwhelmed and unsure how to respond?",
 		"support": "I help you understand what is happening and find solutions that work for your family.",
 		"space": "There’s room to step back and reflect without feeling judged for the way you parent.",
-		"practice": "Together we work on everyday situations, from setting clear limits and communicating better to supporting your children through difficult emotions and building routines that make daily life easier.",
+		"approachHeading": "Support tailored to your family",
+		"listIntro": "Together we work on everyday situations:",
+		"focusItems": [
+			"setting clear boundaries;",
+			"communicating better day to day;",
+			"supporting emotions;",
+			"building routines that make daily life easier."
+		],
+		"sessionsHeading": "Sessions at your own pace",
 		"sessions": "You can attend on your own or with your child’s other parent. Together we decide whether it would help to involve your children.",
 		"goal": "The aim is to help you regain confidence as a parent and build calmer family relationships, one step at a time.",
+		"placeHeading": "Practice in Port-de-Bouc and online",
+		"placeBody": "Sessions take place at the practice in a warm, confidential setting, or online from a quiet place where you can speak freely.",
+		"mapsOpensNewTab": "(opens in a new tab)",
+		"closingAria": "To get started",
 		"reassurance": "You can reach out for support before you feel at the end of your tether.",
+		"first": {
+			"title": "A first conversation to take stock",
+			"body": "The first session helps clarify your request, what is happening in the family, and what you would like to see change. We then set realistic goals at your own pace.",
+			"scope": "This support does not replace medical or psychiatric care when it is needed. In an emergency, contact the appropriate services."
+		},
 		"alt": "A girl speaks during a family card game.",
-		"topic": "Parenting coaching",
+		"topic": "Parenting coaching · Port-de-Bouc",
 		"metaTitle": "Parenting coaching | Laure Corrao"
 	}
 }

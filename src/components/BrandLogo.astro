@@ -1,0 +1,46 @@
+---
+import { pageHref } from '../lib/paths';
+
+interface Props {
+	alt: string;
+	/** Intrinsic file and displayed size */
+	variant?: 'header' | 'footer' | 'sidebar';
+	class?: string;
+}
+
+const { alt, variant = 'header', class: className } = Astro.props;
+
+const variants = {
+	header: {
+		src: 'images/laure_corrao_icon-128.png',
+		width: 128,
+		height: 128,
+		class: 'h-12 w-12 sm:h-14 sm:w-14',
+	},
+	footer: {
+		src: 'images/laure_corrao_icon-256.png',
+		width: 256,
+		height: 256,
+		class: 'h-16 w-16 sm:h-20 sm:w-20',
+	},
+	sidebar: {
+		src: 'images/laure_corrao_icon-128.png',
+		width: 128,
+		height: 128,
+		class: 'h-10 w-10',
+	},
+} as const;
+
+const v = variants[variant];
+---
+
+<img
+	class:list={['object-contain', v.class, className]}
+	src={pageHref(v.src)}
+	width={v.width}
+	height={v.height}
+	alt={alt}
+	decoding="async"
+	fetchpriority={variant === 'header' ? 'high' : undefined}
+	loading={variant === 'header' ? 'eager' : 'lazy'}
+/>

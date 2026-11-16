@@ -1,4 +1,11 @@
+import type { ImageMetadata } from 'astro';
 import type { Locale } from '../i18n/i18n';
+import individualHero from '../assets/images/individual/individual_meet.jpg';
+import adhdOverview from '../assets/images/adhd/attention-and-organization.webp';
+import parentingHero from '../assets/images/parenting/family-conversation.webp';
+import coupleHero from '../assets/images/couples/couple-therapy-session.webp';
+import approachHero from '../assets/images/individual/at-your-own-pace.webp';
+import { buildServicePageJsonLd } from './jsonld';
 import { absolutePageUrl } from './seo';
 import {
 	contentPath,
@@ -25,6 +32,42 @@ export const routedKinds = [
 
 export type RoutedKind = (typeof routedKinds)[number];
 export type ContentKind = Exclude<RoutedKind, 'home'>;
+
+const serviceJsonLdKinds = ['individual', 'adhd', 'parenting', 'couple', 'approach'] as const;
+type ServiceJsonLdKind = (typeof serviceJsonLdKinds)[number];
+
+const serviceJsonLdKeys: Record<ServiceJsonLdKind, { service: string; breadcrumb: string }> = {
+	individual: { service: 'Individual.h1', breadcrumb: 'Individual.h1' },
+	adhd: { service: 'Adhd.overview.title', breadcrumb: 'Adhd.overview.title' },
+	parenting: { service: 'Parenting.h1', breadcrumb: 'Parenting.h1' },
+	couple: { service: 'Couple.h1', breadcrumb: 'Couple.h1' },
+	approach: { service: 'Approach.h1', breadcrumb: 'Approach.h1' },
+};
+
+const socialImageByKind: Partial<Record<RoutedKind, ImageMetadata>> = {
+	individual: individualHero,
+	adhd: adhdOverview,
+	parenting: parentingHero,
+	couple: coupleHero,
+	approach: approachHero,
+};
+
+export function socialImageForKind(kind: RoutedKind): ImageMetadata | undefined {
+	return socialImageByKind[kind];
+}
+
+export function socialImageAltForKind(t: (key: string) => unknown, kind: RoutedKind): string | undefined {
+	if (kind === 'individual') return String(t('Individual.heroAlt'));
+	if (kind === 'adhd') return String(t('Adhd.overview.alt'));
+	if (kind === 'parenting') return String(t('Parenting.alt'));
+	if (kind === 'couple') return String(t('Couple.imageAlt'));
+	if (kind === 'approach') return String(t('Approach.heroAlt'));
+	return undefined;
+}
+
+function isServiceJsonLdKind(kind: RoutedKind): kind is ServiceJsonLdKind {
+	return (serviceJsonLdKinds as readonly string[]).includes(kind);
+}
 
 const contentByKind: Partial<Record<ContentKind, ContentPageId>> = {
 	adhd: 'adhd',
@@ -100,4 +143,33 @@ export function alternateUrls(site: URL | undefined, kind: RoutedKind) {
 		fr: absolutePageUrl(site, frPath ? `${frPath}/` : ''),
 		en: absolutePageUrl(site, `${enPath}/`),
 	};
+}
+
+export function pageJsonLd(input: {
+	site: URL | undefined;
+	locale: Locale;
+	kind: RoutedKind;
+	t: (key: string) => unknown;
+	imageUrl?: string;
+}): Record<string, unknown> | undefined {
+	const homeUrl = absolutePageUrl(input.site, '');
+	const pagePath = pathFor(input.locale, input.kind);
+	const pageUrl = absolutePageUrl(input.site, pagePath ? `${pagePath}/` : '');
+	if (!homeUrl || !pageUrl) return undefined;
+
+	if (isServiceJsonLdKind(input.kind)) {
+		const keys = serviceJsonLdKeys[input.kind];
+		const meta = pageMeta(input.t, input.kind);
+		return buildServicePageJsonLd({
+			pageUrl,
+			homeUrl,
+			locale: input.locale,
+			serviceName: String(input.t(keys.service)),
+			description: meta.description,
+			breadcrumbCurrent: String(input.t(keys.breadcrumb)),
+			imageUrl: input.imageUrl,
+		});
+	}
+
+	return undefined;
 }

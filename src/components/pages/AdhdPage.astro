@@ -1,4 +1,5 @@
 ---
+import PageBreadcrumb from '../PageBreadcrumb.astro';
 import BookingDetails from '../BookingDetails.astro';
 import overview from '../../assets/images/adhd/attention-and-organization.webp';
 import child from '../../assets/images/adhd/child-building.webp';
@@ -10,42 +11,88 @@ import { contentPath, pageHref } from '../../lib/paths';
 interface Props { locale: Locale }
 const { locale } = Astro.props;
 const t = getFixedT(locale);
-const images = { overview, child, teen, adult };
+const titleId = 'adhd-title';
+const bookingHeadingId = 'adhd-booking-heading';
+const blocks = [
+	['overview', overview],
+	['child', child],
+	['teen', teen],
+	['adult', adult],
+] as const;
+const sectionBase =
+	'mx-auto grid max-w-6xl grid-cols-1 items-center gap-8 border-line px-6 lg:grid-cols-2';
+const photo = 'block h-auto w-full rounded-2xl shadow-sm ring-1 ring-line';
+
+function sectionLabelId(key: (typeof blocks)[number][0]): string {
+	return key === 'overview' ? titleId : `adhd-${key}-heading`;
+}
 ---
-<article>
-	{Object.entries(images).map(([key, src]) => (
-		<section class="spread">
-			<div>
-				{key === 'overview' ? <h1 class="my-6 font-serif leading-tight">{t('Adhd.overview.title')}</h1> : <h2 class="mb-5 font-serif text-3xl leading-tight">{t(`Adhd.${key}.title`)}</h2>}
-				<p class="mb-5">{t(`Adhd.${key}.intro`)}</p>
-				<p class="mb-5">{t(`Adhd.${key}.body`)}</p>
-				{key !== 'overview' && <p class="objective"><strong>{t(`Adhd.${key}.goal`)}</strong></p>}
-			</div>
-			<img src={src.src} width={src.width} height={src.height} alt={t(`Adhd.${key}.alt`)} decoding="async" loading={key === 'overview' ? 'eager' : 'lazy'} />
-		</section>
-	))}
-	<section class="closing bg-sand px-6 py-14 text-center">
-		<h2 class="mb-5 font-serif text-3xl leading-tight">{t('Adhd.first.title')}</h2>
-		<p class="mb-5">{t('Adhd.first.body')}</p>
-		<p class="mb-5">{t('Adhd.first.scope')}</p>
-		<BookingDetails locale={locale} />
-		<a class="inline-flex items-center justify-center rounded-md bg-rose-deep px-6 py-3 text-white" href={pageHref(`${contentPath(locale, 'booking')}/#agenda`)}>{t('Nav.bookingCta')}</a>
-		<p class="sources"><small>{t('Adhd.sources')}</small></p>
+
+<article aria-labelledby={titleId}>
+	<PageBreadcrumb locale={locale} current={String(t('Adhd.overview.title'))} />
+	{
+		blocks.map(([key, src], index) => (
+			<section
+				class:list={[sectionBase, index === 0 ? 'pb-16' : 'py-16']}
+				aria-labelledby={sectionLabelId(key)}
+			>
+				<div class={index % 2 === 1 ? 'lg:col-start-2 lg:row-start-1' : undefined}>
+					{key === 'overview' ? (
+						<>
+							<h1
+								id={titleId}
+								class="mb-6 font-serif text-4xl leading-tight tracking-tight text-ink md:text-5xl lg:text-6xl"
+							>
+								{t('Adhd.overview.title')}
+							</h1>
+						</>
+					) : (
+						<h2 id={sectionLabelId(key)} class="mb-5 font-serif text-3xl leading-tight text-ink">
+							{t(`Adhd.${key}.title`)}
+						</h2>
+					)}
+					<p class="mb-5">{t(`Adhd.${key}.intro`)}</p>
+					<p class="mb-5">{t(`Adhd.${key}.body`)}</p>
+					{key !== 'overview' && (
+						<p class="border-l-4 border-rose-laure pl-4">
+							<strong>{t(`Adhd.${key}.goal`)}</strong>
+						</p>
+					)}
+				</div>
+				<img
+					class:list={[photo, index % 2 === 1 && 'lg:col-start-1 lg:row-start-1']}
+					src={src.src}
+					width={src.width}
+					height={src.height}
+					alt={t(`Adhd.${key}.alt`)}
+					decoding="async"
+					loading={key === 'overview' ? 'eager' : 'lazy'}
+					fetchpriority={key === 'overview' ? 'high' : undefined}
+				/>
+			</section>
+		))
+	}
+	<section
+		class="bg-rose-laure px-6 py-14 text-center text-white md:px-16"
+		aria-labelledby={bookingHeadingId}
+	>
+		<h2 id={bookingHeadingId} class="font-serif text-3xl leading-tight md:text-4xl">
+			{t('Adhd.first.title')}
+		</h2>
+		<div class="mx-auto max-w-prose text-start text-sand">
+			<p class="my-4">{t('Adhd.first.body')}</p>
+			<p class="my-4">{t('Adhd.first.scope')}</p>
+		</div>
+		<BookingDetails locale={locale} variant="onRose" />
+		<button
+			class="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-white bg-white px-6 py-3 text-sm text-rose-deep transition-colors duration-200 hover:bg-sand"
+			type="button"
+			data-booking-open
+		>
+			{t('Nav.bookingCta')}
+		</button>
+		<p class="mx-auto mt-8 max-w-prose text-sm text-sand" role="note">
+			{t('Adhd.sources')}
+		</p>
 	</section>
 </article>
-<style>
-	.spread { max-width: 1200px; margin: auto; padding: clamp(2rem, 5vw, 4rem) 6%; display: grid; grid-template-columns: 1.25fr 1fr; gap: 5%; align-items: center; }
-	.spread + .spread { border-top: 1px solid #e9ddd3; }
-	.spread:nth-child(even) { grid-template-columns: 1fr 1.25fr; }
-	.spread:nth-child(even) img { order: -1; }
-	img { width: 100%; height: auto; border-radius: 1rem; }
-	h1 { font-size: clamp(2.4rem, 4.5vw, 4rem); }
-	h2 { margin-top: 0; }
-	.objective { border-left: 3px solid var(--color-rose-laure); padding-left: 1rem; }
-	.closing p { max-width: 68ch; margin-inline: auto; }
-	.sources { margin: 2rem auto 0; }
-	@media (max-width: 760px) {
-		.spread, .spread:nth-child(even) { grid-template-columns: 1fr; gap: 1rem; }
-		.spread:nth-child(even) img { order: 0; }
-	}
-</style>
