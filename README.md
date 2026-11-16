@@ -78,7 +78,7 @@ After cloning, copy **`.env.example`** to **`.env`**, then adjust if needed (`EN
 ```text
 /
 ├── public/
-│   ├── favicon.svg
+│   ├── favicons/             # ICO, PNG, apple-touch, PWA maskable
 │   ├── site.webmanifest
 │   └── images/
 ├── src/
@@ -270,9 +270,10 @@ The layout sets these automatically:
 
 ### 3. Static files (`public/`)
 
-- `site.webmanifest` — PWA manifest
+- `site.webmanifest` — PWA manifest (icônes sous `favicons/`)
 - `images/reference-laure.jpeg` — default OG image
-- `favicon.svg` — favicon
+- `favicons/` — `favicon.ico`, PNG, `apple-touch-icon`, Android chrome et maskable
+- `images/laure_corrao_icon*.png` — marque carrée (header, footer, SEO / JSON-LD)
 
 ### 4. Sitemap and robots
 

@@ -1,8 +1,12 @@
 ---
 import SupportJourney from './SupportJourney.astro';
 import HomeResources from './HomeResources.astro';
+import ServiceIcon from './ServiceIcon.astro';
+import individualThumb from '../assets/images/individual/individual_meet.jpg';
+import coupleThumb from '../assets/images/couples/couple-therapy-session.webp';
 import { getFixedT, type Locale } from '../i18n/i18n';
 import { contentPath, pageHref } from '../lib/paths';
+import { siteConfig } from '../site.config';
 
 interface Props {
 	locale: Locale;
@@ -10,7 +14,6 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getFixedT(locale);
-const bookingHref = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
 const approachHref = pageHref(`${contentPath(locale, 'approach')}/`);
 const individualHref = pageHref(`${contentPath(locale, 'individual')}/`);
 const coupleHref = pageHref(`${contentPath(locale, 'couple')}/`);
@@ -18,8 +21,11 @@ const buttonBase =
 	'inline-flex min-h-12 w-full items-center justify-center rounded-md border px-6 py-3 text-center text-sm no-underline transition-colors duration-200 sm:w-auto';
 const button = `${buttonBase} border-rose-soft bg-rose-soft text-white hover:border-rose-deep hover:bg-rose-deep`;
 const outline = `${buttonBase} border-blush bg-transparent text-ink hover:bg-sand`;
+const textLink = 'inline-block text-rose-laure underline underline-offset-4';
 const serviceLink =
 	'border-t border-line px-6 py-6 text-center no-underline first:border-t-0 md:border-t-0 md:border-l md:first:border-l-0';
+const topicCard =
+	'flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition-shadow duration-200 hover:shadow-md';
 ---
 
 <section class="grid min-w-0 items-stretch bg-paper lg:grid-cols-2" aria-label={t('HomePage.eyebrow')}>
@@ -29,7 +35,7 @@ const serviceLink =
 		<p class="mt-5 max-w-full font-serif text-xl leading-snug text-rose-laure sm:text-2xl">{t('HomePage.subtitle')}</p>
 		<p class="mt-6 max-w-xl leading-relaxed">{t('HomePage.intro')}</p>
 		<div class="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-			<a class={button} href={bookingHref}>{t('Nav.bookingCta')}</a>
+			<button class={button} type="button" data-booking-open>{t('Nav.bookingCta')}</button>
 			<a class={outline} href={approachHref}>{t('HomePage.approachCta')}</a>
 		</div>
 	</div>
@@ -45,21 +51,21 @@ const serviceLink =
 	</div>
 </section>
 <section
-	class="relative z-10 -mt-16 grid min-w-0 grid-cols-1 rounded-2xl border border-line bg-cream px-4 py-2 shadow-md sm:mx-6 md:grid-cols-3"
+	class="relative z-10 -mt-16 grid min-w-0 grid-cols-1 rounded-2xl border border-line bg-cream px-4 py-2 sm:mx-6 md:grid-cols-3"
 	aria-label={t('HomePage.servicesAria')}
 >
 	<a class={serviceLink} href={individualHref}>
-		<span class="block font-serif text-5xl leading-none text-blush" aria-hidden="true">♡</span>
+		<ServiceIcon kind="individual" />
 		<h2 class="mt-3 font-serif text-xl text-ink">{t('Individual.h1')}</h2>
 		<p class="mt-2 text-sm leading-relaxed text-muted" set:html={t('HomePage.individualSummaryHtml')} />
 	</a>
 	<a class={serviceLink} href={coupleHref}>
-		<span class="block font-serif text-5xl leading-none text-blush" aria-hidden="true">♧</span>
+		<ServiceIcon kind="couple" />
 		<h2 class="mt-3 font-serif text-xl text-ink">{t('Couple.h1')}</h2>
 		<p class="mt-2 text-sm leading-relaxed text-muted" set:html={t('HomePage.coupleSummaryHtml')} />
 	</a>
 	<a class={serviceLink} href={approachHref}>
-		<span class="block font-serif text-5xl leading-none text-blush" aria-hidden="true">✧</span>
+		<ServiceIcon kind="approach" />
 		<h2 class="mt-3 font-serif text-xl text-ink">{t('HomePage.approachTitle')}</h2>
 		<p class="mt-2 text-sm leading-relaxed text-muted" set:html={t('HomePage.approachSummaryHtml')} />
 	</a>
@@ -81,25 +87,47 @@ const serviceLink =
 </section>
 <section class="bg-sand px-6 py-16 md:px-10 lg:px-16">
 	<div class="grid items-center gap-8 lg:grid-cols-2">
-	<div class="max-w-3xl">
-		<h2 class="font-serif text-3xl leading-tight text-ink md:text-4xl">{t('HomePage.readingTitle')}</h2>
-		<p class="mt-6">{t('HomePage.readingLead')}</p>
-		<p class="mt-6">{t('HomePage.readingBody')}</p>
-	</div>
-	<SupportJourney locale={locale} />
+		<div class="max-w-3xl">
+			<h2 class="font-serif text-3xl leading-tight text-ink md:text-4xl">{t('HomePage.readingTitle')}</h2>
+			<p class="mt-6">{t('HomePage.readingLead')}</p>
+			<p class="mt-6">{t('HomePage.readingBody')}</p>
+		</div>
+		<SupportJourney locale={locale} />
 	</div>
 	<div class="mt-10 grid gap-8 md:grid-cols-2">
-		<article class="border-t border-blush pt-8">
-			<h3 class="font-serif text-2xl text-ink">{t('Individual.h1')}</h3>
-			<p class="mt-4">{t('Individual.lede')}</p>
-			<p class="mt-4 text-sm text-muted">{t('HomePage.individualMeta')}</p>
-			<a class="mt-4 inline-block text-rose-laure underline underline-offset-4" href={individualHref}>{t('HomePage.individualCta')}</a>
+		<article class={topicCard}>
+			<img
+				class="h-44 w-full object-cover"
+				src={individualThumb.src}
+				width={individualThumb.width}
+				height={individualThumb.height}
+				alt=""
+				loading="lazy"
+				decoding="async"
+			/>
+			<div class="flex flex-1 flex-col p-6">
+				<h3 class="font-serif text-2xl text-ink">{t('Individual.h1')}</h3>
+				<p class="mt-4 flex-1">{t('Individual.lede')}</p>
+				<p class="mt-4 text-sm text-muted">{t('HomePage.individualMeta')}</p>
+				<a class={`${textLink} mt-6`} href={individualHref}>{t('HomePage.individualCta')}</a>
+			</div>
 		</article>
-		<article class="border-t border-blush pt-8">
-			<h3 class="font-serif text-2xl text-ink">{t('Couple.h1')}</h3>
-			<p class="mt-4">{t('Couple.lede')}</p>
-			<p class="mt-4 text-sm text-muted">{t('HomePage.coupleMeta')}</p>
-			<a class="mt-4 inline-block text-rose-laure underline underline-offset-4" href={coupleHref}>{t('HomePage.coupleCta')}</a>
+		<article class={topicCard}>
+			<img
+				class="h-44 w-full object-cover"
+				src={coupleThumb.src}
+				width={coupleThumb.width}
+				height={coupleThumb.height}
+				alt=""
+				loading="lazy"
+				decoding="async"
+			/>
+			<div class="flex flex-1 flex-col p-6">
+				<h3 class="font-serif text-2xl text-ink">{t('Couple.h1')}</h3>
+				<p class="mt-4 flex-1">{t('Couple.lede')}</p>
+				<p class="mt-4 text-sm text-muted">{t('HomePage.coupleMeta')}</p>
+				<a class={`${textLink} mt-6`} href={coupleHref}>{t('HomePage.coupleCta')}</a>
+			</div>
 		</article>
 	</div>
 </section>
@@ -107,15 +135,58 @@ const serviceLink =
 	<h2 class="font-serif text-3xl leading-tight text-ink md:text-4xl">{t('HomePage.placeTitle')}</h2>
 	<p class="mt-6 max-w-3xl">{t('HomePage.placeBody')}</p>
 	<div class="mt-10 grid gap-8 md:grid-cols-2">
-		<div>
-			<h3 class="font-serif text-2xl text-ink">{t('HomePage.practiceTitle')}</h3>
-			<p class="mt-4">{t('HomePage.practiceBody')}</p>
-		</div>
-		<div>
-			<h3 class="font-serif text-2xl text-ink">{t('HomePage.videoTitle')}</h3>
-			<p class="mt-4">{t('HomePage.videoBody')}</p>
-		</div>
+		<article class="overflow-hidden rounded-2xl border border-line bg-white shadow-sm">
+			<img
+				class="h-52 w-full object-cover md:hidden"
+				src={pageHref('images/practice-office.jpg')}
+				width="900"
+				height="600"
+				alt={t('HomePage.practicePhotoAlt')}
+				loading="lazy"
+				decoding="async"
+			/>
+			<div class="relative hidden h-64 w-full md:block lg:h-72">
+				<iframe
+					class="absolute inset-0 h-full w-full border-0"
+					src={siteConfig.mapsEmbedUrl}
+					title={`${t('HomePage.practiceTitle')} — ${t('HomePage.practiceAddress')}`}
+					loading="lazy"
+					referrerpolicy="no-referrer-when-downgrade"
+					allowfullscreen
+				/>
+			</div>
+			<div class="p-6">
+				<h3 class="font-serif text-2xl text-ink">{t('HomePage.practiceTitle')}</h3>
+				<p class="mt-4">{t('HomePage.practiceBody')}</p>
+				<a
+					class="mt-4 inline-block font-medium text-rose-laure underline underline-offset-4"
+					href={siteConfig.mapsUrl}
+					target="_blank"
+					rel="noopener noreferrer"
+				>
+					{t('HomePage.practiceAddress')} — {t('HomePage.practiceMapsLabel')}
+				</a>
+			</div>
+		</article>
+		<article class="overflow-hidden rounded-2xl border border-line bg-white shadow-sm">
+			<img
+				class="h-52 w-full object-cover"
+				src={pageHref('images/video-session.jpg')}
+				width="900"
+				height="600"
+				alt={t('HomePage.videoPhotoAlt')}
+				loading="lazy"
+				decoding="async"
+			/>
+			<div class="p-6">
+				<h3 class="font-serif text-2xl text-ink">{t('HomePage.videoTitle')}</h3>
+				<p class="mt-4">{t('HomePage.videoBody')}</p>
+			</div>
+		</article>
 	</div>
-	<p class="mt-8">{t('HomePage.placeClose')}</p>
+	<p class="mt-8 max-w-3xl">{t('HomePage.placeClose')}</p>
+	<div class="mt-8 flex justify-center">
+		<button class={button} type="button" data-booking-open>{t('Nav.bookingCta')}</button>
+	</div>
 </section>
 <HomeResources locale={locale} />

@@ -1,13 +1,16 @@
 ---
 import { getFixedT, type Locale } from '../i18n/i18n';
 
-interface Props { locale: Locale }
-const t = getFixedT(Astro.props.locale);
+interface Props {
+	locale: Locale;
+	variant?: 'default' | 'onRose';
+}
+const { locale, variant = 'default' } = Astro.props;
+const t = getFixedT(locale);
 const paragraphs = t('BookingCta.paragraphs', { returnObjects: true }) as string[];
+const wrap = variant === 'onRose' ? 'mx-auto max-w-prose text-start text-sand' : 'mx-auto max-w-prose text-start';
 ---
-<div class="booking-details">
+
+<div class={wrap}>
 	{paragraphs.map((paragraph) => <p class="my-4">{paragraph}</p>)}
 </div>
-<style>
-	.booking-details { max-width: 68ch; margin-inline: auto; text-align: start; }
-</style>

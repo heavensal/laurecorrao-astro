@@ -12,6 +12,10 @@ export const siteConfig = {
 	publishedLocales: ['fr'] as readonly ('fr' | 'en')[],
 	/** Browser theme color — rose used on primary actions */
 	themeColor: '#a55955',
+	/** Square brand mark — used in JSON-LD and Google Business */
+	logoUrl: 'images/laure_corrao_icon-512.png',
+	logoWidth: 512,
+	logoHeight: 512,
 	ogImageUrl: 'images/reference-laure.jpeg',
 	ogImageWidth: 750,
 	ogImageHeight: 585,
@@ -29,6 +33,12 @@ export const siteConfig = {
 		postalCode: '13110',
 		city: 'Port-de-Bouc',
 	},
+	/** Google Maps search link for the practice entrance. */
+	mapsUrl:
+		'https://www.google.com/maps/search/?api=1&query=9+Imp.+Le+Maroni,+13110+Port-de-Bouc',
+	/** Embedded map (centered on the practice address) for in-page display. */
+	mapsEmbedUrl:
+		'https://maps.google.com/maps?q=9+Imp.+Le+Maroni,+13110+Port-de-Bouc,+France&hl=fr&z=17&ie=UTF8&iwloc=&output=embed',
 	/** Practice service area. */
 	geo: {
 		locality: 'Port-de-Bouc',

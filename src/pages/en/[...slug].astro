@@ -3,7 +3,15 @@ import HomePage from '../../components/HomePage.astro';
 import PageBody from '../../components/pages/PageBody.astro';
 import { getFixedT, isMultilangEnabled, type Locale } from '../../i18n/i18n';
 import Layout from '../../layouts/Layout.astro';
-import { alternateUrls, englishStaticPaths, pageMeta, type RoutedKind } from '../../lib/pages';
+import {
+	alternateUrls,
+	englishStaticPaths,
+	pageJsonLd,
+	pageMeta,
+	socialImageAltForKind,
+	socialImageForKind,
+	type RoutedKind,
+} from '../../lib/pages';
 import { buildHomeJsonLd, buildLegalNoticeJsonLd } from '../../lib/jsonld';
 import { absolutePageUrl, buildLegalAlternateLanguages } from '../../lib/seo';
 
@@ -22,6 +30,15 @@ const t = getFixedT(locale);
 const meta = pageMeta(t, kind);
 const { fr, en } = alternateUrls(Astro.site, kind);
 const homeUrl = absolutePageUrl(Astro.site, '');
+const socialImage = socialImageForKind(kind);
+const socialImageUrl =
+	socialImage && Astro.site ? new URL(socialImage.src, Astro.site).href : undefined;
+const jsonLd =
+	kind === 'home' && homeUrl
+		? buildHomeJsonLd(homeUrl, locale)
+		: kind === 'legal-notice' && homeUrl
+			? buildLegalNoticeJsonLd(homeUrl, locale)
+			: pageJsonLd({ site: Astro.site, locale, kind, t, imageUrl: socialImageUrl });
 ---
 
 <Layout
@@ -29,13 +46,9 @@ const homeUrl = absolutePageUrl(Astro.site, '');
 	title={meta.title}
 	description={meta.description}
 	alternateLanguages={buildLegalAlternateLanguages(fr, en)}
-	jsonLd={
-		kind === 'home' && homeUrl
-			? buildHomeJsonLd(homeUrl, locale)
-			: kind === 'legal-notice' && homeUrl
-				? buildLegalNoticeJsonLd(homeUrl, locale)
-				: undefined
-	}
+	jsonLd={jsonLd}
+	image={socialImageUrl}
+	ogImageAlt={socialImageAltForKind(t, kind)}
 >
 	{kind === 'home' ? <HomePage locale={locale} /> : <PageBody locale={locale} kind={kind} />}
 </Layout>

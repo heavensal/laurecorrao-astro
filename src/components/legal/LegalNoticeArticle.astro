@@ -1,6 +1,7 @@
 ---
+import PageBreadcrumb from '../PageBreadcrumb.astro';
 import { getFixedT, type Locale } from '../../i18n/i18n';
-import { homePathForLocale, legalPath, pageHref } from '../../lib/paths';
+import { legalPath, pageHref } from '../../lib/paths';
 import { siteConfig } from '../../site.config';
 
 interface Props {
@@ -9,12 +10,11 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getFixedT(locale);
-const homeUrl = pageHref(homePathForLocale(locale) || '/');
 ---
 
 <article>
-	<div class="mx-auto max-w-6xl px-6 pt-16 pb-6">
-		<p class="my-4"><a href={homeUrl}>{t('LegalNotice.back')}</a></p>
+	<PageBreadcrumb locale={locale} current={String(t('LegalNotice.h1'))} />
+	<div class="mx-auto max-w-6xl px-6 pb-6 md:px-10">
 		<h1 class="font-serif text-4xl leading-tight md:text-5xl">{t('LegalNotice.h1')}</h1>
 		<p class="my-4">{t('LegalNotice.updated')}</p>
 	</div>

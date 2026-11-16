@@ -1,6 +1,7 @@
 ---
+import PageBreadcrumb from '../PageBreadcrumb.astro';
 import { getFixedT, type Locale } from '../../i18n/i18n';
-import { contentPath, homePathForLocale, legalPath, pageHref } from '../../lib/paths';
+import { contentPath, legalPath, pageHref } from '../../lib/paths';
 
 interface Props {
 	locale: Locale;
@@ -8,7 +9,6 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getFixedT(locale);
-const homeUrl = pageHref(homePathForLocale(locale) || '/');
 const sections = t('Terms.sections', { returnObjects: true }) as {
 	title: string;
 	paragraphs: string[];
@@ -21,22 +21,19 @@ const links = {
 ---
 
 <article>
-	<div class="mx-auto max-w-6xl px-6 pt-16 pb-6">
-		<p class="my-4"><a href={homeUrl}>{t('Terms.back')}</a></p>
+	<PageBreadcrumb locale={locale} current={String(t('Terms.h1'))} />
+	<div class="mx-auto max-w-6xl px-6 pb-6 md:px-10">
 		<h1 class="font-serif text-4xl leading-tight md:text-5xl">{t('Terms.h1')}</h1>
 		<p class="my-4">{t('Terms.subtitle')}</p>
 		<p class="my-4">{t('Terms.updated')}</p>
 	</div>
-	<div class="prose mx-auto max-w-3xl px-6 pb-16 leading-relaxed">
+	<div class="mx-auto max-w-3xl px-6 pb-16 leading-relaxed">
 		{sections.map(({ title, paragraphs, link }) => (
 			<section>
 				<h2 class="mt-10 font-serif text-3xl leading-tight">{title}</h2>
-				{paragraphs.map((paragraph) => <p class="my-4">{paragraph}</p>)}
+				{paragraphs.map((paragraph) => <p class="my-4 whitespace-pre-line">{paragraph}</p>)}
 				{link && <a href={links[link]}>{t(`Terms.${link}`)}</a>}
 			</section>
 		))}
 	</div>
 </article>
-<style>
-	.prose p { white-space: pre-line; }
-</style>

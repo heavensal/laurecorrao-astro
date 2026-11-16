@@ -1,25 +1,27 @@
 ---
 import BookingDetails from './BookingDetails.astro';
 import { getFixedT, type Locale } from '../i18n/i18n';
-import { contentPath, pageHref } from '../lib/paths';
 
 interface Props {
 	locale: Locale;
+	showEyebrow?: boolean;
 }
 
-const { locale } = Astro.props;
+const { locale, showEyebrow = false } = Astro.props;
 const t = getFixedT(locale);
-const href = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
 ---
 
-<section class="bg-sand px-6 py-14 text-center">
-	<p class="mb-4 text-xs tracking-widest text-rose-laure uppercase">{t('BookingCta.eyebrow')}</p>
-	<h2 class="font-serif text-3xl leading-tight text-ink md:text-4xl">{t('BookingCta.title')}</h2>
-	<BookingDetails locale={locale} />
-	<a
-		class="mt-6 inline-flex min-h-12 items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-sm text-white no-underline transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep"
-		href={href}
+<section class="bg-rose-laure px-6 py-14 text-center text-white md:px-16">
+	{showEyebrow && (
+		<p class="mb-4 text-xs tracking-widest text-sand uppercase">{t('BookingCta.eyebrow')}</p>
+	)}
+	<h2 class="font-serif text-3xl leading-tight md:text-4xl">{t('BookingCta.title')}</h2>
+	<BookingDetails locale={locale} variant="onRose" />
+	<button
+		class="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-white bg-white px-6 py-3 text-sm text-rose-deep transition-colors duration-200 hover:bg-sand"
+		type="button"
+		data-booking-open
 	>
 		{t('Nav.bookingCta')}
-	</a>
+	</button>
 </section>

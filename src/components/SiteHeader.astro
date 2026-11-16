@@ -1,10 +1,10 @@
 ---
+import BrandLogo from './BrandLogo.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { getFixedT, type Locale } from '../i18n/i18n';
 import { publishedBlogPaths } from '../lib/forge-blog';
 import { contentPath, pageHref } from '../lib/paths';
 import { siteConfig } from '../site.config';
-
 interface Props {
 	locale: Locale;
 }
@@ -13,7 +13,6 @@ const { locale } = Astro.props;
 const t = getFixedT(locale);
 const blogPath = (await publishedBlogPaths(null))[locale];
 const homeHref = pageHref(locale === 'en' ? 'en/' : '');
-const bookingHref = pageHref(`${contentPath(locale, 'booking')}/#agenda`);
 const links = [
 	[homeHref, t('Nav.home')],
 	[pageHref(`${contentPath(locale, 'individual')}/`), t('Nav.individual')],
@@ -33,19 +32,27 @@ function isCurrent(href: string) {
 
 const navLink = 'text-sm text-ink no-underline transition-colors duration-200 hover:text-rose-laure';
 const navCurrent = `${navLink} text-rose-laure underline underline-offset-8`;
+const sidebarLink = 'block py-3 text-base text-ink no-underline transition-colors duration-200 hover:text-rose-laure';
+const sidebarCurrent = `${sidebarLink} font-medium text-rose-laure underline underline-offset-8`;
 const button =
 	'inline-flex min-h-12 w-full items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-4 py-2 text-center text-sm text-white no-underline transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep sm:w-auto sm:px-6';
+const iconButton =
+	'inline-flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-md border border-line bg-paper text-ink transition-colors duration-200 hover:border-blush hover:text-rose-laure lg:hidden';
+const brandMark =
+	'inline-flex items-center gap-2 rounded-md no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-laure sm:gap-3';
+const brandName = 'font-serif text-lg leading-none tracking-tight text-ink sm:text-xl';
+const sidebarBrandName = 'font-serif text-base leading-none tracking-tight text-ink';
 ---
 
-<header class="flex w-full min-w-0 flex-wrap items-center justify-between gap-x-3 gap-y-3 border-b border-line bg-paper px-4 py-4 sm:gap-x-6 sm:px-6 lg:flex-nowrap lg:gap-8 lg:px-10">
-	<a class="font-serif text-xl tracking-tight text-ink no-underline sm:text-3xl lg:text-4xl" href={homeHref}>
-		{siteConfig.name}
-		<span class="sr-only">{t('Layout.brandSubtitle')}</span>
+<header
+	class="relative z-40 flex w-full min-w-0 flex-wrap items-center justify-between gap-x-3 gap-y-3 border-b border-line bg-paper px-4 py-4 sm:gap-x-6 sm:px-6 lg:flex-nowrap lg:gap-8 lg:px-10"
+>
+	<a class:list={['shrink-0', brandMark]} href={homeHref}>
+		<BrandLogo alt="" variant="header" />
+		<span class={brandName}>{siteConfig.name}</span>
 	</a>
-	<nav
-		class="order-last grid w-full min-w-0 grid-cols-2 gap-x-4 gap-y-2 sm:grid-cols-3 lg:order-none lg:flex lg:w-auto lg:flex-1 lg:justify-end lg:gap-x-6"
-		aria-label={t('Nav.aria')}
-	>
+
+	<nav class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6" aria-label={t('Nav.aria')}>
 		{
 			links.map(([url, label]) => (
 				<a class={isCurrent(url) ? navCurrent : navLink} href={url} aria-current={isCurrent(url) ? 'page' : undefined}>
@@ -54,6 +61,140 @@ const button =
 			))
 		}
 	</nav>
-	<LanguageSwitcher locale={locale} />
-	<a class={button} href={bookingHref}>{t('Nav.bookingCta')}</a>
+
+	<div class="flex items-center gap-3 max-lg:ml-auto">
+		<LanguageSwitcher locale={locale} />
+		<button class={`${button} max-sm:hidden`} type="button" data-booking-open>{t('Nav.bookingCta')}</button>
+		<button
+			class={iconButton}
+			type="button"
+			id="nav-menu-open"
+			aria-expanded="false"
+			aria-controls="nav-sidebar"
+			aria-label={t('Nav.menuOpen')}
+		>
+			<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+				<path stroke-linecap="round" d="M4 7h16M4 12h16M4 17h16" />
+			</svg>
+		</button>
+	</div>
 </header>
+
+<div
+	id="nav-overlay"
+	class="pointer-events-none fixed inset-0 z-50 bg-ink/40 opacity-0 transition-opacity duration-200 motion-reduce:transition-none lg:hidden"
+	aria-hidden="true"
+></div>
+
+<aside
+	id="nav-sidebar"
+	class="fixed top-0 right-0 z-50 flex h-full w-full max-w-80 translate-x-full flex-col border-l border-line bg-paper shadow-xl transition-transform duration-200 motion-reduce:transition-none lg:hidden"
+	aria-label={t('Nav.sidebarAria')}
+	aria-hidden="true"
+	inert
+>
+	<div class="flex items-center justify-between border-b border-line px-4 py-4">
+		<a class={brandMark} href={homeHref}>
+			<BrandLogo alt="" variant="sidebar" />
+			<span class={sidebarBrandName}>{siteConfig.name}</span>
+		</a>
+		<button
+			class="inline-flex h-12 w-12 shrink-0 cursor-pointer items-center justify-center rounded-md border border-line bg-paper text-ink transition-colors duration-200 hover:border-blush hover:text-rose-laure"
+			type="button"
+			id="nav-menu-close"
+			aria-label={t('Nav.menuClose')}
+		>
+			<svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+				<path stroke-linecap="round" d="M6 6l12 12M18 6L6 18" />
+			</svg>
+		</button>
+	</div>
+	<nav class="flex-1 overflow-y-auto px-4 py-2" aria-label={t('Nav.aria')}>
+		{
+			links.map(([url, label]) => (
+				<a
+					class={isCurrent(url) ? sidebarCurrent : sidebarLink}
+					href={url}
+					aria-current={isCurrent(url) ? 'page' : undefined}
+					data-nav-sidebar-link
+				>
+					{label}
+				</a>
+			))
+		}
+	</nav>
+	<div class="border-t border-line p-4">
+		<button class={`${button} w-full`} type="button" data-booking-open>{t('Nav.bookingCta')}</button>
+	</div>
+</aside>
+
+<script>
+	let closeMobileNav = () => {};
+
+	function initNavSidebar() {
+		const openBtn = document.getElementById('nav-menu-open');
+		const closeBtn = document.getElementById('nav-menu-close');
+		const sidebar = document.getElementById('nav-sidebar');
+		const overlay = document.getElementById('nav-overlay');
+		if (!openBtn || !closeBtn || !sidebar || !overlay) return;
+
+		const focusable = () =>
+			Array.from(
+				sidebar.querySelectorAll<HTMLElement>(
+					'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])',
+				),
+			);
+
+		let lastFocused: HTMLElement | null = null;
+
+		function setOpen(open: boolean) {
+			openBtn.setAttribute('aria-expanded', String(open));
+			sidebar.setAttribute('aria-hidden', String(!open));
+			if (open) {
+				sidebar.removeAttribute('inert');
+				sidebar.classList.remove('translate-x-full');
+				overlay.classList.remove('pointer-events-none', 'opacity-0');
+				overlay.classList.add('opacity-100');
+				document.body.classList.add('overflow-hidden');
+				lastFocused = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+				closeBtn.focus();
+			} else {
+				sidebar.setAttribute('inert', '');
+				sidebar.classList.add('translate-x-full');
+				overlay.classList.add('pointer-events-none', 'opacity-0');
+				overlay.classList.remove('opacity-100');
+				document.body.classList.remove('overflow-hidden');
+				lastFocused?.focus();
+				lastFocused = null;
+			}
+		}
+
+		closeMobileNav = () => setOpen(false);
+
+		openBtn.addEventListener('click', () => setOpen(true));
+		closeBtn.addEventListener('click', () => setOpen(false));
+		overlay.addEventListener('click', () => setOpen(false));
+		sidebar.querySelectorAll('[data-nav-sidebar-link]').forEach((link) => {
+			link.addEventListener('click', () => setOpen(false));
+		});
+		document.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape' && openBtn.getAttribute('aria-expanded') === 'true') setOpen(false);
+			if (e.key !== 'Tab' || openBtn.getAttribute('aria-expanded') !== 'true') return;
+			const items = focusable();
+			if (items.length === 0) return;
+			const first = items[0];
+			const last = items[items.length - 1];
+			if (e.shiftKey && document.activeElement === first) {
+				e.preventDefault();
+				last.focus();
+			} else if (!e.shiftKey && document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			}
+		});
+	}
+
+	document.addEventListener('nav-sidebar:close', () => closeMobileNav());
+	initNavSidebar();
+	document.addEventListener('astro:page-load', initNavSidebar);
+</script>

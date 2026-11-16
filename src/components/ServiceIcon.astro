@@ -1,0 +1,17 @@
+---
+import CoupleIcon from '../assets/svg/couple.astro';
+import IndividualIcon from '../assets/svg/individual.astro';
+import OnMesureIcon from '../assets/svg/onMesure.astro';
+
+interface Props {
+	kind: 'individual' | 'couple' | 'approach';
+	class?: string;
+}
+
+const { kind, class: className } = Astro.props;
+const iconClass = className ?? 'mx-auto h-12 w-12 text-blush';
+---
+
+{kind === 'individual' && <IndividualIcon class={iconClass} />}
+{kind === 'couple' && <CoupleIcon class={iconClass} />}
+{kind === 'approach' && <OnMesureIcon class={iconClass} />}

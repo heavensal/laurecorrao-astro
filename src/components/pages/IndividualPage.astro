@@ -1,0 +1,126 @@
+---
+import heroPhoto from '../../assets/images/individual/individual_meet.jpg';
+import PageBreadcrumb from '../PageBreadcrumb.astro';
+import SupportJourney from '../SupportJourney.astro';
+import BookingCTA from '../BookingCTA.astro';
+import { getFixedT, type Locale } from '../../i18n/i18n';
+import { siteConfig } from '../../site.config';
+
+interface Props {
+	locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getFixedT(locale);
+function lines(key: string): string[] {
+	const value = t(key, { returnObjects: true });
+	return Array.isArray(value) ? value.map(String) : [];
+}
+
+const [intro] = lines('Individual.before');
+const items = lines('Individual.items');
+const after = lines('Individual.after');
+---
+
+<article>
+	<PageBreadcrumb locale={locale} current={String(t('Individual.h1'))} />
+
+	<header
+		class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 pb-12 md:px-10 lg:grid-cols-2 lg:gap-14"
+	>
+		<div class="max-w-xl">
+			<h1
+				id="individual-title"
+				class="font-serif text-4xl leading-tight tracking-tight text-ink md:text-5xl lg:text-6xl"
+			>
+				{t('Individual.h1')}
+			</h1>
+			<p class="mt-6 font-serif text-xl leading-snug text-rose-laure md:text-2xl">{t('Individual.lede')}</p>
+			<span class="mt-8 block w-12 border-t-2 border-blush" aria-hidden="true"></span>
+		</div>
+		<img
+			class="block h-auto w-full rounded-2xl shadow-sm ring-1 ring-line"
+			src={heroPhoto.src}
+			width={heroPhoto.width}
+			height={heroPhoto.height}
+			alt={t('Individual.heroAlt')}
+			decoding="async"
+			loading="eager"
+			fetchpriority="high"
+		/>
+	</header>
+
+	<section
+		class="mx-auto max-w-3xl px-6 pb-12 md:px-10"
+		aria-labelledby="individual-title"
+	>
+		<p class="text-lg leading-relaxed text-ink">{intro}</p>
+	</section>
+
+	<section class="bg-sand px-6 py-14 md:px-10" aria-labelledby="individual-topics-heading">
+		<div class="mx-auto max-w-3xl">
+			<h2 id="individual-topics-heading" class="font-serif text-2xl leading-tight text-ink md:text-3xl">
+				{t('Individual.listIntro')}
+			</h2>
+			<ul class="mt-8 grid gap-3 sm:grid-cols-2">
+				{
+					items.map((item) => (
+						<li class="rounded-xl border border-line/60 bg-paper px-4 py-3 text-sm leading-relaxed text-ink shadow-sm">
+							{item}
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section
+		class="mx-auto max-w-3xl px-6 py-14 leading-relaxed md:px-10"
+		aria-labelledby="individual-process-heading"
+	>
+		<h2 id="individual-process-heading" class="font-serif text-2xl leading-tight text-ink md:text-3xl">
+			{t('Individual.processHeading')}
+		</h2>
+		<p class="mt-6 text-lg">{after[0]}</p>
+		<h3 class="mt-10 font-serif text-xl leading-tight text-ink md:text-2xl" id="individual-journey-heading">
+			{t('Individual.journeyHeading')}
+		</h3>
+		<SupportJourney locale={locale} describedBy="individual-journey-heading" />
+		<p class="mt-6">{after[1]}</p>
+	</section>
+
+	<section
+		class="mx-auto max-w-3xl px-6 pb-6 md:px-10"
+		aria-labelledby="individual-place-heading"
+	>
+		<h2 id="individual-place-heading" class="font-serif text-2xl leading-tight text-ink md:text-3xl">
+			{t('Individual.placeHeading')}
+		</h2>
+		<p class="mt-4 leading-relaxed">{t('Individual.placeBody')}</p>
+		<p class="mt-3 text-muted">{t('HomePage.practiceAddress')}</p>
+		<p class="mt-4">
+			<a
+				class="text-rose-laure underline underline-offset-4"
+				href={siteConfig.mapsUrl}
+				rel="noopener noreferrer"
+				target="_blank"
+			>
+				{t('HomePage.practiceMapsLabel')}
+				<span class="absolute -m-px h-px w-px overflow-hidden border-0 p-0 whitespace-nowrap">
+					{t('Individual.mapsOpensNewTab')}
+				</span>
+			</a>
+		</p>
+	</section>
+
+	<section class="border-y border-line bg-cream px-6 py-14 md:px-10" aria-label={String(t('Individual.closingAria'))}>
+		<blockquote class="relative mx-auto max-w-2xl px-4 text-center">
+			<span class="absolute top-0 left-1/2 -translate-x-1/2 font-serif text-5xl text-blush" aria-hidden="true">
+				“
+			</span>
+			<p class="pt-8 font-serif text-xl leading-snug text-ink md:text-2xl">{after[2]}</p>
+		</blockquote>
+	</section>
+
+	<BookingCTA locale={locale} />
+</article>

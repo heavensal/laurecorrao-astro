@@ -7,7 +7,9 @@ import type { ContentKind } from '../../lib/pages';
 import AdhdPage from './AdhdPage.astro';
 import ParentingPage from './ParentingPage.astro';
 import FeesPage from './FeesPage.astro';
-import TopicPage from './TopicPage.astro';
+import IndividualPage from './IndividualPage.astro';
+import CouplePage from './CouplePage.astro';
+import ApproachPage from './ApproachPage.astro';
 
 interface Props {
 	locale: Locale;
@@ -19,9 +21,9 @@ const { locale, kind } = Astro.props;
 
 {kind === 'adhd' && <AdhdPage locale={locale} />}
 {kind === 'parenting' && <ParentingPage locale={locale} />}
-{kind === 'individual' && <TopicPage locale={locale} namespace="Individual" />}
-{kind === 'couple' && <TopicPage locale={locale} namespace="Couple" />}
-{kind === 'approach' && <TopicPage locale={locale} namespace="Approach" />}
+{kind === 'individual' && <IndividualPage locale={locale} />}
+{kind === 'couple' && <CouplePage locale={locale} />}
+{kind === 'approach' && <ApproachPage locale={locale} />}
 {kind === 'booking' && <FeesPage locale={locale} />}
 {kind === 'legal-notice' && <LegalNoticeArticle locale={locale} />}
 {kind === 'privacy-policy' && <PrivacyArticle locale={locale} />}
