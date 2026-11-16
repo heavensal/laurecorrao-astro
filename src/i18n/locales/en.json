@@ -460,14 +460,30 @@
 		}
 	},
 	"Booking": {
-		"metaTitle": "Fees and appointments",
-		"metaDescription": "Choosing to start therapy is already a first step toward yourself.",
+		"metaTitle": "Psychotherapy fees and appointments in Port-de-Bouc",
+		"metaDescription": "Session fees (€60 and €90) in Port-de-Bouc: individual, couples, family. In-person or video. Free introductory call, online booking.",
 		"h1": "Fees and appointments",
+		"heroAlt": "Welcoming psychotherapy practice in Port-de-Bouc",
 		"lede": "Choosing to start therapy is already a first step toward yourself.",
 		"intro": "I welcome you at the practice in Port-de-Bouc or remotely, in a confidential, kind, and non-judgmental setting.",
+		"tariffsEyebrow": "Fees",
+		"tariffsHeading": "Clear session fees, at your pace",
+		"tariffsAria": "Consultation fees",
+		"durationLabel": "Length",
+		"feeLabel": "Fee",
+		"policiesHeading": "Before your appointment",
+		"policiesAria": "Changes, cancellation, and reimbursement",
+		"locationHeading": "Where sessions take place",
+		"locationBody": "In-person sessions are held at the practice in Les Jardins de Louis, Port-de-Bouc. Video sessions take place from a calm, confidential space—whether you are in Bouches-du-Rhône or elsewhere in France.",
+		"mapsOpensNewTab": "(opens Google Maps in a new tab)",
+		"cancelLead": "To cancel or reschedule a session, please contact Laure Corrao by telephone or text at least 48 hours in advance on",
+		"phoneAria": "Call Laure Corrao",
 		"sections": [
 			{
 				"title": "Individual session",
+				"relatedPage": "individual",
+				"priceAmount": 60,
+				"durationMinutes": 60,
 				"lines": [
 					"Length: 1 hour",
 					"Fee: €60"
@@ -478,6 +494,9 @@
 			},
 			{
 				"title": "Couples session",
+				"relatedPage": "couple",
+				"priceAmount": 90,
+				"durationMinutes": 90,
 				"lines": [
 					"Duration: 90 minutes",
 					"Fee: €90 per couple"
@@ -488,6 +507,9 @@
 			},
 			{
 				"title": "Family session",
+				"relatedPage": "parenting",
+				"priceAmount": 90,
+				"durationMinutes": 90,
 				"lines": [
 					"Duration: 90 minutes",
 					"Fee: €90 per session"
@@ -496,7 +518,6 @@
 			{
 				"title": "Changes and cancellation",
 				"paragraphs": [
-					"To cancel or reschedule a session, please contact Laure Corrao by telephone or text at least 48 hours in advance on +33 6 69 31 64 50.",
 					"When this notice is given, any sums paid for the cancelled session are refunded within 14 days or transferred to a rescheduled session with the client’s agreement."
 				]
 			},
@@ -509,7 +530,15 @@
 			}
 		],
 		"closing": "You do not have to wait until things get worse to ask for help.",
-		"agendaTitle": "Your free introductory conversation"
+		"closingAria": "Words of encouragement",
+		"agendaTitle": "Your free introductory conversation",
+		"agendaAria": "Book a free 10-minute introductory call",
+		"jumpToAgenda": "Skip to the booking calendar",
+		"relatedLinks": {
+			"individual": "Individual support",
+			"couple": "Couples therapy",
+			"parenting": "Parenting coaching"
+		}
 	},
 	"BookingCta": {
 		"eyebrow": "At your pace",
@@ -547,7 +576,9 @@
 		"loadError": "The calendar could not be loaded. Please reload this page and try again.",
 		"frameTitle": "Availability and booking on Cal.com",
 		"aria": "Booking calendar",
-		"noscript": "Enable JavaScript to see availability and book on this page."
+		"noscript": "Enable JavaScript to see availability and book on this page.",
+		"bookingSending": "Confirming your appointment…",
+		"bookingSuccess": "Your appointment is confirmed."
 	},
 	"Resources": {
 		"reviewsEyebrow": "Testimonials",

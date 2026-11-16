@@ -16,7 +16,7 @@ const namespace = 'bookingModal';
 
 <dialog
 	id={dialogId}
-	class="m-auto w-[min(100%,56rem)] max-h-[min(100%,48rem)] overflow-hidden rounded-2xl border-0 p-0 shadow-2xl"
+	class="m-auto w-[min(90%,56rem)] max-h-[min(100%,48rem)] overflow-hidden rounded-2xl border-0 p-0 shadow-2xl"
 	aria-labelledby="booking-dialog-title"
 >
 	<div class="relative flex max-h-[min(100vh-2rem,48rem)] flex-col bg-cream">
@@ -32,24 +32,76 @@ const namespace = 'bookingModal';
 			</button>
 		</div>
 		<div class="min-h-0 flex-1 overflow-auto px-4 py-4 sm:px-6">
-			<CalEmbed
-				locale={locale}
-				elementId={elementId}
-				statusId={statusId}
-				namespace={namespace}
-				containerClass="min-h-[28rem] w-full overflow-auto"
-				closeDialogOnBooking={true}
-				dialogId={dialogId}
-			/>
+			<div id="booking-calendar-view">
+				<CalEmbed
+					locale={locale}
+					elementId={elementId}
+					statusId={statusId}
+					namespace={namespace}
+					containerClass="min-h-[28rem] w-full overflow-auto"
+					closeDialogOnBooking={true}
+					dialogId={dialogId}
+				/>
+			</div>
+			<div id="booking-sending-view" class="hidden py-16 text-center" role="status" aria-live="polite">
+				<p class="text-lg text-ink">{t('Calendar.bookingSending')}</p>
+				<div
+					class="mx-auto mt-6 size-10 animate-spin rounded-full border-4 border-line border-t-rose-laure"
+					aria-hidden="true"
+				></div>
+			</div>
+			<div id="booking-success-view" class="hidden py-16 text-center" role="status" aria-live="polite">
+				<p class="text-lg text-ink">{t('Calendar.bookingSuccess')}</p>
+				<button
+					class="mt-8 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-sm text-white transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep"
+					type="button"
+					data-booking-close
+				>
+					{t('Contact.close')}
+				</button>
+			</div>
 		</div>
 	</div>
 </dialog>
 
 <script>
+	import { closeDialogAnimated } from '../lib/dialog';
+
 	const dialog = document.querySelector('#booking-dialog');
+	const calendarView = document.querySelector('#booking-calendar-view');
+	const sendingView = document.querySelector('#booking-sending-view');
+	const successView = document.querySelector('#booking-success-view');
+
+	function showCalendarView() {
+		calendarView?.classList.remove('hidden');
+		sendingView?.classList.add('hidden');
+		successView?.classList.add('hidden');
+	}
+
+	function showSendingView() {
+		calendarView?.classList.add('hidden');
+		sendingView?.classList.remove('hidden');
+		successView?.classList.add('hidden');
+	}
+
+	function showSuccessView() {
+		calendarView?.classList.add('hidden');
+		sendingView?.classList.add('hidden');
+		successView?.classList.remove('hidden');
+	}
+
+	function resetBookingDialog() {
+		showCalendarView();
+	}
+
+	function closeBookingDialog() {
+		if (!(dialog instanceof HTMLDialogElement)) return;
+		closeDialogAnimated(dialog);
+	}
 
 	function openBookingDialog() {
 		if (!(dialog instanceof HTMLDialogElement)) return;
+		resetBookingDialog();
 		dialog.showModal();
 		const sidebar = document.getElementById('nav-sidebar');
 		const overlay = document.getElementById('nav-overlay');
@@ -64,6 +116,26 @@ const namespace = 'bookingModal';
 		}
 	}
 
+	function onBookingFlow(event: Event) {
+		if (!(event instanceof CustomEvent) || !(dialog instanceof HTMLDialogElement) || !dialog.open) return;
+		if (event.detail?.dialogId !== dialog.id) return;
+		if (event.detail.phase === 'pending') {
+			showSendingView();
+			return;
+		}
+		if (event.detail.phase === 'success') {
+			const alreadySending = !sendingView?.classList.contains('hidden');
+			if (alreadySending) {
+				showSuccessView();
+				return;
+			}
+			showSendingView();
+			window.setTimeout(() => {
+				if (dialog.open) showSuccessView();
+			}, 450);
+		}
+	}
+
 	document.querySelectorAll('[data-booking-open]').forEach((button) => {
 		button.addEventListener('click', (event) => {
 			event.preventDefault();
@@ -72,12 +144,12 @@ const namespace = 'bookingModal';
 	});
 
 	document.querySelectorAll('[data-booking-close]').forEach((button) => {
-		button.addEventListener('click', () => {
-			if (dialog instanceof HTMLDialogElement) dialog.close();
-		});
+		button.addEventListener('click', () => closeBookingDialog());
 	});
 
 	dialog?.addEventListener('click', (event) => {
-		if (event.target === dialog && dialog instanceof HTMLDialogElement) dialog.close();
+		if (event.target === dialog) closeBookingDialog();
 	});
+	dialog?.addEventListener('close', () => resetBookingDialog());
+	window.addEventListener('dialog-booking:flow', onBookingFlow);
 </script>

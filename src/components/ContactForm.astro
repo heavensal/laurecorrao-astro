@@ -93,6 +93,8 @@ const config = {
 </dialog>
 <script id="forge-form-config" type="application/json" set:html={JSON.stringify(config)}></script>
 <script>
+	import { closeDialogAnimated } from '../lib/dialog';
+
 	const dialog = document.querySelector('#contact-dialog');
 	const form = document.querySelector('#contact-form');
 	const status = document.querySelector('#form-status');
@@ -133,11 +135,15 @@ const config = {
 	document.querySelectorAll('[data-contact-open]').forEach((button) => {
 		button.addEventListener('click', () => openContactDialog());
 	});
+	function closeContactDialog() {
+		if (dialog instanceof HTMLDialogElement) closeDialogAnimated(dialog);
+	}
+
 	document.querySelectorAll('[data-close]').forEach((button) => {
-		button.addEventListener('click', () => dialog instanceof HTMLDialogElement && dialog.close());
+		button.addEventListener('click', () => closeContactDialog());
 	});
 	dialog?.addEventListener('click', (event) => {
-		if (event.target === dialog && dialog instanceof HTMLDialogElement) dialog.close();
+		if (event.target === dialog) closeContactDialog();
 	});
 	dialog?.addEventListener('close', () => resetContactDialog());
 

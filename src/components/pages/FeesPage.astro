@@ -1,8 +1,11 @@
 ---
+import heroPhoto from '../../assets/images/individual/individual_meet.jpg';
 import PageBreadcrumb from '../PageBreadcrumb.astro';
 import BookingDetails from '../BookingDetails.astro';
 import CalEmbed from '../CalEmbed.astro';
 import { getFixedT, type Locale } from '../../i18n/i18n';
+import { contentPath, pageHref, type ContentPageId } from '../../lib/paths';
+import { siteConfig } from '../../site.config';
 
 interface Props {
 	locale: Locale;
@@ -14,48 +17,213 @@ interface Section {
 	paragraphs?: string[];
 	items?: string[];
 	after?: string[];
+	priceAmount?: number;
+	durationMinutes?: number;
+	relatedPage?: ContentPageId;
 }
 
 const { locale } = Astro.props;
 const t = getFixedT(locale);
+const titleId = 'booking-title';
+const tariffsHeadingId = 'booking-tariffs-heading';
+const policiesHeadingId = 'booking-policies-heading';
+const locationHeadingId = 'booking-location-heading';
+const agendaHeadingId = 'booking-agenda-heading';
+const closingAria = String(t('Booking.closingAria'));
+
 const sectionsValue = t('Booking.sections', { returnObjects: true });
 const sections: Section[] = Array.isArray(sectionsValue) ? sectionsValue : [];
+const feeSections = sections.filter((section) => section.lines?.length);
+const policySections = sections.filter((section) => !section.lines?.length && section.paragraphs?.length);
+const relatedLinksValue = t('Booking.relatedLinks', { returnObjects: true });
+const relatedLinks: Record<string, string> =
+	relatedLinksValue && typeof relatedLinksValue === 'object' && !Array.isArray(relatedLinksValue)
+		? (relatedLinksValue as Record<string, string>)
+		: {};
+
+function relatedHref(page: ContentPageId): string {
+	return pageHref(`${contentPath(locale, page)}/`);
+}
+
+const tariffCard =
+	'flex h-full flex-col rounded-2xl border border-line/70 bg-paper p-6 shadow-sm ring-1 ring-line/40';
+const photo = 'block h-auto w-full rounded-2xl shadow-sm ring-1 ring-line';
+const textLink = 'text-rose-laure underline underline-offset-4';
+const buttonBase =
+	'inline-flex min-h-12 w-full items-center justify-center rounded-md border px-6 py-3 text-center text-sm no-underline transition-colors duration-200 sm:w-auto';
+const button = `${buttonBase} border-rose-soft bg-rose-soft text-white hover:border-rose-deep hover:bg-rose-deep`;
 ---
 
-<PageBreadcrumb locale={locale} current={String(t('Booking.h1'))} />
-<div class="mx-auto max-w-6xl px-6 pb-6 md:px-10">
-	<h1 class="font-serif text-4xl leading-tight tracking-tight md:text-5xl">{t('Booking.h1')}</h1>
-</div>
-<article class="mx-auto max-w-3xl px-6 pb-16 leading-relaxed">
-	<p class="mb-6 font-serif text-xl leading-snug">{t('Booking.lede')}</p>
-	<p class="mb-6">{t('Booking.intro')}</p>
-	{
-		sections.map((section) => (
-			<>
-				<h2 class="mt-10 font-serif text-3xl leading-tight">{section.title}</h2>
-				{section.lines && (
-					<p class="mt-4 mb-6">
-						{section.lines[0]}
-						<br />
-						{section.lines[1]}
-					</p>
-				)}
-				{section.paragraphs?.map((paragraph) => <p class="mb-6">{paragraph}</p>)}
-				{section.items && (
-					<ul class="mb-6 list-disc pl-6">
-						{section.items.map((item) => (
-							<li class="py-1">{item}</li>
+<article aria-labelledby={titleId}>
+	<PageBreadcrumb locale={locale} current={String(t('Booking.h1'))} />
+
+	<header
+		class="mx-auto grid max-w-6xl grid-cols-1 items-center gap-10 px-6 pb-12 md:px-10 lg:grid-cols-2 lg:gap-14"
+	>
+		<div class="max-w-xl">
+			<h1
+				id={titleId}
+				class="font-serif text-4xl leading-tight tracking-tight text-ink md:text-5xl lg:text-6xl"
+			>
+				{t('Booking.h1')}
+			</h1>
+			<p class="mt-6 font-serif text-xl leading-snug text-rose-laure md:text-2xl">{t('Booking.lede')}</p>
+			<p class="mt-6 leading-relaxed text-ink">{t('Booking.intro')}</p>
+			<div class="mt-8">
+				<a class={button} href="#agenda">
+					{t('Booking.jumpToAgenda')}
+				</a>
+			</div>
+			<span class="mt-8 block w-12 border-t-2 border-blush" aria-hidden="true"></span>
+		</div>
+		<img
+			class={photo}
+			src={heroPhoto.src}
+			width={heroPhoto.width}
+			height={heroPhoto.height}
+			alt={t('Booking.heroAlt')}
+			decoding="async"
+			loading="eager"
+			fetchpriority="high"
+		/>
+	</header>
+
+	<section class="bg-sand px-6 py-14 md:px-10" aria-labelledby={tariffsHeadingId}>
+		<div class="mx-auto max-w-6xl">
+			<p class="mb-3 text-xs tracking-widest text-rose-laure uppercase">{t('Booking.tariffsEyebrow')}</p>
+			<h2 id={tariffsHeadingId} class="font-serif text-2xl leading-tight text-ink md:text-3xl">
+				{t('Booking.tariffsHeading')}
+			</h2>
+			<ul class="mt-10 grid list-none gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3" aria-label={t('Booking.tariffsAria')}>
+				{
+					feeSections.map((section) => (
+						<li>
+							<article class={tariffCard}>
+								<h3 class="font-serif text-xl text-ink">{section.title}</h3>
+								{section.lines && (
+									<dl class="mt-5 space-y-3 border-t border-line/50 pt-5">
+										<div>
+											<dt class="text-xs font-medium tracking-wide text-muted uppercase">{t('Booking.durationLabel')}</dt>
+											<dd class="mt-1 text-lg text-ink">{section.lines[0]?.replace(/^[^:]+:\s*/, '')}</dd>
+										</div>
+										<div>
+											<dt class="text-xs font-medium tracking-wide text-muted uppercase">{t('Booking.feeLabel')}</dt>
+											<dd class="mt-1 font-serif text-2xl text-rose-laure">{section.lines[1]?.replace(/^[^:]+:\s*/, '')}</dd>
+										</div>
+									</dl>
+								)}
+								{section.paragraphs?.map((paragraph) => (
+									<p class="mt-5 text-sm leading-relaxed text-ink">{paragraph}</p>
+								))}
+								{
+									section.relatedPage && relatedLinks[section.relatedPage] && (
+										<p class="mt-auto pt-5">
+											<a class={`${textLink} text-sm`} href={relatedHref(section.relatedPage)}>
+												{relatedLinks[section.relatedPage]}
+											</a>
+										</p>
+									)
+								}
+							</article>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</section>
+
+	<section
+		class="mx-auto max-w-3xl px-6 py-14 leading-relaxed md:px-10"
+		aria-labelledby={policiesHeadingId}
+	>
+		<h2 id={policiesHeadingId} class="font-serif text-2xl leading-tight text-ink md:text-3xl">
+			{t('Booking.policiesHeading')}
+		</h2>
+		<div class="mt-10 space-y-10" role="list" aria-label={t('Booking.policiesAria')}>
+			{
+				policySections.map((section, index) => (
+					<div class="rounded-2xl border border-line/60 bg-cream px-5 py-6 md:px-7" role="listitem">
+						<h3 class="font-serif text-xl text-ink">{section.title}</h3>
+						{index === 0 && (
+							<p class="mt-4">
+								{t('Booking.cancelLead')}{' '}
+								<a
+									class={textLink}
+									href={`tel:${siteConfig.contact.phoneE164}`}
+									aria-label={`${t('Booking.phoneAria')} — ${siteConfig.contact.phone}`}
+								>
+									{siteConfig.contact.phone}
+								</a>
+								.
+							</p>
+						)}
+						{section.paragraphs?.map((paragraph) => (
+							<p class="mt-4">{paragraph}</p>
 						))}
-					</ul>
-				)}
-				{section.after?.map((paragraph) => <p class="mb-6">{paragraph}</p>)}
-			</>
-		))
-	}
-	<p class="mb-6">{t('Booking.closing')}</p>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<section class="mx-auto max-w-3xl px-6 pb-6 md:px-10" aria-labelledby={locationHeadingId}>
+		<h2 id={locationHeadingId} class="font-serif text-2xl leading-tight text-ink md:text-3xl">
+			{t('Booking.locationHeading')}
+		</h2>
+		<p class="mt-4 leading-relaxed">{t('Booking.locationBody')}</p>
+		<address class="mt-4 not-italic">
+			<span class="block font-medium text-ink">{t('HomePage.practiceTitle')}</span>
+			<span class="mt-1 block text-muted">{t('HomePage.practiceAddress')}</span>
+			<span class="mt-1 block text-sm text-muted">
+				{siteConfig.geo.locality}, {siteConfig.geo.region} ({siteConfig.geo.postalCode})
+			</span>
+		</address>
+		<p class="mt-4">
+			<a
+				class={textLink}
+				href={siteConfig.mapsUrl}
+				rel="noopener noreferrer"
+				target="_blank"
+			>
+				{t('HomePage.practiceMapsLabel')}
+				<span class="absolute -m-px h-px w-px overflow-hidden border-0 p-0 whitespace-nowrap">
+					{t('Booking.mapsOpensNewTab')}
+				</span>
+			</a>
+		</p>
+	</section>
+
+	<section class="border-y border-line bg-cream px-6 py-14 md:px-10" aria-label={closingAria}>
+		<blockquote class="relative mx-auto max-w-2xl px-4 text-center">
+			<span class="absolute top-0 left-1/2 -translate-x-1/2 font-serif text-5xl text-blush" aria-hidden="true">
+				“
+			</span>
+			<p class="pt-8 font-serif text-xl leading-snug text-ink md:text-2xl">{t('Booking.closing')}</p>
+		</blockquote>
+	</section>
+
+	<section
+		class="scroll-mt-24 border-t border-line bg-paper px-6 py-16 md:px-10"
+		id="agenda"
+		aria-labelledby={agendaHeadingId}
+	>
+		<div class="mx-auto max-w-4xl">
+			<h2 id={agendaHeadingId} class="font-serif text-3xl leading-tight text-ink md:text-4xl">
+				{t('Booking.agendaTitle')}
+			</h2>
+			<p class="sr-only">{t('Booking.agendaAria')}</p>
+			<div class="mt-8">
+				<BookingDetails locale={locale} />
+			</div>
+			<div class="mt-10 overflow-hidden rounded-2xl border border-line bg-white shadow-sm">
+				<CalEmbed
+					locale={locale}
+					elementId="my-cal-inline-booking-page"
+					statusId="cal-booking-page-status"
+					namespace="bookingPage"
+					containerClass="min-h-[42rem] w-full overflow-auto"
+				/>
+			</div>
+		</div>
+	</section>
 </article>
-<section class="scroll-mt-8 px-6 py-16 md:px-10" id="agenda">
-	<h2 class="font-serif text-3xl leading-tight">{t('Booking.agendaTitle')}</h2>
-	<BookingDetails locale={locale} />
-	<CalEmbed locale={locale} />
-</section>

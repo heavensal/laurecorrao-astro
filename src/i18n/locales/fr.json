@@ -484,14 +484,30 @@
 		}
 	},
 	"Booking": {
-		"metaTitle": "Tarifs et rendez-vous",
-		"metaDescription": "Choisir de commencer une thérapie, c’est déjà faire un premier pas vers soi.",
+		"metaTitle": "Tarifs psychothérapie et rendez-vous à Port-de-Bouc",
+		"metaDescription": "Tarifs des séances (60 € et 90 €) à Port-de-Bouc : individuel, couple, famille. Cabinet ou visio. Premier échange gratuit, réservation en ligne.",
 		"h1": "Tarifs et rendez-vous",
+		"heroAlt": "Cabinet de psychothérapie accueillant à Port-de-Bouc",
 		"lede": "Choisir de commencer une thérapie, c’est déjà faire un premier pas vers soi.",
 		"intro": "Je vous accueille au cabinet à Port-de-Bouc ou en consultation à distance, dans un cadre confidentiel, bienveillant et sans jugement.",
+		"tariffsEyebrow": "Tarifs",
+		"tariffsHeading": "Des séances claires, au rythme qui vous convient",
+		"tariffsAria": "Grille tarifaire des consultations",
+		"durationLabel": "Durée",
+		"feeLabel": "Tarif",
+		"policiesHeading": "Avant le rendez-vous",
+		"policiesAria": "Modification, annulation et remboursement",
+		"locationHeading": "Lieu des consultations",
+		"locationBody": "Les séances en présentiel ont lieu au cabinet, dans les Jardins de Louis à Port-de-Bouc. Les consultations en visioconférence se font depuis un espace calme et confidentiel, où que vous soyez dans les Bouches-du-Rhône ou ailleurs en France.",
+		"mapsOpensNewTab": "(ouvre Google Maps dans un nouvel onglet)",
+		"cancelLead": "Pour annuler ou reporter une séance, merci de prévenir Laure Corrao au moins 48 heures à l’avance par téléphone ou SMS au",
+		"phoneAria": "Appeler Laure Corrao",
 		"sections": [
 			{
 				"title": "Séance individuelle",
+				"relatedPage": "individual",
+				"priceAmount": 60,
+				"durationMinutes": 60,
 				"lines": [
 					"Durée : 1 heure",
 					"Tarif : 60 €"
@@ -502,6 +518,9 @@
 			},
 			{
 				"title": "Séance de couple",
+				"relatedPage": "couple",
+				"priceAmount": 90,
+				"durationMinutes": 90,
 				"lines": [
 					"Durée : 1 h 30",
 					"Tarif : 90 € par couple"
@@ -512,6 +531,9 @@
 			},
 			{
 				"title": "Séance familiale",
+				"relatedPage": "parenting",
+				"priceAmount": 90,
+				"durationMinutes": 90,
 				"lines": [
 					"Durée : 1 h 30",
 					"Tarif : 90 € par séance"
@@ -520,7 +542,6 @@
 			{
 				"title": "Modification ou annulation",
 				"paragraphs": [
-					"Pour annuler ou reporter une séance, merci de prévenir Laure Corrao au moins 48 heures à l’avance par téléphone ou SMS au 06 69 31 64 50.",
 					"Si ce délai est respecté, les sommes éventuellement versées pour la séance annulée sont remboursées dans les 14 jours, ou affectées à un report avec l’accord du client."
 				]
 			},
@@ -533,7 +554,15 @@
 			}
 		],
 		"closing": "Vous n’avez pas besoin d’attendre d’aller plus mal pour demander de l’aide.",
-		"agendaTitle": "Votre premier échange gratuit"
+		"closingAria": "Mot d’encouragement",
+		"agendaTitle": "Votre premier échange gratuit",
+		"agendaAria": "Réserver un échange gratuit de 10 minutes",
+		"jumpToAgenda": "Aller au calendrier de réservation",
+		"relatedLinks": {
+			"individual": "L’accompagnement individuel",
+			"couple": "La thérapie de couple",
+			"parenting": "Le coaching en parentalité"
+		}
 	},
 	"BookingCta": {
 		"eyebrow": "À votre rythme",
@@ -571,7 +600,9 @@
 		"loadError": "Le calendrier n’a pas pu être chargé. Veuillez réessayer en rechargeant cette page.",
 		"frameTitle": "Disponibilités et réservation Cal.com",
 		"aria": "Calendrier de réservation",
-		"noscript": "Activez JavaScript pour consulter les disponibilités et réserver directement sur cette page."
+		"noscript": "Activez JavaScript pour consulter les disponibilités et réserver directement sur cette page.",
+		"bookingSending": "Confirmation de votre rendez-vous…",
+		"bookingSuccess": "Votre rendez-vous est confirmé."
 	},
 	"Resources": {
 		"reviewsEyebrow": "Témoignages",

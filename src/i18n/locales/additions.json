@@ -200,7 +200,9 @@
 			"loadError": "Le calendrier n’a pas pu être chargé. Veuillez réessayer en rechargeant cette page.",
 			"frameTitle": "Disponibilités et réservation Cal.com",
 			"aria": "Calendrier de réservation",
-			"noscript": "Activez JavaScript pour consulter les disponibilités et réserver directement sur cette page."
+			"noscript": "Activez JavaScript pour consulter les disponibilités et réserver directement sur cette page.",
+			"bookingSending": "Confirmation de votre rendez-vous…",
+			"bookingSuccess": "Votre rendez-vous est confirmé."
 		},
 		"Resources": {
 			"reviewsEyebrow": "Témoignages",
@@ -456,7 +458,9 @@
 			"loadError": "The calendar could not be loaded. Please reload this page and try again.",
 			"frameTitle": "Availability and booking on Cal.com",
 			"aria": "Booking calendar",
-			"noscript": "Enable JavaScript to see availability and book on this page."
+			"noscript": "Enable JavaScript to see availability and book on this page.",
+			"bookingSending": "Confirming your appointment…",
+			"bookingSuccess": "Your appointment is confirmed."
 		},
 		"Resources": {
 			"reviewsEyebrow": "Testimonials",

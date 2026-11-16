@@ -20,11 +20,17 @@ dialog::backdrop {
 	background-color: rgb(43 33 29 / 0.8);
 }
 
-#contact-dialog[open] {
-	animation: contact-dialog-enter 0.35s ease-out;
+#contact-dialog[open],
+#booking-dialog[open] {
+	animation: site-dialog-enter 0.35s ease-out;
 }
 
-@keyframes contact-dialog-enter {
+#contact-dialog.site-dialog-closing,
+#booking-dialog.site-dialog-closing {
+	animation: site-dialog-exit 0.28s ease-in forwards;
+}
+
+@keyframes site-dialog-enter {
 	from {
 		opacity: 0;
 		transform: translateY(-1.5rem);
@@ -33,6 +39,18 @@ dialog::backdrop {
 	to {
 		opacity: 1;
 		transform: translateY(0);
+	}
+}
+
+@keyframes site-dialog-exit {
+	from {
+		opacity: 1;
+		transform: translateY(0);
+	}
+
+	to {
+		opacity: 0;
+		transform: translateY(-1.5rem);
 	}
 }
 

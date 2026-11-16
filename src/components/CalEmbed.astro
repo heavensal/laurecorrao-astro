@@ -115,11 +115,14 @@ const t = getFixedT(locale);
 	});
 
 	if (closeDialogOnBooking && dialogId) {
-		const closeDialog = () => {
-			const dialog = document.getElementById(dialogId);
-			if (dialog instanceof HTMLDialogElement) dialog.close();
+		const dispatchBookingFlow = (phase) => {
+			window.dispatchEvent(new CustomEvent('dialog-booking:flow', { detail: { dialogId, phase } }));
 		};
-		Cal.ns[namespace]('on', { action: 'bookingSuccessfulV2', callback: closeDialog });
-		Cal.ns[namespace]('on', { action: 'bookingSuccessful', callback: closeDialog });
+		const onPending = () => dispatchBookingFlow('pending');
+		const onSuccess = () => dispatchBookingFlow('success');
+		Cal.ns[namespace]('on', { action: 'bookingSubmitted', callback: onPending });
+		Cal.ns[namespace]('on', { action: 'bookingSuccessfulV2', callback: onSuccess });
+		Cal.ns[namespace]('on', { action: 'bookingSuccessful', callback: onSuccess });
+		Cal.ns[namespace]('on', { action: 'rescheduleBookingSuccessfulV2', callback: onSuccess });
 	}
 </script>
