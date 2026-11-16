@@ -129,6 +129,8 @@ const sidebarBrandName = 'font-serif text-base leading-none tracking-tight text-
 </aside>
 
 <script>
+	let closeMobileNav = () => {};
+
 	function initNavSidebar() {
 		const openBtn = document.getElementById('nav-menu-open');
 		const closeBtn = document.getElementById('nav-menu-close');
@@ -167,6 +169,8 @@ const sidebarBrandName = 'font-serif text-base leading-none tracking-tight text-
 			}
 		}
 
+		closeMobileNav = () => setOpen(false);
+
 		openBtn.addEventListener('click', () => setOpen(true));
 		closeBtn.addEventListener('click', () => setOpen(false));
 		overlay.addEventListener('click', () => setOpen(false));
@@ -190,6 +194,7 @@ const sidebarBrandName = 'font-serif text-base leading-none tracking-tight text-
 		});
 	}
 
+	document.addEventListener('nav-sidebar:close', () => closeMobileNav());
 	initNavSidebar();
 	document.addEventListener('astro:page-load', initNavSidebar);
 </script>

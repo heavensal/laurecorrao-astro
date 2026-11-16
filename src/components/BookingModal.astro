@@ -16,10 +16,10 @@ const namespace = 'bookingModal';
 
 <dialog
 	id={dialogId}
-	class="m-auto w-[min(90%,56rem)] max-h-[min(100%,48rem)] overflow-hidden rounded-2xl border-0 p-0 shadow-2xl"
+	class="m-auto w-11/12 max-w-4xl max-h-screen overflow-hidden rounded-2xl border-0 p-0 shadow-2xl"
 	aria-labelledby="booking-dialog-title"
 >
-	<div class="relative flex max-h-[min(100vh-2rem,48rem)] flex-col bg-cream">
+	<div class="relative flex max-h-screen flex-col bg-cream">
 		<div class="flex items-center justify-between border-b border-line px-6 py-4">
 			<h2 id="booking-dialog-title" class="font-serif text-2xl leading-tight">{t('Nav.bookingCta')}</h2>
 			<button
@@ -38,7 +38,7 @@ const namespace = 'bookingModal';
 					elementId={elementId}
 					statusId={statusId}
 					namespace={namespace}
-					containerClass="min-h-[28rem] w-full overflow-auto"
+					containerClass="min-h-112 w-full overflow-auto"
 					closeDialogOnBooking={true}
 					dialogId={dialogId}
 				/>
@@ -102,18 +102,11 @@ const namespace = 'bookingModal';
 	function openBookingDialog() {
 		if (!(dialog instanceof HTMLDialogElement)) return;
 		resetBookingDialog();
-		dialog.showModal();
 		const sidebar = document.getElementById('nav-sidebar');
-		const overlay = document.getElementById('nav-overlay');
-		const openBtn = document.getElementById('nav-menu-open');
 		if (sidebar?.getAttribute('aria-hidden') === 'false') {
-			sidebar.classList.add('translate-x-full');
-			sidebar.setAttribute('aria-hidden', 'true');
-			sidebar.setAttribute('inert', '');
-			overlay?.classList.add('pointer-events-none', 'opacity-0');
-			overlay?.setAttribute('aria-hidden', 'true');
-			openBtn?.setAttribute('aria-expanded', 'false');
+			document.dispatchEvent(new CustomEvent('nav-sidebar:close'));
 		}
+		dialog.showModal();
 	}
 
 	function onBookingFlow(event: Event) {
