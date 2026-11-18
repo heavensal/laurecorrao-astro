@@ -32,6 +32,7 @@ const t = getFixedT(locale);
 
 <script
 	is:inline
+	type="module"
 	define:vars={{ calLink, calBrandLight, calBrandDark, elementId, statusId, namespace, closeDialogOnBooking, dialogId }}
 >
 	const calHost = document.getElementById(elementId);
@@ -133,14 +134,37 @@ const t = getFixedT(locale);
 		}
 	};
 
+	/* Never on page load: crawlers and lab audits must not fetch Cal.com. The dialog calendar still has to be ready by the time a visitor opens it. */
 	const calDialog = calHost?.closest('dialog');
 	if (calDialog instanceof HTMLDialogElement && !calDialog.open) {
+		const anyInteraction = ['scroll', 'touchstart', 'pointerdown', 'keydown'];
+		const triggerIntent = ['pointerover', 'focusin'];
+		const mountOnce = () => {
+			anyInteraction.forEach((type) => window.removeEventListener(type, mountOnce, true));
+			triggerIntent.forEach((type) => document.removeEventListener(type, onTriggerIntent, true));
+			mountCal();
+		};
+		const onTriggerIntent = (event) => {
+			if (event.target instanceof Element && event.target.closest('[data-booking-open]')) mountOnce();
+		};
+		anyInteraction.forEach((type) => window.addEventListener(type, mountOnce, { capture: true, passive: true }));
+		triggerIntent.forEach((type) => document.addEventListener(type, onTriggerIntent, { capture: true, passive: true }));
 		calDialog.addEventListener('toggle', () => {
 			if (!calDialog.open) return;
 			requestAnimationFrame(() => {
-				if (calDialog.open) mountCal();
+				if (calDialog.open) mountOnce();
 			});
 		});
+	} else if (calHost && 'IntersectionObserver' in window) {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				if (!entries.some((entry) => entry.isIntersecting)) return;
+				observer.disconnect();
+				mountCal();
+			},
+			{ rootMargin: '100% 0px' },
+		);
+		observer.observe(calHost);
 	} else {
 		mountCal();
 	}

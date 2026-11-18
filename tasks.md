@@ -23,7 +23,7 @@ The repository already has the French pages, canonical URLs, Open Graph, Twitter
 
 ## Local SEO and Google Business
 
-The public place is “cabinet à Martigues” plus video sessions. The category on Google must match the status she declares (psychopractitioner and couples therapist). Do not list a protected title she does not hold.
+The public place is the practice in Port-de-Bouc, plus video sessions. The Google category is Psychothérapeute, the same title the site uses, with couples therapy as a service.
 
 - [ ] Create or claim the Google Business Profile for the practice.
 - [ ] Verify it (postcard, phone, or email, whichever Google offers).
@@ -43,7 +43,7 @@ Make these before launch. No stock people, no client in session, no face other t
 ### Logo
 
 - [ ] Draw the wordmark “Laure Corrao” for the header (serif, ink `#36332f` on cream `#fcfaf6`).
-- [ ] Draw a small mark for the icon (initials or one symbol). Rose `#a55955` on cream, or ink on cream. Not the current green square.
+- [ ] Draw a small mark for the icon (initials or one symbol). Rose `#a35753` on cream, or ink on cream. Not the current green square.
 - [ ] Put the wordmark in the header in place of the text-only name. Keep the name as text next to it if the image fails.
 
 ### Favicon
@@ -55,7 +55,7 @@ Cut the mark, not a tiny copy of the wordmark.
 - [ ] `public/favicon-32x32.png` and `public/favicon-16x16.png`
 - [ ] `public/apple-touch-icon.png` (180×180)
 - [ ] `public/android-chrome-192x192.png` and `public/android-chrome-512x512.png`
-- [ ] Point `public/site.webmanifest` and `src/layouts/Layout.astro` at those files. `theme_color` stays `#a55955`.
+- [ ] Point `public/site.webmanifest` and `src/layouts/Layout.astro` at those files. `theme_color` stays `#a35753`.
 
 ### Photos by theme
 

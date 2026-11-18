@@ -36,3 +36,38 @@ Reference: [Service Public Entreprendre — mandatory website disclosures](https
 - [ ] Inventory the security measures actually used, including access controls, authentication, backups, updates, transmission and storage protections. Check whether any automated decisions or profiling produce significant effects.
 - [ ] Audit the production site and embedded calendar before and after interaction for cookies, storage and external requests. Record providers, purposes, durations and legal basis. Where prior consent is required, block the relevant service until consent, provide equally accessible refusal and withdrawal, and link the working preference controls.
 - [ ] Have the controller confirm the actual processing, update both language versions and date the final policy.
+
+# SEO, accessibility and GEO
+
+Follow-up to the November 2026 audit. Quick fixes, images, booking links, deferred Cal.com and map loading, JSON-LD, `llms.txt`, sitemap `lastmod` and the accessibility fixes (new-tab icon and text on Maps links, contact form required fields and errors, reduced-motion dialogs, footer headings) are done.
+
+## Content and identity
+
+- [ ] Write the “Qui suis-je” page, then complete the `Person` JSON-LD (`hasCredential`, `alumniOf`, `memberOf`, a dedicated portrait) and link it from the home page and the article author.
+- [x] Professional title is psychothérapeute (English: psychotherapist), including the layout, the home H1, `Person.jobTitle`, the legal copy, and the README.
+- [x] Google Business Profile verified: Laure Corrao, category Psychothérapeute, website laurecorrao.fr, phone 06 69 31 64 50. Canonical place URL is in `siteConfig.sameAs`. No public Doctolib, Resalib, or LinkedIn profile for this practice.
+- [x] Address aligned on the Google Business form `9 Imp. "Le Maroni", 13110 Port-de-Bouc`. Saint-Jean is not part of that address. The building name Les Jardins de Louis stays on the legal notice.
+- [x] Opening hours confirmed with Laure Corrao and on the Google Business Profile: Monday to Friday, 09:00 to 18:00. Saturday and Sunday closed. `siteConfig.openingHours` matches `Footer.hoursSchedule`.
+- [ ] The service catalog has four services. ADHD support has no dedicated session price, so its JSON-LD offer has no price. Add one if a specific rate exists, or confirm a fifth service to add.
+- [ ] Add internal links from the home page to the ADHD and parenting pages, which only the navigation reaches.
+- [ ] Add a short FAQ to each service page (with `FAQPage` JSON-LD) and link `Adhd.sources` to the HAS and ameli pages.
+- [ ] Optionally mention neighbouring towns (Martigues, Fos-sur-Mer, Istres, Saint-Mitre-les-Remparts) in visible copy. Today the Bouches-du-Rhône and France service area is only in the JSON-LD and `llms.txt`.
+
+## Forge article (edit in Forge)
+
+- [ ] Add H2 and H3 subheadings, fix the image that cuts a word, write descriptive `alt` text, and request resized Cloudinary images (`w_`, `f_auto`, `q_auto`).
+- [ ] If Forge exposes an update date, use it for the article `lastmod` and `article:modified_time` (only `published_at` is available today).
+
+## Hosting, legal and crawlers
+
+- [ ] The legal notice and privacy policy name Hostinger, but the site is deployed on GitHub Pages. Confirm the host and update both texts.
+- [ ] List Google Maps (loaded only after “Afficher la carte”) and Cal.com (loaded on first interaction) in the privacy policy, with their cookies and transfers.
+- [ ] GitHub Pages cannot send HTTP 301 redirects, so the old URLs use meta refresh pages. Move to a host with real redirects and long cache headers for `/_astro/` (Cloudflare Pages, Netlify), or accept the limitation.
+- [ ] Decide the AI crawler policy in `robots.txt` (GPTBot, ClaudeBot, PerplexityBot, Google-Extended). Everything is allowed today.
+
+## After deployment
+
+- [ ] Test the booking flow on mobile and desktop: dialog, Cal.com loading, confirmation, and the link fallback without JavaScript.
+- [ ] Validate the home, service, fees and article pages in the Rich Results Test and the Schema.org validator.
+- [ ] Submit `sitemap-index.xml` in Google Search Console and Bing Webmaster Tools, then check `https://laurecorrao.fr/llms.txt`.
+- [ ] Run Lighthouse on the home and fees pages and compare with the audit.

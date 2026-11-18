@@ -60,6 +60,11 @@ export function contentPath(locale: Locale, page: ContentPageId): string {
 	return `${localePathPrefix(locale)}${contentSlugs[locale][page]}`;
 }
 
+/** Booking calendar on the fees page: the fallback target of every booking trigger that opens the dialog. */
+export function bookingHref(locale: Locale): string {
+	return pageHref(`${contentPath(locale, 'booking')}/#agenda`);
+}
+
 export function legalSlug(locale: Locale, page: LegalPageId): string {
 	return legalSlugs[locale][page];
 }

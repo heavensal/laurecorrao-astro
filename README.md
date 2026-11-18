@@ -1,6 +1,6 @@
 # Laure Corrao — Brochure site
 
-Brochure site for Laure Corrao, psychopractitioner and couples therapist in Port-de-Bouc. Built with Astro 7 and Tailwind 4, with full SEO (sitemap, Open Graph, local JSON-LD) and GitHub Pages deployment.
+Brochure site for Laure Corrao, psychotherapist and couples therapist in Port-de-Bouc. Built with Astro 7 and Tailwind 4, with full SEO (sitemap, Open Graph, local JSON-LD) and GitHub Pages deployment.
 
 **Requirements:** Node.js ≥ 22 (see `package.json` → `engines`).
 
@@ -21,6 +21,7 @@ Visible copy is in `src/i18n/locales/fr.json` and `en.json`. `ENABLE_MULTILANG` 
 - [Components](#components)
 - [SEO configuration](#seo-configuration)
 - [Geographic SEO](#geographic-seo)
+- [Booking](#booking)
 - [Style conventions](#style-conventions)
 - [Deployment](#deployment)
 - [Commands](#commands)
@@ -57,7 +58,7 @@ pnpm dev
 After cloning, copy **`.env.example`** to **`.env`**, then adjust if needed (`ENABLE_MULTILANG`, `FORGE_*`, **`PUBLIC_CONTACT_FORM_URL`**, **`PUBLIC_CONTACT_FORM_TOKEN`**). In particular, update:
 
 1. **`astro.config.mjs`** — set `site` and `base` for the deployment URL
-2. **`src/site.config.ts`** — site identity, contact, geography, OG image
+2. **`src/site.config.ts`** — site identity, contact, geography, opening hours, `sameAs` profiles
 3. **`src/i18n/locales/fr.json`** and **`en.json`** — copy (home, sections, legal pages). Every new or changed French key is written in `en.json` in the same change
 
 ---
@@ -262,28 +263,44 @@ The layout sets these automatically:
 - Title and description
 - Canonical URL
 - hreflang for published locales, plus `x-default`
-- Open Graph (type, title, description, url, locale, site_name, image)
+- Open Graph (type, title, description, url, locale, site_name, image). Blog articles pass `ogType="article"` and `publishedTime`
 - Twitter Cards
 - JSON-LD when the page passes `jsonLd`
 
-`og:locale:alternate` is rendered only when both French and English are published.
+`og:locale:alternate` is rendered only when both French and English are published. A page with `robots="noindex"` (the 404) has no canonical URL.
 
-### 3. Static files (`public/`)
+### 3. Images
 
-- `site.webmanifest` — PWA manifest (icônes sous `favicons/`)
-- `images/reference-laure.jpeg` — default OG image
-- `favicons/` — `favicon.ico`, PNG, `apple-touch-icon`, Android chrome et maskable
-- `images/laure_corrao_icon*.png` — marque carrée (header, footer, SEO / JSON-LD)
+Site images live in `src/assets/images/` and go through `astro:assets` (`<Image>` with `widths` and `sizes`), which emits resized WebP files at build time. Forge article images are left as they are.
 
-### 4. Sitemap and robots
+- `assets/images/home/reference-laure.jpeg` — home portrait and default OG image
+- `assets/images/brand/laure_corrao_icon.png` — square brand mark (header, footer)
 
-`@astrojs/sitemap` writes `sitemap-index.xml` from the pages generated at build time, including `/blog` when articles were fetched. `src/pages/robots.txt.ts` points at that sitemap. The 404 page is excluded.
+### 4. Static files (`public/`)
+
+- `site.webmanifest` — PWA manifest (icons in `favicons/`)
+- `favicons/` — `favicon.ico`, PNG, `apple-touch-icon`, Android chrome and maskable
+- `images/laure_corrao_icon-512.png` — logo referenced by the JSON-LD (needs a stable URL)
+
+### 5. Sitemap, robots, and llms.txt
+
+`@astrojs/sitemap` writes `sitemap-index.xml` from the pages generated at build time, including `/blog` when articles were fetched. The 404 page is excluded. Each URL has a `lastmod`: the Forge publication date for articles, the latest article for `/blog/`, and the last commit touching `src/` or `public/` for the other pages (the deploy workflow checks out the full history for this).
+
+`src/pages/robots.txt.ts` points at that sitemap. `src/pages/llms.txt.ts` writes `/llms.txt`, a plain-text summary for AI assistants built from the same data as the pages (services, fees, FAQ, articles). Its headings come from `Seo.llms` in the locale files.
 
 ---
 
 ## Geographic SEO
 
-The practice address and phone number are in `src/site.config.ts`. The local structured data uses the supplied postal address in Port-de-Bouc.
+The practice address, coordinates, phone number, and opening hours are in `src/site.config.ts`. `openingHours` mirrors `Footer.hoursSchedule` in the locale files: keep both in sync.
+
+The practice is in Port-de-Bouc. In-person sessions cover the Bouches-du-Rhône and video sessions cover France (`serviceArea`). This area appears in the JSON-LD (`areaServed`) and `llms.txt`, not in the visible copy.
+
+The home page JSON-LD describes the practice (`ProfessionalService` with hours, coordinates, price range, and the service catalog), Laure Corrao (`Person`), the website, and the home FAQ (`FAQPage`). The FAQ follows the same rule as the visible section: Forge FAQs when Forge returns some, the local FAQ otherwise. Service names in the JSON-LD come from `Seo.services`.
+
+## Booking
+
+Booking buttons are links to the fees page agenda (`bookingHref`), so they work without JavaScript. With JavaScript, they open the booking dialog instead. Cal.com is never fetched on page load: the dialog calendar mounts on the first scroll, touch, or key press (or when the dialog opens), and the fees page calendar mounts when it nears the viewport. The home page map loads only after a click on "Afficher la carte".
 
 ## Style conventions
 
@@ -344,8 +361,8 @@ Follow the existing pattern and include `prefers-reduced-motion`. New keyframes 
 
 Defined in `global.css` via `@theme`:
 
-- **Rose**: `rose-laure` (`#a55955`) — eyebrows, links, focus
-- **Rose soft**: `rose-soft` (`#ae625c`) — primary buttons
+- **Rose**: `rose-laure` (`#a35753`) — eyebrows, links, focus
+- **Rose soft**: `rose-soft` (`#ad605a`) — primary buttons
 - **Rose deep**: `rose-deep` (`#914b46`) — button hover
 - **Blush**: `blush` (`#b77d76`) — small rules and symbols
 - **Ink**: `ink` (`#36332f`) — text

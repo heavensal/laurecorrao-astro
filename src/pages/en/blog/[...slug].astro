@@ -40,6 +40,8 @@ const jsonLd =
 	description={description}
 	alternateLanguages={buildLegalAlternateLanguages(frUrl, enUrl)}
 	jsonLd={jsonLd}
+	ogType={article ? 'article' : 'website'}
+	publishedTime={article?.publishedAt}
 	image={article?.coverImageUrl ?? undefined}
 	ogImageAlt={article?.coverImageUrl ? article.title : undefined}
 >

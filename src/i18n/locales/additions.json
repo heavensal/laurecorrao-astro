@@ -1,14 +1,14 @@
 {
 	"fr": {
 		"Layout": {
-			"brandSubtitle": "Psychopraticienne · Thérapeute de couple"
+			"brandSubtitle": "Psychothérapeute · Thérapeute de couple"
 		},
 		"Pages": {
 			"eyebrow": "Laure Corrao · Martigues"
 		},
 		"HomePage": {
 			"eyebrow": "Cabinet à Martigues · Consultations en ligne",
-			"titleHtml": "Psychopraticienne &amp;<br />Thérapeute de couple",
+			"titleHtml": "Psychothérapeute &amp;<br />Thérapeute de couple",
 			"subtitle": "Mettre des mots sur vos maux pour retrouver le chemin vers vous-même.",
 			"intro": "Je vous accueille dans un espace d’écoute bienveillant, confidentiel et sans jugement pour vous aider à traverser les difficultés, mieux vous comprendre et retrouver équilibre et sérénité.",
 			"approachCta": "Découvrir mon approche",
@@ -20,7 +20,7 @@
 			"approachSummaryHtml": "Hypnose · DNR · Outils<br />thérapeutiques adaptés",
 			"aboutEyebrow": "À propos",
 			"aboutTitle": "Et si vous vous accordiez enfin la place d’aller mieux ?",
-			"aboutBody": "Je suis Laure Corrao, psychopraticienne et thérapeute de couple. Je vous accompagne avec bienveillance, écoute et sans jugement, dans un espace confidentiel où vous pourrez vous déposer pleinement, à votre rythme.",
+			"aboutBody": "Je suis Laure Corrao, psychothérapeute et thérapeute de couple. Je vous accompagne avec bienveillance, écoute et sans jugement, dans un espace confidentiel où vous pourrez vous déposer pleinement, à votre rythme.",
 			"quote": "Vous n’avez pas besoin de savoir par où commencer. Vous avez simplement besoin d’oser faire le premier pas.",
 			"readingTitle": "Un accompagnement qui vous ressemble.",
 			"readingLead": "Il arrive que l’on se sente dépassé par ses émotions, prisonnier de ses peurs ou enfermé dans des schémas qui se répètent. Anxiété, phobies, manque de confiance, blessures émotionnelles, difficultés relationnelles ou crise de couple : vous n’avez pas à traverser cela seul.",
@@ -259,14 +259,14 @@
 	},
 	"en": {
 		"Layout": {
-			"brandSubtitle": "Psychopractitioner · Couples therapist"
+			"brandSubtitle": "Psychotherapist · Couples therapist"
 		},
 		"Pages": {
 			"eyebrow": "Laure Corrao · Martigues"
 		},
 		"HomePage": {
 			"eyebrow": "Practice in Martigues · Online sessions",
-			"titleHtml": "Psychopractitioner &amp;<br />Couples therapist",
+			"titleHtml": "Psychotherapist &amp;<br />Couples therapist",
 			"subtitle": "Put words to what hurts, and find your way back to yourself.",
 			"intro": "I welcome you in a kind, confidential, and non-judgmental space, to help you through difficulties, understand yourself better, and find balance and calm.",
 			"approachCta": "Discover my approach",
@@ -278,7 +278,7 @@
 			"approachSummaryHtml": "Hypnosis · DNR · Therapeutic<br />tools chosen for you",
 			"aboutEyebrow": "About",
 			"aboutTitle": "What if you finally gave yourself room to feel better?",
-			"aboutBody": "I am Laure Corrao, psychopractitioner and couples therapist. I accompany you with kindness, listening, and without judgment, in a confidential space where you can set things down fully, at your own pace.",
+			"aboutBody": "I am Laure Corrao, psychotherapist and couples therapist. I accompany you with kindness, listening, and without judgment, in a confidential space where you can set things down fully, at your own pace.",
 			"quote": "You do not need to know where to start. You only need to dare to take the first step.",
 			"readingTitle": "Support that feels like you.",
 			"readingLead": "Feelings can become overwhelming, fears can take over, or the same patterns can close in. Anxiety, phobias, a lack of confidence, emotional wounds, relationship difficulties, or a crisis in the couple: you do not have to go through this alone.",

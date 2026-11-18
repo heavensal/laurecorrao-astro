@@ -22,6 +22,9 @@ const href = pageHref(`${localePathPrefix(locale)}blog/${post.slug}/`);
 				class="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
 				src={post.coverImageUrl}
 				alt=""
+				loading="lazy"
+				decoding="async"
+				fetchpriority="low"
 			/>
 		)
 	}

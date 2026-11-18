@@ -1,3 +1,4 @@
+import defaultSocialImage from '../assets/images/home/reference-laure.jpeg';
 import { getFixedT, type Locale } from '../i18n/i18n';
 import { siteConfig } from '../site.config';
 import { isPublishedLocale, type SiteLocale } from './seo';
@@ -14,19 +15,82 @@ export function publishedInLanguage(): string[] {
 		.map((locale) => languageTag[locale]);
 }
 
-function place() {
+export type ServiceOffer = { name: string; price: number };
+
+export type CatalogService = {
+	name: string;
+	description: string;
+	url: string;
+	offer?: ServiceOffer;
+};
+
+export type FaqEntry = { question: string; answer: string };
+
+type Translate = ReturnType<typeof getFixedT>;
+
+const practiceId = (homeUrl: string) => `${homeUrl}#practice`;
+const personId = (homeUrl: string) => `${homeUrl}#laure-corrao`;
+
+function address() {
 	const { geo } = siteConfig;
 	return {
-		address: {
-			'@type': 'PostalAddress',
-			streetAddress: siteConfig.legal.street,
-			addressLocality: geo.locality,
-			addressRegion: geo.region,
-			postalCode: geo.postalCode,
-			addressCountry: geo.country,
-		},
-		areaServed: geo.areaServed.map((name) => ({ '@type': 'City', name })),
+		'@type': 'PostalAddress',
+		streetAddress: siteConfig.legal.street,
+		addressLocality: geo.locality,
+		addressRegion: geo.region,
+		postalCode: geo.postalCode,
+		addressCountry: geo.country,
 	};
+}
+
+function coordinates() {
+	return {
+		'@type': 'GeoCoordinates',
+		latitude: siteConfig.geo.latitude,
+		longitude: siteConfig.geo.longitude,
+	};
+}
+
+/** In person across the department, by video across the country. */
+function areaServed() {
+	return [
+		{ '@type': 'AdministrativeArea', name: siteConfig.serviceArea.inPerson },
+		{ '@type': 'Country', name: siteConfig.serviceArea.video },
+	];
+}
+
+function openingHours() {
+	return siteConfig.openingHours.map(({ days, opens, closes }) => ({
+		'@type': 'OpeningHoursSpecification',
+		dayOfWeek: days.map((day) => `https://schema.org/${day}`),
+		opens,
+		closes,
+	}));
+}
+
+function mapLink(): Record<string, string> {
+	return siteConfig.mapsUrl ? { hasMap: siteConfig.mapsUrl } : {};
+}
+
+function practicePlace() {
+	return {
+		'@type': 'Place',
+		name: siteConfig.name,
+		address: address(),
+		geo: coordinates(),
+		...mapLink(),
+	};
+}
+
+function channels(t: Translate) {
+	return [
+		{
+			'@type': 'ServiceChannel',
+			serviceType: String(t('Seo.inPersonChannel')),
+			serviceLocation: practicePlace(),
+		},
+		{ '@type': 'ServiceChannel', serviceType: String(t('Seo.videoChannel')) },
+	];
 }
 
 function contactFields(): Record<string, string> {
@@ -45,67 +109,158 @@ function brandLogo(homeUrl: string) {
 	};
 }
 
-/** Homepage entity: city-level place. The street address stays off until it is known. */
-export function buildHomeJsonLd(homeUrl: string, locale: Locale): Record<string, unknown> {
-	const t = getFixedT(locale);
-	const orgId = `${homeUrl}#practice`;
-	const services = [String(t('Individual.h1')), String(t('Couple.h1')), String(t('HomePage.approachTitle'))];
+function portraitUrl(homeUrl: string): string {
+	return new URL(defaultSocialImage.src, homeUrl).href;
+}
 
+function sameAs(): Record<string, readonly string[]> {
+	return siteConfig.sameAs.length ? { sameAs: siteConfig.sameAs } : {};
+}
+
+/** Self-contained provider reference so each page resolves the practice on its own. */
+function providerRef(homeUrl: string) {
 	return {
-		'@context': 'https://schema.org',
-		'@graph': [
-			{
-				'@type': ['ProfessionalService', 'LocalBusiness'],
-				'@id': orgId,
-				name: siteConfig.name,
-				url: homeUrl,
-				logo: brandLogo(homeUrl),
-				description: String(t('Home.metaDescription')),
-				image: new URL(siteConfig.ogImageUrl, homeUrl).href,
-				...place(),
-				...contactFields(),
-				inLanguage: publishedInLanguage(),
-				hasOfferCatalog: {
-					'@type': 'OfferCatalog',
-					name: String(t('HomePage.servicesAria')),
-					itemListElement: services.map((name) => ({
-						'@type': 'Offer',
-						itemOffered: { '@type': 'Service', name },
-					})),
-				},
-			},
-			{
-				'@type': 'WebSite',
-				'@id': `${homeUrl}#website`,
-				url: homeUrl,
-				name: siteConfig.name,
-				inLanguage: publishedInLanguage(),
-				publisher: { '@id': orgId },
-			},
+		'@type': 'ProfessionalService',
+		'@id': practiceId(homeUrl),
+		name: siteConfig.name,
+		url: homeUrl,
+		address: address(),
+		...contactFields(),
+	};
+}
+
+function practiceNode(homeUrl: string, description: string) {
+	return {
+		'@type': ['ProfessionalService', 'LocalBusiness'],
+		'@id': practiceId(homeUrl),
+		name: siteConfig.name,
+		url: homeUrl,
+		logo: brandLogo(homeUrl),
+		image: portraitUrl(homeUrl),
+		description,
+		address: address(),
+		geo: coordinates(),
+		...mapLink(),
+		areaServed: areaServed(),
+		openingHoursSpecification: openingHours(),
+		...contactFields(),
+		founder: { '@id': personId(homeUrl) },
+		knowsLanguage: publishedInLanguage(),
+		...sameAs(),
+	};
+}
+
+function personNode(homeUrl: string, t: Translate) {
+	const knowsAbout = t('Seo.knowsAbout', { returnObjects: true });
+	return {
+		'@type': 'Person',
+		'@id': personId(homeUrl),
+		name: siteConfig.name,
+		jobTitle: String(t('Layout.brandSubtitle')).split(' · '),
+		url: homeUrl,
+		image: portraitUrl(homeUrl),
+		worksFor: { '@id': practiceId(homeUrl) },
+		workLocation: practicePlace(),
+		...(Array.isArray(knowsAbout) ? { knowsAbout: knowsAbout.map(String) } : {}),
+		...sameAs(),
+	};
+}
+
+function offerFields(offer: ServiceOffer | undefined, url?: string) {
+	if (!offer) return {};
+	return {
+		offers: {
+			'@type': 'Offer',
+			name: offer.name,
+			price: offer.price,
+			priceCurrency: 'EUR',
+			...(url ? { url } : {}),
+		},
+	};
+}
+
+function faqNode(id: string, faqs: FaqEntry[], extra: Record<string, unknown> = {}) {
+	return {
+		'@type': 'FAQPage',
+		'@id': id,
+		...extra,
+		mainEntity: faqs.map((faq) => ({
+			'@type': 'Question',
+			name: faq.question,
+			acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+		})),
+	};
+}
+
+function breadcrumbNode(id: string, homeUrl: string, t: Translate, current: string, pageUrl: string) {
+	return {
+		'@type': 'BreadcrumbList',
+		'@id': id,
+		itemListElement: [
+			{ '@type': 'ListItem', position: 1, name: String(t('Nav.home')), item: homeUrl },
+			{ '@type': 'ListItem', position: 2, name: current, item: pageUrl },
 		],
 	};
 }
 
-/** Legal notice repeats the practice. No street line: that address is not known. */
+/** Homepage: the practice, its founder, the services and the FAQ shown on the page. */
+export function buildHomeJsonLd(input: {
+	homeUrl: string;
+	locale: Locale;
+	services: CatalogService[];
+	faqs: FaqEntry[];
+	priceRange?: string;
+}): Record<string, unknown> {
+	const { homeUrl } = input;
+	const t = getFixedT(input.locale);
+	const graph: Record<string, unknown>[] = [
+		{
+			...practiceNode(homeUrl, String(t('Home.metaDescription'))),
+			...(input.priceRange ? { priceRange: input.priceRange } : {}),
+			hasOfferCatalog: {
+				'@type': 'OfferCatalog',
+				name: String(t('HomePage.servicesAria')),
+				itemListElement: input.services.map((service) => ({
+					'@type': 'Offer',
+					...(service.offer ? { price: service.offer.price, priceCurrency: 'EUR' } : {}),
+					itemOffered: {
+						'@type': 'Service',
+						'@id': `${service.url}#service`,
+						name: service.name,
+						description: service.description,
+						url: service.url,
+						provider: { '@id': practiceId(homeUrl) },
+						areaServed: areaServed(),
+					},
+				})),
+			},
+		},
+		personNode(homeUrl, t),
+		{
+			'@type': 'WebSite',
+			'@id': `${homeUrl}#website`,
+			url: homeUrl,
+			name: siteConfig.name,
+			inLanguage: publishedInLanguage(),
+			publisher: { '@id': practiceId(homeUrl) },
+		},
+	];
+	if (input.faqs.length > 0) graph.push(faqNode(`${homeUrl}#faq`, input.faqs, { url: homeUrl }));
+
+	return { '@context': 'https://schema.org', '@graph': graph };
+}
+
+/** Legal notice repeats the practice with its legal name. */
 export function buildLegalNoticeJsonLd(homeUrl: string, locale: Locale): Record<string, unknown> {
 	const t = getFixedT(locale);
 	return {
 		'@context': 'https://schema.org',
-		'@type': 'ProfessionalService',
-		'@id': `${homeUrl}#practice`,
-		name: siteConfig.name,
+		...practiceNode(homeUrl, String(t('LegalNotice.metaDescription'))),
 		legalName: siteConfig.legal.name,
-		url: homeUrl,
-		logo: brandLogo(homeUrl),
-		description: String(t('LegalNotice.metaDescription')),
-		image: new URL(siteConfig.ogImageUrl, homeUrl).href,
-		...place(),
-		...contactFields(),
-		inLanguage: publishedInLanguage(),
 	};
 }
 
-/** Service landing page — WebPage, Service, BreadcrumbList, geo on the provider. */
+/** Service landing page: WebPage, Service, BreadcrumbList. */
 export function buildServicePageJsonLd(input: {
 	pageUrl: string;
 	homeUrl: string;
@@ -114,32 +269,12 @@ export function buildServicePageJsonLd(input: {
 	description: string;
 	breadcrumbCurrent: string;
 	imageUrl?: string;
+	offer?: ServiceOffer;
 }): Record<string, unknown> {
 	const t = getFixedT(input.locale);
-	const orgId = `${input.homeUrl}#practice`;
 	const pageId = `${input.pageUrl}#webpage`;
 	const serviceId = `${input.pageUrl}#service`;
 	const breadcrumbId = `${input.pageUrl}#breadcrumb`;
-	const { address, areaServed } = place();
-	const inPerson =
-		input.locale === 'en' ? 'In-person consultation' : 'Consultation au cabinet';
-	const video = input.locale === 'en' ? 'Video consultation' : 'Consultation en visioconférence';
-	const channels = [
-		{
-			'@type': 'ServiceChannel',
-			serviceType: inPerson,
-			serviceLocation: {
-				'@type': 'Place',
-				name: siteConfig.name,
-				address,
-				...(siteConfig.mapsUrl ? { hasMap: siteConfig.mapsUrl } : {}),
-			},
-		},
-		{
-			'@type': 'ServiceChannel',
-			serviceType: video,
-		},
-	];
 
 	return {
 		'@context': 'https://schema.org',
@@ -150,47 +285,26 @@ export function buildServicePageJsonLd(input: {
 				url: input.pageUrl,
 				name: input.serviceName,
 				description: input.description,
-				inLanguage: input.locale === 'en' ? languageTag.en : languageTag.fr,
+				inLanguage: languageTag[input.locale],
 				isPartOf: { '@id': `${input.homeUrl}#website` },
 				about: { '@id': serviceId },
 				breadcrumb: { '@id': breadcrumbId },
 				...(input.imageUrl
-					? {
-							primaryImageOfPage: {
-								'@type': 'ImageObject',
-								url: input.imageUrl,
-							},
-						}
+					? { primaryImageOfPage: { '@type': 'ImageObject', url: input.imageUrl } }
 					: {}),
 			},
-			{
-				'@type': 'BreadcrumbList',
-				'@id': breadcrumbId,
-				itemListElement: [
-					{
-						'@type': 'ListItem',
-						position: 1,
-						name: String(t('Nav.home')),
-						item: input.homeUrl,
-					},
-					{
-						'@type': 'ListItem',
-						position: 2,
-						name: input.breadcrumbCurrent,
-						item: input.pageUrl,
-					},
-				],
-			},
+			breadcrumbNode(breadcrumbId, input.homeUrl, t, input.breadcrumbCurrent, input.pageUrl),
 			{
 				'@type': 'Service',
 				'@id': serviceId,
 				name: input.serviceName,
 				description: input.description,
-				provider: { '@id': orgId },
-				areaServed,
-				availableChannel: channels,
+				url: input.pageUrl,
+				provider: providerRef(input.homeUrl),
+				areaServed: areaServed(),
+				availableChannel: channels(t),
 				...(input.imageUrl ? { image: input.imageUrl } : {}),
-				...contactFields(),
+				...offerFields(input.offer),
 			},
 		],
 	};
@@ -199,13 +313,10 @@ export function buildServicePageJsonLd(input: {
 type BookingOfferInput = {
 	name: string;
 	price: number;
-	durationMinutes: number;
 	servicePageUrl?: string;
 };
 
-type FaqInput = { question: string; answer: string };
-
-/** Fees and booking page — WebPage, tariffs as Offer, optional FAQPage, practice geo. */
+/** Fees and booking page: WebPage, tariffs as Offer, optional FAQPage, practice place. */
 export function buildBookingPageJsonLd(input: {
 	pageUrl: string;
 	homeUrl: string;
@@ -214,62 +325,32 @@ export function buildBookingPageJsonLd(input: {
 	description: string;
 	breadcrumbCurrent: string;
 	offers: BookingOfferInput[];
-	faqs: FaqInput[];
+	faqs: FaqEntry[];
 	imageUrl?: string;
 }): Record<string, unknown> {
 	const t = getFixedT(input.locale);
-	const orgId = `${input.homeUrl}#practice`;
 	const pageId = `${input.pageUrl}#webpage`;
 	const breadcrumbId = `${input.pageUrl}#breadcrumb`;
 	const catalogId = `${input.pageUrl}#offers`;
-	const faqId = `${input.pageUrl}#faq`;
 	const placeId = `${input.pageUrl}#practice-place`;
-	const { address, areaServed } = place();
-	const reserveLabel =
-		input.locale === 'en' ? 'Book a free introductory conversation' : 'Réserver un échange gratuit';
-	const inPerson =
-		input.locale === 'en' ? 'In-person consultation' : 'Consultation au cabinet';
-	const video = input.locale === 'en' ? 'Video consultation' : 'Consultation en visioconférence';
+	const agendaUrl = `${input.pageUrl}#agenda`;
 
-	const offerNodes = input.offers.map((offer) => {
-		const serviceId = `${input.pageUrl}#service-${offer.price}-${offer.durationMinutes}`;
-		return {
-			'@type': 'Offer',
-			price: offer.price,
-			priceCurrency: 'EUR',
-			availability: 'https://schema.org/InStock',
-			url: `${input.pageUrl}#agenda`,
-			itemOffered: {
-				'@type': 'Service',
-				'@id': serviceId,
-				name: offer.name,
-				...(offer.servicePageUrl ? { url: offer.servicePageUrl } : {}),
-				provider: { '@id': orgId },
-				areaServed,
-				offers: {
-					'@type': 'Offer',
-					price: offer.price,
-					priceCurrency: 'EUR',
-				},
-				...(offer.durationMinutes
-					? { duration: `PT${offer.durationMinutes}M` }
-					: {}),
-				availableChannel: [
-					{
-						'@type': 'ServiceChannel',
-						serviceType: inPerson,
-						serviceLocation: {
-							'@type': 'Place',
-							name: siteConfig.name,
-							address,
-							...(siteConfig.mapsUrl ? { hasMap: siteConfig.mapsUrl } : {}),
-						},
-					},
-					{ '@type': 'ServiceChannel', serviceType: video },
-				],
-			},
-		};
-	});
+	const offerNodes = input.offers.map((offer) => ({
+		'@type': 'Offer',
+		name: offer.name,
+		price: offer.price,
+		priceCurrency: 'EUR',
+		availability: 'https://schema.org/InStock',
+		url: agendaUrl,
+		itemOffered: {
+			'@type': 'Service',
+			name: offer.name,
+			...(offer.servicePageUrl ? { url: offer.servicePageUrl } : {}),
+			provider: { '@id': practiceId(input.homeUrl) },
+			areaServed: areaServed(),
+			availableChannel: channels(t),
+		},
+	}));
 
 	const graph: Record<string, unknown>[] = [
 		{
@@ -278,26 +359,21 @@ export function buildBookingPageJsonLd(input: {
 			url: input.pageUrl,
 			name: input.pageName,
 			description: input.description,
-			inLanguage: input.locale === 'en' ? languageTag.en : languageTag.fr,
+			inLanguage: languageTag[input.locale],
 			isPartOf: { '@id': `${input.homeUrl}#website` },
 			breadcrumb: { '@id': breadcrumbId },
 			...(input.imageUrl
-				? {
-						primaryImageOfPage: {
-							'@type': 'ImageObject',
-							url: input.imageUrl,
-						},
-					}
+				? { primaryImageOfPage: { '@type': 'ImageObject', url: input.imageUrl } }
 				: {}),
 			mainEntity: { '@id': catalogId },
 			about: { '@id': placeId },
 			potentialAction: {
 				'@type': 'ReserveAction',
-				name: reserveLabel,
+				name: String(t('Seo.reserveAction')),
 				target: {
 					'@type': 'EntryPoint',
-					urlTemplate: `${input.pageUrl}#agenda`,
-					inLanguage: input.locale === 'en' ? languageTag.en : languageTag.fr,
+					urlTemplate: agendaUrl,
+					inLanguage: languageTag[input.locale],
 					actionPlatform: [
 						'https://schema.org/DesktopWebPlatform',
 						'https://schema.org/MobileWebPlatform',
@@ -305,61 +381,23 @@ export function buildBookingPageJsonLd(input: {
 				},
 			},
 		},
-		{
-			'@type': 'Place',
-			'@id': placeId,
-			name: siteConfig.name,
-			address,
-			...(siteConfig.mapsUrl ? { hasMap: siteConfig.mapsUrl } : {}),
-		},
-		{
-			'@type': 'BreadcrumbList',
-			'@id': breadcrumbId,
-			itemListElement: [
-				{
-					'@type': 'ListItem',
-					position: 1,
-					name: String(t('Nav.home')),
-					item: input.homeUrl,
-				},
-				{
-					'@type': 'ListItem',
-					position: 2,
-					name: input.breadcrumbCurrent,
-					item: input.pageUrl,
-				},
-			],
-		},
+		{ ...practicePlace(), '@id': placeId },
+		breadcrumbNode(breadcrumbId, input.homeUrl, t, input.breadcrumbCurrent, input.pageUrl),
 		{
 			'@type': 'OfferCatalog',
 			'@id': catalogId,
 			name: input.pageName,
 			url: input.pageUrl,
-			provider: { '@id': orgId },
+			provider: providerRef(input.homeUrl),
 			itemListElement: offerNodes,
 		},
 	];
 
 	if (input.faqs.length > 0) {
-		graph.push({
-			'@type': 'FAQPage',
-			'@id': faqId,
-			isPartOf: { '@id': pageId },
-			mainEntity: input.faqs.map((faq) => ({
-				'@type': 'Question',
-				name: faq.question,
-				acceptedAnswer: {
-					'@type': 'Answer',
-					text: faq.answer,
-				},
-			})),
-		});
+		graph.push(faqNode(`${input.pageUrl}#faq`, input.faqs, { isPartOf: { '@id': pageId } }));
 	}
 
-	return {
-		'@context': 'https://schema.org',
-		'@graph': graph,
-	};
+	return { '@context': 'https://schema.org', '@graph': graph };
 }
 
 export function buildArticleJsonLd(input: {
@@ -376,13 +414,19 @@ export function buildArticleJsonLd(input: {
 		'@type': 'Article',
 		headline: input.title,
 		description: input.description,
-		inLanguage: input.locale === 'en' ? languageTag.en : languageTag.fr,
+		inLanguage: languageTag[input.locale],
 		mainEntityOfPage: input.pageUrl,
 		...(input.publishedAt ? { datePublished: input.publishedAt } : {}),
 		...(input.image ? { image: input.image } : {}),
-		author: { '@type': 'Person', name: siteConfig.name },
+		author: {
+			'@type': 'Person',
+			'@id': personId(input.homeUrl),
+			name: siteConfig.name,
+			url: input.homeUrl,
+		},
 		publisher: {
 			'@type': 'Organization',
+			'@id': practiceId(input.homeUrl),
 			name: siteConfig.name,
 			url: input.homeUrl,
 			logo: brandLogo(input.homeUrl),

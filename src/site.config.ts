@@ -11,16 +11,19 @@ export const siteConfig = {
 	 */
 	publishedLocales: ['fr'] as readonly ('fr' | 'en')[],
 	/** Browser theme color — rose used on primary actions */
-	themeColor: '#a55955',
+	themeColor: '#a35753',
 	/** Square brand mark — used in JSON-LD and Google Business */
 	logoUrl: 'images/laure_corrao_icon-512.png',
 	logoWidth: 512,
 	logoHeight: 512,
-	ogImageUrl: 'images/reference-laure.jpeg',
-	ogImageWidth: 750,
-	ogImageHeight: 585,
 	/** @example '@laurecorrao' — leave empty if unused */
 	twitterHandle: '' as string,
+	/**
+	 * Public profiles of the practice, announced as JSON-LD `sameAs`.
+	 * Canonical Google Business Profile (place `ChIJ4_ykK3ofthIR3m5vGSE3JU0`).
+	 * The share link https://maps.app.goo.gl/pQQG2QyqmeJTivFA6 opens the same listing.
+	 */
+	sameAs: ['https://www.google.com/maps/place/?q=place_id:ChIJ4_ykK3ofthIR3m5vGSE3JU0'] as readonly string[],
 	contact: {
 		email: '',
 		phone: '06 69 31 64 50',
@@ -29,22 +32,35 @@ export const siteConfig = {
 	legal: {
 		name: 'Laure Corrao',
 		building: 'Les Jardins de Louis',
-		street: '9 impasse Le Maroni — Saint-Jean',
+		street: '9 Imp. "Le Maroni"',
 		postalCode: '13110',
 		city: 'Port-de-Bouc',
 	},
-	/** Google Maps search link for the practice entrance. */
-	mapsUrl:
-		'https://www.google.com/maps/search/?api=1&query=9+Imp.+Le+Maroni,+13110+Port-de-Bouc',
+	/** Google Business Profile, also used for directions. */
+	mapsUrl: 'https://www.google.com/maps/place/?q=place_id:ChIJ4_ykK3ofthIR3m5vGSE3JU0',
 	/** Embedded map (centered on the practice address) for in-page display. */
 	mapsEmbedUrl:
-		'https://maps.google.com/maps?q=9+Imp.+Le+Maroni,+13110+Port-de-Bouc,+France&hl=fr&z=17&ie=UTF8&iwloc=&output=embed',
-	/** Practice service area. */
+		'https://maps.google.com/maps?q=9+Imp.+%22Le+Maroni%22,+13110+Port-de-Bouc,+France&hl=fr&z=17&ie=UTF8&iwloc=&output=embed',
+	/** Practice location. Coordinates from the Base Adresse Nationale. */
 	geo: {
 		locality: 'Port-de-Bouc',
 		region: 'Bouches-du-Rhône',
 		postalCode: '13110',
 		country: 'FR',
-		areaServed: ['Port-de-Bouc'],
+		latitude: 43.422002,
+		longitude: 5.003038,
 	},
+	/** In person across the department, by video across the country. */
+	serviceArea: {
+		inPerson: 'Bouches-du-Rhône',
+		video: 'France',
+	},
+	/** Structured copy of `Footer.hoursSchedule`. Keep both in sync. */
+	openingHours: [
+		{
+			days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+			opens: '09:00',
+			closes: '18:00',
+		},
+	],
 } as const;

@@ -1,11 +1,17 @@
 ---
+import { Image } from 'astro:assets';
+import ExternalLinkIcon from '../assets/svg/externalLink.astro';
 import SupportJourney from './SupportJourney.astro';
 import HomeResources from './HomeResources.astro';
 import ServiceIcon from './ServiceIcon.astro';
+import portrait from '../assets/images/home/reference-laure.jpeg';
+import practiceOffice from '../assets/images/home/practice-office.jpg';
+import videoSession from '../assets/images/home/video-session.jpg';
 import individualThumb from '../assets/images/individual/individual_meet.jpg';
 import coupleThumb from '../assets/images/couples/couple-therapy-session.webp';
 import { getFixedT, type Locale } from '../i18n/i18n';
-import { contentPath, pageHref } from '../lib/paths';
+import { homePortraitSizes, homePortraitWidths } from '../lib/images';
+import { bookingHref, contentPath, pageHref } from '../lib/paths';
 import { siteConfig } from '../site.config';
 
 interface Props {
@@ -26,6 +32,8 @@ const serviceLink =
 	'border-t border-line px-6 py-6 text-center no-underline first:border-t-0 md:border-t-0 md:border-l md:first:border-l-0';
 const topicCard =
 	'flex h-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-sm transition-shadow duration-200 hover:shadow-md';
+const topicImageSizes = '(min-width: 768px) 50vw, 100vw';
+const mapTitle = `${t('HomePage.practiceTitle')} — ${t('HomePage.practiceAddress')}`;
 ---
 
 <section class="grid min-w-0 items-stretch bg-paper lg:grid-cols-2" aria-label={t('HomePage.eyebrow')}>
@@ -35,18 +43,18 @@ const topicCard =
 		<p class="mt-5 max-w-full font-serif text-xl leading-snug text-rose-laure sm:text-2xl">{t('HomePage.subtitle')}</p>
 		<p class="mt-6 max-w-xl leading-relaxed">{t('HomePage.intro')}</p>
 		<div class="mt-8 flex flex-col gap-4 sm:flex-row sm:flex-wrap">
-			<button class={button} type="button" data-booking-open>{t('Nav.bookingCta')}</button>
+			<a class={button} href={bookingHref(locale)} data-booking-open>{t('Nav.bookingCta')}</a>
 			<a class={outline} href={approachHref}>{t('HomePage.approachCta')}</a>
 		</div>
 	</div>
 	<div class="relative min-h-80 min-w-0 overflow-hidden rounded-tl-4xl rounded-bl-4xl bg-sand lg:min-h-full">
-		<img
+		<Image
 			class="absolute inset-0 h-full w-full object-cover object-center"
-			src={pageHref('images/reference-laure.jpeg')}
+			src={portrait}
+			widths={homePortraitWidths}
+			sizes={homePortraitSizes}
 			alt={t('HomePage.portraitAlt')}
-			width="750"
-			height="585"
-			fetchpriority="high"
+			priority
 		/>
 	</div>
 </section>
@@ -96,14 +104,12 @@ const topicCard =
 	</div>
 	<div class="mt-10 grid gap-8 md:grid-cols-2">
 		<article class={topicCard}>
-			<img
+			<Image
 				class="h-44 w-full object-cover"
-				src={individualThumb.src}
-				width={individualThumb.width}
-				height={individualThumb.height}
+				src={individualThumb}
+				widths={[480, 800]}
+				sizes={topicImageSizes}
 				alt=""
-				loading="lazy"
-				decoding="async"
 			/>
 			<div class="flex flex-1 flex-col p-6">
 				<h3 class="font-serif text-2xl text-ink">{t('Individual.h1')}</h3>
@@ -113,14 +119,12 @@ const topicCard =
 			</div>
 		</article>
 		<article class={topicCard}>
-			<img
+			<Image
 				class="h-44 w-full object-cover"
-				src={coupleThumb.src}
-				width={coupleThumb.width}
-				height={coupleThumb.height}
+				src={coupleThumb}
+				widths={[480, 800]}
+				sizes={topicImageSizes}
 				alt=""
-				loading="lazy"
-				decoding="async"
 			/>
 			<div class="flex flex-1 flex-col p-6">
 				<h3 class="font-serif text-2xl text-ink">{t('Couple.h1')}</h3>
@@ -136,24 +140,31 @@ const topicCard =
 	<p class="mt-6 max-w-3xl">{t('HomePage.placeBody')}</p>
 	<div class="mt-10 grid gap-8 md:grid-cols-2">
 		<article class="overflow-hidden rounded-2xl border border-line bg-white shadow-sm">
-			<img
-				class="h-52 w-full object-cover md:hidden"
-				src={pageHref('images/practice-office.jpg')}
-				width="900"
-				height="600"
-				alt={t('HomePage.practicePhotoAlt')}
-				loading="lazy"
-				decoding="async"
-			/>
-			<div class="relative hidden h-64 w-full md:block lg:h-72">
-				<iframe
-					class="absolute inset-0 h-full w-full border-0"
-					src={siteConfig.mapsEmbedUrl}
-					title={`${t('HomePage.practiceTitle')} — ${t('HomePage.practiceAddress')}`}
-					loading="lazy"
-					referrerpolicy="no-referrer-when-downgrade"
-					allowfullscreen
+			<div class="relative h-52 w-full md:h-64 lg:h-72" data-map>
+				<Image
+					class="absolute inset-0 h-full w-full object-cover"
+					src={practiceOffice}
+					widths={[480, 900]}
+					sizes={topicImageSizes}
+					alt={t('HomePage.practicePhotoAlt')}
 				/>
+				<button
+					class="absolute right-4 bottom-4 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-line bg-white px-4 py-2 text-sm text-ink transition-colors duration-200 hover:border-blush hover:text-rose-laure"
+					type="button"
+					data-map-load
+					hidden
+				>
+					{t('HomePage.mapShow')}
+				</button>
+				<template data-map-frame>
+					<iframe
+						class="absolute inset-0 h-full w-full border-0"
+						src={siteConfig.mapsEmbedUrl}
+						title={mapTitle}
+						referrerpolicy="no-referrer-when-downgrade"
+						allowfullscreen
+					></iframe>
+				</template>
 			</div>
 			<div class="p-6">
 				<h3 class="font-serif text-2xl text-ink">{t('HomePage.practiceTitle')}</h3>
@@ -165,18 +176,18 @@ const topicCard =
 					rel="noopener noreferrer"
 				>
 					{t('HomePage.practiceAddress')} — {t('HomePage.practiceMapsLabel')}
+					<ExternalLinkIcon />
+					<span class="sr-only">{t('HomePage.mapsOpensNewTab')}</span>
 				</a>
 			</div>
 		</article>
 		<article class="overflow-hidden rounded-2xl border border-line bg-white shadow-sm">
-			<img
+			<Image
 				class="h-52 w-full object-cover"
-				src={pageHref('images/video-session.jpg')}
-				width="900"
-				height="600"
+				src={videoSession}
+				widths={[480, 900]}
+				sizes={topicImageSizes}
 				alt={t('HomePage.videoPhotoAlt')}
-				loading="lazy"
-				decoding="async"
 			/>
 			<div class="p-6">
 				<h3 class="font-serif text-2xl text-ink">{t('HomePage.videoTitle')}</h3>
@@ -186,7 +197,23 @@ const topicCard =
 	</div>
 	<p class="mt-8 max-w-3xl">{t('HomePage.placeClose')}</p>
 	<div class="mt-8 flex justify-center">
-		<button class={button} type="button" data-booking-open>{t('Nav.bookingCta')}</button>
+		<a class={button} href={bookingHref(locale)} data-booking-open>{t('Nav.bookingCta')}</a>
 	</div>
 </section>
 <HomeResources locale={locale} />
+
+<script>
+	document.querySelectorAll<HTMLElement>('[data-map]').forEach((container) => {
+		const button = container.querySelector('[data-map-load]');
+		const template = container.querySelector('template[data-map-frame]');
+		if (!(button instanceof HTMLButtonElement) || !(template instanceof HTMLTemplateElement)) return;
+		button.hidden = false;
+		button.addEventListener('click', () => {
+			const frame = template.content.firstElementChild?.cloneNode(true);
+			if (!(frame instanceof HTMLIFrameElement)) return;
+			container.append(frame);
+			button.remove();
+			frame.focus();
+		});
+	});
+</script>

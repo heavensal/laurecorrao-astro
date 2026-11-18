@@ -1,6 +1,7 @@
 ---
 import BookingDetails from './BookingDetails.astro';
 import { getFixedT, type Locale } from '../i18n/i18n';
+import { bookingHref } from '../lib/paths';
 
 interface Props {
 	locale: Locale;
@@ -17,11 +18,11 @@ const t = getFixedT(locale);
 	)}
 	<h2 class="font-serif text-3xl leading-tight md:text-4xl">{t('BookingCta.title')}</h2>
 	<BookingDetails locale={locale} variant="onRose" />
-	<button
+	<a
 		class="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-white bg-white px-6 py-3 text-sm text-rose-deep transition-colors duration-200 hover:bg-sand"
-		type="button"
+		href={bookingHref(locale)}
 		data-booking-open
 	>
 		{t('Nav.bookingCta')}
-	</button>
+	</a>
 </section>

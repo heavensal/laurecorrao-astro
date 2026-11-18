@@ -4,6 +4,7 @@
  * hreflang, JSON-LD, favicon, skip link, accessibility.
  */
 import '../styles/global.css';
+import defaultSocialImage from '../assets/images/home/reference-laure.jpeg';
 import BookingModal from '../components/BookingModal.astro';
 import ContactForm from '../components/ContactForm.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -22,6 +23,9 @@ interface Props {
 	ogImageAlt?: string;
 	alternateLanguages?: { hreflang: string; href: string }[];
 	jsonLd?: Record<string, unknown>;
+	ogType?: 'website' | 'article';
+	/** ISO date, announced as `article:published_time` when `ogType` is `article`. */
+	publishedTime?: string | null;
 }
 
 const {
@@ -33,14 +37,17 @@ const {
 	ogImageAlt,
 	alternateLanguages,
 	jsonLd,
+	ogType = 'website',
+	publishedTime,
 } = Astro.props;
 
 const t = getFixedT(lang);
 const pageTitle = `${title ?? t('Home.metaTitle')} | ${siteConfig.name}`;
 const pageDescription = description ?? t('Home.metaDescription');
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const pageUrl = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : undefined;
+const canonical = robots.includes('noindex') ? undefined : pageUrl;
 const selfUrl = absolutePageUrl(Astro.site, Astro.url.pathname);
-const alternates = alternateLanguages ?? buildAlternateLanguages({ [lang]: selfUrl ?? canonical });
+const alternates = alternateLanguages ?? buildAlternateLanguages({ [lang]: selfUrl ?? pageUrl });
 const ogLocale = lang === 'en' ? 'en_US' : 'fr_FR';
 const ogAlternate = publishedOgLocaleAlternate(lang);
 const usesDefaultImage = !image;
@@ -56,7 +63,9 @@ const ogImage = image
 	? image.startsWith('http')
 		? image
 		: absolutePublic(image)
-	: absolutePublic(siteConfig.ogImageUrl);
+	: Astro.site
+		? new URL(defaultSocialImage.src, Astro.site).href
+		: undefined;
 const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : null;
 ---
 
@@ -65,6 +74,7 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : 
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<slot name="head" />
 		<meta name="color-scheme" content="light" />
 		<meta name="robots" content={robots} />
 		<meta name="theme-color" content={siteConfig.themeColor} />
@@ -77,16 +87,16 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : 
 				<link rel="alternate" hreflang={hreflang} href={href} />
 			))
 		}
-		<meta property="og:type" content="website" />
-		<meta property="og:locale" content={ogLocale} />
+		<meta property="og:type" content={ogType} />
+		{ogType === 'article' && publishedTime && <meta property="article:published_time" content={publishedTime} />}		<meta property="og:locale" content={ogLocale} />
 		{ogAlternate && <meta property="og:locale:alternate" content={ogAlternate} />}
 		<meta property="og:site_name" content={siteConfig.name} />
 		<meta property="og:title" content={pageTitle} />
 		<meta property="og:description" content={pageDescription} />
-		{canonical && <meta property="og:url" content={canonical} />}
+		{pageUrl && <meta property="og:url" content={pageUrl} />}
 		{ogImage && <meta property="og:image" content={ogImage} />}
-		{ogImage && usesDefaultImage && <meta property="og:image:width" content={String(siteConfig.ogImageWidth)} />}
-		{ogImage && usesDefaultImage && <meta property="og:image:height" content={String(siteConfig.ogImageHeight)} />}
+		{ogImage && usesDefaultImage && <meta property="og:image:width" content={String(defaultSocialImage.width)} />}
+		{ogImage && usesDefaultImage && <meta property="og:image:height" content={String(defaultSocialImage.height)} />}
 		{ogImage && imageAlt && <meta property="og:image:alt" content={imageAlt} />}
 		<meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
 		<meta name="twitter:title" content={pageTitle} />
@@ -103,7 +113,6 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : 
 		<link rel="icon" type="image/png" sizes="32x32" href={pageHref('favicons/favicon-32x32.png')} />
 		<link rel="icon" type="image/png" sizes="16x16" href={pageHref('favicons/favicon-16x16.png')} />
 		<link rel="apple-touch-icon" sizes="180x180" href={pageHref('favicons/apple-touch-icon.png')} />
-		{jsonLdString && <script type="application/ld+json" set:html={jsonLdString} />}
 	</head>
 	<body class="min-h-screen overflow-x-clip bg-cream font-sans text-base leading-relaxed text-ink antialiased">
 		<a class="absolute -top-24 left-4 z-50 bg-white px-4 py-2 text-ink focus:top-4" href="#content">
@@ -114,5 +123,6 @@ const jsonLdString = jsonLd ? JSON.stringify(jsonLd).replace(/</g, '\\u003c') : 
 		<SiteFooter locale={lang} />
 		<ContactForm locale={lang} />
 		<BookingModal locale={lang} />
+		{jsonLdString && <script type="application/ld+json" set:html={jsonLdString} />}
 	</body>
 </html>

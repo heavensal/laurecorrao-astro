@@ -5,8 +5,8 @@
 		"logoAlt": "Laure Corrao — psychothérapeute et thérapeute de couple à Port-de-Bouc"
 	},
 	"Home": {
-		"metaTitle": "Psychothérapeute et thérapeute de couple à Port-de-Bouc",
-		"metaDescription": "Laure Corrao : accompagnement individuel et thérapie de couple à Port-de-Bouc et en visioconférence."
+		"metaTitle": "Thérapie individuelle et de couple à Port-de-Bouc",
+		"metaDescription": "Anxiété, crise de couple, TDAH, parentalité : Laure Corrao vous accompagne au cabinet à Port-de-Bouc ou en visio partout en France. Premier échange offert."
 	},
 	"Nav": {
 		"aria": "Navigation principale",
@@ -37,8 +37,8 @@
 		"titleEn": "Afficher le site en anglais"
 	},
 	"Blog": {
-		"metaTitle": "Articles",
-		"metaDescription": "Conseils et ressources autour de l’accompagnement individuel, des émotions et de la thérapie de couple.",
+		"metaTitle": "Articles psychologie et bien-être",
+		"metaDescription": "Anxiété, confiance en soi, couple, émotions : des articles clairs et sourcés pour mieux comprendre ce que vous traversez et avancer à votre rythme.",
 		"articleMetaTitle": "{{title}}",
 		"eyebrow": "Ressources",
 		"h1": "Des repères pour mieux vous comprendre.",
@@ -56,11 +56,11 @@
 		"callLabel": "Téléphone",
 		"hoursTitle": "Horaires du cabinet",
 		"hoursSchedule": [
-			{ "day": "Lundi", "hours": "9h – 18h" },
-			{ "day": "Mardi", "hours": "9h – 18h" },
-			{ "day": "Mercredi", "hours": "9h – 18h" },
-			{ "day": "Jeudi", "hours": "9h – 18h" },
-			{ "day": "Vendredi", "hours": "9h – 18h" },
+			{ "day": "Lundi", "hours": "09h00 - 18h00" },
+			{ "day": "Mardi", "hours": "09h00 - 18h00" },
+			{ "day": "Mercredi", "hours": "09h00 - 18h00" },
+			{ "day": "Jeudi", "hours": "09h00 - 18h00" },
+			{ "day": "Vendredi", "hours": "09h00 - 18h00" },
 			{ "day": "Samedi", "hours": "Fermé" },
 			{ "day": "Dimanche", "hours": "Fermé" }
 		],
@@ -76,7 +76,7 @@
 	},
 	"LegalNotice": {
 		"metaTitle": "Mentions légales",
-		"metaDescription": "Mentions légales du site de Laure Corrao, psychopraticienne et thérapeute de couple à Port-de-Bouc.",
+		"metaDescription": "Mentions légales du site de Laure Corrao, psychothérapeute et thérapeute de couple à Port-de-Bouc.",
 		"back": "← Retour à l’accueil",
 		"h1": "Mentions légales",
 		"updated": "Dernière mise à jour : 2 novembre 2026",
@@ -96,7 +96,7 @@
 		"phoneLabel": "Téléphone",
 		"technical": "Le prestataire technique du site est #1344 Solutions.",
 		"activity": "Activité",
-		"activityBody": "Laure Corrao présente son activité de psychopraticienne et de thérapeute de couple. Elle propose des accompagnements individuels, de couple et familiaux.",
+		"activityBody": "Laure Corrao présente son activité de psychothérapeute et de thérapeute de couple. Elle propose des accompagnements individuels, de couple et familiaux.",
 		"scope": "Les accompagnements proposés ne constituent pas une consultation médicale et ne remplacent pas un diagnostic, un traitement ou un suivi médical ou psychiatrique. Ils n’impliquent ni prescription ni modification d’un traitement.",
 		"info": "Les contenus du site ont une vocation informative et ne constituent pas un conseil personnalisé. Le site et ses formulaires ne sont pas un service d’urgence.",
 		"privacy": "Données personnelles et cookies",
@@ -106,7 +106,7 @@
 	},
 	"Privacy": {
 		"metaTitle": "Politique de confidentialité",
-		"metaDescription": "Politique de confidentialité et protection des données personnelles, Laure Corrao.",
+		"metaDescription": "Comment vos données sont collectées, utilisées et protégées lorsque vous contactez Laure Corrao ou prenez rendez-vous, et comment exercer vos droits.",
 		"back": "← Retour à l’accueil",
 		"h1": "Politique de confidentialité",
 		"updated": "Dernière mise à jour : 2 novembre 2026",
@@ -114,7 +114,7 @@
 			{
 				"title": "Responsable du traitement",
 				"paragraphs": [
-					"Laure Corrao, psychopraticienne et thérapeute de couple, est responsable des traitements décrits ici. Elle n’a pas désigné de délégué à la protection des données."
+					"Laure Corrao, psychothérapeute et thérapeute de couple, est responsable des traitements décrits ici. Elle n’a pas désigné de délégué à la protection des données."
 				],
 				"contact": true
 			},
@@ -195,7 +195,7 @@
 	"Terms": {
 		"h1": "Conditions générales de vente",
 		"metaTitle": "Conditions générales de vente",
-		"metaDescription": "Consultations et accompagnements individuels, de couple et familiaux",
+		"metaDescription": "Conditions des consultations de Laure Corrao, au cabinet à Port-de-Bouc ou en visio : devis, tarifs, paiement, annulation et droit de rétractation.",
 		"subtitle": "Consultations et accompagnements individuels, de couple et familiaux",
 		"back": "← Retour à l’accueil",
 		"updated": "Version du 2 novembre 2026.",
@@ -204,7 +204,7 @@
 				"title": "Identification et champ d’application",
 				"paragraphs": [
 					"Les présentes conditions régissent les prestations d’accompagnement proposées aux particuliers par Laure Corrao.",
-					"Les Jardins de Louis, 9 impasse Le Maroni — Saint-Jean, 13110 Port-de-Bouc, France.",
+					"Les Jardins de Louis, 9 Imp. \"Le Maroni\", 13110 Port-de-Bouc, France.",
 					"Téléphone : 06 69 31 64 50.",
 					"Elles concernent exclusivement les prestations d’accompagnement présentées sur laurecorrao.fr.",
 					"Les CGV sont communiquées avec le devis avant l’engagement du client. La version acceptée reste applicable au contrat concerné."
@@ -285,7 +285,7 @@
 			{
 				"title": "Formulaire de rétractation",
 				"paragraphs": [
-					"À l’attention de Laure Corrao, Les Jardins de Louis, 9 impasse Le Maroni — Saint-Jean, 13110 Port-de-Bouc, France.",
+					"À l’attention de Laure Corrao, Les Jardins de Louis, 9 Imp. \"Le Maroni\", 13110 Port-de-Bouc, France.",
 					"Je vous notifie ma rétractation du contrat portant sur la prestation suivante : ____________________",
 					"Date de conclusion du contrat : ____________________\nRéférence du devis : ____________________\nNom du client : ____________________\nAdresse du client : ____________________\nDate : ____________________\nSignature, uniquement pour un envoi papier : ____________________"
 				]
@@ -331,7 +331,7 @@
 	},
 	"HomePage": {
 		"eyebrow": "Cabinet et consultations en ligne",
-		"titleHtml": "Psychothérapeute &amp;<br />Thérapeute de couple",
+		"titleHtml": "Psychothérapeute &amp; <br />Thérapeute de couple",
 		"subtitle": "Mettre des mots sur vos maux pour retrouver le chemin vers vous-même.",
 		"intro": "Je vous accueille dans un espace d’écoute bienveillant, confidentiel et sans jugement pour vous aider à traverser les difficultés, mieux vous comprendre et retrouver équilibre et sérénité.",
 		"approachCta": "Découvrir mon approche",
@@ -355,9 +355,11 @@
 		"placeTitle": "Un espace pour vous retrouver.",
 		"placeBody": "Dans l’atmosphère chaleureuse et apaisante de mon cabinet, vous pourrez enfin mettre des mots sur vos maux, mieux comprendre ce qui se joue en vous et avancer vers un équilibre plus serein.",
 		"practiceTitle": "Au cabinet",
-		"practiceBody": "Un cadre chaleureux, confidentiel et sans jugement, au 9 imp. Le Maroni à Port-de-Bouc.",
-		"practiceAddress": "9 Imp. Le Maroni, 13110 Port-de-Bouc",
+		"practiceBody": "Un cadre chaleureux, confidentiel et sans jugement, au 9 Imp. \"Le Maroni\" à Port-de-Bouc.",
+		"practiceAddress": "9 Imp. \"Le Maroni\", 13110 Port-de-Bouc",
 		"practiceMapsLabel": "Voir l’itinéraire sur Google Maps",
+		"mapShow": "Afficher la carte",
+		"mapsOpensNewTab": "(ouvre dans un nouvel onglet)",
 		"practicePhotoAlt": "Espace de consultation chaleureux et apaisant",
 		"videoTitle": "En visioconférence",
 		"videoBody": "Installez-vous dans un lieu calme, où vous pouvez parler en toute confidentialité.",
@@ -369,8 +371,8 @@
 		"heroAlt": "Un fauteuil accueillant dans un coin calme du cabinet, pour un accompagnement individuel.",
 		"journeyAlt": "Un sentier aquarellé illustre un parcours personnel : dire ce qui vous pèse, en parler lors du premier rendez-vous, mieux vous comprendre et avancer à votre rythme vers davantage d’apaisement et d’autonomie.",
 		"viewJourney": "Voir l’illustration en grand",
-		"metaTitle": "Accompagnement individuel à Port-de-Bouc",
-		"metaDescription": "Accompagnement individuel à Port-de-Bouc et en visioconférence avec Laure Corrao. Un espace confidentiel pour comprendre ce que vous traversez et retrouver vos ressources.",
+		"metaTitle": "Thérapie individuelle à Port-de-Bouc et en visio",
+		"metaDescription": "Anxiété, phobies, deuil, confiance en soi : un accompagnement individuel bienveillant, au cabinet à Port-de-Bouc ou en visio. Premier échange offert.",
 		"processHeading": "Comment se déroule l’accompagnement",
 		"journeyHeading": "Avancer à votre rythme",
 		"placeHeading": "Cabinet à Port-de-Bouc et visioconférence",
@@ -400,8 +402,8 @@
 	},
 	"Couple": {
 		"imageAlt": "Un couple assis sur un canapé échange avec une thérapeute qui tient un carnet.",
-		"metaTitle": "Thérapie de couple à Port-de-Bouc | Laure Corrao",
-		"metaDescription": "Thérapie de couple à Port-de-Bouc et en visioconférence. Retrouver un dialogue apaisé lorsque la relation ne parvient plus à avancer seule.",
+		"metaTitle": "Thérapie de couple à Port-de-Bouc et en visio",
+		"metaDescription": "Disputes, éloignement, infidélité, crise : retrouvez un dialogue apaisé avec une thérapie de couple au cabinet à Port-de-Bouc ou en visio. Échange offert.",
 		"h1": "Thérapie de couple",
 		"lede": "Retrouver un espace de dialogue lorsque la relation ne parvient plus à avancer seule.",
 		"before": [
@@ -440,8 +442,8 @@
 		}
 	},
 	"Approach": {
-		"metaTitle": "Mon approche thérapeutique à Port-de-Bouc | Laure Corrao",
-		"metaDescription": "Thérapie intégrative et personnalisée à Port-de-Bouc et en visioconférence : TCC, systémique, hypnose, DTMA et accompagnement sur mesure.",
+		"metaTitle": "Hypnose, TCC, DTMA : une thérapie sur mesure",
+		"metaDescription": "TCC, systémique, hypnose, DTMA, art-thérapie : une thérapie intégrative construite autour de votre histoire, au cabinet à Port-de-Bouc ou en visio.",
 		"h1": "Mon approche",
 		"lede": "Une thérapie sur mesure, parce que chaque personne et chaque histoire sont uniques.",
 		"before": [
@@ -484,8 +486,8 @@
 		}
 	},
 	"Booking": {
-		"metaTitle": "Tarifs psychothérapie et rendez-vous à Port-de-Bouc",
-		"metaDescription": "Tarifs des séances (60 € et 90 €) à Port-de-Bouc : individuel, couple, famille. Cabinet ou visio. Premier échange gratuit, réservation en ligne.",
+		"metaTitle": "Tarifs et rendez-vous : séances dès 60 €",
+		"metaDescription": "Séance individuelle à 60 €, de couple ou familiale à 90 €. Au cabinet à Port-de-Bouc ou en visio. Réservez en ligne votre échange gratuit de 10 minutes.",
 		"h1": "Tarifs et rendez-vous",
 		"heroAlt": "Cabinet de psychothérapie accueillant à Port-de-Bouc",
 		"lede": "Choisir de commencer une thérapie, c’est déjà faire un premier pas vers soi.",
@@ -588,6 +590,10 @@
 		"optionCouple": "Thérapie de couple",
 		"optionOther": "Autre demande",
 		"consent": "J’accepte que mes informations soient utilisées pour répondre à ma demande.",
+		"requiredNote": "Les champs marqués d’un astérisque (*) sont obligatoires.",
+		"errorRequired": "Ce champ est obligatoire.",
+		"errorEmail": "Saisissez une adresse e-mail valide, par exemple nom@exemple.fr.",
+		"errorConsent": "Cochez cette case pour envoyer votre demande.",
 		"submit": "Envoyer ma demande",
 		"subject": "Demande de contact — laurecorrao.fr",
 		"missingToken": "Le formulaire sera disponible dès que le jeton Forge de Laure Corrao sera renseigné.",
@@ -648,7 +654,7 @@
 			},
 			{
 				"question": "Les consultations sont-elles remboursées ?",
-				"answer": "Elles ne sont pas prises en charge par l’Assurance maladie. Certaines mutuelles proposent toutefois un forfait annuel une facture peut être remise sur demande."
+				"answer": "Elles ne sont pas prises en charge par l’Assurance maladie. Certaines mutuelles proposent toutefois un forfait annuel ; une facture peut être remise sur demande."
 			},
 			{
 				"question": "Comment déplacer ou annuler un rendez-vous ?",
@@ -690,13 +696,13 @@
 			"body": "La première séance permet de comprendre votre demande, vos difficultés et ce que vous souhaitez voir évoluer. Nous définissons ensuite des objectifs réalistes, à votre rythme.",
 			"scope": "Mon accompagnement ne pose pas de diagnostic et vient en complément des soins nécessaires. Si vous vous interrogez sur un possible TDAH, je vous invite à consulter un médecin formé à son diagnostic."
 		},
-		"metaTitle": "TDAH : mieux se comprendre, trouver ses repères",
-		"metaDescription": "Accompagnement du TDAH à Port-de-Bouc avec Laure Corrao. Enfant, adolescent ou adulte, trouvez des repères concrets pour votre quotidien.",
+		"metaTitle": "Accompagnement TDAH à Port-de-Bouc et en visio",
+		"metaDescription": "Enfant, adolescent ou adulte avec un TDAH : des repères concrets pour l’attention, l’organisation et la confiance, au cabinet à Port-de-Bouc ou en visio.",
 		"sources": "Les repères sur le TDAH et l’accompagnement s’appuient sur l’Assurance maladie et la HAS."
 	},
 	"Parenting": {
 		"h1": "Moins de tensions, plus de dialogue en famille",
-		"metaDescription": "Coaching en parentalité à Port-de-Bouc avec Laure Corrao pour mieux communiquer, poser des limites claires et apaiser les tensions en famille.",
+		"metaDescription": "Écrans, limites, devoirs, conflits : un coaching parental bienveillant pour apaiser les tensions en famille, au cabinet à Port-de-Bouc ou en visio.",
 		"intro": "Vous répétez les mêmes consignes et les échanges finissent en conflit ? Écrans, devoirs, limites, désaccords éducatifs… Vous vous sentez parfois dépassé et ne savez plus comment réagir ?",
 		"support": "Je vous accompagne pour comprendre ce qui se joue et trouver des solutions adaptées à votre famille.",
 		"space": "Un espace pour prendre du recul, sans jugement sur votre manière d’être parent.",
@@ -723,6 +729,48 @@
 		},
 		"alt": "Une jeune fille prend la parole pendant un jeu de cartes en famille.",
 		"topic": "Coaching en parentalité · Port-de-Bouc",
-		"metaTitle": "Coaching en parentalité | Laure Corrao"
+		"metaTitle": "Coaching parentalité à Port-de-Bouc et en visio"
+	},
+	"Seo": {
+		"services": {
+			"individual": "Accompagnement individuel",
+			"couple": "Thérapie de couple",
+			"adhd": "Accompagnement TDAH",
+			"parenting": "Coaching en parentalité"
+		},
+		"knowsAbout": [
+			"Thérapie individuelle",
+			"Thérapie de couple",
+			"Coaching en parentalité",
+			"TDAH",
+			"Anxiété et phobies",
+			"Estime de soi",
+			"Traumatismes",
+			"Thérapies cognitives et comportementales (TCC)",
+			"Approche systémique",
+			"Hypnose",
+			"DTMA",
+			"Art-thérapie",
+			"Programmation neurolinguistique (PNL)"
+		],
+		"inPersonChannel": "Consultation au cabinet",
+		"videoChannel": "Consultation en visioconférence",
+		"reserveAction": "Réserver un échange gratuit",
+		"llms": {
+			"summary": "Laure Corrao accompagne adultes, adolescents, enfants, couples et familles : thérapie individuelle, thérapie de couple, accompagnement du TDAH et coaching en parentalité. Consultations au cabinet à Port-de-Bouc (Bouches-du-Rhône) et en visioconférence partout en France.",
+			"practiceHeading": "Cabinet et contact",
+			"address": "Adresse",
+			"phone": "Téléphone",
+			"hours": "Horaires",
+			"area": "Zone d’intervention",
+			"areaBody": "au cabinet pour tout le département des Bouches-du-Rhône, en visioconférence partout en France.",
+			"booking": "Premier échange",
+			"bookingBody": "échange gratuit de 10 minutes, à réserver en ligne",
+			"servicesHeading": "Accompagnements",
+			"feesHeading": "Tarifs",
+			"faqHeading": "Questions fréquentes",
+			"articlesHeading": "Articles",
+			"legalHeading": "Informations légales"
+		}
 	}
 }

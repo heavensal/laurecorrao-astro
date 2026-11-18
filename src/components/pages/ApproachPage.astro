@@ -1,10 +1,13 @@
 ---
+import { Image } from 'astro:assets';
+import ExternalLinkIcon from '../../assets/svg/externalLink.astro';
 import PageBreadcrumb from '../PageBreadcrumb.astro';
 import BookingDetails from '../BookingDetails.astro';
 import heroPhoto from '../../assets/images/individual/at-your-own-pace.webp';
 import dtmaSession from '../../assets/images/approach/dtma-guided-eye-movements.webp';
 import { getFixedT, type Locale } from '../../i18n/i18n';
-import { contentPath, pageHref } from '../../lib/paths';
+import { heroImageSizes, heroImageWidths } from '../../lib/images';
+import { bookingHref } from '../../lib/paths';
 import { siteConfig } from '../../site.config';
 
 interface Props {
@@ -50,15 +53,13 @@ const dtmaSection =
 			</h1>
 			<p class="mb-5 text-lg leading-relaxed">{t('Approach.lede')}</p>
 		</div>
-		<img
+		<Image
 			class={photo}
-			src={heroPhoto.src}
-			width={heroPhoto.width}
-			height={heroPhoto.height}
+			src={heroPhoto}
+			widths={heroImageWidths}
+			sizes={heroImageSizes}
 			alt={t('Approach.heroAlt')}
-			decoding="async"
-			loading="eager"
-			fetchpriority="high"
+			priority
 		/>
 	</section>
 
@@ -92,14 +93,12 @@ const dtmaSection =
 				<p class="mt-6 font-medium text-ink">{t('Approach.dtma.subtitle')}</p>
 				<p class="mt-6 leading-relaxed">{t('Approach.dtma.body')}</p>
 			</div>
-			<img
+			<Image
 				class={photo}
-				src={dtmaSession.src}
-				width={dtmaSession.width}
-				height={dtmaSession.height}
+				src={dtmaSession}
+				widths={heroImageWidths}
+				sizes={heroImageSizes}
 				alt={t('Approach.dtma.alt')}
-				loading="lazy"
-				decoding="async"
 			/>
 		</div>
 	</section>
@@ -132,7 +131,8 @@ const dtmaSection =
 				target="_blank"
 			>
 				{t('HomePage.practiceMapsLabel')}
-				<span class="absolute -m-px h-px w-px overflow-hidden border-0 p-0 whitespace-nowrap">
+				<ExternalLinkIcon />
+				<span class="sr-only">
 					{t('Approach.mapsOpensNewTab')}
 				</span>
 			</a>
@@ -160,12 +160,12 @@ const dtmaSection =
 			<p class="my-4" role="note">{t('Approach.first.scope')}</p>
 		</div>
 		<BookingDetails locale={locale} variant="onRose" />
-		<button
+		<a
 			class="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-white bg-white px-6 py-3 text-sm text-rose-deep transition-colors duration-200 hover:bg-sand"
-			type="button"
+			href={bookingHref(locale)}
 			data-booking-open
 		>
 			{t('Nav.bookingCta')}
-		</button>
+		</a>
 	</section>
 </article>

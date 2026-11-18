@@ -16,6 +16,7 @@
     "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.2.9",
     "i18next": "^26.5.11",
+    "sharp": "^0.35.5",
     "tailwindcss": "^4.3.3"
   },
   "allowScripts": {

@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import journey from '../assets/images/individual/at-your-own-pace.webp';
 import { getFixedT, type Locale } from '../i18n/i18n';
 
@@ -12,13 +13,11 @@ const { locale, describedBy } = Astro.props;
 const t = getFixedT(locale);
 ---
 <figure class="my-6 mb-8" aria-describedby={describedBy}>
-	<img
+	<Image
 		class="block h-auto w-full rounded-2xl"
-		src={journey.src}
-		width={journey.width}
-		height={journey.height}
-		loading="lazy"
-		decoding="async"
+		src={journey}
+		widths={[480, 768, 1200]}
+		sizes="(min-width: 1024px) 42rem, 100vw"
 		alt={t('Individual.journeyAlt')}
 	/>
 	<figcaption class="mt-2 text-end text-sm">

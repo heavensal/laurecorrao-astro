@@ -1,9 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import ExternalLinkIcon from '../../assets/svg/externalLink.astro';
 import PageBreadcrumb from '../PageBreadcrumb.astro';
 import BookingDetails from '../BookingDetails.astro';
 import coupleSession from '../../assets/images/couples/couple-therapy-session.webp';
 import { getFixedT, type Locale } from '../../i18n/i18n';
-import { contentPath, pageHref } from '../../lib/paths';
+import { heroImageSizes, heroImageWidths } from '../../lib/images';
+import { bookingHref } from '../../lib/paths';
 import { siteConfig } from '../../site.config';
 
 interface Props {
@@ -46,15 +49,13 @@ const photo = 'block h-auto w-full rounded-2xl shadow-sm ring-1 ring-line';
 			</h1>
 			<p class="mb-5 text-lg leading-relaxed">{t('Couple.lede')}</p>
 		</div>
-		<img
+		<Image
 			class={photo}
-			src={coupleSession.src}
-			width={coupleSession.width}
-			height={coupleSession.height}
+			src={coupleSession}
+			widths={heroImageWidths}
+			sizes={heroImageSizes}
 			alt={t('Couple.imageAlt')}
-			decoding="async"
-			loading="eager"
-			fetchpriority="high"
+			priority
 		/>
 	</section>
 
@@ -108,7 +109,8 @@ const photo = 'block h-auto w-full rounded-2xl shadow-sm ring-1 ring-line';
 				target="_blank"
 			>
 				{t('HomePage.practiceMapsLabel')}
-				<span class="absolute -m-px h-px w-px overflow-hidden border-0 p-0 whitespace-nowrap">
+				<ExternalLinkIcon />
+				<span class="sr-only">
 					{t('Couple.mapsOpensNewTab')}
 				</span>
 			</a>
@@ -136,12 +138,12 @@ const photo = 'block h-auto w-full rounded-2xl shadow-sm ring-1 ring-line';
 			<p class="my-4" role="note">{t('Couple.first.scope')}</p>
 		</div>
 		<BookingDetails locale={locale} variant="onRose" />
-		<button
+		<a
 			class="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-white bg-white px-6 py-3 text-sm text-rose-deep transition-colors duration-200 hover:bg-sand"
-			type="button"
+			href={bookingHref(locale)}
 			data-booking-open
 		>
 			{t('Nav.bookingCta')}
-		</button>
+		</a>
 	</section>
 </article>
