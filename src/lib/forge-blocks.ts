@@ -7,8 +7,19 @@ export interface CmsFaq {
 	position: number;
 }
 
+const faqPromises = new Map<Locale, Promise<CmsFaq[] | null>>();
+
 /** Published FAQs, or null when the block is off or the API cannot be used. */
-export async function fetchFaqs(locale: Locale): Promise<CmsFaq[] | null> {
+export function fetchFaqs(locale: Locale): Promise<CmsFaq[] | null> {
+	let pending = faqPromises.get(locale);
+	if (!pending) {
+		pending = loadFaqs(locale);
+		faqPromises.set(locale, pending);
+	}
+	return pending;
+}
+
+async function loadFaqs(locale: Locale): Promise<CmsFaq[] | null> {
 	if (!isFaqEnabled()) return null;
 	const payload = await fetchForge('faqs', locale);
 	if (payload == null) return null;

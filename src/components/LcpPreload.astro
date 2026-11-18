@@ -1,0 +1,21 @@
+---
+import { getImage } from 'astro:assets';
+import portrait from '../assets/images/home/reference-laure.jpeg';
+import { homePortraitSizes, homePortraitWidths } from '../lib/images';
+
+const image = await getImage({
+	src: portrait,
+	widths: homePortraitWidths,
+	sizes: homePortraitSizes,
+});
+---
+
+<link
+	rel="preload"
+	as="image"
+	href={image.src}
+	imagesrcset={image.srcSet.attribute}
+	imagesizes={homePortraitSizes}
+	type="image/webp"
+	fetchpriority="high"
+/>

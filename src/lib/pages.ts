@@ -6,8 +6,17 @@ import parentingHero from '../assets/images/parenting/family-conversation.webp';
 import coupleHero from '../assets/images/couples/couple-therapy-session.webp';
 import approachHero from '../assets/images/individual/at-your-own-pace.webp';
 import feesHero from '../assets/images/individual/individual_meet.jpg';
-import { buildBookingPageJsonLd, buildServicePageJsonLd } from './jsonld';
+import { fetchFaqs } from './forge-blocks';
+import {
+	buildBookingPageJsonLd,
+	buildHomeJsonLd,
+	buildServicePageJsonLd,
+	type CatalogService,
+	type ServiceOffer,
+} from './jsonld';
+import { localFaqs } from './local-blocks';
 import { absolutePageUrl } from './seo';
+import { getFixedT } from '../i18n/i18n';
 import { siteConfig } from '../site.config';
 import {
 	contentPath,
@@ -39,12 +48,16 @@ const serviceJsonLdKinds = ['individual', 'adhd', 'parenting', 'couple', 'approa
 type ServiceJsonLdKind = (typeof serviceJsonLdKinds)[number];
 
 const serviceJsonLdKeys: Record<ServiceJsonLdKind, { service: string; breadcrumb: string }> = {
-	individual: { service: 'Individual.h1', breadcrumb: 'Individual.h1' },
-	adhd: { service: 'Adhd.overview.title', breadcrumb: 'Adhd.overview.title' },
-	parenting: { service: 'Parenting.h1', breadcrumb: 'Parenting.h1' },
-	couple: { service: 'Couple.h1', breadcrumb: 'Couple.h1' },
+	individual: { service: 'Seo.services.individual', breadcrumb: 'Individual.h1' },
+	adhd: { service: 'Seo.services.adhd', breadcrumb: 'Adhd.overview.title' },
+	parenting: { service: 'Seo.services.parenting', breadcrumb: 'Parenting.h1' },
+	couple: { service: 'Seo.services.couple', breadcrumb: 'Couple.h1' },
 	approach: { service: 'Approach.h1', breadcrumb: 'Approach.h1' },
 };
+
+/** The four support offers, in the order they are presented. */
+export const catalogKinds = ['individual', 'couple', 'adhd', 'parenting'] as const;
+type CatalogKind = (typeof catalogKinds)[number];
 
 const socialImageByKind: Partial<Record<RoutedKind, ImageMetadata>> = {
 	individual: individualHero,
@@ -78,27 +91,83 @@ type BookingSection = {
 	relatedPage?: ContentPageId;
 };
 
-function bookingJsonLdData(
-	t: (key: string, options?: { returnObjects?: boolean }) => unknown,
-	site: URL | undefined,
-	locale: Locale,
-) {
+type Translate = (key: string, options?: { returnObjects?: boolean }) => unknown;
+
+function bookingSections(t: Translate): BookingSection[] {
 	const sectionsValue = t('Booking.sections', { returnObjects: true });
-	const sections: BookingSection[] = Array.isArray(sectionsValue) ? sectionsValue : [];
-	const offers = sections
-		.filter((section) => typeof section.priceAmount === 'number' && typeof section.durationMinutes === 'number')
-		.map((section) => {
-			const related = section.relatedPage;
-			const servicePageUrl = related
-				? absolutePageUrl(site, `${contentPath(locale, related)}/`)
-				: undefined;
-			return {
-				name: section.title,
-				price: section.priceAmount as number,
-				durationMinutes: section.durationMinutes as number,
-				servicePageUrl,
-			};
-		});
+	return Array.isArray(sectionsValue) ? sectionsValue : [];
+}
+
+type PricedSection = BookingSection & { priceAmount: number; durationMinutes: number };
+
+/** Fee sections with a price and a duration, in display order. */
+export function pricedSessions(t: Translate): PricedSection[] {
+	return bookingSections(t).filter(
+		(section): section is PricedSection =>
+			typeof section.priceAmount === 'number' && typeof section.durationMinutes === 'number',
+	);
+}
+
+function offerFor(t: Translate, kind: ContentPageId): ServiceOffer | undefined {
+	const section = pricedSessions(t).find((item) => item.relatedPage === kind);
+	return section ? { name: section.title, price: section.priceAmount } : undefined;
+}
+
+/** Each support offer with its page, its meta description and, when listed on the fees page, its price. */
+export function serviceCatalog(t: Translate, site: URL | undefined, locale: Locale): CatalogService[] {
+	return catalogKinds.flatMap((kind: CatalogKind) => {
+		const url = absolutePageUrl(site, `${contentPath(locale, kind)}/`);
+		if (!url) return [];
+		const offer = offerFor(t, kind);
+		return [
+			{
+				name: String(t(`Seo.services.${kind}`)),
+				description: pageMeta(t, kind).description,
+				url,
+				...(offer ? { offer } : {}),
+			},
+		];
+	});
+}
+
+/** Lowest to highest session fee, e.g. `60 € – 90 €`. */
+export function priceRange(t: Translate, locale: Locale): string | undefined {
+	const prices = pricedSessions(t).map((section) => section.priceAmount);
+	if (prices.length === 0) return undefined;
+	const format = new Intl.NumberFormat(locale === 'fr' ? 'fr-FR' : 'en-GB', {
+		style: 'currency',
+		currency: 'EUR',
+		maximumFractionDigits: 0,
+	});
+	const low = format.format(Math.min(...prices));
+	const high = format.format(Math.max(...prices));
+	return low === high ? low : `${low} – ${high}`;
+}
+
+/** Home JSON-LD. The FAQ follows the same Forge-or-local rule as the visible section. */
+export async function homeJsonLd(site: URL | undefined, locale: Locale) {
+	const homeUrl = absolutePageUrl(site, '');
+	if (!homeUrl) return undefined;
+	const t = getFixedT(locale);
+	const faqs = (await fetchFaqs(locale)) ?? localFaqs(locale);
+	return buildHomeJsonLd({
+		homeUrl,
+		locale,
+		services: serviceCatalog(t, site, locale),
+		faqs: faqs.map(({ question, answer }) => ({ question, answer })),
+		priceRange: priceRange(t, locale),
+	});
+}
+
+function bookingJsonLdData(t: Translate, site: URL | undefined, locale: Locale) {
+	const sections = bookingSections(t);
+	const offers = pricedSessions(t).map((section) => {
+		const related = section.relatedPage;
+		const servicePageUrl = related
+			? absolutePageUrl(site, `${contentPath(locale, related)}/`)
+			: undefined;
+		return { name: section.title, price: section.priceAmount, servicePageUrl };
+	});
 	let policyIndex = 0;
 	const faqs = sections
 		.filter((section) => section.paragraphs?.length && !section.lines)
@@ -217,6 +286,7 @@ export function pageJsonLd(input: {
 			description: meta.description,
 			breadcrumbCurrent: String(input.t(keys.breadcrumb)),
 			imageUrl: input.imageUrl,
+			offer: input.kind === 'approach' ? undefined : offerFor(input.t, input.kind),
 		});
 	}
 

@@ -1,9 +1,12 @@
 ---
+import { Image } from 'astro:assets';
+import ExternalLinkIcon from '../../assets/svg/externalLink.astro';
 import heroPhoto from '../../assets/images/individual/individual_meet.jpg';
 import PageBreadcrumb from '../PageBreadcrumb.astro';
 import SupportJourney from '../SupportJourney.astro';
 import BookingCTA from '../BookingCTA.astro';
 import { getFixedT, type Locale } from '../../i18n/i18n';
+import { heroImageSizes, heroImageWidths } from '../../lib/images';
 import { siteConfig } from '../../site.config';
 
 interface Props {
@@ -38,15 +41,13 @@ const after = lines('Individual.after');
 			<p class="mt-6 font-serif text-xl leading-snug text-rose-laure md:text-2xl">{t('Individual.lede')}</p>
 			<span class="mt-8 block w-12 border-t-2 border-blush" aria-hidden="true"></span>
 		</div>
-		<img
+		<Image
 			class="block h-auto w-full rounded-2xl shadow-sm ring-1 ring-line"
-			src={heroPhoto.src}
-			width={heroPhoto.width}
-			height={heroPhoto.height}
+			src={heroPhoto}
+			widths={heroImageWidths}
+			sizes={heroImageSizes}
 			alt={t('Individual.heroAlt')}
-			decoding="async"
-			loading="eager"
-			fetchpriority="high"
+			priority
 		/>
 	</header>
 
@@ -106,7 +107,8 @@ const after = lines('Individual.after');
 				target="_blank"
 			>
 				{t('HomePage.practiceMapsLabel')}
-				<span class="absolute -m-px h-px w-px overflow-hidden border-0 p-0 whitespace-nowrap">
+				<ExternalLinkIcon />
+				<span class="sr-only">
 					{t('Individual.mapsOpensNewTab')}
 				</span>
 			</a>

@@ -1,18 +1,20 @@
 ---
 import HomePage from '../../components/HomePage.astro';
+import LcpPreload from '../../components/LcpPreload.astro';
 import PageBody from '../../components/pages/PageBody.astro';
 import { getFixedT, isMultilangEnabled, type Locale } from '../../i18n/i18n';
 import Layout from '../../layouts/Layout.astro';
 import {
 	alternateUrls,
 	englishStaticPaths,
+	homeJsonLd,
 	pageJsonLd,
 	pageMeta,
 	socialImageAltForKind,
 	socialImageForKind,
 	type RoutedKind,
 } from '../../lib/pages';
-import { buildHomeJsonLd, buildLegalNoticeJsonLd } from '../../lib/jsonld';
+import { buildLegalNoticeJsonLd } from '../../lib/jsonld';
 import { absolutePageUrl, buildLegalAlternateLanguages } from '../../lib/seo';
 
 export function getStaticPaths() {
@@ -34,8 +36,8 @@ const socialImage = socialImageForKind(kind);
 const socialImageUrl =
 	socialImage && Astro.site ? new URL(socialImage.src, Astro.site).href : undefined;
 const jsonLd =
-	kind === 'home' && homeUrl
-		? buildHomeJsonLd(homeUrl, locale)
+	kind === 'home'
+		? await homeJsonLd(Astro.site, locale)
 		: kind === 'legal-notice' && homeUrl
 			? buildLegalNoticeJsonLd(homeUrl, locale)
 			: pageJsonLd({ site: Astro.site, locale, kind, t, imageUrl: socialImageUrl });
@@ -50,5 +52,6 @@ const jsonLd =
 	image={socialImageUrl}
 	ogImageAlt={socialImageAltForKind(t, kind)}
 >
+	{kind === 'home' && <LcpPreload slot="head" />}
 	{kind === 'home' ? <HomePage locale={locale} /> : <PageBody locale={locale} kind={kind} />}
 </Layout>

@@ -5,8 +5,8 @@
 		"logoAlt": "Laure Corrao — psychotherapist and couples therapist in Port-de-Bouc"
 	},
 	"Home": {
-		"metaTitle": "Psychotherapist and couples therapist in Port-de-Bouc",
-		"metaDescription": "Laure Corrao: individual support and couples therapy in Port-de-Bouc and by video."
+		"metaTitle": "Individual and couples therapy in Port-de-Bouc",
+		"metaDescription": "Anxiety, relationship crisis, ADHD, parenting: Laure Corrao supports you at her practice in Port-de-Bouc or by video anywhere in France. Free first call."
 	},
 	"Nav": {
 		"aria": "Main navigation",
@@ -37,8 +37,8 @@
 		"titleEn": "View the site in English"
 	},
 	"Blog": {
-		"metaTitle": "Articles",
-		"metaDescription": "Notes on individual support, emotions, and couples therapy.",
+		"metaTitle": "Psychology and wellbeing articles",
+		"metaDescription": "Anxiety, self-confidence, relationships, emotions: clear, well-sourced articles to understand what you are going through and move forward at your pace.",
 		"articleMetaTitle": "{{title}}",
 		"eyebrow": "Resources",
 		"h1": "A few landmarks to understand yourself better.",
@@ -56,11 +56,11 @@
 		"callLabel": "Call",
 		"hoursTitle": "Office opening hours",
 		"hoursSchedule": [
-			{ "day": "Monday", "hours": "9 a.m. – 6 p.m." },
-			{ "day": "Tuesday", "hours": "9 a.m. – 6 p.m." },
-			{ "day": "Wednesday", "hours": "9 a.m. – 6 p.m." },
-			{ "day": "Thursday", "hours": "9 a.m. – 6 p.m." },
-			{ "day": "Friday", "hours": "9 a.m. – 6 p.m." },
+			{ "day": "Monday", "hours": "09:00 – 18:00" },
+			{ "day": "Tuesday", "hours": "09:00 – 18:00" },
+			{ "day": "Wednesday", "hours": "09:00 – 18:00" },
+			{ "day": "Thursday", "hours": "09:00 – 18:00" },
+			{ "day": "Friday", "hours": "09:00 – 18:00" },
 			{ "day": "Saturday", "hours": "Closed" },
 			{ "day": "Sunday", "hours": "Closed" }
 		],
@@ -76,7 +76,7 @@
 	},
 	"LegalNotice": {
 		"metaTitle": "Legal notice",
-		"metaDescription": "Legal notice for the website of Laure Corrao, psychopractitioner and couples therapist in Port-de-Bouc.",
+		"metaDescription": "Legal notice for the website of Laure Corrao, psychotherapist and couples therapist in Port-de-Bouc.",
 		"back": "← Back to home",
 		"h1": "Legal notice",
 		"updated": "Last updated: 2 November 2026",
@@ -96,7 +96,7 @@
 		"phoneLabel": "Telephone",
 		"technical": "The technical service provider is #1344 Solutions.",
 		"activity": "Professional activity",
-		"activityBody": "Laure Corrao presents her work as a psychopractitioner and couples therapist. She offers support for individuals, couples and families.",
+		"activityBody": "Laure Corrao presents her work as a psychotherapist and couples therapist. She offers support for individuals, couples and families.",
 		"scope": "These services do not constitute a medical consultation or replace diagnosis, treatment, or medical or psychiatric care. They do not involve prescribing or changing treatment.",
 		"info": "Site content is for information and does not provide personalised advice. This site and its forms are not an emergency service.",
 		"privacy": "Personal data and cookies",
@@ -106,7 +106,7 @@
 	},
 	"Privacy": {
 		"metaTitle": "Privacy policy",
-		"metaDescription": "Privacy policy and personal data protection for Laure Corrao.",
+		"metaDescription": "How your data is collected, used and protected when you contact Laure Corrao or book an appointment, and how to exercise your rights.",
 		"back": "← Back to home",
 		"h1": "Privacy policy",
 		"updated": "Last updated: 2 November 2026",
@@ -114,7 +114,7 @@
 			{
 				"title": "Data controller",
 				"paragraphs": [
-					"Laure Corrao, a psychopractitioner and couples therapist, is responsible for the processing described here. She has not appointed a data protection officer."
+					"Laure Corrao, a psychotherapist and couples therapist, is responsible for the processing described here. She has not appointed a data protection officer."
 				],
 				"contact": true
 			},
@@ -195,7 +195,7 @@
 	"Terms": {
 		"h1": "Terms and conditions of sale",
 		"metaTitle": "Terms and conditions of sale",
-		"metaDescription": "Individual, couples and family consultations and support",
+		"metaDescription": "Terms for consultations with Laure Corrao, at the practice in Port-de-Bouc or by video: quotes, fees, payment, cancellation and right of withdrawal.",
 		"subtitle": "Individual, couples and family consultations and support",
 		"back": "← Back to home",
 		"updated": "Version dated 2 November 2026.",
@@ -203,7 +203,7 @@
 			{
 				"title": "Identification and scope",
 				"paragraphs": [
-					"These terms govern the individual, couples and family support services Laure Corrao offers to consumers on laurecorrao.fr. Her practice address is Les Jardins de Louis, 9 impasse Le Maroni — Saint-Jean, 13110 Port-de-Bouc, France. Telephone: +33 6 69 31 64 50.",
+					"These terms govern the individual, couples and family support services Laure Corrao offers to consumers on laurecorrao.fr. Her practice address is Les Jardins de Louis, 9 Imp. \"Le Maroni\", 13110 Port-de-Bouc, France. Telephone: +33 6 69 31 64 50.",
 					"The terms are sent with the quote before the client commits. The accepted version applies to that contract."
 				]
 			},
@@ -266,7 +266,7 @@
 			{
 				"title": "Withdrawal form",
 				"paragraphs": [
-					"To Laure Corrao, Les Jardins de Louis, 9 impasse Le Maroni — Saint-Jean, 13110 Port-de-Bouc, France.",
+					"To Laure Corrao, Les Jardins de Louis, 9 Imp. \"Le Maroni\", 13110 Port-de-Bouc, France.",
 					"I hereby withdraw from the contract for the following service: ____________________",
 					"Contract date: ____________________\nQuote reference: ____________________\nClient name: ____________________\nClient address: ____________________\nDate: ____________________\nSignature (paper submissions only): ____________________"
 				]
@@ -307,7 +307,7 @@
 	},
 	"HomePage": {
 		"eyebrow": "Practice and online sessions",
-		"titleHtml": "Psychotherapist &amp;<br />Couples therapist",
+		"titleHtml": "Psychotherapist &amp; <br />Couples therapist",
 		"subtitle": "Put words to what hurts, and find your way back to yourself.",
 		"intro": "I welcome you in a kind, confidential, and non-judgmental space, to help you through difficulties, understand yourself better, and find balance and calm.",
 		"approachCta": "Discover my approach",
@@ -331,9 +331,11 @@
 		"placeTitle": "A place to find yourself again.",
 		"placeBody": "In the warm, calming atmosphere of my practice, you can finally put words to what hurts, understand more of what is happening for you, and move toward a calmer balance.",
 		"practiceTitle": "At the practice",
-		"practiceBody": "A warm, confidential, and non-judgmental setting at 9 Imp. Le Maroni in Port-de-Bouc.",
-		"practiceAddress": "9 Imp. Le Maroni, 13110 Port-de-Bouc, France",
+		"practiceBody": "A warm, confidential, and non-judgmental setting at 9 Imp. \"Le Maroni\" in Port-de-Bouc.",
+		"practiceAddress": "9 Imp. \"Le Maroni\", 13110 Port-de-Bouc",
 		"practiceMapsLabel": "Get directions on Google Maps",
+		"mapShow": "Show the map",
+		"mapsOpensNewTab": "(opens in a new tab)",
 		"practicePhotoAlt": "Warm, calming consulting room",
 		"videoTitle": "By video",
 		"videoBody": "Settle somewhere quiet, where you can speak in confidence.",
@@ -345,8 +347,8 @@
 		"heroAlt": "An inviting armchair in a quiet corner of the practice, for individual support.",
 		"journeyAlt": "A watercolour path illustrates a personal journey: name what weighs on you, discuss it at a first appointment, understand yourself better and move at your own pace towards greater calm and independence.",
 		"viewJourney": "View the full-size illustration (in French)",
-		"metaTitle": "Individual support in Port-de-Bouc",
-		"metaDescription": "Individual support in Port-de-Bouc and by video with Laure Corrao. A confidential place to understand what you are going through and find your own resources.",
+		"metaTitle": "Individual therapy in Port-de-Bouc and online",
+		"metaDescription": "Anxiety, phobias, grief, self-confidence: caring one-to-one support at the practice in Port-de-Bouc or by video. Your first conversation is free.",
 		"processHeading": "How support unfolds",
 		"journeyHeading": "At your own pace",
 		"placeHeading": "Practice in Port-de-Bouc and online",
@@ -376,8 +378,8 @@
 	},
 	"Couple": {
 		"imageAlt": "A couple sitting on a sofa talks with a therapist holding a notebook.",
-		"metaTitle": "Couples therapy in Port-de-Bouc | Laure Corrao",
-		"metaDescription": "Couples therapy in Port-de-Bouc and online. Find a calmer dialogue when the relationship can no longer move forward on its own.",
+		"metaTitle": "Couples therapy in Port-de-Bouc and online",
+		"metaDescription": "Arguments, distance, infidelity, crisis: find a calmer dialogue through couples therapy at the practice in Port-de-Bouc or by video. Free first call.",
 		"h1": "Couples therapy",
 		"lede": "A place to talk again when the relationship can no longer move forward on its own.",
 		"before": [
@@ -416,8 +418,8 @@
 		}
 	},
 	"Approach": {
-		"metaTitle": "Therapeutic approach in Port-de-Bouc | Laure Corrao",
-		"metaDescription": "Personal, integrative therapy in Port-de-Bouc and online: CBT, systemic work, hypnosis, DTMA, and support tailored to you.",
+		"metaTitle": "Hypnosis, CBT, DTMA: therapy shaped around you",
+		"metaDescription": "CBT, systemic work, hypnosis, DTMA, art therapy: integrative therapy built around your story, at the practice in Port-de-Bouc or by video.",
 		"h1": "My approach",
 		"lede": "Therapy shaped around you, because every person and every story is unique.",
 		"before": [
@@ -460,8 +462,8 @@
 		}
 	},
 	"Booking": {
-		"metaTitle": "Psychotherapy fees and appointments in Port-de-Bouc",
-		"metaDescription": "Session fees (€60 and €90) in Port-de-Bouc: individual, couples, family. In-person or video. Free introductory call, online booking.",
+		"metaTitle": "Fees and appointments: sessions from €60",
+		"metaDescription": "Individual session €60, couples or family session €90. At the practice in Port-de-Bouc or by video. Book your free 10-minute call online.",
 		"h1": "Fees and appointments",
 		"heroAlt": "Welcoming psychotherapy practice in Port-de-Bouc",
 		"lede": "Choosing to start therapy is already a first step toward yourself.",
@@ -564,6 +566,10 @@
 		"optionCouple": "Couples therapy",
 		"optionOther": "Other request",
 		"consent": "I agree that my details may be used to reply to my request.",
+		"requiredNote": "Fields marked with an asterisk (*) are required.",
+		"errorRequired": "This field is required.",
+		"errorEmail": "Enter a valid email address, for example name@example.com.",
+		"errorConsent": "Tick this box to send your request.",
 		"submit": "Send my request",
 		"subject": "Contact request — laurecorrao.fr",
 		"missingToken": "The form will be available once Laure Corrao’s Forge token is set.",
@@ -666,13 +672,13 @@
 			"body": "In our first session we explore what brings you here, what feels difficult and what you would like to change. We then agree on realistic goals at your pace.",
 			"scope": "My support complements any care you need and does not provide a diagnosis. If you think you may have ADHD, I encourage you to speak to a doctor trained in diagnosing it."
 		},
-		"metaTitle": "ADHD: understanding yourself and finding your bearings",
-		"metaDescription": "ADHD support in Port-de-Bouc with Laure Corrao. Practical strategies for children, teenagers and adults to manage everyday challenges.",
+		"metaTitle": "ADHD support in Port-de-Bouc and online",
+		"metaDescription": "Child, teenager or adult with ADHD: practical strategies for attention, organisation and confidence, at the practice in Port-de-Bouc or by video.",
 		"sources": "The information on ADHD and support draws on guidance from the French national health insurance service (Assurance Maladie) and the French National Authority for Health (HAS)."
 	},
 	"Parenting": {
 		"h1": "Less tension, more conversation at home",
-		"metaDescription": "Parenting coaching in Port-de-Bouc with Laure Corrao to help you communicate, set clear boundaries and ease family tensions.",
+		"metaDescription": "Conflicts, screens, boundaries, homework: caring parenting coaching to ease tension and restore dialogue at home, in Port-de-Bouc or by video.",
 		"intro": "Do you find yourself repeating the same instructions, only for the conversation to end in an argument? Screen time, homework, boundaries, disagreements about parenting… Do you sometimes feel overwhelmed and unsure how to respond?",
 		"support": "I help you understand what is happening and find solutions that work for your family.",
 		"space": "There’s room to step back and reflect without feeling judged for the way you parent.",
@@ -699,6 +705,48 @@
 		},
 		"alt": "A girl speaks during a family card game.",
 		"topic": "Parenting coaching · Port-de-Bouc",
-		"metaTitle": "Parenting coaching | Laure Corrao"
+		"metaTitle": "Parenting coaching in Port-de-Bouc and online"
+	},
+	"Seo": {
+		"services": {
+			"individual": "Individual support",
+			"couple": "Couples therapy",
+			"adhd": "ADHD support",
+			"parenting": "Parenting coaching"
+		},
+		"knowsAbout": [
+			"Individual therapy",
+			"Couples therapy",
+			"Parenting coaching",
+			"ADHD",
+			"Anxiety and phobias",
+			"Self-esteem",
+			"Trauma",
+			"Cognitive behavioural therapy (CBT)",
+			"Systemic therapy",
+			"Hypnosis",
+			"DTMA",
+			"Art therapy",
+			"Neuro-linguistic programming (NLP)"
+		],
+		"inPersonChannel": "In-person consultation",
+		"videoChannel": "Video consultation",
+		"reserveAction": "Book a free introductory conversation",
+		"llms": {
+			"summary": "Laure Corrao supports adults, teenagers, children, couples and families: individual therapy, couples therapy, ADHD support and parenting coaching. Consultations at her practice in Port-de-Bouc (Bouches-du-Rhône) and by video anywhere in France.",
+			"practiceHeading": "Practice and contact",
+			"address": "Address",
+			"phone": "Phone",
+			"hours": "Opening hours",
+			"area": "Service area",
+			"areaBody": "in person for the whole Bouches-du-Rhône department, by video anywhere in France.",
+			"booking": "First conversation",
+			"bookingBody": "free 10-minute call, booked online",
+			"servicesHeading": "Services",
+			"feesHeading": "Fees",
+			"faqHeading": "Frequently asked questions",
+			"articlesHeading": "Articles",
+			"legalHeading": "Legal information"
+		}
 	}
 }

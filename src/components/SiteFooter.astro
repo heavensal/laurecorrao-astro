@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import brandIcon from '../assets/images/brand/laure_corrao_icon.png';
 import { getFixedT, type Locale } from '../i18n/i18n';
 import { publishedBlogPaths } from '../lib/forge-blog';
 import { contentPath, legalPath, pageHref } from '../lib/paths';
@@ -30,7 +32,6 @@ const siteLinks = [
 ] as const;
 const legalHref = (page: 'legalNotice' | 'privacyPolicy' | 'termsOfService') =>
 	pageHref(`${legalPath(locale, page)}/`);
-const logoSrc = pageHref('images/laure_corrao_icon.png');
 const footerLink =
 	'text-muted transition-colors duration-200 hover:text-rose-laure hover:opacity-90 no-underline';
 const footerLinkSm = `${footerLink} text-sm`;
@@ -43,14 +44,14 @@ const legalLink = `${footerLink} text-xs text-muted`;
 			class="absolute inset-0 flex items-center justify-center p-6 sm:p-8 no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose-laure"
 			href={homeHref}
 		>
-			<img
-				src={logoSrc}
+			<Image
+				src={brandIcon}
 				width={512}
 				height={512}
+				widths={[256, 512]}
+				sizes="(min-width: 1024px) 512px, 256px"
 				alt={t('Layout.logoAlt')}
 				class="h-full w-full object-contain"
-				decoding="async"
-				loading="lazy"
 			/>
 		</a>
 	</div>
@@ -58,7 +59,7 @@ const legalLink = `${footerLink} text-xs text-muted`;
 	<div class="px-4 py-16 sm:px-6 lg:col-span-3 lg:px-8">
 		<div class="grid grid-cols-1 gap-8 sm:grid-cols-3">
 			<div>
-				<p class="font-medium text-ink">{t('Footer.hoursTitle')}</p>
+				<h2 class="font-medium text-ink">{t('Footer.hoursTitle')}</h2>
 				<ul class="mt-6 space-y-1 text-sm text-ink">
 					{hoursSchedule.map((row) => (
 						<li class="flex justify-between gap-4">
@@ -77,8 +78,8 @@ const legalLink = `${footerLink} text-xs text-muted`;
 				</button>
 			</div>
 
-			<div>
-				<p class="font-medium text-ink">{t('Footer.navServicesTitle')}</p>
+			<nav aria-labelledby="footer-services-title">
+				<h2 id="footer-services-title" class="font-medium text-ink">{t('Footer.navServicesTitle')}</h2>
 				<ul class="mt-6 space-y-4 text-sm">
 					{serviceLinks.map(([url, label]) => (
 						<li>
@@ -88,10 +89,10 @@ const legalLink = `${footerLink} text-xs text-muted`;
 						</li>
 					))}
 				</ul>
-			</div>
+			</nav>
 
-			<div>
-				<p class="font-medium text-ink">{t('Footer.navSiteTitle')}</p>
+			<nav aria-labelledby="footer-site-title">
+				<h2 id="footer-site-title" class="font-medium text-ink">{t('Footer.navSiteTitle')}</h2>
 				<ul class="mt-6 space-y-4 text-sm">
 					{siteLinks.map(([url, label]) => (
 						<li>
@@ -101,7 +102,7 @@ const legalLink = `${footerLink} text-xs text-muted`;
 						</li>
 					))}
 				</ul>
-			</div>
+			</nav>
 		</div>
 
 		<div class="mt-12 border-t border-line pt-12">

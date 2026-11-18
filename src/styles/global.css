@@ -3,9 +3,9 @@
 @theme {
 	--font-sans: "Avenir Next", Avenir, "Segoe UI", sans-serif;
 	--font-serif: Georgia, "Times New Roman", serif;
-	--color-rose-laure: #a55955;
+	--color-rose-laure: #a35753;
 	--color-rose-deep: #914b46;
-	--color-rose-soft: #ae625c;
+	--color-rose-soft: #ad605a;
 	--color-blush: #b77d76;
 	--color-ink: #36332f;
 	--color-muted: #6c6059;
@@ -88,5 +88,28 @@ summary::-webkit-details-marker {
 @media (prefers-reduced-motion: reduce) {
 	html {
 		scroll-behavior: auto;
+	}
+
+	/* Fade instead of slide. Keep an animation: closeDialogAnimated waits for animationend. */
+	#contact-dialog[open],
+	#booking-dialog[open] {
+		animation-name: site-dialog-fade-in;
+	}
+
+	#contact-dialog.site-dialog-closing,
+	#booking-dialog.site-dialog-closing {
+		animation-name: site-dialog-fade-out;
+	}
+}
+
+@keyframes site-dialog-fade-in {
+	from {
+		opacity: 0;
+	}
+}
+
+@keyframes site-dialog-fade-out {
+	to {
+		opacity: 0;
 	}
 }

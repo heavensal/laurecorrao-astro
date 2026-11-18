@@ -10,4 +10,4 @@ Fichiers servis tels quels. Référencés dans `src/layouts/Layout.astro` et `pu
 | `android-chrome-192x192.png`, `android-chrome-512x512.png` | Manifest PWA |
 | `icon-maskable-512x512.png` | Icône adaptative Android (zone sûre) |
 
-Marque carrée (header, footer, JSON-LD) : `public/images/laure_corrao_icon.png` et dérivées `laure_corrao_icon-{128,256,512}.png`.
+Marque carrée : `src/assets/images/brand/laure_corrao_icon.png` (header et footer, redimensionnée au build). Le JSON-LD référence `public/images/laure_corrao_icon-512.png`.

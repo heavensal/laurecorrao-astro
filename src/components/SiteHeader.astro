@@ -3,7 +3,7 @@ import BrandLogo from './BrandLogo.astro';
 import LanguageSwitcher from './LanguageSwitcher.astro';
 import { getFixedT, type Locale } from '../i18n/i18n';
 import { publishedBlogPaths } from '../lib/forge-blog';
-import { contentPath, pageHref } from '../lib/paths';
+import { bookingHref, contentPath, pageHref } from '../lib/paths';
 import { siteConfig } from '../site.config';
 interface Props {
 	locale: Locale;
@@ -64,7 +64,7 @@ const sidebarBrandName = 'font-serif text-base leading-none tracking-tight text-
 
 	<div class="flex items-center gap-3 max-lg:ml-auto">
 		<LanguageSwitcher locale={locale} />
-		<button class={`${button} max-sm:hidden`} type="button" data-booking-open>{t('Nav.bookingCta')}</button>
+		<a class={`${button} max-sm:hidden`} href={bookingHref(locale)} data-booking-open>{t('Nav.bookingCta')}</a>
 		<button
 			class={iconButton}
 			type="button"
@@ -124,7 +124,7 @@ const sidebarBrandName = 'font-serif text-base leading-none tracking-tight text-
 		}
 	</nav>
 	<div class="border-t border-line p-4">
-		<button class={`${button} w-full`} type="button" data-booking-open>{t('Nav.bookingCta')}</button>
+		<a class={`${button} w-full`} href={bookingHref(locale)} data-booking-open>{t('Nav.bookingCta')}</a>
 	</div>
 </aside>
 

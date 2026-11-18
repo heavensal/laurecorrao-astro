@@ -9,7 +9,10 @@ const { locale } = Astro.props;
 const t = getFixedT(locale);
 const field =
 	'w-full rounded-lg border border-line bg-white px-3 py-3 text-base font-normal text-ink';
-const label = 'grid gap-1 text-sm font-semibold';
+const fieldGroup = 'grid gap-1';
+const label = 'text-sm font-semibold';
+const requiredMark = 'ml-1 text-rose-laure';
+const fieldError = 'text-sm text-rose-laure empty:hidden';
 const config = {
 	apiUrl: import.meta.env.PUBLIC_CONTACT_FORM_URL || 'https://forge.1344.fr/api/v1/send_form',
 	apiToken: import.meta.env.PUBLIC_CONTACT_FORM_TOKEN || '',
@@ -28,6 +31,11 @@ const config = {
 		success: t('Contact.success'),
 		error: t('Contact.error'),
 	},
+	errors: {
+		required: t('Contact.errorRequired'),
+		email: t('Contact.errorEmail'),
+		consent: t('Contact.errorConsent'),
+	},
 };
 ---
 
@@ -43,26 +51,108 @@ const config = {
 		<h2 id="contact-title" class="text-center font-serif text-3xl leading-tight">{t('Contact.title')}</h2>
 		<div id="contact-form-view">
 			<p class="mt-3">{t('Contact.intro')}</p>
+			<p class="mt-2 text-sm text-muted">{t('Contact.requiredNote')}</p>
 			<form id="contact-form" class="mt-6 grid gap-4">
 				<div class="grid gap-4 sm:grid-cols-2">
-					<label class={label}>{t('Contact.firstName')}<input class={field} name="firstName" autocomplete="given-name" required /></label>
-					<label class={label}>{t('Contact.lastName')}<input class={field} name="lastName" autocomplete="family-name" required /></label>
+					<div class={fieldGroup}>
+						<label class={label} for="contact-firstName">
+							{t('Contact.firstName')}<span class={requiredMark} aria-hidden="true">*</span>
+						</label>
+						<input
+							id="contact-firstName"
+							class={field}
+							name="firstName"
+							autocomplete="given-name"
+							required
+							aria-required="true"
+							aria-describedby="contact-firstName-error"
+						/>
+						<p id="contact-firstName-error" class={fieldError}></p>
+					</div>
+					<div class={fieldGroup}>
+						<label class={label} for="contact-lastName">
+							{t('Contact.lastName')}<span class={requiredMark} aria-hidden="true">*</span>
+						</label>
+						<input
+							id="contact-lastName"
+							class={field}
+							name="lastName"
+							autocomplete="family-name"
+							required
+							aria-required="true"
+							aria-describedby="contact-lastName-error"
+						/>
+						<p id="contact-lastName-error" class={fieldError}></p>
+					</div>
 				</div>
-				<label class={label}>{t('Contact.email')}<input class={field} name="email" type="email" autocomplete="email" required /></label>
-				<label class={label}>{t('Contact.phone')}<input class={field} name="phone" type="tel" autocomplete="tel" required /></label>
-				<label class={label}>
-					{t('Contact.request')}
-					<select class={field} name="requestType">
+				<div class={fieldGroup}>
+					<label class={label} for="contact-email">
+						{t('Contact.email')}<span class={requiredMark} aria-hidden="true">*</span>
+					</label>
+					<input
+						id="contact-email"
+						class={field}
+						name="email"
+						type="email"
+						autocomplete="email"
+						required
+						aria-required="true"
+						aria-describedby="contact-email-error"
+					/>
+					<p id="contact-email-error" class={fieldError}></p>
+				</div>
+				<div class={fieldGroup}>
+					<label class={label} for="contact-phone">
+						{t('Contact.phone')}<span class={requiredMark} aria-hidden="true">*</span>
+					</label>
+					<input
+						id="contact-phone"
+						class={field}
+						name="phone"
+						type="tel"
+						autocomplete="tel"
+						required
+						aria-required="true"
+						aria-describedby="contact-phone-error"
+					/>
+					<p id="contact-phone-error" class={fieldError}></p>
+				</div>
+				<div class={fieldGroup}>
+					<label class={label} for="contact-requestType">{t('Contact.request')}</label>
+					<select id="contact-requestType" class={field} name="requestType">
 						<option>{t('Contact.optionIndividual')}</option>
 						<option>{t('Contact.optionCouple')}</option>
 						<option>{t('Contact.optionOther')}</option>
 					</select>
-				</label>
-				<label class={label}>{t('Contact.message')}<textarea class={field} name="message" rows="5" required /></label>
-				<label class="flex items-start gap-3 text-sm font-normal">
-					<input class="mt-1" name="consent" type="checkbox" required />
-					{t('Contact.consent')}
-				</label>
+				</div>
+				<div class={fieldGroup}>
+					<label class={label} for="contact-message">
+						{t('Contact.message')}<span class={requiredMark} aria-hidden="true">*</span>
+					</label>
+					<textarea
+						id="contact-message"
+						class={field}
+						name="message"
+						rows="5"
+						required
+						aria-required="true"
+						aria-describedby="contact-message-error"></textarea>
+					<p id="contact-message-error" class={fieldError}></p>
+				</div>
+				<div class={fieldGroup}>
+					<label class="flex items-start gap-3 text-sm font-normal">
+						<input
+							class="mt-1"
+							name="consent"
+							type="checkbox"
+							required
+							aria-required="true"
+							aria-describedby="contact-consent-error"
+						/>
+						<span>{t('Contact.consent')}<span class={requiredMark} aria-hidden="true">*</span></span>
+					</label>
+					<p id="contact-consent-error" class={fieldError}></p>
+				</div>
 				<p id="form-status" class="min-h-6 text-center text-rose-laure" role="status" aria-live="polite"></p>
 				<button
 					class="inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-rose-soft bg-rose-soft px-6 py-3 text-sm text-white transition-colors duration-200 hover:border-rose-deep hover:bg-rose-deep disabled:cursor-not-allowed disabled:opacity-60"
@@ -101,6 +191,52 @@ const config = {
 	const formView = document.querySelector('#contact-form-view');
 	const sendingView = document.querySelector('#contact-sending-view');
 	const successView = document.querySelector('#contact-success-view');
+	const fieldErrors = JSON.parse(document.querySelector('#forge-form-config')?.textContent || '{}').errors ?? {};
+
+	type ValidatedField = HTMLInputElement | HTMLTextAreaElement;
+
+	function isValidatedField(target: EventTarget | null): target is ValidatedField {
+		return (
+			(target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement) &&
+			target.hasAttribute('aria-describedby')
+		);
+	}
+
+	function updateFieldError(field: ValidatedField) {
+		const error = document.getElementById(field.getAttribute('aria-describedby') ?? '');
+		if (!error) return;
+		if (field.validity.valid) {
+			error.textContent = '';
+			field.removeAttribute('aria-invalid');
+			return;
+		}
+		if (field instanceof HTMLInputElement && field.type === 'checkbox') error.textContent = fieldErrors.consent;
+		else if (field.validity.typeMismatch) error.textContent = fieldErrors.email;
+		else error.textContent = fieldErrors.required;
+		field.setAttribute('aria-invalid', 'true');
+	}
+
+	function clearFieldErrors() {
+		form?.querySelectorAll('[aria-describedby]').forEach((field) => {
+			field.removeAttribute('aria-invalid');
+			const error = document.getElementById(field.getAttribute('aria-describedby') ?? '');
+			if (error) error.textContent = '';
+		});
+	}
+
+	form?.addEventListener(
+		'invalid',
+		(event) => {
+			if (!isValidatedField(event.target)) return;
+			event.preventDefault();
+			updateFieldError(event.target);
+			if (event.target === form?.querySelector(':invalid')) event.target.focus();
+		},
+		true,
+	);
+	form?.addEventListener('input', (event) => {
+		if (isValidatedField(event.target) && event.target.hasAttribute('aria-invalid')) updateFieldError(event.target);
+	});
 
 	function showFormView() {
 		formView?.classList.remove('hidden');
@@ -122,6 +258,7 @@ const config = {
 
 	function resetContactDialog() {
 		if (form instanceof HTMLFormElement) form.reset();
+		clearFieldErrors();
 		if (status) status.textContent = '';
 		showFormView();
 	}

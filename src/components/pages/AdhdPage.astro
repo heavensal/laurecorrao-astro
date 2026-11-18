@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import PageBreadcrumb from '../PageBreadcrumb.astro';
 import BookingDetails from '../BookingDetails.astro';
 import overview from '../../assets/images/adhd/attention-and-organization.webp';
@@ -6,7 +7,8 @@ import child from '../../assets/images/adhd/child-building.webp';
 import teen from '../../assets/images/adhd/teen-studying.webp';
 import adult from '../../assets/images/adhd/adult-planning.webp';
 import { getFixedT, type Locale } from '../../i18n/i18n';
-import { contentPath, pageHref } from '../../lib/paths';
+import { heroImageSizes, heroImageWidths } from '../../lib/images';
+import { bookingHref } from '../../lib/paths';
 
 interface Props { locale: Locale }
 const { locale } = Astro.props;
@@ -59,15 +61,13 @@ function sectionLabelId(key: (typeof blocks)[number][0]): string {
 						</p>
 					)}
 				</div>
-				<img
+				<Image
 					class:list={[photo, index % 2 === 1 && 'lg:col-start-1 lg:row-start-1']}
-					src={src.src}
-					width={src.width}
-					height={src.height}
+					src={src}
+					widths={heroImageWidths}
+					sizes={heroImageSizes}
 					alt={t(`Adhd.${key}.alt`)}
-					decoding="async"
-					loading={key === 'overview' ? 'eager' : 'lazy'}
-					fetchpriority={key === 'overview' ? 'high' : undefined}
+					priority={key === 'overview'}
 				/>
 			</section>
 		))
@@ -84,13 +84,13 @@ function sectionLabelId(key: (typeof blocks)[number][0]): string {
 			<p class="my-4">{t('Adhd.first.scope')}</p>
 		</div>
 		<BookingDetails locale={locale} variant="onRose" />
-		<button
+		<a
 			class="mt-6 inline-flex min-h-12 cursor-pointer items-center justify-center rounded-md border border-white bg-white px-6 py-3 text-sm text-rose-deep transition-colors duration-200 hover:bg-sand"
-			type="button"
+			href={bookingHref(locale)}
 			data-booking-open
 		>
 			{t('Nav.bookingCta')}
-		</button>
+		</a>
 		<p class="mx-auto mt-8 max-w-prose text-sm text-sand" role="note">
 			{t('Adhd.sources')}
 		</p>
