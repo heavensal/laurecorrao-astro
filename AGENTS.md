@@ -72,3 +72,11 @@ Before building or changing a page or UI, apply [SEO_GEO_ACCESSIBILITY.md](SEO_G
 - `/seo-geo-accessibility-fix`: use `.agents/skills/seo-geo-accessibility-fix/SKILL.md`; the `seo-geo-accessibility-fixer` implements authorized repository tasks and checks boxes only with validation evidence.
 - If a client passes these slash strings as plain text, treat them as workflow aliases; do not claim native command registration. Use the skill in the current session when a named agent is unavailable.
 - [fast_commands.md](fast_commands.md) documents invocation. [tasks.md](tasks.md) is the delivery checklist; [todo.md](todo.md) contains site-specific findings. Preserve existing tasks, confirmations and history; never infer external completion from local edits.
+
+## Build command catalog
+
+When the user sends `/build` alone, read `.agents/skills/build/SKILL.md` and show the command catalog without executing work. `/build-<skill>` aliases read `.agents/skills/build-<skill>/SKILL.md`, which delegates to the original skill. Preserve the original workflow boundaries; the prefix does not mean to compile the site. See fast_commands.md. Keep existing non-prefixed skills available for compatibility.
+
+## Missing client information
+
+When requested content requires client information that is unavailable, first check existing confirmed facts and tasks. Never invent it. Use an explicit placeholder during preparation where appropriate and add or update a task in `todo.md` with the missing information and exact page/component/file locations. Do not create a second `todos.md`. Avoid duplicate requests for already confirmed facts. Replace all affected placeholders after confirmation and check the task only after integration is verified. Do not expose placeholders as real contact details, working links, metadata or structured data, or publish them; hide optional missing information and keep required missing information as an explicit publication blocker.

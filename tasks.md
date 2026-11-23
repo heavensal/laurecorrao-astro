@@ -1,96 +1,167 @@
-# Créer, améliorer et livrer une landing page
+## 1. Nom et arborescence
 
-Checklist générale de recette, en français. Une case ouverte signifie « à vérifier pour cette livraison », pas nécessairement « absent du site ». Cocher avec date et preuve ; indiquer « non applicable » avec justification pour les fonctionnalités non demandées. Les problèmes précis et leur historique restent dans [todo.md](todo.md), sans dupliquer les tâches SGA/EXT.
+- [ ] Nom de domaine
+- [ ] Langue principale
+- [ ] Langues supplémentaires
+- [ ] CMS Forge
+  - [ ] Blog
+  - [ ] FAQ
+  - [ ] Avis
 
-Responsabilités : **Dépôt** = code/documentation ; **Externe** = compte, DNS, service ou hébergement ; **Propriétaire** = décision, information ou validation. Un item mixte doit être scindé en tâches dépendantes lors de sa réalisation. Cette checklist n'autorise aucune action externe à elle seule.
+## 2. Design
 
-## 1. Cadrage et contenu
+- [ ] Thème / références visuelles
+- [ ] Couleurs
+- [ ] Typographies
+- [ ] Logo
+- [ ] Icônes du site
+  - [ ] Favicon
+  - [ ] Apple Touch Icon — iPhone / iPad
+  - [ ] Icônes Android
+- [ ] Photos / illustrations
+- [ ] Image de partage — réseaux sociaux
 
-- [ ] **Propriétaire** — Valider objectif, public, offre, action principale attendue et critères de réussite.
-- [ ] **Propriétaire** — Fournir identité, coordonnées, adresse publique, horaires, tarifs, qualifications et zones réellement desservies ; ne rien inventer.
-- [ ] **Propriétaire** — Choisir langues et fonctionnalités : blog, FAQ, avis, contact, réservation, carte, suivi statistique.
-- [ ] **Dépôt** — Définir arborescence, sections, parcours, URLs localisées et liens internes ; appliquer MULTILANG.md et conserver le fonctionnement existant hors migration demandée.
-- [ ] **Propriétaire** — Valider textes, logo, portraits, photographies et droits d'utilisation. Aucun témoignage fictif en production.
-- [ ] **Dépôt** — Prévoir accueil, prestations, présentation, contact et pages complémentaires réellement utiles ; une page distincte n'est pas obligatoire pour chaque section.
+## 3. Déploiement
 
-## 2. Domaine et hébergement
+- [ ] GitHub Pages
 
-- [ ] **Externe / Propriétaire** — Acheter ou confirmer la propriété du domaine ; vérifier titulaire, accès, renouvellement et récupération du compte.
-- [ ] **Externe** — Identifier qui gère le DNS et qui héberge réellement le site ; le registrar n'est pas nécessairement l'hébergeur.
-- [ ] **Externe** — Configurer le dépôt GitHub et Pages avec le workflow Actions adapté, les accès et l'environnement de publication.
-- [ ] **Externe** — Vérifier le domaine dans GitHub si applicable, configurer le domaine personnalisé puis les enregistrements DNS selon la documentation actuelle ; préserver MX et TXT existants.
-- [ ] **Dépôt** — Aligner domaine canonique, base path, génération d'URLs et configuration Astro avec l'hébergement retenu.
-- [ ] **Externe** — Vérifier HTTPS, certificat, domaine racine et www, absence de contenu mixte, résolution DNS et comportement des anciennes URLs.
-- [ ] **Propriétaire** — Valider les limites de l'hébergement retenu : redirections HTTP, en-têtes, formulaires et fonctions serveur. GitHub Pages sert le build statique ; ne pas supposer un backend disponible.
+  Dépôt → **Settings → Pages → Source : GitHub Actions**. Réutiliser le workflow de déploiement existant ; sinon demander à l’IA de le créer pour Astro.
 
-## 3. Construction dans le dépôt
+- [ ] Domaine personnalisé dans GitHub
 
-- [ ] **Dépôt** — Centraliser configuration métier et URLs ; partager layouts/composants sans dupliquer les pages par langue inutilement.
-- [ ] **Dépôt** — Réaliser design responsive, navigation, pied de page, CTA, états interactifs et page 404.
-- [ ] **Dépôt** — Optimiser images, tailles, formats, polices et chargements tiers ; intégrer favicon et partage social adaptés.
-- [ ] **Dépôt** — Appliquer SEO_GEO_ACCESSIBILITY.md pendant chaque développement : structure des titres, HTML sémantique, alternatives, labels, clavier et focus.
-- [ ] **Dépôt** — Respecter les langues publiées et leur contenu ; ne pas ajouter d'i18n à un nouveau site monolingue.
-- [ ] **Dépôt** — Documenter installation, configuration et commandes réelles ; garder .env.example sans secrets, exclure .env du suivi et distinguer variables publiques/privées.
+  **Settings → Pages → Custom domain** → saisir le domaine sans `https://` → **Save**, avant de modifier le DNS.
 
-## 4. Forge et ressources optionnelles
+- [ ] DNS chez le registrar
 
-- [ ] **Externe / Propriétaire** — Créer ou vérifier le Website Forge, le domaine, les langues préconfigurées et les accès du propriétaire.
-- [ ] **Dépôt** — Réutiliser une seule connexion Forge, vérifier le contrat API réel et importer les ressources au build selon leurs flags.
-- [ ] **Externe** — Configurer les secrets nécessaires dans l'environnement de build sans les exposer dans le navigateur, les logs ou la documentation. Vérifier séparément le contrat et les permissions de tout jeton de formulaire public.
-- [ ] **Dépôt** — Blog demandé : index, articles, URLs et traductions fournies par Forge, relations de traduction, brouillons exclus, politique d'erreur explicite ; sinon aucun ajout de blog.
-- [ ] **Dépôt** — FAQ demandée : questions/réponses locales contextualisées, import activé par défaut et remplacement complet par langue dès que Forge fournit du contenu ; sinon aucune FAQ ajoutée.
-- [ ] **Dépôt** — Avis demandés : même principe de remplacement, avis authentiques seulement et masquage public sans source authentique ; sinon aucune section ajoutée.
-- [ ] **Externe** — Configurer le rebuild Forge vers le bon dépôt et événement GitHub, avec les permissions minimales nécessaires et seulement les ressources utilisées.
-- [ ] **Mixte** — Vérifier une publication autorisée de bout en bout : Forge → rebuild → build → page publique. Une proposition Forge non approuvée ou un webhook envoyé ne prouve pas la livraison.
+  Ouvrir la **zone DNS** chez le fournisseur qui gère les serveurs de noms actifs. Conserver les serveurs de noms actuels ; modifier les enregistrements suivants :
 
-## 5. Contact, messagerie et réservation
+  | Type | Nom | Valeur |
+  | --- | --- | --- |
+  | A | `@` | `185.199.108.153` |
+  | A | `@` | `185.199.109.153` |
+  | A | `@` | `185.199.110.153` |
+  | A | `@` | `185.199.111.153` |
+  | CNAME | `www` | `COMPTE.github.io` |
 
-- [ ] **Externe / Propriétaire** — Choisir et créer la boîte professionnelle ; configurer MX, SPF, DKIM et DMARC avec le fournisseur, puis vérifier la réception.
-- [ ] **Externe** — Configurer destinataire, service d'envoi Forge et origines autorisées ; distinguer les secrets serveur des paramètres publics.
-- [ ] **Dépôt** — Vérifier labels, validations, erreurs, succès, anti-abus adapté et absence d'exposition de données sensibles dans les logs.
-- [ ] **Externe / Propriétaire** — Configurer le vrai calendrier, prestations, disponibilités, notifications et éventuels paiements ; remplacer les liens de test.
-- [ ] **Dépôt** — Tester intégration et lien de secours de réservation, affichage mobile, clavier et chargement des services tiers.
-- [ ] **Mixte** — Effectuer un envoi et une réservation de test autorisés ; confirmer réception, réponse et nettoyage des données de test.
+  Remplacer `COMPTE` par le compte ou l’organisation GitHub, sans nom de dépôt. Remplacer les anciens enregistrements web incompatibles ; conserver les MX et TXT existants.
 
-## 6. Informations légales et données personnelles
+- [ ] Publication
 
-- [ ] **Propriétaire** — Confirmer identité légale, statut, informations professionnelles et conditions commerciales applicables ; utiliser les tâches détaillées existantes de todo.md.
-- [ ] **Mixte** — Faire vérifier les mentions, confidentialité et conditions nécessaires à l'activité, puis intégrer les informations validées dans chaque langue publiée.
-- [ ] **Dépôt** — Inventorier les services réellement chargés, données collectées, cookies, durées et destinataires ; ne pas copier une politique générique déconnectée du fonctionnement.
-- [ ] **Mixte** — Déterminer les besoins de consentement selon les services et exigences applicables, puis vérifier le comportement avant/après choix. Faire valider les questions juridiques incertaines par une personne compétente.
-- [ ] **Dépôt** — Vérifier que le nom de l'hébergeur correspond au service réellement utilisé, pas simplement au vendeur du domaine.
+  Vérifier avec l’IA le domaine dans Astro et les variables nécessaires au build. Pousser la version prête sur `main` → onglet **Actions** → vérifier build et déploiement réussis.
 
-## 7. SEO, GEO et accessibilité
+- [ ] HTTPS et vérification
 
-- [ ] **Dépôt** — Exécuter `/seo-geo-accessibility-audit` et consulter les deux checklists de todo.md.
-- [ ] **Dépôt** — Corriger avec `/seo-geo-accessibility-fix`, respecter les dépendances et conserver les preuves avant de cocher.
-- [ ] **Dépôt** — Vérifier titres, descriptions, canonical, hreflang, sitemap, robots, liens, données structurées et statuts réels ; pas de noindex accidentel en production.
-- [ ] **Dépôt** — Vérifier manuellement clavier, focus, formulaires, modales, contrastes, zoom/reflow, langues et parcours tiers ; compléter par les outils disponibles et signaler les limites.
-- [ ] **Dépôt** — Vérifier clarté des offres, faits et sources, cohérence des identités, contenu HTML et éventuel llms.txt ; aucune promesse de citation IA.
-- [ ] **Propriétaire** — Confirmer la politique des robots recherche/entraînement si une modification est demandée.
+  Attendre la validation DNS et le certificat → **Settings → Pages → Enforce HTTPS**. Tester le domaine avec et sans `www`, puis une page interne.
 
-## 8. Présence et outils externes
+- [ ] GitHub Action — déploiement automatique après merge sur `main`
 
-- [ ] **Externe** — Vérifier la propriété dans Google Search Console (TXT DNS ou méthode proposée), conserver le justificatif nécessaire et soumettre le sitemap réel.
-- [ ] **Externe** — Examiner indexation, erreurs et pages importantes ; une soumission ne garantit pas l'indexation.
-- [ ] **Externe / Propriétaire** — Vérifier l'éligibilité Google Business Profile ; rechercher une fiche existante avant création/revendication, puis suivre la méthode de validation proposée.
-- [ ] **Externe / Propriétaire** — Aligner nom, adresse, téléphone, catégorie réelle, horaires, site, réservation et photos ; reporter uniquement les profils vérifiés dans les liens du site.
-- [ ] **Externe** — Selon le besoin : Bing Webmaster Tools, Bing Places et Apple Business Connect, sans créer de doublons.
-- [ ] **Mixte** — Si demandé, définir et configurer mesure des conversions et trafic avec les choix de confidentialité appropriés ; vérifier les événements sans envoyer de données personnelles superflues.
+  Vérifier `.github/workflows/deploy.yml` : déclencheur `push` sur `main` (le merge d’une pull request le déclenche). Après merge → **Actions** → vérifier build, déploiement et site mis à jour. Ce déclencheur publie aussi les pushs directs sur `main`.
 
-## 9. Recette, publication et suivi
+[Référence GitHub — domaine et DNS](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
-- [ ] **Dépôt** — Exécuter les contrôles disponibles et le build ; vérifier toutes les routes générées et les parcours représentatifs sur mobile/desktop.
-- [ ] **Propriétaire** — Valider contenu, identité, médias et parcours avant publication selon le périmètre convenu.
-- [ ] **Externe** — Déployer lorsque autorisé et vérifier la version effectivement servie, HTTPS, liens, formulaires, réservation, sitemap et robots en production.
-- [ ] **Mixte** — Mesurer performances et accessibilité sur le site livré ; distinguer laboratoire, terrain et contrôles manuels. Enregistrer les problèmes dans todo.md.
-- [ ] **Propriétaire** — Recevoir les accès nécessaires et une démonstration de Forge, publication, contact et réservation ; documenter qui maintient quoi.
-- [ ] **Mixte** — Documenter restauration/retour arrière, renouvellements, rotation des accès, mises à jour, contrôle des liens et suivi des contenus ; planifier selon le besoin convenu.
+## 4. Formulaire de contact
 
-## Repères pour ce dépôt
+- [ ] Affichage — modale / page dédiée / section landing page
+- [ ] Liste des champs
+- [ ] Obligatoires / facultatifs
 
-La configuration consultée active les imports articles et FAQ et désactive les avis ; ne pas réappliquer les anciennes consignes « FAQ off ». todo.md contient déjà des confirmations de fiche Google Business, adresse et horaires : les conserver et ne pas les présenter comme manquantes. Ces repères ne remplacent pas une vérification de production.
 
-L'ancienne checklist détaillée (identité visuelle, photographies, configuration historique) est conservée dans [l'archive](docs/archive/launch-tasks-legacy.md), explicitement non prescriptive. Vérifier ses informations avant réutilisation.
+## 5. Connecter la Forge
 
-Références externes : [domaine GitHub Pages](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site), [HTTPS](https://docs.github.com/en/pages/getting-started-with-github-pages/securing-your-github-pages-site-with-https), [création ou revendication Google Business](https://support.google.com/business/answer/2911778?hl=fr). Consulter les procédures actuelles au moment de l'action.
+Dashboard Forge → ouvrir le Website concerné ou le créer.
+
+- [ ] Créer le Website — si absent
+- [ ] Confirmer les importations CMS
+  - [ ] Blog
+  - [ ] Reviews / avis
+  - [ ] FAQ
+- [ ] Renseigner l’email professionnel
+- [ ] Ajouter le token Forge au `.env` — si au moins une importation
+
+  `FORGE_API_TOKEN` + `FORGE_URL` ; activer les flags des ressources retenues. Reporter les secrets dans **GitHub → Settings → Secrets and variables → Actions** pour le build distant. Ne pas committer le `.env`.
+
+- [ ] Rebuild automatique après création / modification / suppression d’un élément importé
+
+  1. GitHub → **Settings du compte → Developer settings → Personal access tokens → Fine-grained tokens** : créer un token limité au dépôt, permission **Contents: read and write**.
+  2. Forge → paramètres de rebuild du Website : URL `https://api.github.com/repos/COMPTE/REPO/dispatches` + token GitHub comme bearer. Ce token est distinct du token API Forge.
+  3. Vérifier l’événement envoyé : `event_type: forge-rebuild`, et son écoute via `repository_dispatch` dans le workflow présent sur la branche par défaut. Sélectionner uniquement les ressources importées.
+  4. Tester une modification autorisée (ex. nouvel article publié) → **GitHub Actions** → build et déploiement → changement visible sur le site. Vérifier aussi modification et suppression ; une simple lecture ne nécessite pas de rebuild.
+
+  [Référence GitHub — repository dispatch](https://docs.github.com/en/rest/repos/repos#create-a-repository-dispatch-event).
+
+## 6. Contenu client
+
+- [ ] Textes
+- [ ] Sections
+- [ ] Offres / tarifs
+- [ ] Informations client — téléphone / email / adresse / horaires
+- [ ] Marketing — arguments / appels à l’action
+- [ ] Pages légales
+  - [ ] Politique de confidentialité
+  - [ ] Conditions générales
+  - [ ] Mentions légales
+- [ ] Informations manquantes → `todo.md`
+
+  Placeholder explicite pendant la préparation + tâche indiquant l’information attendue et son emplacement. Exemple : « Téléphone à fournir — footer et page contact ». Remplacer le placeholder après confirmation ; aucun placeholder publié.
+- [ ] Validation client
+
+## 7. SEO, accessibilité, GEO
+
+- [ ] Sitemap — URLs publiées / langues actives
+- [ ] `robots.txt` — règles de crawl / lien du sitemap
+- [ ] `llms.txt` — contenus publics / liens à jour (facultatif, aucune garantie de citation IA)
+- [ ] Métadonnées — titres / descriptions / canonical
+- [ ] Multilingue — hreflang / liens entre traductions, si applicable
+- [ ] Partage social — Open Graph / image de partage
+- [ ] Données structurées — identité / adresse / horaires / contenus visibles
+- [ ] Google Search Console
+  - [ ] Propriété du domaine — validation DNS
+  - [ ] Sitemap — soumission
+  - [ ] Indexation — contrôle des pages principales
+- [ ] Google Business Profile — si activité éligible
+  - [ ] Fiche existante / création / revendication
+  - [ ] Vérification propriétaire
+  - [ ] Nom / catégorie / prestations
+  - [ ] Adresse / téléphone / horaires
+  - [ ] Site / réservation / logo / photos
+  - [ ] Cohérence fiche ↔ site
+
+- [ ] Audit complet — `/build-seo-geo-accessibility-audit`
+- [ ] Validation des changements / informations à afficher — décisions dans `todo.md`
+- [ ] Corrections retenues — `/build-seo-geo-accessibility-fix` : uniquement les tâches acceptées
+- [ ] Tests PageSpeed Insights — mobile / ordinateur
+- [ ] Corrections et nouveaux tests — jusqu’à validation
+
+## 8. Vérifications
+
+- [ ] Terminer `todo.md` — tâches réalisées et vérifiées ; refus / non-applicables documentés
+- [ ] Aucun placeholder — informations réelles intégrées
+- [ ] Build automatique Forge — création / modification / suppression d’un contenu importé
+- [ ] Formulaire de contact
+  - [ ] SweetAlert — succès / erreur
+  - [ ] Réception de l’email
+- [ ] HTTPS / domaine avec et sans `www`
+- [ ] Navigation — liens / boutons / page 404 / langues publiées
+- [ ] Affichage — mobile / tablette / ordinateur
+- [ ] Accessibilité — clavier / focus / contrastes / labels
+- [ ] Logo / favicons / icônes téléphone / aperçu de partage
+- [ ] Sitemap / `robots.txt` / `llms.txt` — accès public et contenu correct
+- [ ] Indexation — aucun `noindex` ou blocage involontaire en production
+- [ ] Réservation / carte — si présentes
+
+## 9. Livraison client
+
+- [ ] Accès à l’email professionnel
+- [ ] Transfert des messages du formulaire — email pro → email choisi par le client
+  - [ ] Adresse de destination
+  - [ ] Transfert configuré / réception testée
+- [ ] Accès à Google Business
+- [ ] Factures transmises
+  - [ ] Nom de domaine
+  - [ ] Hébergement
+  - [ ] Prestations de services
+- [ ] Dates des prochains renouvellements
+  - [ ] Nom de domaine
+  - [ ] Hébergement
+  - [ ] Messagerie / autres abonnements — si applicables
+- [ ] Notes client — besoins / préférences / engagements / suivi, dans un espace privé
