@@ -1,5 +1,9 @@
 # FAQ block — reference templates
 
+Apply [FAQ.md](../../../FAQ.md) as the canonical behavior. These are implementation examples: the placeholder is a complete contextual local FAQ, and imports default to enabled when the FAQ is requested.
+
+These examples use the existing repository’s i18next implementation. Read [MULTILANG.md](../../../MULTILANG.md) before reuse: new monolingual sites use plain local content without translation keys; multilingual sites use dictionaries by locale and page or feature. Do not copy the i18n helpers into a new monolingual site.
+
 Adapt paths and theme class names to the target site. Reference implementation: `src/components/HomeResources.astro`, `src/lib/forge-blocks.ts`, `src/lib/local-blocks.ts`.
 
 ## Environment
@@ -8,7 +12,7 @@ Adapt paths and theme class names to the target site. Reference implementation: 
 
 ```bash
 # "true" fetches published FAQs at build time. Empty Forge list → Local.faqs.
-FORGE_FAQ_ENABLED=false
+FORGE_FAQ_ENABLED=true
 FORGE_URL=https://forge.1344.fr/api/v1
 FORGE_API_TOKEN=
 ```

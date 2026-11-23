@@ -4,9 +4,22 @@ Brochure site for Laure Corrao, psychotherapist and couples therapist in Port-de
 
 **Requirements:** Node.js ≥ 22 (see `package.json` → `engines`).
 
-Visible copy is in `src/i18n/locales/fr.json` and `en.json`. `ENABLE_MULTILANG` defaults to `false`: the site publishes French only, and English copy stays in `en.json` without a `/en/` URL. See [Languages and hreflang](#languages-and-hreflang), [Multilang: how and why](#multilang-how-and-why), and `MULTILANG.md`.
+The current implementation keeps visible copy in `src/i18n/locales/fr.json` and `en.json`. `ENABLE_MULTILANG` defaults to `false`: the site publishes French only, and English copy stays in `en.json` without a `/en/` URL. See [Languages and hreflang](#languages-and-hreflang), [Multilang: how and why](#multilang-how-and-why), and `MULTILANG.md`.
 
 ---
+
+## SEO, GEO et accessibilité : construire, auditer, corriger
+
+[SEO_GEO_ACCESSIBILITY.md](SEO_GEO_ACCESSIBILITY.md) est le point d'entrée commun vers les règles détaillées. Elles s'appliquent pendant le développement via AGENTS.md.
+
+- Audit : skill `seo-geo-accessibility-audit`, agent `seo-geo-accessibility-auditor`, actualisation des deux checklists de todo.md.
+- Correction : skill `seo-geo-accessibility-fix`, agent `seo-geo-accessibility-fixer`, exécution des tâches autorisées et validation avant clôture.
+- [Commandes et prompts en français](fast_commands.md).
+- [Checklist de création et livraison](tasks.md), incluant domaine, GitHub Pages, Forge et services externes.
+
+Les profils Codex, Cursor et Copilot renvoient aux skills partagés dans `.agents/skills`. Antigravity peut utiliser ces workflows directement. Les reviewers spécialisés existants restent disponibles pour des audits ciblés sans modification. Les profils n'ont pas été testés dans tous les clients ; utiliser les prompts explicites si la commande n'est pas reconnue.
+
+Ces instructions ne constituent pas un audit déjà réalisé et ne changent pas le comportement du site.
 
 ## Table of contents
 
@@ -33,9 +46,9 @@ Visible copy is in `src/i18n/locales/fr.json` and `en.json`. `ENABLE_MULTILANG` 
 - **SEO**: Open Graph, Twitter Cards, canonical URLs, hreflang (`fr` and `x-default` only), JSON-LD, sitemap, generated `robots.txt`
 - **Local SEO**: `ProfessionalService` for Port-de-Bouc with the practice address and service area. See [Geographic SEO](#geographic-seo)
 - **i18n**: French is published. `ENABLE_MULTILANG=false` generates no `/en/` URL. English copy still lives in `en.json`. See [Languages and hreflang](#languages-and-hreflang)
-- **FAQ, reviews, blog**: each has its own Forge flag (`true` / `false`). On this site, articles are on. FAQ and reviews stay in i18n. Details in [Forge content](#forge-content)
+- **FAQ, reviews, blog**: each has its own Forge flag (`true` / `false`). On this site, article and FAQ imports are on; FAQ content falls back to local copy. Review imports are off. Details in [Forge content](#forge-content)
 - **Contact form**: dialog in the footer, `POST` to Forge (`PUBLIC_CONTACT_FORM_URL` + **`PUBLIC_CONTACT_FORM_TOKEN`**, `Authorization: Bearer` header)
-- **Landing sections**: hero, services, about, approach, place, reviews, articles, FAQ, contact, booking
+- **Landing sections**: hero, services, about, approach, place, articles, FAQ, contact, booking
 - **Legal pages**: legal notice, privacy policy, terms of service
 - **Accessibility**: semantic HTML, ARIA labels, visible focus
 - **Animations**: transitions, with `prefers-reduced-motion`
@@ -59,7 +72,7 @@ After cloning, copy **`.env.example`** to **`.env`**, then adjust if needed (`EN
 
 1. **`astro.config.mjs`** — set `site` and `base` for the deployment URL
 2. **`src/site.config.ts`** — site identity, contact, geography, opening hours, `sameAs` profiles
-3. **`src/i18n/locales/fr.json`** and **`en.json`** — copy (home, sections, legal pages). Every new or changed French key is written in `en.json` in the same change
+3. **`src/i18n/locales/fr.json`** and **`en.json`** — existing copy files (home, sections, legal pages). Update published languages; unpublished English copy is not mandatory. See `MULTILANG.md` before creating a new site or migrating this structure.
 
 ---
 
@@ -112,6 +125,12 @@ Blog pages (generated only when `FORGE_ARTICLES_ENABLED=true` and the locale is 
 
 ## Forge content
 
+The shared reviews rule is [REVIEWS.md](REVIEWS.md): optional section, Forge imports enabled by default when requested, and per-language replacement of authentic local fallback content. Fictional examples are preview-only. The existing review helpers and locale entries do not themselves implement a visible reviews section.
+
+The shared FAQ rule is [FAQ.md](FAQ.md): optional section, contextual local questions/answers, Forge imports enabled by default when requested, and complete per-language replacement when Forge returns published FAQs. This documentation update does not change the running site.
+
+The shared blog rule is [BLOG.md](BLOG.md). It defines optional blog creation, Forge-provided translations and URLs, same-article language switching, and publication checks. The current implementation described below has not yet been migrated to that rule.
+
 Forge is the CMS (a separate repository). This site only displays content. Three blocks can be connected, **independently**:
 
 | Variable | `true` | `false`, or unreachable API |
@@ -120,60 +139,32 @@ Forge is the CMS (a separate repository). This site only displays content. Three
 | `FORGE_REVIEWS_ENABLED` | `GET /reviews` (model rating 1–5) | review strings in the locale files |
 | `FORGE_ARTICLES_ENABLED` | `GET /articles` and `GET /articles/:slug` → `/blog` and `/blog/[slug]`. `/en/blog` only if `ENABLE_MULTILANG=true` and `en` is in `publishedLocales` | those pages are not generated |
 
-**This site:** `FORGE_ARTICLES_ENABLED=true`. `FORGE_FAQ_ENABLED` and `FORGE_REVIEWS_ENABLED` stay `false`. FAQ and reviews come from `fr.json`. `/blog` is generated when `FORGE_API_TOKEN` can read the published articles.
+**Configured build:** `FORGE_ARTICLES_ENABLED=true`, `FORGE_FAQ_ENABLED=true`, and `FORGE_REVIEWS_ENABLED=false`. FAQs use Forge when it returns usable content and otherwise use the local copy. `/blog` is generated when `FORGE_API_TOKEN` can read the published articles.
 
 `FORGE_URL` and `FORGE_API_TOKEN` are shared. Reads happen **at build time**. In production, the same names are GitHub Actions secrets (`deploy.yml`). Hero, services, approach, fees, legal pages, and booking stay in this repository.
 
 ## Languages and hreflang
 
-The rule for one language and for several languages is **`MULTILANG.md`**. Codex, Claude, Cursor, and GitHub Copilot follow that file.
+Read [MULTILANG.md](MULTILANG.md) for the canonical rule shared by Codex, Cursor, GitHub Copilot and Antigravity. New monolingual sites have no i18n; multilingual sites use dictionaries by locale and page. The rule has been recorded, but this site's runtime has not been migrated.
 
-Laure Corrao publishes French only. The repository can also publish French and English. The code is the same. What changes is what the site publishes.
+### Current implementation
 
-`src/site.config.ts` sets `publishedLocales` to `['fr']`. hreflang may list only those languages. On every page the head contains:
+Laure Corrao publishes French at the root. `src/site.config.ts` has `publishedLocales: ['fr']`, and the deployment sets `ENABLE_MULTILANG=false`. Existing flat FR/EN dictionaries and i18next remain in place.
 
-- `hreflang="fr"` → the French URL for that page
-- `hreflang="x-default"` → the same French URL
-
-There is no `hreflang="en"`. `og:locale:alternate` is omitted. JSON-LD `inLanguage` is `fr-FR` only.
-
-`ENABLE_MULTILANG=false` (this site) generates no `/en/` URL and hides the language switcher. hreflang stays `fr` and `x-default`. Legal URLs use the French slug: `/mentions-legales`, `/politique-de-confidentialite`, `/conditions-generales`. The English slugs at the root (`/legal-notice`, `/privacy-policy`, `/terms-of-service`) redirect to those French URLs.
-
-`ENABLE_MULTILANG=true` generates `/en/` (home, content, and legal pages) and shows the switcher. English legal URLs keep the English slug: `/en/legal-notice`, `/en/privacy-policy`, `/en/terms-of-service`. hreflang lists `en` only when `'en'` is also in `publishedLocales`. `/en/blog` exists only when articles are enabled and English is published.
-
-A blog article that exists in only one published locale does not advertise the missing translation: `/blog/mon-article` does not point at `/en/blog/mon-article` when that slug was not returned for English.
-
-Code, file names, and markdown stay in English. A public slug is an address, stored in `src/lib/paths.ts`: lowercase, hyphens, no accent, no capital letter. French pages keep French slugs. English pages keep English slugs under `/en/`. Route files stay `[...slug].astro`. Do not add `src/pages/mentions-legales.astro`.
+- `src/pages/en/[...slug].astro` generates English pages only when `ENABLE_MULTILANG=true`.
+- The language switcher follows that flag and currently links to each language's homepage.
+- SEO announces English only when the flag is true and `'en'` is in `publishedLocales`; the English blog requires both settings too.
+- The current blog associates translations by matching slugs in the remote indexes. This does not establish that the API returned the requested language or that every detail page was generated successfully.
+- French content and legal slugs live in `src/lib/paths.ts`; English equivalents use `/en/`.
+- Old root-level English legal slugs have redirects configured in `astro.config.mjs`. Static HTML deployment uses meta refresh; a configured 301 is not proof of an HTTP 301 response.
 
 ## Multilang: how and why
 
-One Astro project publishes either French alone or French and English. Laure Corrao publishes French. Turning English on later changes two switches. `MULTILANG.md` remains the URL rule.
+For new sites, follow the architecture and validation criteria in [MULTILANG.md](MULTILANG.md), including a single publication configuration and same-page language switching.
 
-### Why the English file and the English URLs are separate
+For ordinary edits to this existing site, retain its current helpers and files. Do not remove i18n or introduce the proposed `src/site/publication.ts` alongside the current settings without an explicit migration request.
 
-`en.json` holds the English sentences. `ENABLE_MULTILANG` decides whether `/en/` pages are built. A French-only site still needs the sentences, so the day the flag becomes `true` the pages already have copy.
-
-`getFixedT` falls back to French (`fallbackLng: 'fr'` in `src/i18n/i18n.ts`). A key that exists only in `fr.json` would show French on an English URL. Every new or changed French key is therefore written in `en.json` in the same change, including when `ENABLE_MULTILANG=false`. An empty English string is allowed only when the French string is empty.
-
-The public site stays French until the build is asked for English. `getStaticPaths()` in `src/pages/en/[...slug].astro` returns an empty list unless `ENABLE_MULTILANG` is the string `true`. The route file stays in the repository, and no `/en/` HTML is emitted. hreflang goes through a second check, `isPublishedLocale()` in `src/lib/seo.ts`: English is announced only when `'en'` is also in `publishedLocales`. One switch alone does not publish English. On this site the head stays `fr` and `x-default`, both pointing at the French URL.
-
-### How a page is chosen
-
-Visible strings go through `getFixedT(locale)`. Section components take `locale`. The French home is `src/pages/index.astro` with `locale` set to `'fr'`. The English home, content pages, and English legal pages are one catch-all, `src/pages/en/[...slug].astro`, which renders the same components with `locale` set to `'en'`.
-
-French lives at the root. There is no `/fr/` prefix. English, when it is published, lives under `/en/`. The slug follows the language of the page: `/politique-de-confidentialite/` in French, `/en/privacy-policy/` in English. Links use `legalPath()` and `contentPath()` in `src/lib/paths.ts`, which add `en/` only when the flag is on. The header can always import `LanguageSwitcher.astro`; the component renders nothing while the flag is off.
-
-`/legal-notice`, `/privacy-policy`, and `/terms-of-service` at the root redirect 301 to the French slugs (`astro.config.mjs`). Those redirects stay after English is turned on, because English occupies `/en/`, and the root keeps the French address.
-
-`.env` is gitignored. GitHub Pages runs `pnpm run build` from `.github/workflows/deploy.yml`. A bilingual site adds `ENABLE_MULTILANG` to that step’s environment (it is already set to `false` here) and adds `'en'` to `publishedLocales`. The local file alone does not change the production build.
-
-### What changes when English is published
-
-| Job | French only (this site) | French and English |
-|---|---|---|
-| Basic i18n | `getFixedT`, `locale` on each section, both JSON files | same |
-| English sentences | `en.json` filled, no `/en/` URL | `en.json` filled |
-| Publish `/en/` | `publishedLocales: ['fr']`, `ENABLE_MULTILANG=false` | `publishedLocales: ['fr', 'en']`, `ENABLE_MULTILANG=true` |
+Unpublished English copy no longer has to mirror every French edit. Before English is published, audit all required translations, the API's locale behavior, routes and SEO. If enabling English within the existing implementation, update both `publishedLocales` and the deployment's `ENABLE_MULTILANG` setting together; the local `.env` alone does not change production.
 
 ## Configuration
 
@@ -230,7 +221,7 @@ const t = getFixedT(locale);
 |-----------|-------------|
 | `SiteHeader.astro` | Brand, navigation, booking CTA, language switcher |
 | `HomePage.astro` | Hero, services, about, approach, place |
-| `HomeResources.astro` | Reviews, articles, FAQ, contact strip |
+| `HomeResources.astro` | Articles, FAQ and booking CTA |
 | `BookingCTA.astro` | Booking call to action |
 | `ContactForm.astro` | Contact dialog |
 | `FeesPage.astro` | Fees and the calendar |
@@ -240,7 +231,7 @@ const t = getFixedT(locale);
 
 1. Create `src/components/NewSection.astro`
 2. Import it from the page that should show it (`HomePage.astro`, or `PageBody.astro` for a routed page)
-3. Add the French keys and the same English keys in the same change
+3. Update copy for published languages using the current implementation; follow `MULTILANG.md` for new sites or requested language migrations
 
 ---
 
