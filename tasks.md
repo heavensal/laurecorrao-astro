@@ -1,146 +1,167 @@
-# Launch tasks
+## 1. Nom et arborescence
 
-Checklist to finish SEO and local presence, then hand Laure Corrao a site she can run. Do not invent the street address, phone, email, SIRET, or legal status. Leave a field empty until she provides it.
+- [ ] Nom de domaine
+- [ ] Langue principale
+- [ ] Langues supplémentaires
+- [ ] CMS Forge
+  - [ ] Blog
+  - [ ] FAQ
+  - [ ] Avis
 
-The repository already has the French pages, canonical URLs, Open Graph, Twitter cards, `sitemap-index.xml`, `robots.txt`, hreflang `fr` and `x-default`, and city-level JSON-LD for Martigues. The items below are what is still open.
+## 2. Design
 
-## SEO
+- [ ] Thème / références visuelles
+- [ ] Couleurs
+- [ ] Typographies
+- [ ] Logo
+- [ ] Icônes du site
+  - [ ] Favicon
+  - [ ] Apple Touch Icon — iPhone / iPad
+  - [ ] Icônes Android
+- [ ] Photos / illustrations
+- [ ] Image de partage — réseaux sociaux
 
-- [ ] Merge and deploy the current site so production matches this repository. Canonical host: `https://laurecorrao.fr`.
-- [x] Point the domain at GitHub Pages (A/AAAA or CNAME) and confirm HTTPS. `site` in `astro.config.mjs` stays `https://laurecorrao.fr` with `base` `/`.
-- [ ] Make the logo and the favicon, then the photographs listed under [Logo, favicon, and photos](#logo-favicon-and-photos). The file in `public/images/` is a crop of a layout reference, 750×585. `public/favicon.svg` is a green “Lc” that does not match the rose palette.
-- [ ] When the practice address is known, put the same street, postal code, city, and country in `site.config.ts` → `geo`, the legal notice, and `streetAddress` in `src/lib/jsonld.ts`. Until then the JSON-LD stays at commune level (Martigues, 13500, 43.4053° N, 5.0475° E) and must not use the town hall’s street.
-- [ ] Add phone (`phone`, `phoneE164`) and email on `siteConfig.contact` once they exist. JSON-LD already prints `telephone` and `email` when those strings are non-empty.
-- [ ] Add SIRET, legal status, and the publisher’s role on the legal notice only. Do not put a registry number in the footer or the homepage entity.
-- [ ] Add `Offer` prices to the homepage JSON-LD only for the fees already published in the copy (individual 60 €, couple 80 €, 60 minutes). Do not add hours or a third price.
-- [ ] Add `FAQPage` JSON-LD from the questions actually rendered on the home page.
-- [ ] Add `BreadcrumbList` on inner pages (home → current page).
-- [ ] Add `sameAs` only for profiles that exist (Google Business, and any public profile she uses). Leave `twitterHandle` empty if there is no account.
-- [ ] Submit `https://laurecorrao.fr/sitemap-index.xml` in Google Search Console and Bing Webmaster after the domain is live. Request indexing of the home page and the booking page.
-- [ ] Read Core Web Vitals on the live home page, the booking page, and one article. Fix what fails. The booking page embeds Cal.com.
-- [ ] Keep `ENABLE_MULTILANG=false` and `publishedLocales: ['fr']` until English is a real decision. Do not announce `hreflang="en"` before that day.
-- [ ] Remove the provisional Cal.com link (`adam-1344-vm70qf/30min` in `src/components/CalEmbed.astro`) before asking Google to index the booking page.
+## 3. Déploiement
 
-## Local SEO and Google Business
+- [ ] GitHub Pages
 
-The public place is the practice in Port-de-Bouc, plus video sessions. The Google category is Psychothérapeute, the same title the site uses, with couples therapy as a service.
+  Dépôt → **Settings → Pages → Source : GitHub Actions**. Réutiliser le workflow de déploiement existant ; sinon demander à l’IA de le créer pour Astro.
 
-- [ ] Create or claim the Google Business Profile for the practice.
-- [ ] Verify it (postcard, phone, or email, whichever Google offers).
-- [ ] Use one name, one address, one phone, one website URL, identical to the site and the legal notice.
-- [ ] Set the primary category from her real status. Add the services that are on the site: individual support, couples therapy, in-person in Martigues, video.
-- [ ] Set hours only if she has published them. Do not copy the town hall’s hours.
-- [ ] Add the booking URL `https://laurecorrao.fr/tarifs-et-rendez-vous/#agenda` once her calendar replaces the test one.
-- [ ] Add the logo and the practice photos from [Logo, favicon, and photos](#logo-favicon-and-photos). The exterior shot waits until the street address is the real door.
-- [ ] After verification, put the Google Business URL in `sameAs` and rebuild.
-- [ ] When the street is known, move `geo` from the commune centroid to the practice door and add a map link. Until then, do not embed a pin on the wrong building.
-- [ ] Optional: Apple Business Connect and Bing Places, with the same name, address, and phone.
+- [ ] Domaine personnalisé dans GitHub
 
-## Logo, favicon, and photos
+  **Settings → Pages → Custom domain** → saisir le domaine sans `https://` → **Save**, avant de modifier le DNS.
 
-Make these before launch. No stock people, no client in session, no face other than Laure’s. Empty rooms only. Export sRGB, no text baked into the picture. Update `HomePage.portraitAlt` in `fr.json` and `en.json` when the portrait changes.
+- [ ] DNS chez le registrar
 
-### Logo
+  Ouvrir la **zone DNS** chez le fournisseur qui gère les serveurs de noms actifs. Conserver les serveurs de noms actuels ; modifier les enregistrements suivants :
 
-- [ ] Draw the wordmark “Laure Corrao” for the header (serif, ink `#36332f` on cream `#fcfaf6`).
-- [ ] Draw a small mark for the icon (initials or one symbol). Rose `#a35753` on cream, or ink on cream. Not the current green square.
-- [ ] Put the wordmark in the header in place of the text-only name. Keep the name as text next to it if the image fails.
+  | Type | Nom | Valeur |
+  | --- | --- | --- |
+  | A | `@` | `185.199.108.153` |
+  | A | `@` | `185.199.109.153` |
+  | A | `@` | `185.199.110.153` |
+  | A | `@` | `185.199.111.153` |
+  | CNAME | `www` | `COMPTE.github.io` |
 
-### Favicon
+  Remplacer `COMPTE` par le compte ou l’organisation GitHub, sans nom de dépôt. Remplacer les anciens enregistrements web incompatibles ; conserver les MX et TXT existants.
 
-Cut the mark, not a tiny copy of the wordmark.
+- [ ] Publication
 
-- [ ] `public/favicon.svg`
-- [ ] `public/favicon.ico`
-- [ ] `public/favicon-32x32.png` and `public/favicon-16x16.png`
-- [ ] `public/apple-touch-icon.png` (180×180)
-- [ ] `public/android-chrome-192x192.png` and `public/android-chrome-512x512.png`
-- [ ] Point `public/site.webmanifest` and `src/layouts/Layout.astro` at those files. `theme_color` stays `#a35753`.
+  Vérifier avec l’IA le domaine dans Astro et les variables nécessaires au build. Pousser la version prête sur `main` → onglet **Actions** → vérifier build et déploiement réussis.
 
-### Photos by theme
+- [ ] HTTPS et vérification
 
-| Theme | Where it goes | What to shoot |
-| --- | --- | --- |
-| Accueil | Hero, right column. Replaces `public/images/reference-laure.jpeg`. | Portrait of Laure, landscape, about 3:2, face clear, warm interior behind her. |
-| Accueil | Open Graph and Twitter. `site.config.ts` `ogImageUrl`, width, height. | Same sitting, wider frame, about 1200×630, face not cropped by the edges. |
-| Accompagnement individuel | Page `/accompagnement-individuel/` and the individual card on the home page. | One empty chair in a quiet corner of the cabinet. No person. |
-| Thérapie de couple | Page `/therapie-de-couple/` and the couple card on the home page. | Two empty seats facing each other, or one shared seat with two places. No couple, no hands. |
-| Mon approche | Page `/mon-approche/`. | One detail of the room: light, a closed notebook, a plant. Do not stage hypnosis, DNR, or art materials as a medical setup. |
-| Cabinet à Martigues | “Au cabinet” block on the home page, and Google Business. | Wide view of the practice room, then one closer detail (chair, window, table). |
-| Cabinet, outside | Google Business only, after the street is known. | The real entrance in daylight. Do not photograph the town hall or another building. |
-| Visioconférence | “En visioconférence” block, only if that block gets an image. | Laure at her desk, camera visible, quiet background. No screen showing another person. |
-| À propos | About column on the home page, if a second picture is added. | A second portrait, different framing from the hero. |
-| Blog | Cover of each article, uploaded in Forge (`cover_image_url`). | One 3:2 picture per article, related to that article. No title set in the file. The site crops it. |
-| Google Business | Profile logo, cover, and gallery. | Logo, the hero portrait, the wide room, the two seats, the individual chair. Exterior only with the real door. |
+  Attendre la validation DNS et le certificat → **Settings → Pages → Enforce HTTPS**. Tester le domaine avec et sans `www`, puis une page interne.
 
-## Email
+- [ ] GitHub Action — déploiement automatique après merge sur `main`
 
-- [ ] Choose the public address (for example `contact@laurecorrao.fr`) with her.
-- [ ] Create the mailbox at the DNS host for `laurecorrao.fr`.
-- [ ] Publish MX, SPF, DKIM, and DMARC for that domain. Send a message to an outside inbox and confirm it is not spam.
-- [ ] Put that address in `siteConfig.contact.email`, the legal notice, the privacy policy, and Google Business.
+  Vérifier `.github/workflows/deploy.yml` : déclencheur `push` sur `main` (le merge d’une pull request le déclenche). Après merge → **Actions** → vérifier build, déploiement et site mis à jour. Ce déclencheur publie aussi les pushs directs sur `main`.
 
-## SMTP and the contact form
+[Référence GitHub — domaine et DNS](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site).
 
-This site does not send mail. The dialog `POST`s to Forge `POST /api/v1/send_form`. Forge sends the message with its own SMTP.
+## 4. Formulaire de contact
 
-Forge SMTP (`config/initializers/action_mailer_smtp.rb`) is on when `SMTP_ADDRESS` is set: port `SMTP_PORT` (default 465, SSL), `SMTP_USER_NAME`, `SMTP_PASSWORD`, From `MAILER_FROM` (default `noreply@1344.fr`). The message goes **to** `website.email`, with **reply-to** the visitor.
+- [ ] Affichage — modale / page dédiée / section landing page
+- [ ] Liste des champs
+- [ ] Obligatoires / facultatifs
 
-- [ ] Confirm production Forge has `SMTP_ADDRESS`, `SMTP_PORT`, `SMTP_USER_NAME`, `SMTP_PASSWORD`, and `MAILER_FROM`.
-- [ ] Set the Website email in Forge to Laure’s mailbox. An empty `website.email` means the form has nowhere to deliver.
-- [ ] Put the same website token in GitHub Actions as `PUBLIC_CONTACT_FORM_TOKEN`, and set `PUBLIC_CONTACT_FORM_URL` to `https://forge.1344.fr/api/v1/send_form`.
-- [ ] Allow `https://laurecorrao.fr` in Forge CORS.
-- [ ] Send a test from the live dialog. Confirm Laure receives it, the subject is `[Laure Corrao] …`, and Reply goes to the visitor, not to `noreply@1344.fr`.
-- [ ] If the From address must be `@laurecorrao.fr`, change Forge SMTP and `MAILER_FROM`, and align SPF/DKIM for that From. Do not add an SMTP client to this Astro app.
 
-## Forge, so she can edit the site
+## 5. Connecter la Forge
 
-Writing happens in Forge, scoped to the Website `laurecorrao.fr`. This repository only fetches published JSON at build time.
+Dashboard Forge → ouvrir le Website concerné ou le créer.
 
-- [ ] Create the Website in Forge: name, domain `laurecorrao.fr`, status Active, default locale `fr`.
-- [ ] Invite her user and attach it with a website membership.
-- [ ] Copy the website API token into GitHub secrets `FORGE_API_TOKEN` and `PUBLIC_CONTACT_FORM_TOKEN`. Set `FORGE_URL` to `https://forge.1344.fr/api/v1`.
-- [ ] Create a fine-grained GitHub token for `heavensal/laurecorrao-astro` with Contents read and write (repository dispatch needs write).
-- [ ] In Forge, set the rebuild URL to `https://api.github.com/repos/heavensal/laurecorrao-astro/dispatches` and the rebuild bearer token to that GitHub token.
-- [ ] Tick **Blog articles** only. Leave FAQs and Reviews unticked while `FORGE_FAQ_ENABLED` and `FORGE_REVIEWS_ENABLED` stay `false` in `.github/workflows/deploy.yml`.
-- [ ] Publish one article, confirm Forge calls the rebuild, and confirm `/blog/` and `/blog/{slug}/` appear on the live site.
-- [ ] Show her how to sign in, write, and publish. Drafts and future `published_at` values stay off the site.
+- [ ] Créer le Website — si absent
+- [ ] Confirmer les importations CMS
+  - [ ] Blog
+  - [ ] Reviews / avis
+  - [ ] FAQ
+- [ ] Renseigner l’email professionnel
+- [ ] Ajouter le token Forge au `.env` — si au moins une importation
 
-## What Forge provides
+  `FORGE_API_TOKEN` + `FORGE_URL` ; activer les flags des ressources retenues. Reporter les secrets dans **GitHub → Settings → Secrets and variables → Actions** pour le build distant. Ne pas committer le `.env`.
 
-She can create, edit, and publish these, for this website only. The public API returns rows that are `published` and whose `published_at` is already past. Auth is `Authorization: Bearer` with the website token.
+- [ ] Rebuild automatique après création / modification / suppression d’un élément importé
 
-| In Forge | On the site when the flag is `true` | Fields |
-| --- | --- | --- |
-| Articles | `/blog` and `/blog/{slug}` (`FORGE_ARTICLES_ENABLED`) | title, slug, description, HTML body, cover image, `published_at` |
-| FAQs | home FAQ block (`FORGE_FAQ_ENABLED`) | question, answer, slug, position, locale |
-| Reviews | home review block (`FORGE_REVIEWS_ENABLED`) | author, content, rating 1–5, position, `published_at` |
+  1. GitHub → **Settings du compte → Developer settings → Personal access tokens → Fine-grained tokens** : créer un token limité au dépôt, permission **Contents: read and write**.
+  2. Forge → paramètres de rebuild du Website : URL `https://api.github.com/repos/COMPTE/REPO/dispatches` + token GitHub comme bearer. Ce token est distinct du token API Forge.
+  3. Vérifier l’événement envoyé : `event_type: forge-rebuild`, et son écoute via `repository_dispatch` dans le workflow présent sur la branche par défaut. Sélectionner uniquement les ressources importées.
+  4. Tester une modification autorisée (ex. nouvel article publié) → **GitHub Actions** → build et déploiement → changement visible sur le site. Vérifier aussi modification et suppression ; une simple lecture ne nécessite pas de rebuild.
 
-Article HTML is limited to `p`, `br`, `strong`, `em`, `ul`, `ol`, `li`, `h2`, `h3`, `blockquote`, `a`. Reviews must be real testimonials she supplies.
+  [Référence GitHub — repository dispatch](https://docs.github.com/en/rest/repos/repos#create-a-repository-dispatch-event).
 
-Also provided, and not a content type:
+## 6. Contenu client
 
-- Contact delivery: `POST /api/v1/send_form` emails `website.email`.
-- Rebuild: a change to a ticked content type POSTs to GitHub and the workflow rebuilds the site.
-- Optional ChatGPT access (MCP), off unless enabled. She approves each change in Forge before it is saved.
+- [ ] Textes
+- [ ] Sections
+- [ ] Offres / tarifs
+- [ ] Informations client — téléphone / email / adresse / horaires
+- [ ] Marketing — arguments / appels à l’action
+- [ ] Pages légales
+  - [ ] Politique de confidentialité
+  - [ ] Conditions générales
+  - [ ] Mentions légales
+- [ ] Informations manquantes → `todo.md`
 
-Today this site turns **articles on** and **FAQs and reviews off**. FAQs and reviews on the page come from `fr.json` / `en.json`. Moving them into Forge means setting both flags to `true`, ticking them on the Website, and publishing the same questions and testimonials there.
+  Placeholder explicite pendant la préparation + tâche indiquant l’information attendue et son emplacement. Exemple : « Téléphone à fournir — footer et page contact ». Remplacer le placeholder après confirmation ; aucun placeholder publié.
+- [ ] Validation client
 
-## What stays in this repository
+## 7. SEO, accessibilité, GEO
 
-Forge does not store or edit:
+- [ ] Sitemap — URLs publiées / langues actives
+- [ ] `robots.txt` — règles de crawl / lien du sitemap
+- [ ] `llms.txt` — contenus publics / liens à jour (facultatif, aucune garantie de citation IA)
+- [ ] Métadonnées — titres / descriptions / canonical
+- [ ] Multilingue — hreflang / liens entre traductions, si applicable
+- [ ] Partage social — Open Graph / image de partage
+- [ ] Données structurées — identité / adresse / horaires / contenus visibles
+- [ ] Google Search Console
+  - [ ] Propriété du domaine — validation DNS
+  - [ ] Sitemap — soumission
+  - [ ] Indexation — contrôle des pages principales
+- [ ] Google Business Profile — si activité éligible
+  - [ ] Fiche existante / création / revendication
+  - [ ] Vérification propriétaire
+  - [ ] Nom / catégorie / prestations
+  - [ ] Adresse / téléphone / horaires
+  - [ ] Site / réservation / logo / photos
+  - [ ] Cohérence fiche ↔ site
 
-- hero, services, approach, fees, place, header, footer
-- legal notice, privacy policy, terms
-- phone, street address, SIRET, booking embed
-- design, SEO shell, hreflang, sitemap
+- [ ] Audit complet — `/build-seo-geo-accessibility-audit`
+- [ ] Validation des changements / informations à afficher — décisions dans `todo.md`
+- [ ] Corrections retenues — `/build-seo-geo-accessibility-fix` : uniquement les tâches acceptées
+- [ ] Tests PageSpeed Insights — mobile / ordinateur
+- [ ] Corrections et nouveaux tests — jusqu’à validation
 
-Cal.com (her events, payment, video link, reminders, cancellation) stays in Cal.com. This site only embeds it.
+## 8. Vérifications
 
-## Close the project
+- [ ] Terminer `todo.md` — tâches réalisées et vérifiées ; refus / non-applicables documentés
+- [ ] Aucun placeholder — informations réelles intégrées
+- [ ] Build automatique Forge — création / modification / suppression d’un contenu importé
+- [ ] Formulaire de contact
+  - [ ] SweetAlert — succès / erreur
+  - [ ] Réception de l’email
+- [ ] HTTPS / domaine avec et sans `www`
+- [ ] Navigation — liens / boutons / page 404 / langues publiées
+- [ ] Affichage — mobile / tablette / ordinateur
+- [ ] Accessibilité — clavier / focus / contrastes / labels
+- [ ] Logo / favicons / icônes téléphone / aperçu de partage
+- [ ] Sitemap / `robots.txt` / `llms.txt` — accès public et contenu correct
+- [ ] Indexation — aucun `noindex` ou blocage involontaire en production
+- [ ] Réservation / carte — si présentes
 
-- [ ] She has signed in to Forge and published or approved one article.
-- [ ] A contact message arrives in her mailbox.
-- [ ] Google Business shows the same name, city, and URL as the site.
-- [ ] The test calendar and the missing legal facts are gone. The logo, the favicon, and the theme photos replace the green “Lc” and the reference portrait.
-- [ ] Search Console shows the sitemap with no `/en/` URLs.
+## 9. Livraison client
+
+- [ ] Accès à l’email professionnel
+- [ ] Transfert des messages du formulaire — email pro → email choisi par le client
+  - [ ] Adresse de destination
+  - [ ] Transfert configuré / réception testée
+- [ ] Accès à Google Business
+- [ ] Factures transmises
+  - [ ] Nom de domaine
+  - [ ] Hébergement
+  - [ ] Prestations de services
+- [ ] Dates des prochains renouvellements
+  - [ ] Nom de domaine
+  - [ ] Hébergement
+  - [ ] Messagerie / autres abonnements — si applicables
+- [ ] Notes client — besoins / préférences / engagements / suivi, dans un espace privé

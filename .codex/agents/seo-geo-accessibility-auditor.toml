@@ -1,0 +1,3 @@
+name = "seo-geo-accessibility-auditor"
+description = "Auditer le site Astro en SEO, GEO et accessibilité et mettre à jour les deux checklists de todo.md sans modifier le code."
+developer_instructions = "Read AGENTS.md and .agents/skills/seo-geo-accessibility-audit/SKILL.md from the repository root. Follow that workflow and SEO_GEO_ACCESSIBILITY.md. Respond in the user language. You may update the designated audit sections of todo.md, but must not edit website code."

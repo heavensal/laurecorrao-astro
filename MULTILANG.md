@@ -1,133 +1,213 @@
-# Multilang on a brochure site
+# Website languages and localized architecture
 
-Mandatory rule for Codex, Claude, Cursor, and GitHub Copilot.
-Read this file before any change to languages, URLs, slugs, hreflang, the sitemap, or legal pages.
+Canonical language rule for Codex, Cursor, GitHub Copilot and Antigravity. Read this file before creating a website, adding a language, creating pages, editing visible content, or changing public URLs. Keep this rule in one place; tool-specific instructions must reference it rather than copy it.
 
-Laure Corrao is the “one language” case. The repository can also produce a “several languages” site. Both cases share the same code. What changes is what the site **publishes**.
+## 1. Determine the published languages first
 
-## Concept
+Identify the requested languages, the default language, and whether the site is new or already published. Use the user's request and existing project configuration; do not ask again for information already provided.
 
-A brochure site is the public site (Astro here). It displays. It is not the CMS.
-Forge, in the other repository, authors the blog, FAQ, and reviews. The brochure site fetches them at build time, only when that block’s flag is `true`. Hero, services, process, areas, legal pages, phone, and quote stay in this repository.
+- "French only" means a monolingual website without i18n.
+- "French and English, develop both languages" means both languages must be fully implemented.
+- If languages are unspecified, ask which languages the site will publish.
+- If multiple languages are requested and the primary language is unknown, ask which is primary. Do not infer it solely from their order in the prompt.
+- Preserve existing public URLs unless a migration is explicitly requested. Adding a language must not silently rename existing URLs.
 
-The language model is ready for French and English. Each site chooses how many languages it publishes.
+## 2. Keep one language configuration
 
-- Code, component names, variable names, file names, folder names, and markdown stay in English: `TermsArticle`, `FeesPage`, `legalSlugs`.
-- Visible copy comes from `src/i18n/locales/fr.json` and `en.json`, via `getFixedT(locale)`. Both files are filled even when `ENABLE_MULTILANG=false`.
-- The public URL is in the language of the page. A slug is an address, stored in `src/lib/paths.ts`, not a file name: lowercase, hyphens, no accent, no capital letter.
+For new sites, store publication settings in `src/site/publication.ts`:
 
-`en.json` can exist while the site publishes French only. The file prepares English. It does not create a `/en/` URL.
+```ts
+// Monolingual
+export const publication = {
+  defaultLocale: 'fr',
+  locales: ['fr'],
+} as const;
+```
 
-French is the default language. It lives at the root. There is no `/fr/` prefix.
-English, when it is published, lives under `/en/`.
+```ts
+// Multilingual
+export const publication = {
+  defaultLocale: 'fr',
+  locales: ['fr', 'en'],
+} as const;
+```
 
-## The two switches
+`defaultLocale` must belong to `locales`. Derive multilingual mode from `locales.length > 1`; do not introduce a second independent `ENABLE_MULTILANG` flag. Routes, navigation, switching and SEO use the same configuration. Dictionary folders and remote content never enable a language implicitly.
 
-Both must agree. Do not turn on only one.
+## 3. Use English names for source files
 
-| Switch | Where | Role |
-|---|---|---|
-| `publishedLocales` | `src/site.config.ts` | Languages the site announces. hreflang, Open Graph, and JSON-LD `inLanguage` cite only this list. |
-| `ENABLE_MULTILANG` | `.env`, read by `isMultilangEnabled()` | `true` generates `/en/` pages and shows the language switcher. `false` generates none. |
+Use English names for files, folders, components, identifiers, translation keys, comments and documentation. Locale codes such as `fr`, `en` and `pt-BR` are allowed as folder names.
 
-`isPublishedLocale('en')` is true only when both are on: `'en'` is in `publishedLocales` **and** `ENABLE_MULTILANG=true`.
+Separate public URL slugs from source names. Use stable English page identifiers such as `home`, `about`, `services` and `contact`.
 
-| Site | `publishedLocales` | `ENABLE_MULTILANG` |
-|---|---|---|
-| One language (Laure Corrao today) | `['fr']` | `false` |
-| Several languages | `['fr', 'en']` | `true` |
+Example: `AboutPage.astro` renders `/a-propos/` in French and `/en/about/` in English. Do not create a French-named source file merely to obtain a French URL.
 
-## One language
+## 4. Monolingual websites: no i18n
 
-Laure Corrao publishes French only.
+When creating a site with one published language:
 
-Expected:
+- Do not install or initialize an i18n library, create dictionaries or translation keys, or add a `t()` helper.
+- Do not prepare an unused second language or a language switcher.
+- Write visible content directly in the chosen language. Small page-specific copy may stay in `.astro`.
+- Extract reusable editorial data into ordinary content files when useful; these are not translation dictionaries.
+- Keep business facts such as prices, addresses and opening hours in their dedicated site data files.
 
-- No `/en/` URL. Not the home page, not a legal page, not the blog.
-- The hero language switcher is absent.
-- The sitemap contains French URLs only.
-- hreflang: `fr` and `x-default`, both pointing at the French URL of the page. No `hreflang="en"`.
-- No `og:locale:alternate`. JSON-LD `inLanguage`: `fr-FR` only.
-- The footer and canonicals use the French slug.
-- `src/pages/en/[...slug].astro` returns an empty list. The file stays in the repository for the day English is turned on.
+```text
+src/
+  site/
+    publication.ts
+    pages.ts
+  content/
+    homepage.ts           # Optional structured editorial content
+  views/
+    home/HomePage.astro
+    about/AboutPage.astro
+  routing/
+    paths.ts
+  pages/
+    index.astro
+    [...slug].astro
+```
 
-Public legal pages:
+Public slugs use the chosen language. The default language has no locale prefix: `/`, `/a-propos/`, `/prestations/`, `/contact/` for a French site.
 
-| Page | Slug in `legalSlugs.fr` | URL |
-|---|---|---|
-| Legal notice | `mentions-legales` | `/mentions-legales/` |
-| Privacy policy | `politique-de-confidentialite` | `/politique-de-confidentialite/` |
-| Terms | `conditions-generales` | `/conditions-generales/` |
+## 5. Multilingual websites: dictionaries by locale and page
 
-The route file is `src/pages/[...slug].astro`. It is English. It reads the slug from `src/lib/paths.ts`.
+Implement every requested language. Reuse page components and layouts; pass the locale explicitly where needed. Resolve translations during Astro rendering/build, without shipping a client-side i18n runtime for static translated content.
 
-Components stay `LegalNoticeArticle`, `PrivacyArticle`, `TermsArticle`.
+Organize dictionaries by locale and page, not as one large file per language:
 
-These URLs must not exist as French pages:
+```text
+src/
+  site/
+    publication.ts
+    pages.ts
+  i18n/
+    index.ts
+    locales/
+      fr/
+        common.json
+        navigation.json
+        homepage.json
+        about.json
+        services.json
+        contact.json
+        legal-notice.json
+        privacy.json
+        terms.json
+      en/
+        common.json
+        navigation.json
+        homepage.json
+        about.json
+        services.json
+        contact.json
+        legal-notice.json
+        privacy.json
+        terms.json
+  components/
+    site/LanguageSwitcher.astro
+  views/
+    home/HomePage.astro
+    about/AboutPage.astro
+  routing/
+    paths.ts
+    static-paths.ts
+  pages/
+    index.astro
+    [...slug].astro
+    [locale]/
+      [...slug].astro
+```
 
-- `/legal-notice/`
-- `/privacy-policy/`
-- `/terms-of-service/`
+Create only dictionaries for actual pages or shared features. `homepage.json` owns homepage copy, `navigation.json` owns shared navigation labels, and `common.json` owns genuinely shared interface text. A shared feature may have its own namespace, such as `booking.json`.
 
-They redirect to the French slug (`astro.config.mjs`, status 301). The redirect stays in place even on the day English is added, because English does not occupy the root: it occupies `/en/`.
+Use meaningful English keys, not source sentences or numbered labels. Translate headings, paragraphs, links, buttons, form labels, errors, statuses, image alternatives, accessibility labels, page titles and meta descriptions.
 
-## Several languages
+Do not duplicate language-independent facts such as prices or addresses in dictionaries. Localize their presentation. Required keys must exist for every published locale; silent fallback must not mask incomplete translations.
 
-Turn both switches on together. The site then publishes French at the root and English under `/en/`.
+## 6. Generate localized URLs from a central page registry
 
-Expected:
+Keep stable page IDs and localized slugs in `src/site/pages.ts`. Build links through `src/routing/paths.ts`.
 
-- `/` and `/en/`: the same home page, each in its language.
-- The language switcher is visible.
-- hreflang cites `fr`, `en`, and `x-default`. `x-default` repeats the French URL, the site default language.
-- `og:locale:alternate` cites the other language.
-- Each page points at its real translation. A missing translation is not announced.
-- The sitemap contains the French URLs and the generated `/en/` URLs.
+For new sites:
 
-The slug follows the language of the page. The French page keeps its French slug. The English page gets the English slug, under `/en/`.
+- Default language at the root; other languages under their locale prefix.
+- Slugs in the language of the page, with consistent trailing slashes.
+- No duplicate prefixed version of the default language.
+- No automatic browser-language redirect.
 
-| Page | French | English |
-|---|---|---|
-| Home | `/` | `/en/` |
-| Legal notice | `/mentions-legales/` | `/en/legal-notice/` |
-| Privacy policy | `/politique-de-confidentialite/` | `/en/privacy-policy/` |
-| Terms | `/conditions-generales/` | `/en/terms-of-service/` |
+| Page ID | French (default) | English |
+| --- | --- | --- |
+| home | `/` | `/en/` |
+| about | `/a-propos/` | `/en/about/` |
+| services | `/prestations/` | `/en/services/` |
+| contact | `/contact/` | `/en/contact/` |
 
-Slugs live in `legalSlugs` (`src/lib/paths.ts`). Links go through `legalPath(locale, page)`: the `en/` prefix is added only when English is published.
+Preserve proper names and established technical segments when translation is inappropriate. Use lowercase, hyphen-separated slugs; avoid accents for French and English slugs.
 
-Example. The French privacy policy is `/politique-de-confidentialite/`. On the day English is published, the translation is `/en/privacy-policy/`. The French URL does not become `/privacy-policy/`.
+Internal links preserve the current locale, respect Astro's base path, and point to generated pages. Do not scatter hardcoded translated paths through components.
 
-## Blog
+Generate only configured locales and valid page/locale combinations. Unknown locale prefixes must not render fallback content. Reserve locale prefixes so they cannot collide with default-language page slugs.
 
-The blog is not a page stored in the repository. It is generated only when `FORGE_ARTICLES_ENABLED=true` and the language is published.
+## 7. Respect Forge's language configuration
 
-- French: `/blog` and `/blog/{slug}`.
-- English: `/en/blog` and `/en/blog/{slug}`, and only when English is published.
-- An article present in only one language does not announce the other in hreflang.
+Forge language settings are configured before site creation. Treat them as an existing prerequisite; do not recreate or modify them unless requested.
 
-On Laure Corrao, `FORGE_ARTICLES_ENABLED` is `true`. `FORGE_FAQ_ENABLED` and `FORGE_REVIEWS_ENABLED` stay `false`. `/blog` is generated when `FORGE_API_TOKEN` can read the published articles. The `blog` segment is the same in both languages. The article slug is the one Forge returns.
+- Fetch content in the expected locale using the supported API contract.
+- For multilingual sites, explicitly request each published locale.
+- Keep Forge-managed articles, FAQs and reviews in Forge; do not copy them into dictionaries or automatically translate or rewrite them.
+- Where the API provides locale information, verify it matches the requested locale.
+- A request for `en` does not itself prove the response is English: the API may fall back to the default language.
+- Report missing or wrong-language content and apply the feature's explicit missing-content policy. Do not publish it as a valid translation.
+- Forge supplies article translations and their localized URLs through the API. Use those translation relationships rather than identical slugs; inspect the actual response to map field names. Apply [BLOG.md](BLOG.md) for the complete blog rule.
 
-## What not to do
+## 8. Provide an accessible language switcher
 
-- Publish `/privacy-policy/`, `/legal-notice/`, or `/terms-of-service/` at the root of a French-only site.
-- Generate a `/en/` page because `en.json` exists, or because the component has a `locale` prop.
-- Announce `hreflang="en"`, a `/en/` link, or `og:locale:alternate` while English is not published.
-- Translate component or route file names (`TermsArticle` stays `TermsArticle`, the French route file stays `[...slug].astro`).
-- Prefix French with `/fr/`.
-- Redirect `/en/privacy-policy` to French. That path is reserved for the English page.
-- Turn on `ENABLE_MULTILANG` without adding `'en'` to `publishedLocales`, or the reverse.
-- Put a capital letter or an accent in a slug. `Politique-de-confidentialité` is not a URL. The URL is `/politique-de-confidentialite/`.
+For multilingual sites, create `LanguageSwitcher.astro`:
 
-## Files
+- Use real links working without JavaScript.
+- Display native language names, such as "Français" and "English"; flags must not be the only labels.
+- Identify the current language accessibly.
+- Link to the equivalent page, preserving page identity across translated slugs.
+- Show only available translations.
+- Omit an unavailable page translation rather than silently substituting a homepage. If a homepage fallback is explicitly requested, label it as navigation to that language's homepage.
 
-| File | Role |
-|---|---|
-| `src/site.config.ts` | `publishedLocales`, default language |
-| `.env` | `ENABLE_MULTILANG` |
-| `src/i18n/i18n.ts` | `isMultilangEnabled()`, `getFixedT(locale)` |
-| `src/lib/paths.ts` | `legalSlugs`, `legalPath`, `en/` prefix |
-| `src/lib/seo.ts` | hreflang, canonical, Open Graph, JSON-LD |
-| `src/pages/[...slug].astro` | French routes. The file name is English. The slug comes from `paths.ts` |
-| `src/pages/en/[...slug].astro` | English routes, generated only when the flag is `true` |
-| `src/components/LanguageSwitcher.astro` | Switcher, rendered only when the flag is `true` |
-| `astro.config.mjs` | Redirects from the old English slugs to the French slugs |
+Do not create a language switcher for monolingual sites.
+
+## 9. Keep SEO consistent with the rendered language
+
+Every published page has the correct HTML `lang`, localized title and description, self-referencing canonical URL, appropriate Open Graph locale, localized structured-data text/language, and canonical sitemap URL.
+
+For multilingual pages:
+
+- Generate reciprocal hreflang links only for existing translations, including the page itself.
+- Use the default-language equivalent as `x-default` when it exists.
+- Never canonicalize every translation to the default-language page.
+
+For monolingual pages, do not announce nonexistent translations or an alternate Open Graph locale. A multilingual hreflang set is unnecessary.
+
+## 10. Validate the result
+
+Verify the following when implementing language changes:
+
+- Published languages match the request and configuration.
+- Required local content and keys are present, with no visible keys or unintended language fallback.
+- Slugs and routes are unique; internal links preserve locale.
+- The switcher reaches the equivalent page and excludes unavailable translations.
+- Canonicals, hreflang and sitemap agree with generated routes.
+- Forge content matches the expected language.
+- Dates, numbers and currencies use the selected locale.
+- Mobile and desktop layouts tolerate longer translations.
+- A newly created monolingual site has no unnecessary i18n dependency, dictionary, helper or switcher.
+- Existing-site migrations preserve URLs and implement explicitly approved redirects.
+
+Report the checks performed and anything unverified.
+
+## Existing repository: migration boundary
+
+This rule defines the target architecture for new sites and explicitly requested migrations. Recording it does not authorize a runtime refactor.
+
+Laure Corrao currently publishes French only but retains the previous i18next implementation, flat `fr.json`/`en.json` dictionaries, `ENABLE_MULTILANG` and `siteConfig.publishedLocales`. Until a migration is requested, use the existing helpers and paths for scoped edits; do not create a parallel publication configuration or remove i18n as a side effect.
+
+The previous requirement to prepare English on every monolingual site is superseded. Do not require updates to unpublished English copy unless requested. Before enabling English on this existing site, audit its content completeness and keep both existing publication settings consistent. The target `src/site/`, `src/routing/`, `src/views/` and per-page dictionary paths above are not yet implemented here.

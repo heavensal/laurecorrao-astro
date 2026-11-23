@@ -71,3 +71,22 @@ Follow-up to the November 2026 audit. Quick fixes, images, booking links, deferr
 - [ ] Validate the home, service, fees and article pages in the Rich Results Test and the Schema.org validator.
 - [ ] Submit `sitemap-index.xml` in Google Search Console and Bing Webmaster Tools, then check `https://laurecorrao.fr/llms.txt`.
 - [ ] Run Lighthouse on the home and fees pages and compare with the audit.
+
+
+## SEO / GEO / Accessibilité — Corrections dans le dépôt
+
+Aucun nouvel audit exécuté lors de l'installation de ce workflow. Les tâches des sections précédentes et leurs validations restent conservées ; les rapprocher avant d'ajouter des constats ici.
+
+<!-- Format : - [ ] SGA-001 — P1 — SEO / GEO / Accessibilité — Action
+État : à faire. Responsable : IA. Preuve : fichier:ligne ou URL + observation.
+Dépendances : aucune ou EXT-001. Acceptation : résultat vérifiable.
+Validation de clôture : date, contrôle, résultat et fichiers concernés. -->
+
+## SEO / GEO / Accessibilité — Intervention du propriétaire
+
+Ne pas redemander les informations déjà confirmées plus haut (notamment fiche Google Business et horaires), sauf contradiction démontrée. Un accès indisponible doit être signalé comme non vérifié, pas comme inexistant.
+
+<!-- Format : - [ ] EXT-001 — P1 — Information ou action précise
+État : bloqué. Responsable : propriétaire. Motif/preuve : ...
+Débloque : SGA-001. Acceptation : confirmation ou résultat observable.
+Ne jamais écrire de mot de passe ou de jeton ici. -->
